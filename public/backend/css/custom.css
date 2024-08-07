@@ -1,0 +1,31 @@
+.btn-custom {
+  background-color: #616B2E;
+  border-color: #616B2E;
+  color: #FFF;
+}
+
+.btn-custom:hover {
+  background-color: #617C2E;
+  border-color: #617C2E;
+  color: #FFF;
+}
+
+input {
+  accent-color: #617C2E !important;
+}
+
+.bg-custom {
+  background-color: #616B2E;
+}
+
+#sidebar-menu > ul > li > a.active,
+.nav-second-level li > a.active, 
+.nav-thrid-level li > a.active {
+  color: #617C2E !important;
+}
+
+#sidebar-menu > ul > li > a.active {
+  color: #616B2E !important;
+  background-color: #f1f5f7;
+  border-right-color: #616B2E !important;
+}
