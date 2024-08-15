@@ -1,4 +1,4 @@
-@extends('layouts.user', ['title' => 'My Profile', 'activePage' => 'account'])
+@extends('admin.layouts.main', ['title' => 'My Profile', 'activePage' => 'account'])
 
 @section('content')
     <div class="content">
@@ -12,7 +12,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Account</a></li>
                                 <li class="breadcrumb-item active">My Profile</li>
                             </ol>
@@ -45,7 +45,7 @@
                             <div class="alert alert-success" role="alert">{{ session('success') }}</div>
                         @endif
 
-                        <form method="POST" action="{{ route('user.profile.update') }}">
+                        <form method="POST" action="{{ route('admin.profile.update') }}">
                             @method('put')
                             @csrf
                             <div class="form-group">
@@ -61,7 +61,7 @@
                                 <input type="email" class="form-control" id="email" name="email"  value="{{ Auth::user()->email }}" required>
                             </div>
 
-                            <button type="submit" class="btn btn-primary my-3">Update</button>
+                            <button type="submit" class="btn btn-custom my-3">Update</button>
                         </form>
                     </div> <!-- end card-box -->
                 </div> <!-- end col -->

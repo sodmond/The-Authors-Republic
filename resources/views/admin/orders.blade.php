@@ -1,4 +1,4 @@
-@extends('layouts.user', ['title' => 'My Orders', 'activePage' => 'orders'])
+@extends('admin.layouts.main', ['title' => 'Orders', 'activePage' => 'orders'])
 
 @section('content')
     <div class="content">
@@ -12,11 +12,11 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
-                                <li class="breadcrumb-item active">My Orders</li>
+                                <li class="breadcrumb-item"><a href="{{ route('author.home') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">All Orders</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">My Orders</h4>
+                        <h4 class="page-title">All Orders</h4>
                     </div>
                 </div>
             </div>     
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card shadow">
-                        <div class="card-header bg-primary">
+                        <div class="card-header bg-custom">
                             <h4 class="h5 text-white">List of Orders</h4>
                         </div>
                         <div class="card-body">
@@ -33,7 +33,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>#</th>
                                             <th>Challenge</th>
                                             <th>Platform</th>
                                             <th>Price</th>
@@ -43,7 +43,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($orders as $order)
+                                        {{--@foreach ($orders as $order)
                                             <tr>
                                                 <td>{{ $order->id }}</td>
                                                 <td>Challenge</td>
@@ -55,7 +55,7 @@
                                                     <i class="fa fa-eye"></i>
                                                 </a></td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach--}}
                                     </tbody>
                                 </table>
                             </div>

@@ -23,7 +23,12 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile successfully updated.');
     }
 
-    public function password(PasswordRequest $request)
+    public function password()
+    {
+        return view('author.change_password');
+    }
+
+    public function passwordUpdate(PasswordRequest $request)
     {
         auth('author')->user()->update(['password' => Hash::make($request->get('password'))]);
         Mail::to(auth('author')->user()->email)->send(new SendPasswordChange(auth('author')->user()->firstname));

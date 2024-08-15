@@ -18,9 +18,14 @@ input {
   background-color: #616B2E;
 }
 
+.bg-custom2 {
+  background-color: #B38B67;
+}
+
 #sidebar-menu > ul > li > a.active,
 .nav-second-level li > a.active, 
-.nav-thrid-level li > a.active {
+.nav-thrid-level li > a.active,
+.metismenu li a[aria-expanded="true"] {
   color: #617C2E !important;
 }
 
@@ -28,4 +33,17 @@ input {
   color: #616B2E !important;
   background-color: #f1f5f7;
   border-right-color: #616B2E !important;
+}
+
+.required::after {
+  color: #FF0000;
+  content: '*';
+}
+
+.navbar-custom {
+  background-color: #222 !important;
+}
+
+.richText .richText-editor:focus{
+  border-left-color: #617C2E !important;
 }

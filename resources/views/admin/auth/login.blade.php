@@ -10,7 +10,7 @@
                     
                     <div class="text-center mb-2">
                         <a href="{{ route('home') }}">
-                            <span><img src="{{ asset('img/lg.png') }}" alt="" height="38"></span>
+                            <span><img src="{{ asset('img/logo.png') }}" alt="" height="58"></span>
                         </a>
                         <h3>Admin Login</h3>
                     </div>

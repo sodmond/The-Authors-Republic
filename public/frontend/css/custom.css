@@ -1,0 +1,10 @@
+.tg-btn:hover, .tg-btn.tg-active, .tg-navigationarea, .owl-prev:hover, 
+.owl-next:hover, .tg-testimonial figure::before, 
+.tg-headervtwo .tg-formsearch fieldset button, 
+.tg-homeslidervtwo .tg-slidercontent .tg-btns .tg-btn:hover, 
+.tg-homeslidervtwo .tg-slidercontent .tg-btns .tg-btn.tg-active, 
+.tg-breadcrumb, #seconds, .tg-quantityholder .minus:hover, 
+.tg-quantityholder .plus:hover, .tg-themetabs li a::before, 
+.tg-tag:hover, .tg-btnreply:hover {
+    background: #616B2E !important;
+}

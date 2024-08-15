@@ -11,14 +11,14 @@ class UsersController extends Controller
 {
     public function index() {
         $users = User::paginate(15);
-        return view('backend.users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
-    public function view($id) {
+    public function get($id) {
         $user = User::find($id);
         if ($user) {
-            $orders = Order::where('user_id', $user->id)->get();
-            return view('backend.user', compact('user', 'orders'));
+            #$orders = Order::where('user_id', $user->id)->get();
+            return view('admin.users.single', compact('user', 'orders'));
         }
         return redirect()->route('admin.home');
     }

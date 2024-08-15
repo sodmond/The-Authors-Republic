@@ -14,7 +14,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('backend.profile');
+        return view('admin.profile');
     }
 
     public function update(ProfileRequest $request)
@@ -23,7 +23,12 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile successfully updated.');
     }
 
-    public function password(PasswordRequest $request)
+    public function password()
+    {
+        return view('admin.change_password');
+    }
+
+    public function passwordUpdate(PasswordRequest $request)
     {
         auth('admin')->user()->update(['password' => Hash::make($request->get('password'))]);
         Mail::to(auth('admin')->user()->email)->send(new SendPasswordChange(auth('admin')->user()->firstname));

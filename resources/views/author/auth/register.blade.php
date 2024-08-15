@@ -9,7 +9,7 @@
                 <div class="card-body p-4">
                     
                     <div class="text-center mb-3">
-                        <span><img src="{{ asset('img/logo.png') }}" alt="" height="38"></span>
+                        <span><img src="{{ asset('img/logo.png') }}" alt="" height="58"></span>
                         <h3>Author Registration</h3>
                     </div>
 

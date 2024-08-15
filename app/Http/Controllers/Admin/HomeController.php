@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Book;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,9 +19,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $totalUsers = User::count();
-        $totalOrders = 10;
-        $totalBookings = 10; 
-        return view('admin.home', compact('totalUsers', 'totalOrders', 'totalBookings'));
+        $booksCount = Book::count();
+        $ordersCount = 10;
+        $ordersTotal = 10;
+        return view('admin.home', compact('booksCount', 'ordersCount', 'ordersTotal'));
     }
 }

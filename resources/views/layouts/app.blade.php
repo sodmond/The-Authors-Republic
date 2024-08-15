@@ -1,80 +1,97 @@
 <!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js" lang="zxx"> <!--<![endif]-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+	<title>{{ config('app.name', '') }}</title>
+	<meta name="description" content="">
+	
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+	<link rel="apple-touch-icon" href="{{ asset('img/favicon.png') }}">
+	
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/normalize.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/icomoon.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/transitions.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/color-purple.css') }}">
+	<link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+	<script src="{{ asset('frontend/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body class="tg-home tg-homevtwo">
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<!--************************************
+			Wrapper Start
+	*************************************-->
+	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+        <!--************************************
+				Header Start
+		*************************************-->
+        @include('layouts.partials.header')
+        <!--************************************
+				Header End
+		*************************************-->
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+		<!--************************************
+				Home Slider/Inner Banner Start
+		*************************************-->
+        @if($activePage == 'home')
+		    @include('layouts.partials.home_slider')
+        @else
+            @include('layouts.partials.breadcrumb')
+        @endif
+		<!--************************************
+				Home Slider/Inner Banner End
+		*************************************-->
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
+		<!--************************************
+				Main Start
+		*************************************-->
+		<main id="tg-main" class="tg-main tg-haslayout">
+			
             @yield('content')
-        </main>
-    </div>
+			
+		</main>
+		<!--************************************
+				Main End
+		*************************************-->
+		<!--************************************
+				Footer Start
+		*************************************-->
+		@include('layouts.partials.footer')
+		<!--************************************
+				Footer End
+		*************************************-->
+	</div>
+	<!--************************************
+			Wrapper End
+	*************************************-->
+	<script src="{{ asset('frontend/js/vendor/jquery-library.js') }}"></script>
+	<script src="{{ asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
+	<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&language=en"></script>
+	<script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+	<script src="{{ asset('frontend/js/jquery.vide.min.js') }}"></script>
+	<script src="{{ asset('frontend/js/countdown.js') }}"></script>
+	<script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
+	<script src="{{ asset('frontend/js/parallax.js') }}"></script>
+	<script src="{{ asset('frontend/js/countTo.js') }}"></script>
+	<script src="{{ asset('frontend/js/appear.js') }}"></script>
+	<script src="{{ asset('frontend/js/gmap3.js') }}"></script>
+	<script src="{{ asset('frontend/js/main.js') }}"></script>
 </body>
 </html>

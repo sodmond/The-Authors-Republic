@@ -19,7 +19,7 @@ class SettingsController extends Controller
     {
         $adminRoles = DB::table('admin_roles')->get();
         $admins = Admin::all();
-        return view('backend.settings', compact('adminRoles', 'admins'));
+        return view('admin.settings', compact('adminRoles', 'admins'));
     }
 
     public function newAdmin(Request $request)

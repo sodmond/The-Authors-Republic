@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>{{ config('app.name') }} - Admin {{ $title }}</title>
+        <title>{{ config('app.name') }} - Admin | {{ $title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description" />
         <meta content="" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
         <!-- jvectormap -->
         <link href="{{ asset('backend/libs/jqvmap/jqvmap.min.css') }}" rel="stylesheet" />
@@ -51,13 +51,13 @@
                             </div>
 
                             <!-- item-->
-                            <a href="{{-- route('user.profile') --}}" class="dropdown-item notify-item">
+                            <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
                                 <i class="dripicons-user"></i>
                                 <span>My Profile</span>
                             </a>
 
                             <!-- item-->
-                            <a href="{{-- route('user.profile.password') --}}" class="dropdown-item notify-item">
+                            <a href="{{ route('admin.profile.password') }}" class="dropdown-item notify-item">
                                 <i class="dripicons-lock"></i>
                                 <span>Change Password</span>
                             </a>
@@ -77,7 +77,7 @@
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                        <a href="{{ route('admin.settings') }}" class="nav-link right-bar-toggle waves-effect waves-light">
                             <i class="fe-settings noti-icon"></i>
                         </a>
                     </li>
@@ -88,10 +88,10 @@
                     <li class="float-left">
                         <a href="index.html" class="logo">
                             <span class="logo-lg">
-                                <img src="{{ asset('img/lg.png') }}" alt="" height="22">
+                                <img src="{{ asset('img/logo.png') }}" alt="" height="52">
                             </span>
                             <span class="logo-sm">
-                                <img src="{{ asset('img/favicon.ico') }}" alt="" height="24">
+                                <img src="{{ asset('img/favicon.png') }}" alt="" height="24">
                             </span>
                         </a>
                     </li>
@@ -124,19 +124,54 @@
 
                         <ul class="metismenu" id="side-menu">
 
-                            <li class="menu-title">Navigation</li>
+                            <li class="menu-title">Admin Portal</li>
 
                             <li>
-                                <a href="{{-- route('user.dashboard') --}}" class="{{ ($activePage == 'home') ? 'active' : '' }}">
+                                <a href="{{ route('admin.home') }}" class="{{ ($activePage == 'home') ? 'active' : '' }}">
                                     <i class="dripicons-meter"></i>
                                     <span> Dashboard </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{-- route('user.orders') --}}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
-                                    <i class="dripicons-calendar"></i> 
-                                    <span> My Orders </span>
+                                <a href="{{ route('admin.users') }}" class="{{ ($activePage == 'users') ? 'active' : '' }}">
+                                    <i class="fas fa-user"></i> 
+                                    <span> Users </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.authors') }}" class="{{ ($activePage == 'authors') ? 'active' : '' }}">
+                                    <i class="fas fa-user-tie"></i> 
+                                    <span> Authors </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.books') }}" class="{{ ($activePage == 'books') ? 'active' : '' }}">
+                                    <i class="fas fa-book"></i> 
+                                    <span> Books </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.orders') }}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
+                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <span> Orders </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{-- route('admin.payouts') --}}" class="{{ ($activePage == 'payouts') ? 'active' : '' }}">
+                                    <i class="fas fa-money-check"></i> 
+                                    <span> Payouts </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.settings') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
+                                    <i class="fas fa-cog"></i> 
+                                    <span> Settings </span>
                                 </a>
                             </li>
 
@@ -148,40 +183,12 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="{{-- route('user.profile') --}}">My Profile</a>
+                                        <a href="{{ route('admin.profile') }}">My Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{{-- route('user.profile.password') --}}">Change Password</a>
+                                        <a href="{{ route('admin.profile.password') }}">Change Password</a>
                                     </li>
                                 </ul>
-                            </li>
-
-                            <li>
-                                <a href="{{-- route('user.downloads') --}}" class="{{ ($activePage == 'downloads') ? 'active' : '' }}">
-                                    <i class="dripicons-download"></i> 
-                                    <span> Downloads </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{-- route('user.payouts') --}}" class="{{ ($activePage == 'payouts') ? 'active' : '' }}">
-                                    <i class="dripicons-briefcase"></i> 
-                                    <span> Payouts </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{-- route('user.leaderboard') --}}" class="{{ ($activePage == 'leaderboard') ? 'active' : '' }}">
-                                    <i class="dripicons-document"></i> 
-                                    <span> Leaderboard </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{-- route('user.contact') --}}" class="{{ ($activePage == 'contact') ? 'active' : '' }}">
-                                    <i class="dripicons-phone"></i> 
-                                    <span> Contact Us </span>
-                                </a>
                             </li>
 
                             <li class="menu-title mt-2">More</li>
@@ -196,7 +203,7 @@
                             <li>
                                 <a href="{{ url('/') }}">
                                     <i class="dripicons-arrow-left"></i>
-                                    <span> Back to Home </span>
+                                    <span> Visit website </span>
                                 </a>
                             </li>
 
@@ -225,7 +232,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                &copy; 2018 - 2019 {{ config('app.name') }} 
+                                &copy; {{ date('Y') }} {{ config('app.name') }} 
                             </div>
                         </div>
                     </div>

@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>The Authors Republic - Author {{ $title }}</title>
+        <title>The Authors Republic - Author | {{ $title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description" />
         <meta content="" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
         <!-- jvectormap -->
         <link href="{{ asset('backend/libs/jqvmap/jqvmap.min.css') }}" rel="stylesheet" />
@@ -21,6 +21,7 @@
         <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/richtext.min.css') }}" rel="stylesheet">
         <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
@@ -86,12 +87,12 @@
 
                 <ul class="list-unstyled menu-left mb-0">
                     <li class="float-left">
-                        <a href="index.html" class="logo">
+                        <a href="{{ route('author.home') }}" class="logo">
                             <span class="logo-lg">
-                                <img src="{{ asset('img/lg.png') }}" alt="" height="22">
+                                <img src="{{ asset('img/logo.png') }}" alt="" height="52">
                             </span>
                             <span class="logo-sm">
-                                <img src="{{ asset('img/favicon.ico') }}" alt="" height="24">
+                                <img src="{{ asset('img/favicon.png') }}" alt="" height="24">
                             </span>
                         </a>
                     </li>
@@ -127,36 +128,36 @@
                             <li class="menu-title">Author Portal</li>
 
                             <li>
-                                <a href="{{-- route('user.dashboard') --}}" class="{{ ($activePage == 'home') ? 'active' : '' }}">
+                                <a href="{{ route('author.home') }}" class="{{ ($activePage == 'home') ? 'active' : '' }}">
                                     <i class="dripicons-meter"></i>
                                     <span> Dashboard </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{-- route('author.orders') --}}" class="{{ ($activePage == 'books') ? 'active' : '' }}">
-                                    <i class="dripicons-calendar"></i> 
+                                <a href="{{ route('author.books') }}" class="{{ ($activePage == 'books') ? 'active' : '' }}">
+                                    <i class="fas fa-book"></i> 
                                     <span> Books </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{-- route('author.orders') --}}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
-                                    <i class="dripicons-calendar"></i> 
+                                <a href="{{ route('author.orders') }}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
+                                    <i class="fas fa-money-bill-wave"></i> 
                                     <span> Orders </span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{-- route('author.payouts') --}}" class="{{ ($activePage == 'payouts') ? 'active' : '' }}">
-                                    <i class="dripicons-briefcase"></i> 
+                                    <i class="fas fa-money-check"></i> 
                                     <span> Payouts </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{-- route('author.settings') --}}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
-                                    <i class="dripicons-briefcase"></i> 
+                                <a href="{{ route('author.settings') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
+                                    <i class="fas fa-cog"></i> 
                                     <span> Settings </span>
                                 </a>
                             </li>
@@ -169,10 +170,10 @@
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li>
-                                        <a href="{{-- route('user.profile') --}}">My Profile</a>
+                                        <a href="{{ route('author.profile') }}">My Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{{-- route('user.profile.password') --}}">Change Password</a>
+                                        <a href="{{ route('author.profile.password') }}">Change Password</a>
                                     </li>
                                 </ul>
                             </li>
@@ -180,7 +181,7 @@
                             <li class="menu-title mt-2">More</li>
 
                             <li>
-                                <a href="" data-toggle="modal" data-target="#logoutModal">
+                                <a href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="dripicons-power"></i>
                                     <span> Logout </span>
                                 </a>
@@ -218,7 +219,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                &copy; 2018 - 2019 {{ config('app.name') }} 
+                                &copy; {{ date('Y') }} {{ config('app.name') }} 
                             </div>
                         </div>
                     </div>
@@ -278,6 +279,16 @@
         
         <!-- App js -->
         <script src="{{ asset('backend/js/app.min.js') }}"></script>
+        <script src="{{ asset('backend/js/jquery.richtext.js') }}"></script>
+        <script>
+            $(document).ready(function(){ 
+                var input_group = $('input[required]').parent();
+                input_group.find('label').addClass('required');
+                var select_group = $('select[required]').parent();
+                select_group.find('label').addClass('required');
+            });
+        </script>
+        @stack('custom-scripts')
 
     </body>
 </html>

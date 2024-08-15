@@ -40,12 +40,14 @@ Route::group(['middleware' => ['auth:author']], function () {
     Route::get('book/{id}/edit', [AuthorBackend\BookController::class, 'edit'])->name('book.edit');
     Route::post('book/{id}/update', [AuthorBackend\BookController::class, 'update'])->name('book.update');
     Route::post('book/{id}/delete', [AuthorBackend\BookController::class, 'delete'])->name('book.delete');
+    Route::get('book_download/{book_file}', [AuthorBackend\BookController::class, 'download'])->name('book.download');
 
     Route::get('orders', [AuthorBackend\OrdersController::class, 'index'])->name('orders');
     Route::get('order/{id}', [AuthorBackend\OrdersController::class, 'get'])->name('order');
 
-    Route::get('profile', [AuthorBackend\ProfileController::class, 'index'])->name('profile');
-    Route::put('profile/update', [AuthorBackend\ProfileController::class, 'update'])->name('profile.update');
-    Route::put('profile/password', [AuthorBackend\ProfileController::class, 'password'])->name('profile.password');
+    Route::get('account/profile', [AuthorBackend\ProfileController::class, 'index'])->name('profile');
+    Route::put('account/profile/update', [AuthorBackend\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('account/password', [AuthorBackend\ProfileController::class, 'password'])->name('profile.password');
+    Route::put('account/password', [AuthorBackend\ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
     Route::get('settings', [AuthorBackend\SettingsController::class, 'index'])->name('settings');
 });

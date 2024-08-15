@@ -15,9 +15,8 @@ class AdminRolesSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['title' => 'superuser'],
-            ['title' => 'editor'],
-            ['title' => 'analyst'],
+            ['title' => 'superadmin'],
+            ['title' => 'agent'],
         ];
         DB::table('admin_roles')->insert($data);
     }

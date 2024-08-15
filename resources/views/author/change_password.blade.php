@@ -1,4 +1,4 @@
-@extends('layouts.user', ['title' => 'Change Password', 'activePage' => 'account'])
+@extends('author.layouts.main', ['title' => 'Change Password', 'activePage' => 'account'])
 
 @section('content')
     <div class="content">
@@ -44,7 +44,7 @@
                             <div class="alert alert-success" role="alert">{{ session('success') }}</div>
                         @endif
 
-                        <form method="POST" action="{{ route('user.profile.password.update') }}">
+                        <form method="POST" action="{{ route('author.profile.password.update') }}">
                             @method('put')
                             @csrf
                             <div class="form-group">
@@ -60,7 +60,7 @@
                                 <input type="password" class="form-control" id="confirm-password" name="password_confirmation">
                             </div>
 
-                            <button type="submit" class="btn btn-primary my-3">Update</button>
+                            <button type="submit" class="btn btn-custom my-3">Update</button>
                         </form>
                     </div> <!-- end card-box -->
                 </div> <!-- end col -->

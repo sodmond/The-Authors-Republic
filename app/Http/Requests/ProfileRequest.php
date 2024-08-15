@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Admin;
+use App\Models\Author;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,9 @@ class ProfileRequest extends FormRequest
         $authClass = ['required', 'email', Rule::unique((new User)->getTable())->ignore(auth()->id())];
         if (Auth::getDefaultDriver() == 'admin') {
             $authClass = ['required', 'email', Rule::unique((new Admin)->getTable())->ignore(auth()->id())];
+        }
+        if (Auth::getDefaultDriver() == 'author') {
+            $authClass = ['required', 'email', Rule::unique((new Author)->getTable())->ignore(auth()->id())];
         }
         return [
             'firstname' => ['required', 'min:3'],

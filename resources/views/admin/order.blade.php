@@ -1,4 +1,4 @@
-@extends('layouts.user', ['title' => 'My Orders', 'activePage' => 'orders'])
+@extends('admin.layouts.main', ['title' => 'My Orders', 'activePage' => 'orders'])
 
 @section('content')
     <div class="content">
