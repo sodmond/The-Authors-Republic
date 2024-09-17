@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content">
-
+        @if(auth('author')->user()->approval == true)
         <!-- Start Content-->
         <div class="container-fluid">
             
@@ -30,7 +30,7 @@
                         </div>
                         <div class="widget-chart-one-content text-right">
                             <p class="text-white mb-0 mt-2"># of Books</p>
-                            <h3 class="text-white">{{ number_format($booksCount) }}</h3>
+                            <h3 class="text-white">{{ number_format($books->count()) }}</h3>
                         </div>
                     </div> <!-- end card-box-->
                 </div>
@@ -60,10 +60,10 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="card-box">
-                        <h4 class="header-title">My Wallets</h4>
+                        <h4 class="header-title">Overall Revenue</h4>
                         <div class="my-4">
-                            <h2 class="font-weight-normal mb-2">$6,584.22 <i class="mdi mdi-arrow-up text-success"></i></h2>
-                            <p class="text-muted">March 26 - April 01</p>
+                            <h2 class="font-weight-normal mb-2">₦{{ number_format($earnings->sum('amount'), 2) }}</h2>
+                            <p class="text-muted">{{ date('M d, Y', strtotime(auth('author')->user()->created_at)) }} - {{ date('M d, Y') }}</p>
                         </div>
 
                         <div class="mb-3 chartjs-chart dash-doughnut">
@@ -71,48 +71,41 @@
                         </div>
 
                         <div>
-                            <p><i class="mdi mdi-stop-circle-outline text-success"></i> Wallet Ballance <span class="float-right font-weight-normal">$825.25</span></p>
-                            <p><i class="mdi mdi-stop-circle-outline text-danger"></i> Travels <span class="float-right font-weight-normal">$1,254</span></p>
-                            <p class="mb-0"><i class="mdi mdi-stop-circle-outline"></i> Foods & Drinks <span class="float-right font-weight-normal">$89.66</span></p>
+                            <p><i class="mdi mdi-stop-circle-outline text-primary"></i> Balance <span class="float-right font-weight-normal">₦{{ number_format(auth('author')->user()->balance, 2) }}</span></p>
+                            <p><i class="mdi mdi-stop-circle-outline text-success"></i> Earnings <span class="float-right font-weight-normal">₦{{ number_format($earnings->sum('amount'), 2) }}</span></p>
+                            <p><i class="mdi mdi-stop-circle-outline text-danger"></i> Payouts <span class="float-right font-weight-normal">₦{{ number_format($payouts->sum('amount'), 2) }}</span></p>
                         </div>
                     </div> <!-- end card-box -->
                 </div> <!-- end col -->
-            </div>
 
-            <div class="row">
-                <div class="col-12">
+                <div class="col-md-7">
                     <div class="card shadow">
                         <div class="card-body">
-                            <h4>All Challenges</h4>
+                            <h4>Recent Orders</h4>
                             <div class="row">
-                                {{--@foreach ($challenges as $challenge)
-                                    <div class="col-12 col-md-3 p-2">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-success">
-                                                <thead>
-                                                    <tr><th class="text-center">{{ $challenge->title }}</th></tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr><td class="text-center">
-                                                        Trade Amount - ${{ number_format($challenge->trade_amount, 2) }}
-                                                    </td></tr>
-                                                    <tr><td class="text-center">
-                                                        Duration - {{ ($challenge->duration == 0) ? 'Indefinite' : $challenge->duration . ' days' }}
-                                                    </td></tr>
-                                                    <tr><td class="text-center">
-                                                        Fee - ${{ number_format($challenge->fee) }}
-                                                    </td></tr>
-                                                    <tr><td class="text-center">
-                                                        Max Daily Loss - {{ ($challenge->max_daily_loss) }}%
-                                                    </td></tr>
-                                                    <tr><td class="text-center">
-                                                        Max Overall Loss - {{ ($challenge->max_daily_loss) }}%
-                                                    </td></tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <div class="col-12 col-md-12 p-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-success">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Customer</th>
+                                                    <th class="text-center">Amount (₦)</th>
+                                                    <th class="text-center">Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $recentOrderCount = ($ordersCount < 10) ? $ordersCount : 10; ?>
+                                                @for ($i=0; $i < $recentOrderCount; $i++)
+                                                    <tr>
+                                                        <td class="text-center">{{ ucwords($orders[$i]->user->firstname.' '.$orders[$i]->user->lastname) }}</td>
+                                                        <td class="text-center">{{ number_format($orders[$i]->total_cost, 2) }}</td>
+                                                        <td class="text-center">{{ $orders[$i]->created_at }}</td>
+                                                    </tr>
+                                                @endfor
+                                            </tbody>
+                                        </table>
                                     </div>
-                                @endforeach--}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,6 +113,33 @@
             </div>
             
         </div> <!-- container -->
+        @else
+
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box text-center">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                        @endif
+                        <h1><i class="fas fa-sync-alt"></i></h1>
+                        <h3 class="header-title mb-3">Pending Approval</h3>
+                        <p class="sub-header" style="color:#444;">
+                            Your profile is pending approval, fill in your details on the profile page before requesting for approval 
+                        </p>
+                        <form action="{{ route('author.approval') }}" method="POST">
+                            @csrf
+                            <a href="{{ route('author.profile') }}" class="btn btn-custom mr-3">Visit Profile Page</a>
+                            <button type="submit" class="btn btn-custom">Request Approval</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @endif
 
     </div> <!-- content -->
 

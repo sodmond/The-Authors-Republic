@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
-use App\Notifications\AdminResetPassword;
+use App\Notifications\AuthorResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Author extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +32,11 @@ class Author extends Authenticatable
         'zip',
         'dob',
         'status',
+        'facebook',
+        'twitter',
+        'linkedin',
+        'approval',
+        'balance'
     ];
 
     /**
@@ -37,6 +47,33 @@ class Author extends Authenticatable
      */
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new AdminResetPassword($token));
+        $this->notify(new AuthorResetPassword($token));
+    }
+
+    public static function getSlug($firstname, $lastname)
+    {
+        $fullname = $firstname .' '. $lastname;
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $fullname)));
+        return $slug;
+    }
+
+    public function author_parent(): HasOne
+    {
+        return $this->hasOne(AuthorParent::class);
+    }
+
+    public function books() : HasMany
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    public function earnings() : HasMany
+    {
+        return $this->hasMany(Earning::class);
+    }
+
+    public function payouts() : HasMany
+    {
+        return $this->hasMany(Payout::class);
     }
 }

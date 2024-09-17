@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'aboutus', 'title' => 'About Us'])
+@extends('layouts.app', ['activePage' => 'about', 'title' => 'About Us'])
 
 @section('content')
 <section class="tg-sectionspace tg-haslayout">
@@ -11,6 +11,7 @@
                             <h2><span>Greetings &amp; Welcome</span>Know More About Us</h2>
                         </div>
                         <div class="tg-description">
+                            <p>Where creativity thrives and voices unite</p>
                             <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore toloregna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoiars nisiuip commodo consequat aute irure dolor in aprehenderit aveli esseati cillum dolor fugiat nulla pariatur cepteur sint occaecat cupidatat.</p>
                         </div>
                         <div class="tg-btns">
@@ -35,15 +36,22 @@
 <!--************************************
         Call to Action Start
 *************************************-->
-<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/parallax/bgparallax-06.jpg') }}>
+<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" {{--data-image-src="{{ asset('frontend/images/parallax/bgparallax-06.jpg') }}"--}}>
     <div class="tg-sectionspace tg-haslayout">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="tg-calltoaction">
-                        <h2>Fully Loaded Template</h2>
-                        <h3>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore.</h3>
-                        <a class="tg-btn tg-active" href="javascript:void(0);">Buy Now</a>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="tg-calltoaction" style="padding-right:50px !important;">
+                        <h2 style="color:#000;">Vision Statement</h2>
+                        <h4>To create a vibrant and inclusive community that empowers authors, Poets and book writers to showcase their literary craftsmanship, 
+                            collaborate, educate and inspire one another on their creative journey of shaping the society with words.</h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="tg-calltoaction" style="padding-right:50px !important;">
+                        <h2 style="color:#000;">Mission Statement</h2>
+                        <h4>The Authors' Republic aims to be the unique digital platform that fosters connections, networking, facilitates the exchange of ideas, 
+                            and provides opportunities for authors, Poets and book writers to grow, learn, and achieve their literary aspirations.</h4>
                     </div>
                 </div>
             </div>
@@ -113,134 +121,4 @@
 <!--************************************
         Success End
 *************************************-->
-<!--************************************
-        Testimonials Start
-*************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/parallax/bgparallax-05.jpg') }}>
-    <div class="tg-sectionspace tg-haslayout">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
-                    <div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel">
-                        <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
-                            <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
-                            </div>
-                        </div>
-                        <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
-                            <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
-                            </div>
-                        </div>
-                        <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
-                            <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--************************************
-        Testimonials End
-*************************************-->
-<!--************************************
-        Authors Start
-*************************************-->
-<section class="tg-sectionspace tg-haslayout">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="tg-sectionhead">
-                    <h2><span>Team Behind Book Library</span>Meet Our Professionals</h2>
-                </div>
-            </div>
-            <div id="tg-teamsslider" class="tg-authors tg-authorsslider tg-teamsmember owl-carousel">
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-01.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Jude Morphew</a></h2>
-                        <span>Online Retail Manager</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-02.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Book Burger</a></h2>
-                        <span>Bookstore Director</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-03.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Book Ship &amp; Co.</a></h2>
-                        <span>Business Operations</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-04.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Enoch Gallion</a></h2>
-                        <span>Assistant Director</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-05.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Book House</a></h2>
-                        <span>Business Operations</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="item tg-author tg-member">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/team/img-04.jpg') }}" alt="image description"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">Linnie Klimek</a></h2>
-                        <span>Assistant Director</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection

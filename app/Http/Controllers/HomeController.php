@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::take(10)->get();
+        return view('home', compact('books'));
     }
 
     public function about()
@@ -34,5 +36,10 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function tandc()
+    {
+        return view('terms_conditions');
     }
 }

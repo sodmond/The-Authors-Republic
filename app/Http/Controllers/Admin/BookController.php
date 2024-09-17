@@ -65,11 +65,16 @@ class BookController extends Controller
             'title' => ['required', 'max:255'],
             'category' => ['required', 'integer'],
             'isbn' => ['nullable', 'max:255'],
+            'soft_copy' => ['required', 'integer', 'max:1'],
+            'hard_copy' => ['required', 'integer', 'max:1'],
             'description' => ['nullable', 'max:1024'],
             'price' => ['required', 'numeric'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
             'book_file' => ['nullable', 'mimes:pdf'],
         ]);
+        if ($request->soft_copy == false && $request->soft_copy == $request->hard_copy) {
+            return back()->withErrors(['err_msg' => 'The book needs at least a copy, select Yes on either soft or hard copy.']);
+        }
         $book = Book::find($id);
         if ($request->hasFile('image')) {
             if (Storage::exists('public/'.$book->image)) {

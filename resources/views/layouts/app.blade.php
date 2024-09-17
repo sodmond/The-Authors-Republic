@@ -93,5 +93,16 @@
 	<script src="{{ asset('frontend/js/appear.js') }}"></script>
 	<script src="{{ asset('frontend/js/gmap3.js') }}"></script>
 	<script src="{{ asset('frontend/js/main.js') }}"></script>
+	@stack('custom-scripts')
+	@if(session('cart_suc'))
+    <script>
+        $(function() {
+            $('#statusModal').modal('show');
+            setTimeout(function() {
+                $("#statusModal").modal('hide');
+            }, 2000);
+        });
+    </script>
+    @endif
 </body>
 </html>

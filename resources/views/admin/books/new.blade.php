@@ -81,6 +81,26 @@
                                             <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="soft_copy">Soft Copy</label>
+                                            <select class="form-control" id="soft_copy" name="soft_copy" required>
+                                                <option value="">- - - Select - - -</option>
+                                                <option value="1" @selected(old('soft_copy') == true)>Yes</option>
+                                                <option value="0" @selected(old('soft_copy') == false)>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="price">Hard Copy</label>
+                                            <select class="form-control" id="hard_copy" name="hard_copy" required>
+                                                <option value="">- - - Select - - -</option>
+                                                <option value="1" @selected(old('hard_copy') == true)>Yes</option>
+                                                <option value="0" @selected(old('hard_copy') == false)>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>

@@ -11,9 +11,9 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <a href="{{url('/')}}"><img src="{{ asset('img/logo1.png') }}" style="max-width:120px;"></a>
+                                    <a href="{{url('/')}}"><img src="{{ asset('img/logo.png') }}" height="58px;"></a>
                                     <p>&nbsp;</p>
-                                    <h1 class="h5 text-gray-900 mb-4">{{ __('Reset Password') }}</h1>
+                                    <h1 class="h4 mb-4">{{ __('Reset Password') }}</h1>
                                 </div>
                                 <form method="POST" action="{{ route('password.update') }}" class="user">
                                     @csrf
@@ -58,7 +58,7 @@
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-primary btn-user">
+                                            <button type="submit" class="btn btn-custom btn-user">
                                                 {{ __('Reset Password') }}
                                             </button>
                                         </div>

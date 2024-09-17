@@ -32,6 +32,7 @@ Route::group([], function(){
 
 Route::group(['middleware' => ['auth:author']], function () {
     Route::get('home', [AuthorBackend\HomeController::class, 'index'])->name('home');
+    Route::post('request_approval', [AuthorBackend\HomeController::class, 'requestApproval'])->name('approval');
 
     Route::get('books', [AuthorBackend\BookController::class, 'index'])->name('books');
     Route::get('book/{id}', [AuthorBackend\BookController::class, 'get'])->name('book');
@@ -45,8 +46,17 @@ Route::group(['middleware' => ['auth:author']], function () {
     Route::get('orders', [AuthorBackend\OrdersController::class, 'index'])->name('orders');
     Route::get('order/{id}', [AuthorBackend\OrdersController::class, 'get'])->name('order');
 
+    Route::get('revenue/earnings', [AuthorBackend\RevenueController::class, 'earnings'])->name('earnings');
+    Route::get('revenue/earning/{id}', [AuthorBackend\RevenueController::class, 'earnings'])->name('earning');
+    Route::get('revenue/payouts', [AuthorBackend\RevenueController::class, 'payouts'])->name('payouts');
+    Route::post('revenue/payout_request', [AuthorBackend\RevenueController::class, 'payoutNew'])->name('payout.new');
+    Route::get('revenue/payout/{id}', [AuthorBackend\RevenueController::class, 'payout'])->name('payout');
+    Route::post('revenue/payout/{id}/trash', [AuthorBackend\RevenueController::class, 'payoutTrash'])->name('payout.trash');
+
     Route::get('account/profile', [AuthorBackend\ProfileController::class, 'index'])->name('profile');
     Route::put('account/profile/update', [AuthorBackend\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('author/profile/update/image', [AuthorBackend\ProfileController::class, 'updateImage'])->name('profile.update.image');
+    Route::post('account/profile/update/parent', [AuthorBackend\ProfileController::class, 'updateParent'])->name('profile.update.parent');
     Route::get('account/password', [AuthorBackend\ProfileController::class, 'password'])->name('profile.password');
     Route::put('account/password', [AuthorBackend\ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
     Route::get('settings', [AuthorBackend\SettingsController::class, 'index'])->name('settings');

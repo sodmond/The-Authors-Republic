@@ -37,9 +37,9 @@ class LoginController extends DefaultLoginController
 
         $credentials = $request->only('email', 'password');
         if (Auth::guard('author')->attempt($credentials, $request->get('remember'))) {
-            return redirect()->route('author.home');
+            return redirect()->intended();
         }
-        return redirect()->route('author.login')->withErrors(['err_msg' => 'Opps! You have entered invalid credentials']);
+        return redirect()->route('author.login')->withInput()->withErrors(['err_msg' => 'Opps! You have entered invalid credentials']);
     }
 
     public function logout(Request $request)

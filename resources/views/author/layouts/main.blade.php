@@ -52,13 +52,13 @@
                             </div>
 
                             <!-- item-->
-                            <a href="{{-- route('user.profile') --}}" class="dropdown-item notify-item">
+                            <a href="{{ route('author.profile') }}" class="dropdown-item notify-item">
                                 <i class="dripicons-user"></i>
                                 <span>My Profile</span>
                             </a>
 
                             <!-- item-->
-                            <a href="{{-- route('user.profile.password') --}}" class="dropdown-item notify-item">
+                            <a href="{{ route('author.profile.password') }}" class="dropdown-item notify-item">
                                 <i class="dripicons-lock"></i>
                                 <span>Change Password</span>
                             </a>
@@ -143,24 +143,33 @@
 
                             <li>
                                 <a href="{{ route('author.orders') }}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
-                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <i class="fas fa-shopping-bag"></i> 
                                     <span> Orders </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{-- route('author.payouts') --}}" class="{{ ($activePage == 'payouts') ? 'active' : '' }}">
-                                    <i class="fas fa-money-check"></i> 
-                                    <span> Payouts </span>
+                                <a href="javascript:void(0)" class="{{ ($activePage == 'revenue') ? 'active' : '' }}">
+                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <span> Revenue </span>
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('author.earnings') }}">Earnings</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('author.payouts') }}">Payouts</a>
+                                    </li>
+                                </ul>
                             </li>
 
-                            <li>
+                            {{--<li>
                                 <a href="{{ route('author.settings') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
                                     <i class="fas fa-cog"></i> 
                                     <span> Settings </span>
                                 </a>
-                            </li>
+                            </li>--}}
 
                             <li>
                                 <a href="javascript: void(0);" class="{{ ($activePage == 'account') ? 'active' : '' }}">

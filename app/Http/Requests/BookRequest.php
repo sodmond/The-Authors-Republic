@@ -25,6 +25,8 @@ class BookRequest extends FormRequest
             'title' => ['required', 'max:255'],
             'category' => ['required', 'integer'],
             'isbn' => ['nullable', 'max:255'],
+            'soft_copy' => ['required', 'integer', 'max:1'],
+            'hard_copy' => ['required', 'integer', 'max:1'],
             'description' => ['nullable', 'max:1024'],
             'price' => ['required', 'numeric'],
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg'],

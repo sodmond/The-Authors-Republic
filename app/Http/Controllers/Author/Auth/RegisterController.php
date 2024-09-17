@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Author\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\AuthorParent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,8 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        AuthorParent::create(['author_id' => $author->id]);
         Auth::guard('author')->login($author);
+        return redirect()->route('author.home');
     }
 }

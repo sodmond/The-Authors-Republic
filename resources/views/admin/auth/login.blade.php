@@ -15,6 +15,17 @@
                         <h3>Admin Login</h3>
                     </div>
 
+                    @if (count($errors))
+                        <div class="alert alert-danger">
+                            <strong class="text-danger">Whoops!</strong> Error validating data.<br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('admin.login') }}" method="POST" class="pt-2">
                         @csrf
                         <div class="form-group mb-3">

@@ -33,29 +33,28 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Challenge</th>
-                                            <th>Platform</th>
-                                            <th>Price</th>
-                                            <th>Payment</th>
+                                            <th>ID</th>
+                                            <th>Book #</th>
+                                            <th>Total Amount</th>
+                                            <th>Status</th>
                                             <th>Date Created</th>
                                             <th>...</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{--@foreach ($orders as $order)
+                                        @foreach ($orders as $order)
+                                            @php $bg_color = \App\Models\Order::getStatusBG($order->status); @endphp
                                             <tr>
-                                                <td>{{ $order->id }}</td>
-                                                <td>Challenge</td>
-                                                <td>{{ $order->platform }}</td>
-                                                <td>{{ $order->price }}</td>
-                                                <td>{{ $order->payment }}</td>
+                                                <td>{{ $order->code }}</td>
+                                                <td>{{ count($order->orderContent) }}</td>
+                                                <td>{{ number_format($order->total_cost, 2) }}</td>
+                                                <td><span class="{{$bg_color}} px-2 py-1 rounded text-white">{{ $order->status }}</td>
                                                 <td>{{ $order->created_at }}</td>
-                                                <td><a class="btn btn-sm btn-success" href="">
+                                                <td><a class="btn btn-sm btn-custom" href="{{ route('author.order', ['id' => $order->id]) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a></td>
                                             </tr>
-                                        @endforeach--}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

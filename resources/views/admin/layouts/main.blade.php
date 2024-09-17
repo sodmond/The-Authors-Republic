@@ -21,6 +21,7 @@
         <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/richtext.min.css') }}" rel="stylesheet">
         <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
@@ -86,7 +87,7 @@
 
                 <ul class="list-unstyled menu-left mb-0">
                     <li class="float-left">
-                        <a href="index.html" class="logo">
+                        <a href="{{ route('admin.home') }}" class="logo">
                             <span class="logo-lg">
                                 <img src="{{ asset('img/logo.png') }}" alt="" height="52">
                             </span>
@@ -134,6 +135,13 @@
                             </li>
 
                             <li>
+                                <a href="{{ route('admin.articles') }}" class="{{ ($activePage == 'articles') ? 'active' : '' }}">
+                                    <i class="fas fa-newspaper"></i> 
+                                    <span> Articles </span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="{{ route('admin.users') }}" class="{{ ($activePage == 'users') ? 'active' : '' }}">
                                     <i class="fas fa-user"></i> 
                                     <span> Users </span>
@@ -156,7 +164,7 @@
 
                             <li>
                                 <a href="{{ route('admin.orders') }}" class="{{ ($activePage == 'orders') ? 'active' : '' }}">
-                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <i class="fas fa-shopping-bag"></i> 
                                     <span> Orders </span>
                                 </a>
                             </li>
@@ -292,6 +300,15 @@
         
         <!-- App js -->
         <script src="{{ asset('backend/js/app.min.js') }}"></script>
-
+        <script src="{{ asset('backend/js/jquery.richtext.js') }}"></script>
+        <script>
+            $(document).ready(function(){ 
+                var input_group = $('input[required]').parent();
+                input_group.find('label').addClass('required');
+                var select_group = $('select[required]').parent();
+                select_group.find('label').addClass('required');
+            });
+        </script>
+        @stack('custom-scripts')
     </body>
 </html>

@@ -1,3 +1,11 @@
+.bg-custom {
+    background-color: #616B2E;
+  }
+  
+  .bg-custom2 {
+    background-color: #B38B67;
+  }
+
 .tg-btn:hover, .tg-btn.tg-active, .tg-navigationarea, .owl-prev:hover, 
 .owl-next:hover, .tg-testimonial figure::before, 
 .tg-headervtwo .tg-formsearch fieldset button, 
@@ -7,4 +15,119 @@
 .tg-quantityholder .plus:hover, .tg-themetabs li a::before, 
 .tg-tag:hover, .tg-btnreply:hover {
     background: #616B2E !important;
+}
+
+textarea:focus, .tg-btn:hover, .tg-btn.tg-active, input:focus, 
+.select select:focus, .form-control:focus, .tg-themedropdownmenu, 
+.owl-prev:hover, .owl-next:hover, .tg-pickedbyauthor .tg-postbook:hover, 
+.tg-testimonial figure img, .tg-footer, .tg-quantityholder .minus:hover, 
+.tg-quantityholder .plus:hover, .tg-tag:hover, .tg-comments li .tg-authorbox:hover, 
+.tg-comments li .tg-authorbox:hover .tg-bottomarrow, .tg-btnreply:hover {
+    border-color: #616B2E !important;
+}
+
+.tg-widget ul li a:hover {
+    color: #617C2E !important;
+}
+
+.tg-paymenttype {
+    color: #FFF !important;
+}
+
+.tg-paymenttype a {
+    color: #616B2E !important;
+    text-decoration: underline;
+}
+
+#overlay {
+    position: absolute; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 300px; /* Full height (cover the whole page) */
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+.tg-currencydropdown .tg-themedropdownmenu li a span::before {
+    content:none;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+.mb-3, .tg-innerbannercontent h1 {
+    margin-bottom: 30px !important;
+}
+
+.p-4 {
+    padding: 20px;
+}
+
+textarea, select, .tg-select select, .form-control, input[type="text"], 
+input[type="password"], input[type="datetime"], input[type="datetime-local"], 
+input[type="date"], input[type="month"], input[type="time"], 
+input[type="week"], input[type="number"], input[type="email"], 
+input[type="url"], input[type="search"], input[type="tel"], 
+input[type="color"], .uneditable-input {
+    text-transform: none !important;
+}
+
+.tg-header {
+    z-index: 7 !important;
+}
+
+.panel-link {
+    color: #000;
+}
+
+.panel-link.text-white {
+    color: #FFF;
+}
+
+.panel-link div.panel-top {
+    float: left;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.panel-icon{
+    float: left;
+    font-size: 2.9em;
+}
+
+.panel-text {
+    float: right;
+    font-size: 14px;
+}
+
+.panel-digit {
+    float: left;
+    width: 100%;
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: 800;
+    padding-bottom: 15px;
+}
+
+.tg-calltoaction h2, .tg-calltoaction h3 {
+    color: #FFF;
+}
+
+table > thead > tr > th, table > tbody > tr > th, 
+table > tfoot > tr > th, table > thead > tr > td, 
+table > tbody > tr > td, table > tfoot > tr > td {
+    border: 0 !important;
+}
+
+.forum_post {
+    padding: 10px 10px;
+    background: rgba(97, 124, 46, 0.1);
+    color: #000;
+    margin: 8px 0;
+}
+
+textarea.form-control {
+    height: 120px !important;
 }

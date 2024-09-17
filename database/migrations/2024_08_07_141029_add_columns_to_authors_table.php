@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
             $table->date('dob')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
         });
     }
 

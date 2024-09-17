@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => 'Password Reset'])
+@extends('admin.layouts.auth', ['title' => 'Password Reset'])
 
 @section('content')
 <div class="container">
@@ -11,13 +11,15 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <a href="{{url('/')}}"><img src="{{ asset('img/logo.png') }}" style="width:120px;"></a>
+                                    <a href="{{ url('/') }}">
+                                        <img src="{{ asset('img/logo.png') }}" height="58px;">
+                                    </a>
                                     <p>&nbsp;</p>
                                     <h1 class="h5 text-gray-900 mb-4">{{ __('Confirm Password') }}</h1>
                                     {{ __('Please confirm your password before continuing.') }}
                                 </div>
 
-                                <form method="POST" action="{{ route('password.confirm') }}">
+                                <form method="POST" action="{{ route('admin.password.confirm') }}">
                                     @csrf
 
                                     <div class="form-group row">
@@ -40,8 +42,8 @@
                                                 {{ __('Confirm Password') }}
                                             </button>
 
-                                            @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            @if (Route::has('admin.password.request'))
+                                                <a class="btn btn-link" href="{{ route('admin.password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
                                             @endif

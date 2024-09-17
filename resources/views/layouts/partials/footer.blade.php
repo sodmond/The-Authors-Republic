@@ -37,7 +37,7 @@
                 <div class="tg-threecolumns">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="tg-footercol">
-                            <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('frontend/images/flogo.png') }}" alt="image description"></a></strong>
+                            <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo.png') }}" alt="The Authors Republic" style="max-height:90px;"></a></strong>
                             <ul class="tg-contactinfo">
                                 <li>
                                     <i class="icon-apartment"></i>
@@ -74,25 +74,21 @@
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="tg-footercol tg-widget tg-widgetnavigation">
                             <div class="tg-widgettitle">
-                                <h3>Shipping And Help Information</h3>
+                                <h3>Useful Links</h3>
                             </div>
                             <div class="tg-widgetcontent">
                                 <ul>
-                                    <li><a href="javascript:void(0);">Terms of Use</a></li>
+                                    <li><a href="{{ route('tandc') }}">Terms & Conditions</a></li>
                                     <li><a href="javascript:void(0);">Terms of Sale</a></li>
-                                    <li><a href="javascript:void(0);">Returns</a></li>
-                                    <li><a href="javascript:void(0);">Privacy</a></li>
-                                    <li><a href="javascript:void(0);">Cookies</a></li>
-                                    <li><a href="javascript:void(0);">Contact Us</a></li>
-                                    <li><a href="javascript:void(0);">Our Affiliates</a></li>
-                                    <li><a href="javascript:void(0);">Vision &amp; Aim</a></li>
+                                    <li><a href="javascript:void(0);">Returns Policy</a></li>
+                                    <li><a href="javascript:void(0);">Privacy Policy</a></li>
                                 </ul>
                                 <ul>
-                                    <li><a href="javascript:void(0);">Our Story</a></li>
-                                    <li><a href="javascript:void(0);">Meet Our Team</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
+                                    <li><a href="javascript:void(0);">Authors</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
                                     <li><a href="javascript:void(0);">FAQ</a></li>
                                     <li><a href="javascript:void(0);">Testimonials</a></li>
-                                    <li><a href="javascript:void(0);">Join Our Team</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -156,10 +152,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <span class="tg-paymenttype"><img src="{{ asset('frontend/images/paymenticon.png') }}" alt="image description"></span>
-                    <span class="tg-copyright">2017 All Rights Reserved By &copy; Book Library</span>
+                    <span class="tg-paymenttype">Website by <a href="https://wmatechjunkies.com">WMA Tech Junkies</a></span>
+                    <span class="tg-copyright">2017 All Rights Reserved By &copy; {{ config('app.name') }}</span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
+<div class="modal" tabindex="-1" id="statusModal" style="z-index:9999;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="h5">Book Added to Cart</p>
+                <img src="{{ asset('img/verified.gif') }}" alt="" style="width:120px;">
+            </div>
+        </div>
+    </div>
+</div>

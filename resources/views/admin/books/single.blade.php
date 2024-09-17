@@ -59,6 +59,14 @@
                                                 <td>{{ $book->price }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Soft Copy</th>
+                                                <td>{{ ($book->soft_copy == 1) ? 'Yes' : 'No' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Hard Copy</th>
+                                                <td>{{ ($book->hard_copy == 1) ? 'Yes' : 'No' }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Date Created</th>
                                                 <td>{{ $book->created_at }}</td>
                                             </tr>

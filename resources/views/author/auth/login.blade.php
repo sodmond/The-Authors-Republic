@@ -15,6 +15,17 @@
                         <h3>Author Login</h3>
                     </div>
 
+                    @if (count($errors))
+                        <div class="alert alert-danger">
+                            <strong class="text-danger">Whoops!</strong> Error validating data.<br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('author.login') }}" method="POST" class="pt-2">
                         @csrf
                         <div class="form-group mb-3">
@@ -30,7 +41,7 @@
 
                         <div class="form-group mb-3">
                             @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="text-muted float-right"><small>Forgot your password?</small></a>
+                                <a href="{{ route('author.password.request') }}" class="text-muted float-right"><small>Forgot your password?</small></a>
                             @endif
                             <label for="password">Password</label>
                             <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" required 

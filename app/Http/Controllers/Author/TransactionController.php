@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('author.approval');
+    }
+    
     public function index()
     {
         if (isset($_GET['search'])) {

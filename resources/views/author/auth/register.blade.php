@@ -13,7 +13,7 @@
                         <h3>Author Registration</h3>
                     </div>
 
-                    <form action="{{ route('register') }}" class="pt-2">
+                    <form action="{{ route('author.register') }}" method="POST" class="pt-2">
                         @csrf
                         <div class="form-group row mb-3">
                             <div class="col-md-6">

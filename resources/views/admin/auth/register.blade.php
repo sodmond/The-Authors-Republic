@@ -1,4 +1,4 @@
-@extends('layouts.auth', ['title' => 'Register'])
+@extends('admin.layouts.auth', ['title' => 'Register'])
 
 @section('content')
 <div class="container">
@@ -72,7 +72,7 @@
                         </div>
                         
                         <div class="form-group mb-0 text-center">
-                            <button class="btn btn-success btn-block" type="submit"> Sign Up </button>
+                            <button class="btn btn-custom btn-block" type="submit"> Sign Up </button>
                         </div>
 
                     </form>

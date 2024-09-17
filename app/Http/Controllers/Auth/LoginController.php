@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/home';
 
     /**
      * Create a new controller instance.
@@ -36,5 +39,20 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $cookieId = Cart::getCookie();
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt($credentials, $request->get('remember'))) {
+            Cart::where('cookie_id', $cookieId)->update(['user_id' => auth('web')->id()]);
+            return redirect()->intended();
+        }
+        return redirect()->back()->withErrors(['err_msg' => 'Opps! You have entered invalid credentials']);
     }
 }

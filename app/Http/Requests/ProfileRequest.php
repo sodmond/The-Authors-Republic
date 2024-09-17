@@ -33,7 +33,7 @@ class ProfileRequest extends FormRequest
             $authClass = ['required', 'email', Rule::unique((new Admin)->getTable())->ignore(auth()->id())];
         }
         if (Auth::getDefaultDriver() == 'author') {
-            $authClass = ['required', 'email', Rule::unique((new Author)->getTable())->ignore(auth()->id())];
+            $authClass = ['nullable', 'email', Rule::unique((new Author)->getTable())->ignore(auth()->id())];
         }
         return [
             'firstname' => ['required', 'min:3'],

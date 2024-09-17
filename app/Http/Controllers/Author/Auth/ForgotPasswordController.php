@@ -31,7 +31,7 @@ class ForgotPasswordController extends DefaultForgotPasswordController
         return view('author.auth.passwords.email');
     }
 
-    // Password Broker for Admin Model
+    // Password Broker for Author Model
     public function broker()
     {
         return Password::broker('authors');

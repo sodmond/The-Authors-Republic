@@ -12,6 +12,11 @@ use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('author.approval');
+    }
+
     public function index()
     {
         $books = Book::where('author_id', auth('author')->id())->paginate(10);
@@ -32,6 +37,9 @@ class BookController extends Controller
 
     public function addNew(BookRequest $request)
     {
+        if ($request->soft_copy == false && $request->soft_copy == $request->hard_copy) {
+            return back()->withErrors(['err_msg' => 'The book needs at least a copy, select Yes on either soft or hard copy.']);
+        }
         $imgPath = $request->file('image')->store('books', 'public');
         $bookFile = Str::random(32) . '.' . $request->file('book_file')->extension();
         Storage::putFileAs('books/', $request->file('book_file'), $bookFile);
@@ -65,11 +73,16 @@ class BookController extends Controller
             'title' => ['required', 'max:255'],
             'category' => ['required', 'integer'],
             'isbn' => ['nullable', 'max:255'],
+            'soft_copy' => ['required', 'integer', 'max:1'],
+            'hard_copy' => ['required', 'integer', 'max:1'],
             'description' => ['nullable', 'max:1024'],
             'price' => ['required', 'numeric'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
             'book_file' => ['nullable', 'mimes:pdf'],
         ]);
+        if ($request->soft_copy == false && $request->soft_copy == $request->hard_copy) {
+            return back()->withErrors(['err_msg' => 'The book needs at least a copy, select Yes on either soft or hard copy.']);
+        }
         $book = Book::find($id);
         if ($request->hasFile('image')) {
             if (Storage::exists('public/'.$book->image)) {

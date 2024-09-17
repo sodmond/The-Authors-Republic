@@ -33,9 +33,17 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::get('users', [AdminBackend\UsersController::class, 'index'])->name('users');
     Route::get('user/{id}', [AdminBackend\UsersController::class, 'get'])->name('user');
+    Route::get('user/{id}/orders', [AdminBackend\UsersController::class, 'orders'])->name('user.orders');
+    Route::get('user/{id}/posts', [AdminBackend\UsersController::class, 'posts'])->name('user.posts');
+    Route::get('user/{id}/comments', [AdminBackend\UsersController::class, 'comments'])->name('user.comments');
 
     Route::get('authors', [AdminBackend\AuthorController::class, 'index'])->name('authors');
+    Route::get('authors/pending_approval', [AdminBackend\AuthorController::class, 'pending'])->name('authors.pending');
     Route::get('author/{id}', [AdminBackend\AuthorController::class, 'get'])->name('author');
+    Route::post('author/{id}/approval', [AdminBackend\AuthorController::class, 'approval'])->name('author.approval');
+    Route::get('author/{id}/books', [AdminBackend\AuthorController::class, 'books'])->name('author.books');
+    Route::get('author/{id}/sales', [AdminBackend\AuthorController::class, 'sales'])->name('author.sales');
+    Route::get('author/{id}/payouts', [AdminBackend\AuthorController::class, 'payouts'])->name('author.payouts');
 
     Route::get('books', [AdminBackend\BookController::class, 'index'])->name('books');
     Route::get('book/{id}', [AdminBackend\BookController::class, 'get'])->name('book');
@@ -48,6 +56,14 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::get('orders', [AdminBackend\OrdersController::class, 'index'])->name('orders');
     Route::get('order/{id}', [AdminBackend\OrdersController::class, 'get'])->name('order');
+
+    Route::get('articles', [AdminBackend\ArticlesController::class, 'index'])->name('articles');
+    Route::get('article/{id}', [AdminBackend\ArticlesController::class, 'get'])->name('article');
+    Route::get('article_new', [AdminBackend\ArticlesController::class, 'new'])->name('article.new');
+    Route::post('article_new', [AdminBackend\ArticlesController::class, 'addNew']);
+    Route::get('article/{id}/edit', [AdminBackend\ArticlesController::class, 'edit'])->name('article.edit');
+    Route::post('article/{id}/update', [AdminBackend\ArticlesController::class, 'update'])->name('article.update');
+    Route::get('article/{id}/delete', [AdminBackend\ArticlesController::class, 'delete'])->name('article.delete');
 
     Route::get('account/profile', [AdminBackend\ProfileController::class, 'index'])->name('profile');
     Route::put('account/profile/update', [AdminBackend\ProfileController::class, 'update'])->name('profile.update');

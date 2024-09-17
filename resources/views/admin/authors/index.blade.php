@@ -31,6 +31,8 @@
                         <div class="card-body">
                             <div class="row justify-content-end mb-3">
                                 <div class="col-auto">
+                                    <a class="btn btn-warning" href="{{ route('admin.authors.pending') }}">
+                                        <i class="fa fa-spinner"></i> Pending Approval ({{ $authors_pending->count() }})</a>
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -42,7 +44,7 @@
                                             <th>Lastname</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Status</th>
+                                            <th>Approval</th>
                                             <th>Date Created</th>
                                             <th>...</th>
                                         </tr>
@@ -56,7 +58,13 @@
                                                 <td>{{ $author->lastname }}</td>
                                                 <td>{{ $author->email }}</td>
                                                 <td>0{{ $author->phone }}</td>
-                                                <td>{{ $author->id }}</td>
+                                                <td>
+                                                    @if($author->approval == 0)
+                                                    <span class="bg-secondary px-2 py-1 text-white rounded">pending</span>
+                                                    @else
+                                                    <span class="bg-success px-2 py-1 text-white rounded">approved</span>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $author->created_at }}</td>
                                                 <td><a class="btn btn-sm btn-custom" href="{{ route('admin.author', ['id' => $author->id]) }}">
                                                     <i class="fa fa-eye"></i>
