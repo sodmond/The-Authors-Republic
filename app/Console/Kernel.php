@@ -12,8 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:calculate-earnings')->everyMinute()->timezone('Africa/Lagos')->runInBackground();
-        #$schedule->command('app:calculate-earnings')->dailyAt('02:00')->timezone('Africa/Lagos')->runInBackground();
+        #$schedule->command('app:calculate-earnings')->everyMinute()->timezone('Africa/Lagos')->runInBackground();
+        $schedule->command('app:calculate-earnings')->dailyAt('02:00')->timezone('Africa/Lagos')->runInBackground();
     }
 
     /**

@@ -7,30 +7,37 @@
             <div id="tg-twocolumns" class="tg-twocolumns">
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                     <div id="tg-content" class="tg-content">
-                        <div class="tg-productdetail">
+                        <div class="tg-newsgrid">
+                            <div class="tg-sectionhead">
+                                <h2><span>Latest News &amp; Articles</span>What's Hot in The News</h2>
+                            </div>
                             <div class="row">
-                                @foreach($articles as $article)
-                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="panel panel-default shadow">
-                                        <div class="panel-body" style="padding:0px;">
-                                            @php 
-                                            $slug = \App\Models\Article::getSlug($article->title);
-                                            $link = route('news.get', ['id' => $article->id, 'slug' => $slug])
-                                            @endphp
-                                            <a href="{{ $link }}">
-                                                <img class="img-responsive" src="{{ asset('storage/'.$article->image) }}" alt="Article Image">
-                                            </a>
-                                            <div style="padding:10px;">
-                                                <h4><a href="{{ $link }}">{{ strtoupper($article->title) }}</a></h4>
-                                                <p><small>Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</small></p>
+                                @foreach ($articles as $article)
+                                <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
+                                    @php 
+                                        $slug = \App\Models\Article::getSlug($article->title);
+                                        $link = route('news.get', ['id' => $article->id, 'slug' => $slug])
+                                    @endphp
+                                    <article class="tg-post">
+                                        <figure><a href="{{ $link }}"><img src="{{ asset('storage/'.$article->image) }}" alt="Articles Image"></a></figure>
+                                        <div class="tg-postcontent">
+                                            <ul class="tg-postmetadata">
+                                                <li><i class="fa fa-calendar"></i> Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</li>
+                                            </ul>
+                                            <ul class="tg-bookscategories"></ul>
+                                            <div class="tg-posttitle">
+                                                <h3><a href="{{ $link }}">{{ strtoupper($article->title) }}</a></h3>
                                             </div>
+                                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">Admin</a></span>
                                         </div>
-                                    </div>
+                                    </article>
                                 </div>
                                 @endforeach
                             </div>
                             <div class="row justify-content-center">
-                                {{ $articles->links() }}
+                                <div class="col-md-auto">
+                                    {{ $articles->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>

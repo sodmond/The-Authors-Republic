@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $books = Book::take(10)->get();
-        return view('home', compact('books'));
+        $latestNews = Article::orderByDesc('created_at')->take(10)->get();
+        return view('home', compact('books', 'latestNews'));
     }
 
     public function about()

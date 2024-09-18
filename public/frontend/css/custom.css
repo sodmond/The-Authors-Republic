@@ -35,7 +35,7 @@ textarea:focus, .tg-btn:hover, .tg-btn.tg-active, input:focus,
 }
 
 .tg-paymenttype a {
-    color: #616B2E !important;
+    color: #FFF !important;
     text-decoration: underline;
 }
 
@@ -130,4 +130,18 @@ table > tbody > tr > td, table > tfoot > tr > td {
 
 textarea.form-control {
     height: 120px !important;
+}
+
+a {
+    color: #666 !important;
+}
+
+.tg-navigation > ul > li > a, .tg-breadcrumb li a {
+    color: #FFF !important;
+}
+
+a:hover, .tg-newsletter h4, .tg-404errorcontent span, 
+.tg-widget ul li:hover a, .tg-widget ul li a:hover, .tg-widget ul li:hover a span, 
+.tg-widget ul li:hover a em, .tg-paymenttype a:hover {
+    color: #616B2E !important;
 }
