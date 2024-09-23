@@ -1,4 +1,4 @@
-.bg-custom, .tg-bglight {
+.bg-custom, .tg-bglight, .tg-footerbar {
     background-color: #616B2E;
 }
   
@@ -183,4 +183,10 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 .tg-bglight a, .tg-bglight .tg-bookwriter, .tg-bglight .tg-bookprice ins,
 .tg-testimonialauthor span, .tg-testimonialauthor h3 {
     color: #FFF !important;
+}
+
+@media only screen and (max-width: 764px) {
+    .tg-navigation > ul > li > a {
+        color: #000 !important;
+    }
 }

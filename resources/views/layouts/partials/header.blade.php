@@ -58,28 +58,28 @@
                                     <li class="{{ ($activePage == 'books') ? 'current-menu-item' : '' }}">
                                         <a href="{{ route('books') }}">All Books</a>
                                     </li>
-                                    <li class="{{ ($activePage == 'about') ? 'current-menu-item' : '' }}">
-                                        <a href="{{ route('about') }}">About Us</a>
-                                    </li>
                                     <li class="{{ ($activePage == 'authors') ? 'current-menu-item' : '' }}">
                                         <a href="{{ route('authors') }}">Authors</a>
                                     </li>
+                                    <li class="{{ ($activePage == 'about') ? 'current-menu-item' : '' }}">
+                                        <a href="{{ route('about') }}">About Us</a>
+                                    </li>
                                     <li class="{{ ($activePage == 'news') ? 'current-menu-item' : '' }}">
-                                        <a href="{{ route('news') }}">Latest News</a>
+                                        <a href="{{ route('news') }}">News</a>
                                     </li>
                                     <li class="{{ ($activePage == 'forum') ? 'current-menu-item' : '' }}">
                                         <a href="{{ route('forum') }}">Forum</a>
-                                    </li>
-                                    <li class="{{ ($activePage == 'contact') ? 'current-menu-item' : '' }}">
-                                        <a href="{{ route('contact') }}">Contact</a>
                                     </li>
                                     <li class="menu-item-has-children {{ ($activePage == 'services') ? 'current-menu-item' : '' }}">
                                         <a href="javascript:void(0);">Services</a>
                                         <ul class="sub-menu">
                                             <li class="">
-                                                <a href="{{ route('services.editingfeedback') }}">Editing & Feedback</a>
+                                                <a href="{{ route('services.editingfeedback') }}">Editing & Feedback Services</a>
                                             </li>
                                         </ul>
+                                    </li>
+                                    <li class="{{ ($activePage == 'contact') ? 'current-menu-item' : '' }}">
+                                        <a href="{{ route('contact') }}">Contact</a>
                                     </li>
                                 </ul>
                             </div>

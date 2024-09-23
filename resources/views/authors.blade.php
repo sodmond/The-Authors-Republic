@@ -7,7 +7,7 @@
             <div class="tg-authors">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="tg-sectionhead">
-                        <h2><span>Strong Minds Behind Us</span>Most Popular Authors</h2>
+                        <h2><span>Strong Minds Behind Us</span>Our Authors</h2>
                     </div>
                 </div>
                 @foreach($authors as $author)
