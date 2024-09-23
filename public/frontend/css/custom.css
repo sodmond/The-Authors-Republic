@@ -189,4 +189,11 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-navigation > ul > li > a {
         color: #000 !important;
     }
+    .tg-homeslider .item {
+        height: 200px;
+    }
+}
+
+.tg-homeslider .item div {
+    background-size: cover !important;
 }
