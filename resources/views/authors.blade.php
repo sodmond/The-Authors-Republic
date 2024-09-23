@@ -20,7 +20,7 @@
                         <figure><a href="{{ $authorLink }}"><img src="{{ asset('frontend/images/author/imag-03.jpg') }}" alt="image description"></a></figure>
                         <div class="tg-authorcontent">
                             <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
-                            <span>21,658 Published Books</span>
+                            <span>{{ count($author->books) }} Published Books</span>
                             <ul class="tg-socialicons">
                                 <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
                                 <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>

@@ -8,34 +8,12 @@
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                     <div id="tg-content" class="tg-content">
                         <div class="tg-products">
+                            @isset($_GET['search'])
+                                <div class="tg-sectionhead">
+									<h3>Search results for "{{ $_GET['search'] }}"</h3>
+								</div>
+                            @endisset
                             <div class="tg-productgrid">
-                                <div class="tg-refinesearch">
-                                    <span>showing 1 to 8 of 20 total</span>
-                                    <form class="tg-formtheme tg-formsortshoitems">
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <label>sort by:</label>
-                                                <span class="tg-select">
-                                                    <select>
-                                                        <option>name</option>
-                                                        <option>name</option>
-                                                        <option>name</option>
-                                                    </select>
-                                                </span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>show:</label>
-                                                <span class="tg-select">
-                                                    <select>
-                                                        <option>8</option>
-                                                        <option>16</option>
-                                                        <option>20</option>
-                                                    </select>
-                                                </span>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                </div>
                                 @foreach($books as $book)
                                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                                     <div class="tg-postbook">
@@ -47,10 +25,10 @@
                                             <form action="{{ route('user.wishlist.add') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                                <a class="tg-btnaddtowishlist" href="javascript:void(0);">
+                                                <button type="submit" class="tg-btnaddtowishlist">
                                                     <i class="icon-heart"></i>
                                                     <span>add to wishlist</span>
-                                                </a>
+                                                </button>
                                             </form>
                                             
                                         </figure>
@@ -58,12 +36,15 @@
                                             <ul class="tg-bookscategories">
                                                 <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
                                             </ul>
-                                            <div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
                                             <div class="tg-booktitle">
                                                 @php $slug = \App\Models\Book::getSlug($book->title); @endphp
                                                 <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
                                             </div>
-                                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
+                                            @php 
+                                                $slug = \App\Models\Author::getSlug($book->author->firstname, $book->author->lastname);
+                                                $authorLink = route('author', ['id' => $book->author->id, 'slug' => $slug])
+                                            @endphp
+                                            <span class="tg-bookwriter">By: <a href="{{ $authorLink }}">{{ ucwords($book->author->firstname.' '.$book->author->lastname) }}</a></span>
                                             {{--<span class="tg-stars"><span></span></span>--}}
                                             <span class="tg-bookprice">
                                                 <ins>₦{{ number_format($book->price, 2) }}</ins>
@@ -82,6 +63,9 @@
                                     </div>
                                 </div>
                                 @endforeach
+                            </div>
+                            <div class="row justify-contents-center">
+                                <div class="col-md-12">{{ $books->appends($_GET)->links() }}</div>
                             </div>
                         </div>
                     </div>

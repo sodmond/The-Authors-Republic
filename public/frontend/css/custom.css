@@ -1,10 +1,10 @@
-.bg-custom {
+.bg-custom, .tg-bglight {
     background-color: #616B2E;
-  }
+}
   
-  .bg-custom2 {
+.bg-custom2 {
     background-color: #B38B67;
-  }
+}
 
 .tg-btn:hover, .tg-btn.tg-active, .tg-navigationarea, .owl-prev:hover, 
 .owl-next:hover, .tg-testimonial figure::before, 
@@ -136,12 +136,51 @@ a {
     color: #666 !important;
 }
 
-.tg-navigation > ul > li > a, .tg-breadcrumb li a {
+.tg-navigation > ul > li > a, .tg-breadcrumb li a,
+.tg-btnaddtowishlist {
+    color: #FFF !important;
+}
+
+.tg-btn.tg-btnstyletwo {
+    color: #666 !important;
+}
+
+.tg-btn:hover, .tg-btn.tg-active, .tg-btn.tg-btnstyletwo:hover,
+.tg-homeslidervtwo .tg-slidercontent .tg-btns .tg-btn,
+.tg-testimonial blockquote, .tg-btnround {
     color: #FFF !important;
 }
 
 a:hover, .tg-newsletter h4, .tg-404errorcontent span, 
 .tg-widget ul li:hover a, .tg-widget ul li a:hover, .tg-widget ul li:hover a span, 
-.tg-widget ul li:hover a em, .tg-paymenttype a:hover {
+.tg-widget ul li:hover a em, .tg-paymenttype a:hover, .tg-bookprice ins {
     color: #616B2E !important;
+}
+
+.rating-input, .rating-clear {
+    color: #F39C12 !important;
+    font-size: 17px;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, 
+.pagination > .active > a:hover, .pagination > .active > span, 
+.pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #616B2E;
+    border-color: #616B2E;
+}
+
+.tg-btnaddtowishlist{
+    background: #B38B67 !important;
+}
+
+.tg-btnaddtowishlist:hover{
+    background: #616B2E !important;
+}
+
+.tg-bglight a, .tg-bglight .tg-bookwriter, .tg-bglight .tg-bookprice ins,
+.tg-testimonialauthor span, .tg-testimonialauthor h3 {
+    color: #FFF !important;
 }

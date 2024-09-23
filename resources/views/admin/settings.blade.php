@@ -20,7 +20,13 @@
                 </div>
             </div>
         </div>     
-        <!-- end page title --> 
+        <!-- end page title -->
+
+        <div class="row justify-content-end mb-3">
+            <div class="col-auto">
+                <a class="btn btn-custom" href="{{ route('admin.settings.bookcat') }}"><i class="fa fa-book-open"></i> Book Categories</a>
+            </div>
+        </div>
 
         <div class="row" id="adminList">
             <div class="col-12">
@@ -36,6 +42,19 @@
                         </div>
                         <div class="row" style="max-height:350px; overflow-y:scroll;">
                             <div class="col-md-12">
+                                @if (count($errors))
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There are some problems with your input.<br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                @if (session('success'))
+                                    <div class="alert alert-success"><strong>Success!</strong> {{ session('success') }}</div>
+                                @endif
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover mb-0">
                                         <thead>
@@ -61,12 +80,14 @@
                                                     <td>{{ $admin->created_at }}</td>
                                                     <td>
                                                         @if ($admin->id != 1 && Auth::guard('admin')->user()->role != 2)
-                                                            <a class="btn btn-info btn-xs" href=""><i class="fa fa-edit"></i></a>
                                                             <input type="hidden" id="{{'adminName'.$admin->id}}" value="{{$admin->firstname.' '.$admin->lastname}}">
-                                                            <input type="hidden" id="{{'deleteAdminUrl'.$admin->id}}" value="{{-- route('admin.profile.delete', ['id' => $admin->id]) --}}">
-                                                            <button class="btn btn-danger btn-xs" id="{{'deleteAdminBtn-'.$admin->id}}" {{($admin->id == Auth::guard('admin')->id()) ? 'disabled' : ''}}>
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            <input type="hidden" id="{{'deleteAdminUrl'.$admin->id}}" value="{{ route('admin.settings.profile.trash', ['id' => $admin->id]) }}">
+                                                            @if ($admin->id != Auth::guard('admin')->id())
+                                                                <a class="btn btn-info btn-xs" href="{{ route('admin.settings.profile.edit', ['id' => $admin->id]) }}"><i class="fa fa-edit"></i></a>
+                                                                <button class="btn btn-danger btn-xs" id="{{'deleteAdminBtn-'.$admin->id}}">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -90,20 +111,7 @@
                     <div class="card-body">
                         <div class="row">
                             <fieldset class="col" {{ (Auth::guard('admin')->user()->role != 1) ? 'disabled' : '' }}>
-                                @if (count($errors))
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There are some problems with your input.<br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                @if (session('success'))
-                                    <div class="alert alert-success"><strong>Success!</strong> {{ session('success') }}</div>
-                                @endif
-                                <form class="row" action="{{-- route('admin.profile.new') --}}" method="post">
+                                <form class="row" action="{{ route('admin.settings.profile.new') }}" method="post">
                                     @csrf
                                     <div class="col-md-6 my-2">
                                         <div class="form-group">
@@ -148,7 +156,7 @@
                                     </div>
                                     <div class="col-md-12 my-2">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-custom w-100">Save</button>
+                                            <button type="submit" class="btn btn-custom w-100">Submit</button>
                                         </div>
                                     </div>
                                 </form>

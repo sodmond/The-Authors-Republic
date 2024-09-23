@@ -36,8 +36,8 @@ class ProfileRequest extends FormRequest
             $authClass = ['nullable', 'email', Rule::unique((new Author)->getTable())->ignore(auth()->id())];
         }
         return [
-            'firstname' => ['required', 'min:3'],
-            'lastname' => ['required', 'min:3'],
+            'firstname' => ['required', 'min:3', 'max:255'],
+            'lastname' => ['required', 'min:3', 'max:255'],
             'email' => $authClass,
         ];
     }

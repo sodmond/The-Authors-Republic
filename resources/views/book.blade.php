@@ -13,14 +13,18 @@
                                     <div class="tg-postbook">
                                         <figure class="tg-featureimg"><img src="{{ asset('frontend/images/books/img-07.jpg') }}" alt="image description"></figure>
                                         <div class="tg-postbookcontent">
-                                            <a class="tg-btnaddtowishlist" href="javascript:void(0);">
-                                                <i class="icon-heart"></i>
-                                                <span>add to wishlist</span>
-                                            </a>
+                                            <form action="{{ route('user.wishlist.add') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                <button type="submit" class="tg-btnaddtowishlist">
+                                                    <i class="icon-heart"></i>
+                                                    <span>add to wishlist</span>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-3">
                                     <div class="tg-productcontent">
                                         <ul class="tg-bookscategories">
                                             <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
@@ -29,8 +33,8 @@
                                             <h3>{{ $book->title }}</h3>
                                         </div>
                                         <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></span>
-                                        <span class="tg-stars"><span></span></span>
-                                        <span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>
+                                        {{--<span class="tg-stars"><span></span></span>
+                                        <span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>--}}
                                         <div class="tg-share">
                                             <span>Share:</span>
                                             <ul class="tg-socialicons">
@@ -65,12 +69,12 @@
                                 <div class="tg-productdescription">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="tg-sectionhead">
-                                            <h2>Product Details</h2>
+                                            <h2>Book Details</h2>
                                         </div>
                                         <ul class="tg-themetabs" role="tablist">
                                             <li role="presentation" class="active"><a href="#details" data-toggle="tab">Details</a></li>
                                             <li role="presentation"><a href="#description" data-toggle="tab">Description</a></li>
-                                            <li role="presentation"><a href="#review" data-toggle="tab">Reviews</a></li>
+                                            <li role="presentation"><a href="#review" data-toggle="tab">Reviews ({{ count($book->bookReviews) }})</a></li>
                                         </ul>
                                         <div class="tg-tab-content tab-content">
                                             <div role="tabpanel" class="tg-tab-pane tab-pane active" id="details">
@@ -86,40 +90,56 @@
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="description">
                                                 <div class="tg-description">
-                                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenden voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                    <figure class="tg-alignleft">
-                                                        <img src="{{ asset('frontend/images/placeholdervtwo.jpg') }}" alt="image description">
-                                                        <iframe src="https://www.youtube.com/embed/aLwpuDpZm1k?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
-                                                    </figure>
-                                                    <ul class="tg-liststyle">
-                                                        <li><span>Sed do eiusmod tempor incididunt ut labore et dolore</span></li>
-                                                        <li><span>Magna aliqua enim ad minim veniam</span></li>
-                                                        <li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
-                                                        <li><span>Aliquip ex ea commodo consequat aute dolor reprehenderit</span></li>
-                                                        <li><span>Voluptate velit esse cillum dolore eu fugiat nulla pariatur</span></li>
-                                                        <li><span>Magna aliqua enim ad minim veniam</span></li>
-                                                        <li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
-                                                    </ul>
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remmata aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enimsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
+                                                    @php echo Illuminate\Support\Facades\Storage::get('books/contents/'.$book->description); @endphp
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="review">
-                                                <div class="tg-description">
-                                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenden voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                    <figure class="tg-alignleft">
-                                                        <img src="{{ asset('frontend/images/placeholdervtwo.jpg') }}" alt="image description">
-                                                        <iframe src="https://www.youtube.com/embed/aLwpuDpZm1k?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
-                                                    </figure>
-                                                    <ul class="tg-liststyle">
-                                                        <li><span>Sed do eiusmod tempor incididunt ut labore et dolore</span></li>
-                                                        <li><span>Magna aliqua enim ad minim veniam</span></li>
-                                                        <li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
-                                                        <li><span>Aliquip ex ea commodo consequat aute dolor reprehenderit</span></li>
-                                                        <li><span>Voluptate velit esse cillum dolore eu fugiat nulla pariatur</span></li>
-                                                        <li><span>Magna aliqua enim ad minim veniam</span></li>
-                                                        <li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
-                                                    </ul>
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remmata aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enimsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
+                                                <div class="">
+                                                    @if (auth('web')->check())
+                                                        <form class="mb-2" action="{{ route('user.book.review', ['id' => $book->id]) }}" method="post" style="padding-bottom:20px;">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" name="comment" id="comment" placeholder="Write comment here" required>{{ old('comment') }}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="number" name="rating" id="rating1" class="rating" data-clearable="" required>
+                                                            </div>
+                                                            <button type="submit" class="tg-btn tg-active">Submit</button>
+                                                        </form>
+                                                    @else
+                                                        <div class="text-center mb-2">
+                                                            <p><em>Login To Add Your Review</em></p>
+                                                            <a class="tg-btn tg-active" href="{{ route('login') }}">Login</a>
+                                                        </div>
+                                                    @endif
+                                                    <div id="tg-comments" class="tg-comments" style="padding-top:10px; border-top:1px solid #CCC;">
+                                                        @if (count($book->bookReviews) > 0)
+                                                            @foreach ($book->bookReviews as $review)                                                        
+                                                                <div class="tg-authorbox">
+                                                                    <figure class="tg-authorimg">
+                                                                        <img src="{{ asset('frontend/images/author/imag-24.jpg') }}" alt="image">
+                                                                    </figure>
+                                                                    <div class="tg-authorinfo">
+                                                                        <div class="tg-authorhead">
+                                                                            <div class="tg-leftarea">
+                                                                                <div class="tg-authorname">
+                                                                                    @php $user = \App\Models\User::find($review->user_id); @endphp
+                                                                                    <h2>{{ $user->firstname.' '.$user->lastname }}</h2>
+                                                                                    <span> {{ $review->created_at }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="tg-description">
+                                                                            <p>{{ $review->comment }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tg-bottomarrow"></div>
+                                                                </div>
+                                                            @endforeach
+                                                        @else
+                                                            <div class="text-center"><em>No Comment Found</em></div>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,10 +171,11 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="tg-description">
-                                                    <p>Laborum sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis etation.</p>
-                                                </div>
-                                                <a class="tg-btn tg-active" href="javascript:void(0);">View All Books</a>
+                                                @php 
+                                                    $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
+                                                    $authorLink = route('author', ['id' => $author->id, 'slug' => $slug])
+                                                @endphp
+                                                <a class="tg-btn tg-active" href="{{ $authorLink }}">View All Books</a>
                                             </div>
                                         </div>
                                     </div>

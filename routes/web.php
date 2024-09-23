@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User as FrontendController;
 use App\Mail\ApprovalStatus;
+use App\Mail\ContactForm;
 use App\Mail\SendOrderConfirmation;
+use App\Mail\ServiceApplication;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,8 @@ use App\Mail\SendOrderConfirmation;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contactForm']);
+Route::post('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('newsletter');
 Route::get('/terms-conditions', [App\Http\Controllers\HomeController::class, 'tandc'])->name('tandc');
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('books');
 Route::get('/book/{id}/{slug}', [App\Http\Controllers\BookController::class, 'get'])->name('book');
@@ -38,10 +42,18 @@ Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 
 Route::get('forum', [FrontendController\ForumController::class, 'index'])->name('forum');
 Route::post('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
 
+// Services
+Route::group(['prefix' => 'services', 'as' => 'services.'], function() {
+    Route::get('editing-feedback', [App\Http\Controllers\ServiceController::class, 'editingFeedback'])->name('editingfeedback');
+    Route::post('editing-feedback', [App\Http\Controllers\ServiceController::class, 'editingFeedback']);
+    Route::get('payment/callback', [App\Http\Controllers\ServiceController::class, 'handleGatewayCallback'])->name('payment.verify');
+});
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('home', [FrontendController\HomeController::class, 'index'])->name('home');
+    Route::post('/book/{id}/review', [App\Http\Controllers\BookController::class, 'review'])->name('book.review');
     
     Route::get('orders', [FrontendController\OrderController::class, 'index'])->name('orders');
     Route::get('order/{id}/{code}', [FrontendController\OrderController::class, 'view'])->name('order');
@@ -66,6 +78,8 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.']
 });
 
 Route::get('/mailable', function() {
-    return new ApprovalStatus(1);
+    return new ContactForm(['firstname' => 'Joe', 'lastname' => 'Biden']);
+    #return new ServiceApplication('Mark');
+    #return new ApprovalStatus(1);
     #return new SendOrderConfirmation(1, 'ORD373764474');
 });

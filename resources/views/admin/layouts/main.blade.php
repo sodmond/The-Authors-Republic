@@ -78,7 +78,7 @@
                     </li>
 
                     <li class="dropdown notification-list">
-                        <a href="{{ route('admin.settings') }}" class="nav-link right-bar-toggle waves-effect waves-light">
+                        <a href="{{ route('admin.settings.home') }}" class="nav-link right-bar-toggle waves-effect waves-light">
                             <i class="fe-settings noti-icon"></i>
                         </a>
                     </li>
@@ -170,14 +170,23 @@
                             </li>
 
                             <li>
-                                <a href="{{-- route('admin.payouts') --}}" class="{{ ($activePage == 'payouts') ? 'active' : '' }}">
-                                    <i class="fas fa-money-check"></i> 
-                                    <span> Payouts </span>
+                                <a href="javascript:void(0)" class="{{ ($activePage == 'revenue') ? 'active' : '' }}">
+                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <span> Revenue </span>
+                                    <span class="menu-arrow"></span>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li>
+                                            <a href="{{ route('admin.earnings') }}">Earnings</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.payouts') }}">Payouts</a>
+                                        </li>
+                                    </ul>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{ route('admin.settings') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
+                                <a href="{{ route('admin.settings.home') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
                                     <i class="fas fa-cog"></i> 
                                     <span> Settings </span>
                                 </a>

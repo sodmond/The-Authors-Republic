@@ -65,9 +65,28 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::post('article/{id}/update', [AdminBackend\ArticlesController::class, 'update'])->name('article.update');
     Route::get('article/{id}/delete', [AdminBackend\ArticlesController::class, 'delete'])->name('article.delete');
 
+    Route::get('revenue/earnings', [AdminBackend\RevenueController::class, 'earnings'])->name('earnings');
+    Route::get('revenue/earning/{id}', [AdminBackend\RevenueController::class, 'earnings'])->name('earning');
+    Route::get('revenue/payouts', [AdminBackend\RevenueController::class, 'payouts'])->name('payouts');
+    Route::get('revenue/payout/{id}', [AdminBackend\RevenueController::class, 'payout'])->name('payout');
+    Route::post('revenue/payout/{id}/approve', [AdminBackend\RevenueController::class, 'payoutApprove'])->name('payout.approve');
+
     Route::get('account/profile', [AdminBackend\ProfileController::class, 'index'])->name('profile');
     Route::put('account/profile/update', [AdminBackend\ProfileController::class, 'update'])->name('profile.update');
     Route::get('account/password', [AdminBackend\ProfileController::class, 'password'])->name('profile.password');
     Route::put('account/password', [AdminBackend\ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
-    Route::get('settings', [AdminBackend\SettingsController::class, 'index'])->name('settings');
+    
+    Route::group(['prefix' => 'settings', 'as' => 'settings.'], function() {
+        Route::get('/', [AdminBackend\SettingsController::class, 'index'])->name('home');
+        Route::post('new-admin', [AdminBackend\SettingsController::class, 'newAdmin'])->name('profile.new');
+        Route::get('edit-admin/{id}', [AdminBackend\SettingsController::class, 'editAdmin'])->name('profile.edit');
+        Route::post('update-admin/{id}', [AdminBackend\SettingsController::class, 'updateAdmin'])->name('profile.update');
+        Route::post('update-admin/{id}/password', [AdminBackend\SettingsController::class, 'updateAdminPassword'])->name('profile.password');
+        Route::get('delete-admin/{id}', [AdminBackend\SettingsController::class, 'deleteAdmin'])->name('profile.trash');
+        Route::get('book-categories', [AdminBackend\SettingsController::class, 'bookCat'])->name('bookcat');
+        Route::post('book-categories/new', [AdminBackend\SettingsController::class, 'newBookCat'])->name('bookcat.new');
+        Route::get('book-categories/{id}/edit', [AdminBackend\SettingsController::class, 'editBookCat'])->name('bookcat.edit');
+        Route::post('book-categories/{id}/update', [AdminBackend\SettingsController::class, 'updateBookCat'])->name('bookcat.update');
+        Route::get('book-categories/{id}/trash', [AdminBackend\SettingsController::class, 'trashBookCat'])->name('bookcat.trash');
+    });
 });

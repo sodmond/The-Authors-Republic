@@ -40,19 +40,11 @@
                             <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo.png') }}" alt="The Authors Republic" style="max-height:90px;"></a></strong>
                             <ul class="tg-contactinfo">
                                 <li>
-                                    <i class="icon-apartment"></i>
-                                    <address>Suit # 07, Rose world Building, Street # 02, AT246T Manchester</address>
-                                </li>
-                                <li>
                                     <i class="icon-phone-handset"></i>
                                     <span>
                                         <em>0800 12345 - 678 - 89</em>
                                         <em>+4 1234 - 4567 - 67</em>
                                     </span>
-                                </li>
-                                <li>
-                                    <i class="icon-clock"></i>
-                                    <span>Serving 7 Days A Week From 9am - 5pm</span>
                                 </li>
                                 <li>
                                     <i class="icon-envelope"></i>
@@ -134,12 +126,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <h4>Signup Newsletter!</h4>
-                    <h5>Consectetur adipisicing elit sed do eiusmod tempor incididunt.</h5>
+                    <h5>Sign up to receive great offers and exciting updates from us</h5>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <form class="tg-formtheme tg-formnewsletter">
+                    <form class="tg-formtheme tg-formnewsletter" method="POST" action="{{ route('newsletter') }}">
+                        @csrf
                         <fieldset>
-                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email Address">
                             <button type="button"><i class="icon-envelope"></i></button>
                         </fieldset>
                     </form>
@@ -153,7 +146,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <span class="tg-paymenttype">Website by <a href="https://wmatechjunkies.com">WMA Tech Junkies</a></span>
-                    <span class="tg-copyright">2017 All Rights Reserved By &copy; {{ config('app.name') }}</span>
+                    <span class="tg-copyright">&copy; {{date('Y')}} All Rights Reserved By {{ config('app.name') }}</span>
                 </div>
             </div>
         </div>
@@ -165,6 +158,17 @@
         <div class="modal-content">
             <div class="modal-body text-center">
                 <p class="h5">Book Added to Cart</p>
+                <img src="{{ asset('img/verified.gif') }}" alt="" style="width:120px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="newsletterModal" style="z-index:9999;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="h5">You have successfully subscribed to our newsletter</p>
                 <img src="{{ asset('img/verified.gif') }}" alt="" style="width:120px;">
             </div>
         </div>

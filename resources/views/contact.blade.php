@@ -14,22 +14,36 @@
                     <div id="tg-locationmap" class="tg-locationmap tg-map"></div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <form class="tg-formtheme tg-formcontactus">
+                    @if (count($errors))
+                        <div class="alert alert-danger">
+                            <strong class="text-danger">Whoops!</strong> Error validating data.<br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                    @endif
+                    <form class="tg-formtheme tg-formcontactus" method="POST" action="">
+                        @csrf
                         <fieldset>
                             <div class="form-group">
-                                <input type="text" name="first-name" class="form-control" placeholder="First Name*">
+                                <input type="text" name="firstname" class="form-control" placeholder="First Name*" required value="{{ old('firstname') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="last-name" class="form-control" placeholder="Last Name*">
+                                <input type="text" name="lastname" class="form-control" placeholder="Last Name*" required value="{{ old('lastname') }}">
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Last Name*">
+                                <input type="email" name="email" class="form-control" placeholder="Email*" required value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject (optional)">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject (optional)" value="{{ old('subject') }}">
                             </div>
                             <div class="form-group tg-hastextarea">
-                                <textarea placeholder="Comment"></textarea>
+                                <textarea placeholder="Comment" name="comment" required>{{ old('comment') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="tg-btn tg-active">Submit</button>
@@ -42,10 +56,6 @@
                         </div>
                         <ul class="tg-contactinfo">
                             <li>
-                                <i class="icon-apartment"></i>
-                                <address>Suit # 07, Rose world Building, Street # 02, AT246T Manchester</address>
-                            </li>
-                            <li>
                                 <i class="icon-phone-handset"></i>
                                 <span>
                                     <em>0800 12345 - 678 - 89</em>
@@ -53,14 +63,10 @@
                                 </span>
                             </li>
                             <li>
-                                <i class="icon-clock"></i>
-                                <span>Serving 7 Days A Week From 9am - 5pm</span>
-                            </li>
-                            <li>
                                 <i class="icon-envelope"></i>
                                 <span>
-                                    <em><a href="mailto:support@domain.com">support@domain.com</a></em>
-                                    <em><a href="mailto:info@domain.com">info@domain.com</a></em>
+                                    <em><a href="mailto:orders@theauthorrepublic.com">orders@theauthorrepublic.com</a></em>
+                                        <em><a href="mailto:info@theauthorrepublic.com">info@theauthorrepublic.com</a></em>
                                 </span>
                             </li>
                         </ul>
