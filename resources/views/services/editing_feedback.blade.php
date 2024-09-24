@@ -74,6 +74,15 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="" type="checkbox" name="terms" id="terms" {{ old('terms') ? 'checked' : '' }} required>
+                                <span class="" for="terms">
+                                    {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark">Terms & Conditions</a>
+                                </span>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
                             <button type="submit" class="tg-btn tg-active">
                                 {{ __('Submit') }}

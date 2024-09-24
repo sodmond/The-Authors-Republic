@@ -79,7 +79,7 @@
                         
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="checkbox-signup" required>
-                            <label class="custom-control-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
+                            <label class="custom-control-label" for="checkbox-signup">I accept the <a href="{{ route('tandc') }}" class="text-dark">Terms and Conditions</a></label>
                         </div>
                         
                         <div class="form-group mb-0 text-center">

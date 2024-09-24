@@ -39,11 +39,11 @@ textarea:focus, .tg-btn:hover, .tg-btn.tg-active, input:focus,
     text-decoration: underline;
 }
 
-#overlay {
+.overlay {
     position: absolute; /* Sit on top of the page content */
     display: block; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
-    height: 300px; /* Full height (cover the whole page) */
+    height: auto; /* Full height (cover the whole page) */
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
@@ -151,6 +151,10 @@ a {
     color: #FFF !important;
 }
 
+.owl-nav .tg-btnround i {
+    color: #000 !important;
+}
+
 a:hover, .tg-newsletter h4, .tg-404errorcontent span, 
 .tg-widget ul li:hover a, .tg-widget ul li a:hover, .tg-widget ul li:hover a span, 
 .tg-widget ul li:hover a em, .tg-paymenttype a:hover, .tg-bookprice ins {
@@ -185,12 +189,23 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     color: #FFF !important;
 }
 
+#homeTestimonal div.overlay{
+    min-height: 518px;
+}
+
+#homeTestimonal .owl-nav .tg-btnround i {
+    color: #FFF !important;
+}
+
 @media only screen and (max-width: 764px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
     }
     .tg-homeslider .item {
         height: 200px;
+    }
+    #homeTestimonal div.overlay{
+        min-height: 595px;
     }
 }
 

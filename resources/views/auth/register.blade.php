@@ -73,6 +73,13 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>               
                         </div>
 
+                        <div class="form-group">
+                            <input class="" type="checkbox" name="terms" id="terms" {{ old('terms') ? 'checked' : '' }} required>
+                            <span class="" for="terms">
+                                {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark">Terms & Conditions</a>
+                            </span>
+                        </div>
+
                         <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="tg-btn tg-active">

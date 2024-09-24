@@ -69,14 +69,15 @@
 <!--************************************
 		Featured Item Start
 *************************************-->
-<section class="tg-bglight tg-haslayout">
+<section class="tg-bglight tg-haslayout" style="background:url('{{ asset("frontend/images/bg/03.jpg") }}'); background-position:center; background-size:cover;">
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="tg-featureditm">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
+            <div class="tg-featureditm" style="z-index:3;">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="z-index:3;">
                     <figure><img src="{{ asset('frontend/images/img-02.png') }}" alt="image description"></figure>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="z-index:3;">
                     <div class="tg-featureditmcontent">
                         <div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
                         <div class="tg-booktitle">
@@ -91,7 +92,7 @@
                                 @csrf
                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                                 <input type="hidden" name="quantity" value="1">
-                                <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                <button class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
                                     <i class="fa fa-shopping-cart"></i>
                                     <em>Add To Cart</em>
                                 </button>
@@ -175,9 +176,9 @@
 <!--************************************
         Testimonials Start
 *************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/02.jpg') }}">
-    <div id="overlay" style="height:518px !important;"></div>
-    <div class="tg-sectionspace tg-haslayout">
+<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/02.jpg') }}" id="homeTestimonal">
+    <div class="overlay" style=""></div>
+    <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
@@ -253,7 +254,7 @@
         Call to Action Start
 *************************************-->
 <section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/03.jpg') }}">
-    <div id="overlay" style="height:258px !important;"></div>
+    <div class="overlay" style=""></div>
     <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
         <div class="container">
             <div class="row">
@@ -321,17 +322,24 @@
         responsive:{
             0:{
                 items:1,
-                nav:true,
+                dots:true,
             },
             600:{
                 items:1,
-                nav:true
+                dots:true
             },
             1000:{
                 items:1,
-                nav:true
+                dots:true
             }
         }
+    });
+    $(document).ready(function() {
+        $('.overlay').each(function() {
+            var parentHeight = $(this).parent().height();
+            $(this).height(parentHeight);
+            //alert($(this).height());
+        });
     });
 </script>
 @endpush
