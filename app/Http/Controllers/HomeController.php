@@ -78,7 +78,7 @@ class HomeController extends Controller
             Newsletter::create([
                 'email' => $request->email
             ]);
-            return back()->with('success', 'You have just subscribed to our newsletter');
+            return back()->with('newsletter_suc', 'You have just subscribed to our newsletter');
         } catch (\Exception $e) {
             Log::info($e->getMessage());
             return back();

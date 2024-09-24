@@ -105,7 +105,7 @@
         });
     </script>
     @endif
-	@if(session('success'))
+	@if(session('newsletter_suc'))
     <script>
         $(function() {
             $('#newsletterModal').modal('show');
