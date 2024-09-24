@@ -121,48 +121,50 @@
                     </div>
                     <div class="tg-products">
                         <div class="tg-productgrid">
-                            @foreach($books as $book)
-                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
-                                <div class="tg-postbook">
-                                    <figure class="tg-featureimg">
-                                        <div class="tg-bookimg">
-                                            <div class="tg-frontcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
-                                            <div class="tg-backcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                            <div class="row">
+                                @foreach($books as $book)
+                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 col-6">
+                                    <div class="tg-postbook">
+                                        <figure class="tg-featureimg">
+                                            <div class="tg-bookimg">
+                                                <div class="tg-frontcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                                                <div class="tg-backcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                                            </div>
+                                            <form action="{{ route('user.wishlist.add') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                <button type="submit" class="tg-btnaddtowishlist">
+                                                    <i class="icon-heart"></i>
+                                                    <span>add to wishlist</span>
+                                                </button>
+                                            </form>
+                                        </figure>
+                                        <div class="tg-postbookcontent">
+                                            <ul class="tg-bookscategories">
+                                                <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
+                                            </ul>
+                                            <div class="tg-booktitle">
+                                                @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                                                <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
+                                            </div>
+                                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $book->author->firstname.' '.$book->author->lastname }}</a></span>
+                                            <span class="tg-bookprice">
+                                                <ins>₦{{ number_format($book->price, 2) }}</ins>
+                                            </span>
+                                            <form method="POST" action="{{ route('cart.add') }}">
+                                                @csrf
+                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <em>Add To Cart</em>
+                                                </button>
+                                            </form>
                                         </div>
-                                        <form action="{{ route('user.wishlist.add') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                            <button type="submit" class="tg-btnaddtowishlist">
-                                                <i class="icon-heart"></i>
-                                                <span>add to wishlist</span>
-                                            </button>
-                                        </form>
-                                    </figure>
-                                    <div class="tg-postbookcontent">
-                                        <ul class="tg-bookscategories">
-                                            <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
-                                        </ul>
-                                        <div class="tg-booktitle">
-                                            @php $slug = \App\Models\Book::getSlug($book->title); @endphp
-                                            <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
-                                        </div>
-                                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $book->author->firstname.' '.$book->author->lastname }}</a></span>
-                                        <span class="tg-bookprice">
-                                            <ins>₦{{ number_format($book->price, 2) }}</ins>
-                                        </span>
-                                        <form method="POST" action="{{ route('cart.add') }}">
-                                            @csrf
-                                            <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <em>Add To Cart</em>
-                                            </button>
-                                        </form>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -328,11 +330,7 @@
                 items:1,
                 dots:true,
             },
-            600:{
-                items:1,
-                dots:true
-            },
-            1000:{
+            754:{
                 items:1,
                 dots:true
             }
@@ -342,8 +340,39 @@
         $('.overlay').each(function() {
             var parentHeight = $(this).parent().height();
             $(this).height(parentHeight);
-            //alert($(this).height());
         });
+    });
+    $('#tg-authorsslider.owl-carousel').owlCarousel({
+        autoplay:true,
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:2,
+                dots:true,
+            },
+            754:{
+                items:6,
+                dots:true,
+            }
+        }
+    });
+    $('#tg-bestsellingbooksslider.owl-carousel').owlCarousel({
+        autoplay:true,
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:2,
+                dots:true,
+            },
+            754:{
+                items:6,
+                dots:true,
+            }
+        }
     });
 </script>
 @endpush

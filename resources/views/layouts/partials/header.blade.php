@@ -84,8 +84,9 @@
                                 </ul>
                             </div>
                         </nav>
+                        
                         <div class="tg-wishlistandcart">
-                            <div class="tg-themedropdown">
+                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                 @php 
                                     $savedItems = 0;
                                     if (Auth::guard('web')->user()) {
@@ -98,6 +99,7 @@
                                     <i class="icon-heart"></i>
                                 </a>
                             </div>
+                            
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
                                 @php 
                                     $cookie = \App\Models\Cart::getCookie();
@@ -107,75 +109,71 @@
                                     <span class="tg-themebadge">{{ $shoppingCart->count() }}</span>
                                     <i class="icon-cart"></i> 
                                 </a>
-                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
+                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart" style="z-index:999;">
                                     @if ($shoppingCart->count() > 0)
-                                    @php $totalItem = ($shoppingCart->count() < 3) ? $shoppingCart->count() : 3; @endphp
-                                    <div class="tg-minicartbody">
-                                        @for($i = 0; $i < $totalItem; $i++)
-                                        <div class="tg-minicarproduct">
-                                            @php $book = $allBooks[$shoppingCart[$i]->book_id]; @endphp
-                                            <figure>
-                                                <img src="{{ asset('frontend/images/products/img-01.jpg') }}" alt="image description">
-                                            </figure>
-                                            <div class="tg-minicarproductdata">
-                                                @php $slug = \App\Models\Book::getSlug($book->title); @endphp
-                                                <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
-                                                <h6>₦ {{ number_format($book->price, 2) }}</h6>
+                                        @php $totalItem = ($shoppingCart->count() < 3) ? $shoppingCart->count() : 3; @endphp
+                                        <div class="tg-minicartbody">
+                                            @for($i = 0; $i < $totalItem; $i++)
+                                                <div class="tg-minicarproduct">
+                                                    @php $book = $allBooks[$shoppingCart[$i]->book_id]; @endphp
+                                                    <figure>
+                                                        <img src="{{ asset('frontend/images/products/img-01.jpg') }}" alt="image description">
+                                                    </figure>
+                                                    <div class="tg-minicarproductdata">
+                                                        @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                                                        <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
+                                                        <h6><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">₦ {{ number_format($book->price, 2) }}</a></h6>
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        </div>
+                                        <div class="tg-minicartfoot">
+                                            <div class="tg-btns">
+                                                <a class="tg-btn tg-active" href="{{ route('cart') }}">View All</a>
                                             </div>
                                         </div>
-                                        @endfor
-                                    </div>
-                                    <div class="tg-minicartfoot">
-                                        {{--<a class="tg-btnemptycart" href="{{ route('cart.clear') }}">
-                                            <i class="fa fa-trash-o"></i>
-                                            <span>Clear Your Cart</span>
-                                        </a>
-                                        <span class="tg-subtotal">Subtotal: <strong>35.78</strong></span>--}}
-                                        <div class="tg-btns">
-                                            <a class="tg-btn tg-active" href="{{ route('cart') }}">View All</a>
-                                        </div>
-                                    </div>
                                     @else
-                                    <div class="tg-minicartbody text-center">
-                                        <h5>Your cart is empty</h5>
-                                    </div>
+                                        <div class="tg-minicartbody text-center">
+                                            <h5>Your cart is empty</h5>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
+
                             <div class="dropdown tg-themedropdown tg-currencydropdown">
-                            <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span><i class="icon-user"></i></span>
-                            </a>
-                            <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty">
-                                @guest('web')
-                                <li>
-                                    <a href="{{ route('login') }}">
-                                        <span>Login</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('register') }}">
-                                        <span>Register</span>
-                                    </a>
-                                </li>
-                                @endguest
-                                @auth('web')
-                                <li>
-                                    <a href="{{ route('user.home') }}">
-                                        <span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <span>Logout</span>
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                                @endauth
-                            </ul>
-                        </div>
+                                <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span><i class="icon-user"></i></span>
+                                </a>
+                                <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
+                                    @guest('web')
+                                    <li>
+                                        <a href="{{ route('login') }}">
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('register') }}">
+                                            <span>Register</span>
+                                        </a>
+                                    </li>
+                                    @endguest
+                                    @auth('web')
+                                    <li>
+                                        <a href="{{ route('user.home') }}">
+                                            <span>Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <span>Logout</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    @endauth
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
