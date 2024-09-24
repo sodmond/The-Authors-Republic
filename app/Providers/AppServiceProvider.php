@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Controllers\CartController;
 use App\Models\Article;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\Cart;
@@ -35,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
             $allBooks = Book::all()->keyBy('id');
             $book_categories = BookCategory::all(); #dd($book_categories[0]->books);
             $recentNews = Article::orderByDesc('created_at')->take(5)->get();
-            View::share(compact('allBooks', 'book_categories', 'recentNews'));
+            $topAuthors = Author::take(3)->get();
+            View::share(compact('allBooks', 'book_categories', 'recentNews', 'topAuthors'));
         } catch (\Exception $e) {
             Log::info($e->getMessage());
         }

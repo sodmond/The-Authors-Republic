@@ -92,27 +92,15 @@
                             </div>
                             <div class="tg-widgetcontent">
                                 <ul>
+                                    @foreach($topAuthors as $author)
                                     <li>
                                         <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/author/imag-09.jpg') }}" alt="image description"></a></figure>
                                         <div class="tg-authornamebooks">
-                                            <h4><a href="javascript:void(0);">Jude Morphew</a></h4>
-                                            <p>21,658 Published Books</p>
+                                            <h4><a href="javascript:void(0);">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h4>
+                                            <p>{{ count($author->books) }} Published Books</p>
                                         </div>
                                     </li>
-                                    <li>
-                                        <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/author/imag-10.jpg') }}" alt="image description"></a></figure>
-                                        <div class="tg-authornamebooks">
-                                            <h4><a href="javascript:void(0);">Shaun Humes</a></h4>
-                                            <p>20,257 Published Books</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/author/imag-11.jpg') }}" alt="image description"></a></figure>
-                                        <div class="tg-authornamebooks">
-                                            <h4><a href="javascript:void(0);">Kathrine Culbertson</a></h4>
-                                            <p>15,686 Published Books</p>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
