@@ -225,15 +225,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-sectionhead">
                     <h2><span>Strong Minds Behind Us</span>Most Popular Authors</h2>
-                    <a class="tg-btn" href="javascript:void(0);">View All</a>
+                    <a class="tg-btn" href="{{ route('authors') }}">View All</a>
                 </div>
             </div>
             <div id="tg-authorsslider" class="tg-authors tg-authorsslider owl-carousel">
                 @foreach($authors as $author)
                 <div class="item tg-author">
-                    <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/author/imag-03.jpg') }}" alt="image description"></a></figure>
+                    @php 
+                        $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
+                        $authorLink = route('author', ['id' => $author->id, 'slug' => $slug])
+                    @endphp
+                    <figure><a href="{{ $authorLink }}"><img src="{{ asset('frontend/images/author/imag-03.jpg') }}" alt="image description"></a></figure>
                     <div class="tg-authorcontent">
-                        <h2><a href="javascript:void(0);">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
+                        <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
                         <span>{{ count($author->books) }} Published Books</span>
                         <ul class="tg-socialicons">
                             <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
