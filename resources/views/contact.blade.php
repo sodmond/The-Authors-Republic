@@ -65,8 +65,8 @@
                             <li>
                                 <i class="icon-envelope"></i>
                                 <span>
-                                    <em><a href="mailto:orders@theauthorrepublic.com">orders@theauthorrepublic.com</a></em>
-                                        <em><a href="mailto:info@theauthorrepublic.com">info@theauthorrepublic.com</a></em>
+                                    <em><a href="mailto:orders@theauthorsrepublic.com">orders@theauthorsrepublic.com</a></em>
+                                        <em><a href="mailto:info@theauthorsrepublic.com">info@theauthorsrepublic.com</a></em>
                                 </span>
                             </li>
                         </ul>

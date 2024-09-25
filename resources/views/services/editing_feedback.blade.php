@@ -78,7 +78,7 @@
                             <div class="">
                                 <input class="" type="checkbox" name="terms" id="terms" {{ old('terms') ? 'checked' : '' }} required>
                                 <span class="" for="terms">
-                                    {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark">Terms & Conditions</a>
+                                    {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark" target="_blank">Terms & Conditions</a>
                                 </span>
                             </div>
                         </div>
