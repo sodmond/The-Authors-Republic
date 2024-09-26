@@ -20,8 +20,9 @@
                         <div class="tg-postbook">
                             <figure class="tg-featureimg">
                                 <div class="tg-bookimg">
-                                    <div class="tg-frontcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
-                                    <div class="tg-backcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                                    @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                                    <div class="tg-frontcover"><img src="{{ $bookImage }}" alt="book image"></div>
+                                    <div class="tg-backcover"><img src="{{ $bookImage }}" alt="book image"></div>
                                 </div>
                                 <form action="{{ route('user.wishlist.add') }}" method="post">
                                     @csrf
@@ -75,7 +76,8 @@
         <div class="row">
             <div class="tg-featureditm" style="z-index:3;">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="z-index:3;">
-                    <figure><img src="{{ asset('frontend/images/img-02.png') }}" alt="image description"></figure>
+                    @php $bookImage = ($books[0]->image != '') ? asset('storage/'.$books[0]->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                    <figure><img src="{{ $bookImage }}" alt="image description" style="max-width:320px;"></figure>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="z-index:3;">
                     <div class="tg-featureditmcontent">
@@ -127,8 +129,9 @@
                                     <div class="tg-postbook">
                                         <figure class="tg-featureimg">
                                             <div class="tg-bookimg">
-                                                <div class="tg-frontcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
-                                                <div class="tg-backcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                                                @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                                                <div class="tg-frontcover"><img src="{{ $bookImage }}" alt="image description"></div>
+                                                <div class="tg-backcover"><img src="{{ $bookImage }}" alt="image description"></div>
                                             </div>
                                             <form action="{{ route('user.wishlist.add') }}" method="post">
                                                 @csrf
@@ -235,16 +238,17 @@
                 <div class="item tg-author">
                     @php 
                         $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
-                        $authorLink = route('author', ['id' => $author->id, 'slug' => $slug])
+                        $authorLink = route('author', ['id' => $author->id, 'slug' => $slug]);
+                        $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('frontend/images/author/imag-03.jpg');
                     @endphp
-                    <figure><a href="{{ $authorLink }}"><img src="{{ asset('frontend/images/author/imag-03.jpg') }}" alt="image description"></a></figure>
+                    <figure><a href="{{ $authorLink }}"><img src="{{ $authorImage }}" alt="author image"></a></figure>
                     <div class="tg-authorcontent">
                         <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
                         <span>{{ count($author->books) }} Published Books</span>
                         <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="tg-facebook"><a href="{{ $author->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                            <li class="tg-twitter"><a href="{{ $author->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                            <li class="tg-linkedin"><a href="{{ $author->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -295,12 +299,13 @@
                 <article class="item tg-post">
                     @php 
                         $slug = \App\Models\Article::getSlug($news->title);
-                        $link = route('news.get', ['id' => $news->id, 'slug' => $slug])
+                        $link = route('news.get', ['id' => $news->id, 'slug' => $slug]);
+                        $newsImage = ($news->image != '') ? asset('storage/'.$news->image) : asset('frontend/images/blog/img-01.jpg');
                     @endphp
-                    <figure><a href="{{ $link }}"><img src="{{ asset('frontend/images/blog/img-01.jpg') }}" alt="image description"></a></figure>
+                    <figure><a href="{{ $link }}"><img src="{{ $newsImage }}" alt="article image"></a></figure>
                     <div class="tg-postcontent">
                         <div class="tg-posttitle">
-                            <h3><a href="{{ $link }}">Where The Wild Things Are</a></h3>
+                            <h3><a href="{{ $link }}">{{ $news->title }}</a></h3>
                         </div>
                         <span class="tg-bookwriter">By: <a href="javascript:void(0);">Admin</a></span>
                         <ul class="tg-postmetadata">

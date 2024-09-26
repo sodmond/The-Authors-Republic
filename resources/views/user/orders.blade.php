@@ -29,7 +29,7 @@
                                             <td>{{ $order->status }}</td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-success" href="{{ route('user.order', ['id' => $order->id, 'code' => $order->code]) }}">
+                                                <a class="btn btn-sm btn-success text-white" href="{{ route('user.order', ['id' => $order->id, 'code' => $order->code]) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>

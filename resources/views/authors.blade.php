@@ -15,16 +15,17 @@
                     <div class="tg-author">
                         @php 
                             $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
-                            $authorLink = route('author', ['id' => $author->id, 'slug' => $slug])
+                            $authorLink = route('author', ['id' => $author->id, 'slug' => $slug]);
+                            $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('frontend/images/author/imag-03.jpg');
                         @endphp
-                        <figure><a href="{{ $authorLink }}"><img src="{{ asset('frontend/images/author/imag-03.jpg') }}" alt="image description"></a></figure>
+                        <figure><a href="{{ $authorLink }}"><img src="{{ $authorImage }}" alt="author image"></a></figure>
                         <div class="tg-authorcontent">
                             <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
                             <span>{{ count($author->books) }} Published Books</span>
                             <ul class="tg-socialicons">
-                                <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="tg-facebook"><a href="{{ $author->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                <li class="tg-twitter"><a href="{{ $author->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                <li class="tg-linkedin"><a href="{{ $author->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>

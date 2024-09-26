@@ -15,9 +15,12 @@
                     <div class="tg-minicartbody">
                         @foreach($cart as $item)
                         <div class="tg-minicarproduct" style="padding:10px 0px 10px 0px; border-bottom:1px solid #dbdbdb;">
-                            @php $book = $allBooks[$item->book_id]; @endphp
+                            @php
+                                $book = $allBooks[$item->book_id];
+                                $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg') 
+                            @endphp
                             <figure>
-                                <img src="http://127.0.0.1/The-Authors-Republic/public/frontend/images/products/img-01.jpg" alt="image description">
+                                <img src="{{ $bookImage }}" alt="book image" style="max-width:70px;">
                             </figure>
                             <div class="tg-minicarproductdata row">
                                 @php $slug = \App\Models\Book::getSlug($book->title); @endphp
@@ -31,7 +34,7 @@
                                     <input type="number" class="form-control" name="quantities[]" min="1" value="{{ $item->quantity }}">
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-lg-offset-1">
-                                    <a href="submit" class="btn btn-sm btn-danger">
+                                    <a href="submit" class="btn btn-sm btn-danger text-white">
                                         <i class="fa fa-trash-o"></i> REMOVE
                                     </a>
                                     {{--<form action="{{ route('cart.remove') }}" method="POST">

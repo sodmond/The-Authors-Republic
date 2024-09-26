@@ -99,9 +99,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($cart as $item)
-                                    @php $book = $allBooks[$item->book_id]; @endphp
+                                    @php 
+                                        $book = $allBooks[$item->book_id];
+                                        $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg');
+                                    @endphp
                                     <tr>
-                                        <td><img src="{{ asset('frontend/images/products/img-01.jpg') }}" alt="image description"></td>
+                                        <td><img src="{{ $bookImage }}" alt="image description" style="max-width:70px;"></td>
                                         <td><h5>{{ $book->title }}</h5></td>
                                         <td><strong>₦ {{ number_format($book->price, 2) }}</strong></td>
                                         <td>{{ $item->quantity }}</td>

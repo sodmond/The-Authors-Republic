@@ -31,6 +31,7 @@ class Author extends Authenticatable
         'state',
         'zip',
         'dob',
+        'bio',
         'status',
         'facebook',
         'twitter',

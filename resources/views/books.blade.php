@@ -20,8 +20,9 @@
                                         <div class="tg-postbook">
                                             <figure class="tg-featureimg">
                                                 <div class="tg-bookimg">
-                                                    <div class="tg-frontcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
-                                                    <div class="tg-backcover"><img src="{{ asset('frontend/images/books/img-01.jpg') }}" alt="image description"></div>
+                                                    @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                                                    <div class="tg-frontcover"><img src="{{ $bookImage }}" alt="book image"></div>
+                                                    <div class="tg-backcover"><img src="{{ $bookImage }}" alt="book image"></div>
                                                 </div>
                                                 <form action="{{ route('user.wishlist.add') }}" method="post">
                                                     @csrf

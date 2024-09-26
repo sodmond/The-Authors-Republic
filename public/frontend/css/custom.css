@@ -212,3 +212,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 .tg-homeslider .item div {
     background-size: cover !important;
 }
+
+.text-white {
+    color: #FFFFFF !important;
+}

@@ -115,9 +115,12 @@
                                         <div class="tg-minicartbody">
                                             @for($i = 0; $i < $totalItem; $i++)
                                                 <div class="tg-minicarproduct">
-                                                    @php $book = $allBooks[$shoppingCart[$i]->book_id]; @endphp
+                                                    @php 
+                                                        $book = $allBooks[$shoppingCart[$i]->book_id];
+                                                        $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg');
+                                                    @endphp
                                                     <figure>
-                                                        <img src="{{ asset('frontend/images/products/img-01.jpg') }}" alt="image description">
+                                                        <img src="{{ $bookImage }}" alt="book image" style="max-width:70px;">
                                                     </figure>
                                                     <div class="tg-minicarproductdata">
                                                         @php $slug = \App\Models\Book::getSlug($book->title); @endphp

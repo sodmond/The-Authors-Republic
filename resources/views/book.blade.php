@@ -11,7 +11,8 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <div class="tg-postbook">
-                                        <figure class="tg-featureimg"><img src="{{ asset('frontend/images/books/img-07.jpg') }}" alt="image description"></figure>
+                                        @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                                        <figure class="tg-featureimg"><img src="{{ $bookImage }}" alt="book image"></figure>
                                         <div class="tg-postbookcontent">
                                             <form action="{{ route('user.wishlist.add') }}" method="post">
                                                 @csrf
@@ -38,9 +39,12 @@
                                         <div class="tg-share">
                                             <span>Share:</span>
                                             <ul class="tg-socialicons">
-                                                <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                                <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                                <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                                                <li class="tg-facebook"><a href="{{ 'https://www.facebook.com/sharer/sharer.php?u='.url()->full() }}" target="_blank">
+                                                    <i class="fa fa-facebook"></i></a></li>
+                                                <li class="tg-twitter"><a href="{{ 'https://x.com/intent/post?text='.$book->title.'&url='.url()->full() }}" target="_blank">
+                                                    <i class="fa fa-twitter"></i></a></li>
+                                                <li class="tg-linkedin"><a href="{{ 'https://www.linkedin.com/shareArticle/?mini=true&url='.url()->full().'&title='.$book->title }}" target="_blank">
+                                                    <i class="fa fa-linkedin"></i></a></li>
                                             </ul>
                                         </div>
                                         <form class="tg-postbook" method="POST" action="{{ route('cart.add') }}">
@@ -79,13 +83,11 @@
                                         <div class="tg-tab-content tab-content">
                                             <div role="tabpanel" class="tg-tab-pane tab-pane active" id="details">
                                                 <ul class="tg-productinfo">
-                                                    <li><span>Format:</span><span>Hardback</span></li>
-                                                    <li><span>Pages:</span><span>528 pages</span></li>
-                                                    <li><span>Publication Date:</span><span>June 27, 2017</span></li>
+                                                    <li><span>Soft Copy:</span><span>{{ ($book->soft_copy == true) ? 'YES' : 'NO' }}</span></li>
+                                                    <li><span>Hard Copy:</span><span>{{ ($book->hard_copy == true) ? 'YES' : 'NO' }}</span></li>
+                                                    <li><span>Publication Date:</span><span>{{ date('M j, Y', strtotime($book)) }}</span></li>
                                                     <li><span>Publisher:</span><span>{{ ucwords($author->firstname.' '.$author->lastname) }}</span></li>
-                                                    <li><span>Language:</span><span>English</span></li>
-                                                    <li><span>ISBN:</span><span>1234567890</span></li>
-                                                    <li><span>Other Fomate:</span><span>CD-Audio, Paperback, E-Book</span></li>
+                                                    <li><span>ISBN:</span><span>{{ $book->isbn }}</span></li>
                                                 </ul>
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="description">
@@ -165,9 +167,9 @@
                                                     </div>
                                                     <div class="tg-rightarea">
                                                         <ul class="tg-socialicons">
-                                                            <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                                            <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                                            <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                                                            <li class="tg-facebook"><a href="{{ $author->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                                            <li class="tg-twitter"><a href="{{ $author->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                                            <li class="tg-linkedin"><a href="{{ $author->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
