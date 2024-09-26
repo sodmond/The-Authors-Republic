@@ -15,7 +15,11 @@
             <div class="tg-widgetcontent">
                 <ul>
                     @foreach($book_categories as $category)
-                        <li><a href="javascript:void(0);"><span>{{ $category->title }}</span><em>{{count($category->books)}}</em></a></li>
+                        @php 
+                            $slug = \App\Models\Book::getSlug($category->title); 
+                            $catLink = route('books.category', ['id' => $category->id, 'slug' => $slug]);
+                        @endphp
+                        <li><a href="{{ $catLink }}"><span>{{ $category->title }}</span><em>{{count($category->books)}}</em></a></li>
                     @endforeach
                 </ul>
             </div>
@@ -29,12 +33,16 @@
                     @foreach($recentNews as $news)
                     <li>
                         <article class="tg-post">
-                            <figure style="width: 75px;"><a href="javascript:void(0);">
+                            @php 
+                                $slug = \App\Models\Article::getSlug($news->title);
+                                $articleLink = route('news.get', ['id' => $news->id, 'slug' => $slug]);
+                            @endphp
+                            <figure style="width: 75px;"><a href="{{ $articleLink }}">
                                 <img src="{{ asset('storage/'.$news->image) }}" alt="article image" style="max-width:75px;">
                             </a></figure>
                             <div class="tg-postcontent">
                                 <div class="tg-posttitle">
-                                    <h3><a href="javascript:void(0);">{{ $news->title }}</a></h3>
+                                    <h3><a href="{{ $articleLink }}">{{ $news->title }}</a></h3>
                                 </div>
                             </div>
                         </article>

@@ -25,6 +25,7 @@ Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contactFor
 Route::post('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('newsletter');
 Route::get('/terms-conditions', [App\Http\Controllers\HomeController::class, 'tandc'])->name('tandc');
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('books');
+Route::get('/books-category/{id}/{slug}', [App\Http\Controllers\BookController::class, 'category'])->name('books.category');
 Route::get('/book/{id}/{slug}', [App\Http\Controllers\BookController::class, 'get'])->name('book');
 Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index'])->name('authors');
 Route::get('/author_profile/{id}/{slug}', [App\Http\Controllers\AuthorController::class, 'get'])->name('author');

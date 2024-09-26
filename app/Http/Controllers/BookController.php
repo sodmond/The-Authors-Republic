@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\BookReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -19,6 +20,16 @@ class BookController extends Controller
         }
         $books = Book::paginate(12);
         return view('books', compact('books'));
+    }
+
+    public function category($id, $title)
+    {
+        $category = BookCategory::find($id);
+        if($category) {
+            $books = Book::where('category_id', $category->id)->paginate(12);
+            return view('books', compact('books', 'category'));
+        }
+        return redirect()->route('books');
     }
 
     public function get($id, $slug)

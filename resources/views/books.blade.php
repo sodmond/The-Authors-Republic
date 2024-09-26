@@ -13,6 +13,11 @@
 									<h3>Search results for "{{ $_GET['search'] }}"</h3>
 								</div>
                             @endisset
+                            @isset($category)
+                            <div class="tg-sectionhead">
+                                <h2><span>Book Category</span>{{ $category->title }}</h2>
+                            </div>
+                            @endisset
                             <div class="tg-productgrid">
                                 <div class="row">
                                     @foreach($books as $book)
