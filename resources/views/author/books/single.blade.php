@@ -42,6 +42,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <img class="img-fluid" src="{{ asset('storage/'.$book->image) }}" alt="Book Cover Image">
+                                    @if($book->featured == 0)
+                                        <span class="bg-danger px-2 py-1 text-white rounded mr-3">Not Featured</span>
+                                    @else
+                                        <span class="bg-success px-2 py-1 text-white rounded mr-3">Featured</span>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
                                     <div class="table-responsive">

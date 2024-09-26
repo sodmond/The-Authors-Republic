@@ -4,17 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::paginate(10);
+        $books = Book::orderByDesc('created_at')->paginate(10);
         return view('admin.books.index', compact('books'));
     }
 
@@ -27,7 +29,8 @@ class BookController extends Controller
     public function new()
     {
         $book_categories = DB::table('book_categories')->get();
-        return view('admin.books.new', compact('book_categories'));
+        $authors = Author::all();
+        return view('admin.books.new', compact('book_categories', 'authors'));
     }
 
     public function addNew(BookRequest $request)
@@ -38,7 +41,7 @@ class BookController extends Controller
         $description = Str::random() . '.txt';
         Storage::put('books/contents/'.$description, $request->description);
         $book = new Book();
-        $book->author_id = $request->author_id;
+        $book->author_id = $request->author;
         $book->category_id = $request->category;
         $book->title = $request->title;
         $book->isbn = $request->isbn;
@@ -46,6 +49,9 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->image = $imgPath;
         $book->book_file = $bookFile;
+        $book->published_at = $request->published_at;
+        $book->pages_number = $request->pages_number;
+        $book->featured = $request->featured;
         if ($book->save()) {
             return back()->with('success', 'New book has been added');
         }
@@ -67,10 +73,13 @@ class BookController extends Controller
             'isbn' => ['nullable', 'max:255'],
             'soft_copy' => ['required', 'integer', 'max:1'],
             'hard_copy' => ['required', 'integer', 'max:1'],
-            'description' => ['nullable', 'max:1024'],
+            'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
-            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
-            'book_file' => ['nullable', 'mimes:pdf'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)],
+            'book_file' => ['nullable', 'mimes:pdf', 'max:2048'],
+            'pages_number' => ['required', 'integer'],
+            'published_at' => ['required', 'date'],
+            'featured' => ['nullable', 'integer', 'max:1']
         ]);
         if ($request->soft_copy == false && $request->soft_copy == $request->hard_copy) {
             return back()->withErrors(['err_msg' => 'The book needs at least a copy, select Yes on either soft or hard copy.']);
@@ -96,6 +105,9 @@ class BookController extends Controller
         $book->title = $request->title;
         $book->isbn = $request->isbn;
         $book->price = $request->price;
+        $book->published_at = $request->published_at;
+        $book->pages_number = $request->pages_number;
+        $book->featured = $request->featured;
         if ($book->save()) {
             return back()->with('success', 'Book has been updated');
         }

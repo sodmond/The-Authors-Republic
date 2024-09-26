@@ -122,7 +122,7 @@
                                         <div class="form-group">
                                             <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="image" name="image">
-                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb)</small>
+                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

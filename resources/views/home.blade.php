@@ -15,7 +15,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div id="tg-bestsellingbooksslider" class="tg-bestsellingbooksslider tg-bestsellingbooks owl-carousel">
-                    @foreach($books as $book)
+                    @foreach($featuredBooks as $book)
                     <div class="item">
                         <div class="tg-postbook">
                             <figure class="tg-featureimg">
@@ -76,23 +76,23 @@
         <div class="row">
             <div class="tg-featureditm" style="z-index:3;">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="z-index:3;">
-                    @php $bookImage = ($books[0]->image != '') ? asset('storage/'.$books[0]->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                    @php $bookImage = ($featuredBooks[0]->image != '') ? asset('storage/'.$featuredBooks[0]->image) : asset('frontend/images/books/img-01.jpg') @endphp
                     <figure><img src="{{ $bookImage }}" alt="image description" style="max-width:320px;"></figure>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="z-index:3;">
                     <div class="tg-featureditmcontent">
                         <div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
                         <div class="tg-booktitle">
-                            <h3><a href="javascript:void(0);">{{ $books[0]->title }}</a></h3>
+                            <h3><a href="javascript:void(0);">{{ $featuredBooks[0]->title }}</a></h3>
                         </div>
-                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $books[0]->author->firstname.' '.$books[0]->author->lastname }}</a></span>
+                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $featuredBooks[0]->author->firstname.' '.$books[0]->author->lastname }}</a></span>
                         <div class="tg-priceandbtn">
                             <span class="tg-bookprice">
-                                <ins>₦{{ number_format($books[0]->price, 2) }}</ins>
+                                <ins>₦{{ number_format($featuredBooks[0]->price, 2) }}</ins>
                             </span>
                             <form method="POST" action="{{ route('cart.add') }}">
                                 @csrf
-                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                <input type="hidden" name="book_id" value="{{ $featuredBooks[0]->id }}">
                                 <input type="hidden" name="quantity" value="1">
                                 <button class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
                                     <i class="fa fa-shopping-cart"></i>
