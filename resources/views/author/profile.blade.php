@@ -43,6 +43,7 @@
                                     <div class="form-group">
                                         <label for="image" class="col-form-label">Select Image</label>
                                         <input type="file" class="form-control" id="image" name="image" required>
+                                        <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
                                     </div>
                                     <input type="submit" class="btn btn-custom btn-sm" value="Change Profile Picture">
                                 </form>
