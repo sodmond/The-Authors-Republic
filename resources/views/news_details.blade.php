@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'news', 'title' => ucwords($article->title)])
+@extends('layouts.app', ['activePage' => 'news_detail', 'title' => ucwords($article->title)])
 
 @section('content')
 <div class="tg-sectionspace tg-haslayout">
