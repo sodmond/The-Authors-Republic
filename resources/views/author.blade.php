@@ -14,9 +14,9 @@
                         <div class="tg-sectionhead">
                             <h2><span>{{ number_format($books->count()) }} Published Books</span>{{ ucwords($author->firstname.' '.$author->lastname) }}</h2>
                             <ul class="tg-socialicons">
-                                <li class="tg-facebook"><a href="{{ $author->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                                <li class="tg-twitter"><a href="{{ $author->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                                <li class="tg-linkedin"><a href="{{ $author->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="tg-facebook"><a href="{{ $author->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li class="tg-twitter"><a href="{{ $author->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li class="tg-linkedin"><a href="{{ $author->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                         <div class="tg-description">

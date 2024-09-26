@@ -246,9 +246,9 @@
                         <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
                         <span>{{ count($author->books) }} Published Books</span>
                         <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="{{ $author->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="{{ $author->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="{{ $author->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="tg-facebook"><a href="{{ $author->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="tg-twitter"><a href="{{ $author->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="tg-linkedin"><a href="{{ $author->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
