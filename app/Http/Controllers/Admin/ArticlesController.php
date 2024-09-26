@@ -7,6 +7,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ArticlesController extends Controller
 {
@@ -32,7 +33,7 @@ class ArticlesController extends Controller
         $this->validate($request, [
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:3000'],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512'],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(800)->height(600)],
         ]);
         $imgPath = $request->file('image')->store('articles', 'public');
         $contentFile = time() . '.txt';
@@ -59,7 +60,7 @@ class ArticlesController extends Controller
         $this->validate($request, [
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:3000'],
-            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(800)->height(600)],
         ]); #dd(clean($request->description));
         $article = Article::find($id);
         $contentFile = $article->content;

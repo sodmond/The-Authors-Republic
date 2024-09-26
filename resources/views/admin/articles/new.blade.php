@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             <label for="image">Cover Image</label>
                                             <input class="form-control" type="file" id="image" name="image" required>
-                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max size; 512kb)</small>
+                                            <small class="text-info">(Allowed images: .jpg, .png, .jpeg | Max size: 512kb | Dimension: 800x600px)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

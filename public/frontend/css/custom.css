@@ -220,3 +220,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 a.panel-link.text-white:hover {
     color: #dff0d8 !important;
 }
+
+.tg-productgrid .tg-postbook {
+    min-height: 450px !important;
+}
