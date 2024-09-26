@@ -73,7 +73,7 @@
                         <div>
                             <p><i class="mdi mdi-stop-circle-outline text-primary"></i> Balance <span class="float-right font-weight-normal">₦{{ number_format(auth('author')->user()->balance, 2) }}</span></p>
                             <p><i class="mdi mdi-stop-circle-outline text-success"></i> Earnings <span class="float-right font-weight-normal">₦{{ number_format($earnings->sum('amount'), 2) }}</span></p>
-                            <p><i class="mdi mdi-stop-circle-outline text-danger"></i> Payouts <span class="float-right font-weight-normal">₦{{ number_format($payouts->sum('amount'), 2) }}</span></p>
+                            <p><i class="mdi mdi-stop-circle-outline text-danger"></i> Payouts <span class="float-right font-weight-normal">₦{{ number_format($payouts->sum('received_amount'), 2) }}</span></p>
                         </div>
                     </div> <!-- end card-box -->
                 </div> <!-- end col -->
