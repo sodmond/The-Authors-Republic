@@ -36,7 +36,7 @@ class ProfileController extends Controller
     public function updateImage(Request $request)
     {
         $this->validate($request, [
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->maxWidth(600)->ratio(1 / 1)]
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)]
         ]);
         if (Storage::exists('public/'.auth('author')->user()->image)) {
             Storage::delete('public/'.auth('author')->user()->image);

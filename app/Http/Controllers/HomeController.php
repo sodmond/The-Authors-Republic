@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featuredBooks = Book::where('featured', true)->take(10)->get(); #dd($books);
+        $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(10)->get(); #dd($books);
         $books = Book::orderByDesc('created_at')->take(12)->get(); #dd($books);
         $latestNews = Article::orderByDesc('created_at')->take(10)->get();
         $authors = Author::orderByDesc('created_at')->take(10)->get();
