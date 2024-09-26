@@ -70,6 +70,7 @@
 <!--************************************
 		Featured Item Start
 *************************************-->
+@if(count($featuredBooks) > 0)
 <section class="tg-bglight tg-haslayout" style="background:url('{{ asset("frontend/images/bg/03.jpg") }}'); background-position:center; background-size:cover;">
     <div class="overlay"></div>
     <div class="container">
@@ -106,6 +107,7 @@
         </div>
     </div>
 </section>
+@endif
 <!--************************************
 		Featured Item End
 *************************************-->
