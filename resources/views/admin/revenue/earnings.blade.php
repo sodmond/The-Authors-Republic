@@ -35,6 +35,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Author</th>
                                             <th>Order ID</th>
                                             <th>Pre Balance</th>
                                             <th>Amount</th>
@@ -48,6 +49,7 @@
                                         @foreach ($earnings as $earning)
                                             <tr>
                                                 <td>{{ $row++ }}</td>
+                                                <td>{{ ucwords($earning->author->firstname.' '.$earning->author->lastname) }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.order', ['id' => $earning->order_id]) }}">
                                                         {{ ($orders[$earning->order_id]->code) }}</a>
