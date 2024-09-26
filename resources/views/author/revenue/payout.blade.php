@@ -72,7 +72,7 @@
                                                 <td>{{ number_format($payout->org_amount, 2) }}</td>
                                             </tr>
                                             <tr>
-                                                <th>Received Amount (₦)</th>
+                                                <th>Amount Paid (₦)</th>
                                                 <td>{{ number_format($payout->received_amount, 2) }}</td>
                                             </tr>
                                             <tr>

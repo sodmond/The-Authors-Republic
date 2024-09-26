@@ -56,7 +56,8 @@
                                             <th>#</th>
                                             <th>Request Amount (₦)</th>
                                             <th>Method</th>
-                                            <th>Reference</th>
+                                            <th>Commission %</th>
+                                            <th>Amount Paid (₦)</th>
                                             <th>Status</th>
                                             <th>Date Created</th>
                                             <th>...</th>
@@ -70,7 +71,8 @@
                                                 <td>{{ $row++ }}</td>
                                                 <td>{{ number_format($payout->amount, 2) }}</td>
                                                 <td>{{ ucwords($payout->method) }}</td>
-                                                <td>{{ $payout->reference }}</td>
+                                                <td>{{ number_format($payout->commission, 2) }}</td>
+                                                <td>{{ number_format($payout->received_amount, 2) }}</td>
                                                 <td><span class="{{$bg_color}} px-2 py-1 rounded text-white">
                                                     {{ $payout->status }}
                                                 </span></td>
