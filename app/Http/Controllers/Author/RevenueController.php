@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Author;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\BasicSetting;
 use App\Models\Earning;
 use App\Models\Order;
 use App\Models\Payout;
@@ -36,8 +37,9 @@ class RevenueController extends Controller
 
     public function payouts()
     {
+        $basic_setting = BasicSetting::find(1);
         $payouts = Payout::where('author_id', auth('author')->id())->orderByDesc('created_at')->paginate(10);
-        return view('author.revenue.payout_list', compact('payouts'));
+        return view('author.revenue.payout_list', compact('payouts', 'basic_setting'));
     }
 
     public function payout($id)
@@ -61,13 +63,18 @@ class RevenueController extends Controller
             return back()->withErrors(['err_msg' => 'Insufficient balance.']);
         }
         $paymentDetails = $request->except(['_token', 'amount']);
+        $basic_setting = BasicSetting::find(1);
+        $commission_amount = ($request->amount * $basic_setting->payout_commission) / 100;
         DB::beginTransaction();
         try{
             Payout::create([
                 'author_id' => auth('author')->id(),
                 'amount' => $request->amount,
                 'method' => 'bank transfer',
-                'details' => json_encode($paymentDetails)
+                'details' => json_encode($paymentDetails),
+                'commission' => $basic_setting->payout_commission,
+                'org_amount' => $commission_amount,
+                'received_amount' => $request->amount - $commission_amount
             ]);
             $author = Author::find(auth('author')->id());
             $author->balance -= $request->amount;

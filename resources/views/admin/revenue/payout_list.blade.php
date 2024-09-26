@@ -48,7 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Amount (₦)</th>
+                                            <th>Request Amount (₦)</th>
                                             <th>Method</th>
                                             <th>Reference</th>
                                             <th>Status</th>

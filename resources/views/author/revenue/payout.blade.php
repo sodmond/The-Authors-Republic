@@ -44,7 +44,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <tr>
-                                                <th>Amount</th>
+                                                <th>Request Amount (₦)</th>
                                                 <td>{{ number_format($payout->amount, 2) }}</td>
                                             </tr>
                                             <tr>
@@ -62,6 +62,18 @@
                                                         <div><strong>{{ ucwords(str_replace('_', ' ', $key)) }}:</strong> {{ $item }}</div>
                                                     @endforeach
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Commission %</th>
+                                                <td>{{ number_format($payout->commission, 2) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Commission (₦)</th>
+                                                <td>{{ number_format($payout->org_amount, 2) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Received Amount (₦)</th>
+                                                <td>{{ number_format($payout->received_amount, 2) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Status</th>

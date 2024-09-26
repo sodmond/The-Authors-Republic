@@ -11,7 +11,7 @@ class Payout extends Model
     use HasFactory;
 
     protected $fillable = [
-        'author_id', 'amount', 'method', 'reference', 'details', 'proof', 'status'
+        'author_id', 'amount', 'method', 'reference', 'details', 'proof', 'status', 'commission', 'org_amount', 'received_amount'
     ];
 
     public function author() : BelongsTo

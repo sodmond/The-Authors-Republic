@@ -41,7 +41,11 @@ class RevenueController extends Controller
             'status' => ['required']
         ]);
         $payout = Payout::find($id);
-        $payout->update(['status' => 'completed']);
-        return back()->with('success', 'Payout has been approved');
+        if ($request->status == 1) {
+            $payout->update(['status' => 'completed']);
+            return back()->with('success', 'Payout request has been approved');
+        }
+        $payout->update(['status' => 'cancelled']);
+        return back()->with('success', 'Payout request has been declined');
     }
 }

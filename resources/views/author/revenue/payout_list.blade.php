@@ -54,7 +54,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Amount (₦)</th>
+                                            <th>Request Amount (₦)</th>
                                             <th>Method</th>
                                             <th>Reference</th>
                                             <th>Status</th>
@@ -98,8 +98,6 @@
     </div> <!-- content -->
 
     
-
-</div>
 <!-- New Payout Request Modal -->
 <div class="modal fade" id="newPayoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -116,6 +114,7 @@
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <input class="form-control" type="number" id="amount" name="amount" value="{{ old('amount') }}" required>
+                    <small class="text-info">You will be charged {{ number_format($basic_setting->payout_commission, 2) }}% commission fee</small>
                 </div>
                 <div class="form-group">
                     <label for="bank_name">Bank Name</label>
