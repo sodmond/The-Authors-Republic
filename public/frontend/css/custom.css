@@ -216,3 +216,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 .text-white {
     color: #FFFFFF !important;
 }
+
+a.panel-link.text-white:hover {
+    color: #dff0d8 !important;
+}

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
@@ -19,7 +20,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::where('author_id', auth('author')->id())->paginate(10);
+        $books = Book::where('author_id', auth('author')->id())->orderByDesc('created_at')->paginate(10);
         return view('author.books.index', compact('books'));
     }
 
@@ -52,6 +53,8 @@ class BookController extends Controller
         $book->isbn = $request->isbn;
         $book->description = $description;
         $book->price = $request->price;
+        $book->published_at = $request->published_at;
+        $book->pages_number = $request->pages_number;
         $book->image = $imgPath;
         $book->book_file = $bookFile;
         if ($book->save()) {
@@ -77,8 +80,10 @@ class BookController extends Controller
             'hard_copy' => ['required', 'integer', 'max:1'],
             'description' => ['nullable', 'max:1024'],
             'price' => ['required', 'numeric'],
-            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
-            'book_file' => ['nullable', 'mimes:pdf'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->maxWidth(800)->ratio(1 / 1)],
+            'book_file' => ['nullable', 'mimes:pdf', 'max:2048'],
+            'pages_number' => ['required', 'integer'],
+            'published_at' => ['required', 'date'],
         ]);
         if ($request->soft_copy == false && $request->soft_copy == $request->hard_copy) {
             return back()->withErrors(['err_msg' => 'The book needs at least a copy, select Yes on either soft or hard copy.']);
@@ -104,6 +109,8 @@ class BookController extends Controller
         $book->title = $request->title;
         $book->isbn = $request->isbn;
         $book->price = $request->price;
+        $book->published_at = $request->published_at;
+        $book->pages_number = $request->pages_number;
         if ($book->save()) {
             return back()->with('success', 'Book has been updated');
         }

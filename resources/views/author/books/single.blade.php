@@ -67,6 +67,14 @@
                                                 <td>{{ ($book->hard_copy == 1) ? 'Yes' : 'No' }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Pages Number</th>
+                                                <td>{{ number_format($book->pages_number) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Published Date</th>
+                                                <td>{{ $book->published_at }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Date Created</th>
                                                 <td>{{ $book->created_at }}</td>
                                             </tr>

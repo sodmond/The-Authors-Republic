@@ -49,7 +49,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom:30px;">
                 <div style="width:100%; box-shadow:0 1px 6px rgba(0,0,0,.175); float:left; padding:15px;">
-                    <h3>Shipping Address</h3>
+                    <h3>Shipping Address (Optional)</h3>
+                    <p>Leave empty if its the same as billing address</p>
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <input type="text" name="shipping_fname" class="form-control" id="fname" required placeholder="Firstname" value="{{ $address->fname ?? old('shipping_fname') }}">

@@ -85,9 +85,10 @@
                                                 <ul class="tg-productinfo">
                                                     <li><span>Soft Copy:</span><span>{{ ($book->soft_copy == true) ? 'YES' : 'NO' }}</span></li>
                                                     <li><span>Hard Copy:</span><span>{{ ($book->hard_copy == true) ? 'YES' : 'NO' }}</span></li>
-                                                    <li><span>Publication Date:</span><span>{{ date('M j, Y', strtotime($book)) }}</span></li>
+                                                    <li><span>Published Date:</span><span>{{ date('M j, Y', strtotime($book->published_at)) }}</span></li>
                                                     <li><span>Publisher:</span><span>{{ ucwords($author->firstname.' '.$author->lastname) }}</span></li>
                                                     <li><span>ISBN:</span><span>{{ $book->isbn }}</span></li>
+                                                    <li><span>Pages Number:</span><span>{{ $book->pages_number }}</span></li>
                                                 </ul>
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="description">

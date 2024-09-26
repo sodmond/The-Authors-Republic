@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BookRequest extends FormRequest
 {
@@ -29,8 +30,10 @@ class BookRequest extends FormRequest
             'hard_copy' => ['required', 'integer', 'max:1'],
             'description' => ['nullable', 'max:1024'],
             'price' => ['required', 'numeric'],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg'],
-            'book_file' => ['required', 'mimes:pdf'],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->maxWidth(800)->ratio(1 / 1)],
+            'book_file' => ['required', 'mimes:pdf', 'max:2048'],
+            'pages_number' => ['required', 'integer'],
+            'published_at' => ['required', 'date'],
         ];
     }
 }
