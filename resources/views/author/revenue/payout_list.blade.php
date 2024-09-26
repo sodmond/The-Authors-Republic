@@ -30,10 +30,17 @@
                             <h4 class="h5 text-white">List of Payout Requests</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row justify-content-end mb-3">
-                                <div class="col-auto">
-                                    <button class="btn btn-custom" data-toggle="modal" data-target="#newPayoutModal">
-                                        <i class="fa fa-plus-circle"></i> Request Payout</button>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <button class="btn btn-dark" onclick="javascript:void(0)">
+                                        <i class="fa fa-coins"></i> Balance: ₦{{ number_format(auth('author')->user()->balance, 2) }}
+                                    </button>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    @if(auth('author')->user()->balance > 0)
+                                        <button class="btn btn-custom" data-toggle="modal" data-target="#newPayoutModal">
+                                            <i class="fa fa-plus-circle"></i> Request Payout</button>
+                                    @endif
                                 </div>
                             </div>
                             @if (count($errors))
