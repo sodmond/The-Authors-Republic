@@ -49,9 +49,12 @@ Route::group(['prefix' => 'services', 'as' => 'services.'], function() {
     Route::get('payment/callback', [App\Http\Controllers\ServiceController::class, 'handleGatewayCallback'])->name('payment.verify');
 });
 
-Auth::routes();
+Auth::routes(['verify => true']);
+Route::get('email/verify', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('verification.notice');
+Route::post('email/verify', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
+Route::get('email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
 
-Route::group(['middleware' => ['auth:web'], 'prefix' => 'user', 'as' => 'user.'], function () {
+Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('home', [FrontendController\HomeController::class, 'index'])->name('home');
     Route::post('/book/{id}/review', [App\Http\Controllers\BookController::class, 'review'])->name('book.review');
     
