@@ -214,6 +214,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-logo {
         width: auto !important;
         float: left !important;
+        padding: 0 0 10px !important;
     }
     .tg-headervtwo .tg-searchbox {
         float: right !important;

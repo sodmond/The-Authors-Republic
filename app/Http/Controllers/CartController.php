@@ -158,7 +158,7 @@ class CartController extends Controller
                 'shipping_address' => $request->shipping_address ?? $request->billing_address,
                 'shipping_city' => $request->shipping_city ?? $request->billing_city,
                 'shipping_zip' => $request->shipping_city ?? $request->billing_zip,
-                'shipping_state' => $request->shipping_city ?? $request->billing_state,
+                'shipping_state' => $request->shipping_state ?? $request->billing_state,
             ]); #dd($order);
             Cart::where('user_id', auth('web')->id())->delete();
             $data = [
