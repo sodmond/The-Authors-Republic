@@ -35,7 +35,7 @@ class BlogController extends Controller
         $this->validate($request, [
             'type' => ['required', 'max:7'],
             'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:3000'],
+            'description' => ['required', 'max:10000'],
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
             'video' => ['required_if:type,podcast', 'mimes:mp4', 'max:5120'],
         ]);
@@ -72,7 +72,7 @@ class BlogController extends Controller
         $this->validate($request, [
             'type' => ['required', 'max:7'],
             'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:3000'],
+            'description' => ['required', 'max:10000'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
             'video' => ['nullable', 'mimes:mp4', 'max:5120'],
         ]);
