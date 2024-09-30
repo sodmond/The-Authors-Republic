@@ -8,6 +8,7 @@ use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Mail\SendPasswordChange;
 use App\Models\Admin;
+use App\Models\BasicSetting;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,8 @@ class SettingsController extends Controller
     {
         $adminRoles = DB::table('admin_roles')->get();
         $admins = Admin::all();
-        return view('admin.settings', compact('adminRoles', 'admins'));
+        $basic_setting = BasicSetting::find(1);
+        return view('admin.settings', compact('adminRoles', 'admins', 'basic_setting'));
     }
 
     public function newAdmin(Request $request)
@@ -166,5 +168,16 @@ class SettingsController extends Controller
         }
         $book_cat->delete();
         return back()->with('success', 'Book category has been deleted');
+    }
+
+    public function commRate(Request $request)
+    {
+        $this->validate($request, [
+            'payout_commission' => ['required', 'numeric', 'min:0']
+        ]);
+        $basic_setting = BasicSetting::find(1);
+        $basic_setting->payout_commission = $request->payout_commission;
+        $basic_setting->save();
+        return back()->with('success', 'Commission rate has been updated');
     }
 }

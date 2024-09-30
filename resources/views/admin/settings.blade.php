@@ -24,7 +24,12 @@
 
         <div class="row justify-content-end mb-3">
             <div class="col-auto">
-                <a class="btn btn-custom" href="{{ route('admin.settings.bookcat') }}"><i class="fa fa-book-open"></i> Book Categories</a>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#commRate">
+                    <i class="fa fa-percent"></i> Commission Rate</button>
+                <a class="btn btn-custom" href="{{ route('admin.settings.shipping') }}">
+                    <i class="fa fa-shipping-fast"></i> Shipping</a>
+                <a class="btn btn-custom" href="{{ route('admin.settings.bookcat') }}">
+                    <i class="fa fa-book-open"></i> Book Categories</a>
             </div>
         </div>
 
@@ -168,6 +173,29 @@
         </div>        
     </div>
 </div>
+<div class="modal" id="commRate" tabindex="-1">
+    <div class="modal-dialog">
+        <form class="modal-content" method="POST" action="{{ route('admin.settings.comm_rate') }}">
+            <div class="modal-header">
+                <h5 class="modal-title">Set Commission Rate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @csrf
+                <div class="form-group">
+                    <label>Commission Rate</label>
+                    <input type="number" class="form-control" name="payout_commission" value="{{ $basic_setting->payout_commission }}" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-custom">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>  
 @endsection
 
 @push('custom-scripts')

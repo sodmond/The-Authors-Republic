@@ -12,6 +12,7 @@
                         @if($activePage == 'book') <li><a href="{{ route('books') }}">All Books</a></li> @endif
                         @if($activePage == 'news_detail') <li><a href="{{ route('news') }}">News</a></li> @endif
                         @if($activePage == 'user.addressBook') <li><a href="{{ route('user.addressBook') }}">Address Book</a></li> @endif
+                        @if($activePage == 'authors.blog') <li><a href="{{ route('authors.corner') }}">Authors Corner</a></li> @endif
                         <li class="tg-active">{{ $title }}</li>
                     </ol>
                 </div>

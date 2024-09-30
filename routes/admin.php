@@ -88,5 +88,9 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('book-categories/{id}/edit', [AdminBackend\SettingsController::class, 'editBookCat'])->name('bookcat.edit');
         Route::post('book-categories/{id}/update', [AdminBackend\SettingsController::class, 'updateBookCat'])->name('bookcat.update');
         Route::get('book-categories/{id}/trash', [AdminBackend\SettingsController::class, 'trashBookCat'])->name('bookcat.trash');
+        Route::post('commission-rate', [AdminBackend\SettingsController::class, 'commRate'])->name('comm_rate');
+        Route::get('shipping-locations', [AdminBackend\ShippingController::class, 'index'])->name('shipping');
+        Route::get('shipping-location/{id}', [AdminBackend\ShippingController::class, 'edit'])->name('shipping.edit');
+        Route::post('shipping-location/{id}', [AdminBackend\ShippingController::class, 'update'])->name('shipping.update');
     });
 });

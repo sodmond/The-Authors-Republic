@@ -120,7 +120,7 @@
                                                             @foreach ($book->bookReviews as $review)                                                        
                                                                 <div class="tg-authorbox">
                                                                     <figure class="tg-authorimg">
-                                                                        <img src="{{ asset('frontend/images/author/imag-24.jpg') }}" alt="image">
+                                                                        <img src="{{ asset('img/user-icon.png') }}" alt="image" style="max-width:70px;">
                                                                     </figure>
                                                                     <div class="tg-authorinfo">
                                                                         <div class="tg-authorhead">
@@ -129,6 +129,11 @@
                                                                                     @php $user = \App\Models\User::find($review->user_id); @endphp
                                                                                     <h2>{{ $user->firstname.' '.$user->lastname }}</h2>
                                                                                     <span> {{ $review->created_at }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tg-rightarea">
+                                                                                <div class="form-group">
+                                                                                    <input type="number" class="rating" value="{{ $review->rating }}" data-readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -155,7 +160,7 @@
                                         </div>
                                         <div class="tg-authorbox">
                                             <figure class="tg-authorimg">
-                                                <img src="{{ asset('frontend/images/author/imag-24.jpg') }}" alt="image description">
+                                                <img src="{{ asset('storage/'.$author->image) }}" alt="image description" style="max-width:70px;">
                                             </figure>
                                             <div class="tg-authorinfo">
                                                 <div class="tg-authorhead">

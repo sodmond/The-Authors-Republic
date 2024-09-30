@@ -25,12 +25,15 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <strong class="tg-logo"><a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}" alt="The Author Republic" style="max-height:85px;"></a></strong>
                     <div class="tg-searchbox">
-                        <form class="tg-formtheme tg-formsearch" method="GET" accept="{{ route('books') }}">
+                        <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
                             <fieldset>
                                 <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title...">
                                 <button type="submit" class="tg-btn">Search</button>
                             </fieldset>
                         </form>
+                        <span>
+                            <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -58,8 +61,16 @@
                                     <li class="{{ ($activePage == 'books') ? 'current-menu-item' : '' }}">
                                         <a href="{{ route('books') }}">All Books</a>
                                     </li>
-                                    <li class="{{ ($activePage == 'authors') ? 'current-menu-item' : '' }}">
-                                        <a href="{{ route('authors') }}">Authors</a>
+                                    <li class="menu-item-has-children {{ ($activePage == 'authors') ? 'current-menu-item' : '' }}">
+                                        <a href="javascript:void(0)">Authors</a>
+                                        <ul class="sub-menu">
+                                            <li class="">
+                                                <a href="{{ route('authors') }}">All Authors</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="{{ route('authors.corner') }}">Authors Corner</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li class="{{ ($activePage == 'about') ? 'current-menu-item' : '' }}">
                                         <a href="{{ route('about') }}">About Us</a>

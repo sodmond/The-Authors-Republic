@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-md-6"><h4>My Addresses</h4></div>
                             <div class="col-md-6 text-right">
-                                <a class="btn btn-success" href="{{ route('user.addressBook.new') }}">
+                                <a class="btn btn-success text-white" href="{{ route('user.addressBook.new') }}">
                                     <i class="fa fa-plus-circle"></i> Add New
                                 </a>
                             </div>
@@ -41,11 +41,11 @@
                                             <td>{{ $address->lname }}</td>
                                             <td>{{ $address->address }}</td>
                                             <td>{{ $address->city }}</td>
-                                            <td>{{ $address->state }}</td>
+                                            <td>{{ ucwords($states[$address->state]->state) }}</td>
                                             <td>{{ $address->zip }}</td>
                                             <td>{{ $address->created_at }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-success" href="{{ route('user.addressBook.edit', ['id' => $address->id]) }}">
+                                                <a class="btn btn-sm btn-success text-white" href="{{ route('user.addressBook.edit', ['id' => $address->id]) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             </td>

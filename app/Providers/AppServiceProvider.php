@@ -9,6 +9,7 @@ use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\Cart;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
@@ -30,7 +31,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapThree();
-
         try {
             #$cart = Cart::getCookie();
             $allBooks = Book::all()->keyBy('id');

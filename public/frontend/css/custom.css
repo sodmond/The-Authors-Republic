@@ -197,6 +197,10 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     color: #FFF !important;
 }
 
+.tg-headervtwo .tg-searchbox span {
+    display: none !important;
+}
+
 @media only screen and (max-width: 764px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
@@ -206,6 +210,27 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     }
     #homeTestimonal div.overlay{
         min-height: 595px;
+    }
+    .tg-headervtwo .tg-logo {
+        width: auto !important;
+        float: left !important;
+    }
+    .tg-headervtwo .tg-searchbox {
+        float: right !important;
+        width: auto;
+        padding-top: 20px;
+    }
+    .tg-headervtwo .tg-searchbox form {
+        display: none !important;
+    }
+    .tg-headervtwo .tg-searchbox span {
+        display: block !important;
+        font-size: 18px;
+        background: #616B2E;
+        padding: 7px 10px;
+    }
+    .tg-headervtwo .tg-searchbox span a {
+        color: #FFF !important;
     }
 }
 
@@ -223,4 +248,10 @@ a.panel-link.text-white:hover {
 
 .tg-productgrid .tg-postbook {
     min-height: 450px !important;
+}
+
+.pdf {
+    width: 100%;
+    min-height: 800px;
+    aspect-ratio: 4 / 3;
 }

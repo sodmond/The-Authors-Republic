@@ -31,7 +31,7 @@ class Book extends Model
 
     public function bookReviews() : HasMany
     {
-        return $this->hasMany(BookReview::class);
+        return $this->hasMany(BookReview::class)->orderByDesc('created_at');
     }
 
     public static function getSlug($title)

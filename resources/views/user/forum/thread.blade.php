@@ -60,7 +60,7 @@
                                     @foreach ($comments as $comment)
                                         <div class="row forum_post" style="padding:10px 5px; margin-bottom:20px;">
                                             <div class="col-md-12" style="display:flex; align-items:center;">
-                                                <img class="img-responsive img-circle" src="{{ asset('frontend/images/author/imag-10.jpg') }}" style="max-width:70px; float:left; margin-right:20px;">
+                                                <img class="img-responsive img-circle" src="{{ asset('img/user-icon.png') }}" style="max-width:70px; float:left; margin-right:20px;">
                                                 <span>{{ $comment->body }}</span>
                                             </div>
                                             <div class="col-md-12 text-right">

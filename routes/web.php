@@ -28,7 +28,10 @@ Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->nam
 Route::get('/books-category/{id}/{slug}', [App\Http\Controllers\BookController::class, 'category'])->name('books.category');
 Route::get('/book/{id}/{slug}', [App\Http\Controllers\BookController::class, 'get'])->name('book');
 Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index'])->name('authors');
-Route::get('/author_profile/{id}/{slug}', [App\Http\Controllers\AuthorController::class, 'get'])->name('author');
+Route::get('/author-profile/{id}/{slug}', [App\Http\Controllers\AuthorController::class, 'get'])->name('author');
+Route::get('/authors-corner', [App\Http\Controllers\AuthorController::class, 'blog'])->name('authors.corner');
+Route::get('/authors-corner/blog/{id}/{slug}', [App\Http\Controllers\AuthorController::class, 'singleBlog'])->name('authors.blog');
+Route::post('/authors-corner/blog/{id}/comment', [App\Http\Controllers\AuthorController::class, 'blogComment']);
 Route::get('/news', [App\Http\Controllers\ArticlesController::class, 'index'])->name('news');
 Route::get('/news/{id}/{slug}', [App\Http\Controllers\ArticlesController::class, 'get'])->name('news.get');
 
@@ -39,6 +42,7 @@ Route::get('/cart/remove', [App\Http\Controllers\CartController::class, 'removeI
 Route::get('/cart/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkoutSubmit']);
+Route::get('/get-shipping-fee', [App\Http\Controllers\CartController::class, 'calShipping'])->name('shipping_fee');
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment.verify');
 Route::get('forum', [FrontendController\ForumController::class, 'index'])->name('forum');
 Route::post('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
@@ -62,6 +66,7 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'user', 'as'
     Route::get('orders', [FrontendController\OrderController::class, 'index'])->name('orders');
     Route::get('order/{id}/{code}', [FrontendController\OrderController::class, 'view'])->name('order');
     Route::post('order/book_download', [FrontendController\OrderController::class, 'downloadBook'])->name('book.download');
+    Route::get('order/book_reader', [FrontendController\OrderController::class, 'readBook'])->name('book.reader');
     
     Route::get('wishlist', [FrontendController\WishListController::class, 'index'])->name('wishlist');
     Route::post('wishlist/add-item', [FrontendController\WishListController::class, 'addItem'])->name('wishlist.add');

@@ -224,9 +224,44 @@
         Testimonials End
 *************************************-->
 <!--************************************
-        Authors Start
+        Authors Corner Start
 *************************************-->
 <section class="tg-sectionspace tg-haslayout">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="tg-sectionhead">
+                    <h2><span>Authors Corner &amp; Articles</span>Blog & Podcasts by Authors</h2>
+                    <a class="tg-btn" href="{{ route('news') }}">View All</a>
+                </div>
+            </div>
+            <div id="tg-authorscornerslider" class="tg-postslider tg-blogpost owl-carousel">
+                @foreach($authorsBlog as $article)
+                <div class="item tg-author">
+                    @php 
+                        $slug = \App\Models\Article::getSlug($article->title);
+                        $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug]);
+                    @endphp
+                    <figure><a href="{{ $link }}"><img src="{{ asset('storage/'.$article->image) }}" alt="article image"></a></figure>
+                    <div class="tg-post">
+                        <ul class="tg-bookscategories">
+                            <li><a href="javascript:void(0);">{{ ucwords($article->type) }}</a></li>
+                        </ul>
+                        <div class="tg-posttitle">
+                            <h3><a href="{{ $link }}">{{ $article->title }}</a></h3>
+                        </div>
+                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $article->author->firstname.' '.$article->author->lastname }}</a></span>
+                        <ul class="tg-postmetadata">
+                            <li><a href="javascript:void(0);"><i class="fa fa-calendar"></i><i>Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+{{--<section class="tg-sectionspace tg-haslayout">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -258,7 +293,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
 <!--************************************
         Authors End
 *************************************-->
@@ -327,59 +362,11 @@
 
 @push('custom-scripts')
 <script>
-    $('.tg-homeslider.owl-carousel').owlCarousel({
-        autoplay:true,
-        loop:true,
-        margin:10,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-                dots:true,
-            },
-            754:{
-                items:1,
-                dots:true
-            }
-        }
-    });
     $(document).ready(function() {
         $('.overlay').each(function() {
             var parentHeight = $(this).parent().height();
             $(this).height(parentHeight);
         });
-    });
-    $('#tg-authorsslider.owl-carousel').owlCarousel({
-        autoplay:true,
-        loop:true,
-        margin:10,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:2,
-                dots:true,
-            },
-            754:{
-                items:6,
-                dots:true,
-            }
-        }
-    });
-    $('#tg-bestsellingbooksslider.owl-carousel').owlCarousel({
-        autoplay:true,
-        loop:true,
-        margin:10,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:2,
-                dots:true,
-            },
-            754:{
-                items:6,
-                dots:true,
-            }
-        }
     });
 </script>
 @endpush

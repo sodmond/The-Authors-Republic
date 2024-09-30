@@ -99,8 +99,10 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-auto">
-                                    <a class="btn btn-lg btn-success" href="{{ route('admin.book.download', ['book_file' => $book->book_file]) }}" target="_blank">
-                                        <i class="fas fa-download"></i> Download Book File</a>
+                                    @if(!empty($book->book_file))
+                                        <a class="btn btn-lg btn-success" href="{{ route('admin.book.download', ['book_file' => $book->book_file]) }}" target="_blank">
+                                            <i class="fas fa-download"></i> Download Book File</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

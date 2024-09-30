@@ -78,8 +78,8 @@
                                                     @csrf
                                                     <input type="hidden" name="book_id" value="{{ $item->book_id }}">
                                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                    <button class="btn btn-sm btn-success" title="Download Book File">
-                                                        <i class="fa fa-download"></i></button>
+                                                    <button class="btn btn-sm btn-success" title="Read Book">
+                                                        <i class="fa fa-eye"></i></button>
                                                 </form>
                                                 @endif
                                             </td>

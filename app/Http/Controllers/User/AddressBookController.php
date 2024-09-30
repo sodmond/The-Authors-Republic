@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddressBook;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -13,12 +14,14 @@ class AddressBookController extends Controller
     public function index()
     {
         $addressBook = AddressBook::where('user_id', auth()->id())->paginate(10);
-        return view('user.address_book.index', compact('addressBook'));
+        $states = Shipping::orderBy('state')->get()->keyBy('id');
+        return view('user.address_book.index', compact('addressBook', 'states'));
     }
 
     public function new()
     {
-        return view('user.address_book.new');
+        $states = Shipping::where('status', true)->orderBy('state')->get();
+        return view('user.address_book.new', compact('states'));
     }
 
     public function saveNew(Request $request)
@@ -28,7 +31,7 @@ class AddressBookController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'numeric'],
             'zip' => ['required', 'integer'],
             'default' => ['required', 'integer', 'max:1'],
         ]);
@@ -58,7 +61,8 @@ class AddressBookController extends Controller
         if ($address->user_id != auth()->id()) {
             return redirect()->back();
         }
-        return view('user.address_book.edit', compact('address'));
+        $states = Shipping::orderBy('state')->get()->keyBy('id');
+        return view('user.address_book.edit', compact('address', 'states'));
     }
 
     public function update($id, Request $request)
@@ -68,7 +72,7 @@ class AddressBookController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'numeric'],
             'zip' => ['required', 'integer'],
             'default' => ['required', 'integer', 'max:1'],
         ]);

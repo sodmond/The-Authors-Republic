@@ -53,6 +53,14 @@ Route::group(['middleware' => ['auth:author']], function () {
     Route::get('revenue/payout/{id}', [AuthorBackend\RevenueController::class, 'payout'])->name('payout');
     Route::post('revenue/payout/{id}/trash', [AuthorBackend\RevenueController::class, 'payoutTrash'])->name('payout.trash');
 
+    Route::get('blog', [AuthorBackend\BlogController::class, 'index'])->name('blog');
+    Route::get('blog/{id}', [AuthorBackend\BlogController::class, 'get'])->name('blog.get');
+    Route::get('blog_new', [AuthorBackend\BlogController::class, 'new'])->name('blog.new');
+    Route::post('blog_new', [AuthorBackend\BlogController::class, 'addNew']);
+    Route::get('blog/{id}/edit', [AuthorBackend\BlogController::class, 'edit'])->name('blog.edit');
+    Route::post('blog/{id}/update', [AuthorBackend\BlogController::class, 'update'])->name('blog.update');
+    Route::get('blog/{id}/trash', [AuthorBackend\BlogController::class, 'trash'])->name('blog.trash');
+    
     Route::get('account/profile', [AuthorBackend\ProfileController::class, 'index'])->name('profile');
     Route::put('account/profile/update', [AuthorBackend\ProfileController::class, 'update'])->name('profile.update');
     Route::post('author/profile/update/image', [AuthorBackend\ProfileController::class, 'updateImage'])->name('profile.update.image');

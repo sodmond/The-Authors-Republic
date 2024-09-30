@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderContent;
+use App\Models\Shipping;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -96,7 +97,8 @@ class CartController extends Controller
         }
         $address = AddressBook::where('user_id', auth()->id())->where('default', true)->first();
         $allBooks = Book::all()->keyBy('id');
-        return view('checkout', compact('cart', 'allBooks', 'address'));
+        $shipping_location = Shipping::where('status', true)->orderBy('state')->get();
+        return view('checkout', compact('cart', 'allBooks', 'address', 'shipping_location'));
     }
 
     public function checkoutSubmit(Request $request)
@@ -115,6 +117,7 @@ class CartController extends Controller
             'shipping_zip' => ['nullable', 'max:255'],
             'shipping_state' => ['nullable', 'max:255'],
             'note' => ['nullable', 'max:500'],
+            'shipping_fee' => ['required', 'numeric']
         ],[
             'billing_fname.required' => 'The billing firstname field is required.',
             'billing_fname.max' => 'The billing firstname max charaters is 255.',
@@ -122,11 +125,10 @@ class CartController extends Controller
             'billing_lname.max' => 'The billing lastname max charaters is 255.',
             'shipping_fname.max' => 'The shipping firstname max charaters is 255.',
             'shipping_lname.max' => 'The shipping lastname max charaters is 255.',
-        ]); #dd($request->all());
+        ]);
         $cookie = Cart::getCookie();
         $cartItems = Cart::where($cookie[0], $cookie[1])->pluck('book_id');
         $cartItemsQty = Cart::where($cookie[0], $cookie[1])->pluck('quantity');
-        #dd(($cartItemsQty[0]));
         DB::beginTransaction();
         try {
             $order = Order::create([
@@ -136,11 +138,12 @@ class CartController extends Controller
                 'code' => Order::createOrderCode(), 
                 'note' => $request->note,
                 'subtotal' => 0,
+                'shipping_fee' => $request->shipping_fee,
                 'total_cost' => 0,
             ]);
             $cost = Order::getTotal($order->id, $cartItems, $cartItemsQty, 0);
             $order->subtotal = $cost['subtotal'];
-            $order->total_cost = $cost['total_cost'];
+            $order->total_cost = ($cost['total_cost'] + $request->shipping_fee);
             $order->save();
             DB::table('order_address')->insert([
                 'order_id' => $order->id,
@@ -177,5 +180,15 @@ class CartController extends Controller
             Log::info($e->getMessage());
             return back()->withErrors(['err_msg' => 'Problem encountered while submitting your order, pls try again.']);
         }
+    }
+
+    public function calShipping()
+    {
+        $state_id = $_GET['state_id'];
+        $state = Shipping::find($state_id);
+        if (!$state) {
+            return response()->json(['error' => 'Not found'], 404);
+        }
+        return response()->json(['amount' => $state->fee], 200);
     }
 }

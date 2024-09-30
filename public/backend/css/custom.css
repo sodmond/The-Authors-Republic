@@ -57,3 +57,15 @@ input {
     background-color: #616B2E;
     border-color: #616B2E;
 }
+
+.pagination > li > a {
+  z-index: 3;
+  color: #616B2E;
+  background-color: #EEE;
+  border-color: #FCFCFC;
+}
+
+.pagination > li > a, .pagination > li > span {
+  padding: 6px 10px;
+  margin: 0 2px;
+}

@@ -77,4 +77,9 @@ class Author extends Authenticatable
     {
         return $this->hasMany(Payout::class);
     }
+
+    public function blogs(): HasMany
+    {
+        return $this->hasMany(AuthorsBlog::class);
+    }
 }

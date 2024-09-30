@@ -36,11 +36,18 @@ class OrderController extends Controller
         $order = Order::where('id', $request->order_id)->where('status', 'completed')->first();
         if ($order) {
             if (in_array($book->id, json_decode($order->products))) {
-                $book_file_path = 'books/'.$book->book_file;
-                return Storage::download($book_file_path);
+                $book_file_path = Storage::get('books/'.$book->book_file);
+                return redirect()->route('user.book.reader')->with('book_file_path', $book_file_path);
             }
         }
         return redirect('/');
-        
+    }
+
+    public function readBook()
+    {
+        if (session('book_file_path')) {
+            dd(session('book_file_path'));
+        }
+        return view('user.book_reader');
     }
 }

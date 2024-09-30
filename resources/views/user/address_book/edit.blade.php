@@ -65,7 +65,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="state" class="col-form-label">{{ __('State') }}</label>
-                                            <input id="state" type="text" class="form-control" name="state" value="{{ $address->state }}" required>              
+                                            <select name="state" class="form-control" required>
+                                                <option value="">- - - Select State - - -</option>
+                                                @foreach ($states as $state)
+                                                    <option value="{{ $state->id }}" @selected($address->state == $state->id)>{{ ucwords($state->state) }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

@@ -93,6 +93,7 @@
 	<script src="{{ asset('frontend/js/appear.js') }}"></script>
 	<script src="{{ asset('frontend/js/gmap3.js') }}"></script>
 	<script src="{{ asset('frontend/js/main.js') }}"></script>
+	<script src="{{ asset('frontend/js/custom.js') }}"></script>
 	<script src="{{ asset('frontend/js/bootstrap-rating-input.min.js') }}"></script>
 	@stack('custom-scripts')
 	@if(session('cart_suc'))

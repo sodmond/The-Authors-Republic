@@ -37,7 +37,6 @@
                                                         <span>add to wishlist</span>
                                                     </button>
                                                 </form>
-                                                
                                             </figure>
                                             <div class="tg-postbookcontent">
                                                 <ul class="tg-bookscategories">

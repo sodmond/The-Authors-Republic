@@ -56,7 +56,7 @@ class PaymentController extends Controller
                     'created_at' => now()
                 ]); #dd($transaction);
                 $order->update(['status' => 'completed', 'transaction_id' => $transaction]);
-                $earningsData = [];
+                /*$earningsData = [];
                 for ($i=0; $i < count($orderItems); $i++) {
                     $book = Book::find($orderItems[$i]->book_id);
                     $author = Author::find($book->author_id);
@@ -72,7 +72,7 @@ class PaymentController extends Controller
                     ];
                     $author->update(['balance' => $after_balance]);
                 }
-                Earning::insert($earningsData);
+                Earning::insert($earningsData);*/
                 DB::commit();
                 Mail::to($user->email)->queue(new SendOrderConfirmation($order->id, $order->code));
             }

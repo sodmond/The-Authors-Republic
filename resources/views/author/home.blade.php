@@ -22,6 +22,12 @@
             </div>     
             <!-- end page title --> 
 
+            <div class="row justify-content-end mb-3">
+                <div class="col-auto">
+                    <a class="btn btn-custom" href="{{ route('author.book.new') }}">
+                        <i class="fa fa-plus-circle"></i> Publish Book</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card-box widget-chart-one gradient-success bx-shadow-lg">

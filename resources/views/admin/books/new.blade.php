@@ -58,7 +58,7 @@
                                             <select class="form-control" id="author" name="author" required>
                                                 <option value="">- - - Select Author - - -</option>
                                                 @foreach($authors as $author)
-                                                    <option value="{{ $author->id }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</option>
+                                                    <option value="{{ $author->id }}" @selected(old('author') == $author->id)>{{ ucwords($author->firstname.' '.$author->lastname) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -75,7 +75,7 @@
                                             <select class="form-control" id="category" name="category" required>
                                                 <option value="">- - - Select Category - - -</option>
                                                 @foreach($book_categories as $category)
-                                                    <option value="{{ $category->id }}">{{ ucwords($category->title) }}</option>
+                                                    <option value="{{ $category->id }}" @selected(old('category') == $category->id)>{{ ucwords($category->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -150,7 +150,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="book_file">Book File</label>
-                                            <input class="form-control" type="file" id="book_file" name="book_file" required>
+                                            <input class="form-control" type="file" id="book_file" name="book_file">
                                             <small class="text-info">(Allowed file type; .pdf | Max: 2MB)</small>
                                         </div>
                                     </div>

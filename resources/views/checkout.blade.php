@@ -42,7 +42,12 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <input type="text" name="billing_state" class="form-control" id="state" placeholder="State" value="{{ $address->state ?? old('billing_state') }}">
+                            <select name="billing_state" class="form-control" id="billingState" required>
+                                <option value="">- - - Select State - - -</option>
+                                @foreach ($shipping_location as $location)
+                                    <option value="{{ $location->id }}" @selected($address->state == $location->id)>{{ ucwords($location->state) }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -74,7 +79,12 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <input type="text" name="shipping_state" class="form-control" id="state" placeholder="State" value="{{ $address->state ?? old('shipping_state') }}">
+                            <select name="shipping_state" class="form-control" required id="shippingState">
+                                <option value="">- - - Select State - - -</option>
+                                @foreach ($shipping_location as $location)
+                                    <option value="{{ $location->id }}" @selected($address->state == $location->id)>{{ ucwords($location->state) }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group tg-hastextarea">
@@ -82,6 +92,7 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="shipping_fee" value="0">
         </form>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8" style="margin-bottom:30px;">
@@ -121,10 +132,19 @@
                 <div style="box-shadow: 0 1px 6px rgba(0,0,0,.175); float:left; padding:15px; width:100%;">
                     <h3>Order Total</h3>
                     <div class="tg-minicartfoot">
-                        <span class="tg-btnemptycart" style="font-size:16px;">
-                            Subtotal:
-                        </span>
-                        <span class="tg-subtotal"><strong>₦{{ number_format($subtotal, 2)}}</strong></span>
+                        <div class="mb-2" style="float:left; width:100%;">
+                            <span class="tg-btnemptycart" style="font-size:16px;">Subtotal:</span>
+                            <span class="tg-subtotal"><strong>₦{{ ($subtotal)}}</strong></span>
+                            <input type="hidden" name="sub_total" value="{{ $subtotal }}">
+                        </div>
+                        <div class="mb-2" style="float:left; width:100%;">
+                            <span class="tg-btnemptycart" style="font-size:16px;">Shipping Fee:</span>
+                            <span class="tg-subtotal" id="shippingCost"><strong>₦0.00</strong></span>
+                        </div>
+                        <div class="mb-2" style="float:left; width:100%;">
+                            <span class="tg-btnemptycart" style="font-size:16px;">Total:</span>
+                            <span class="tg-subtotal" id="totalCost"><strong>₦{{ ($subtotal)}}</strong></span>
+                        </div>
                         <div class="tg-btns">
                             <button class="tg-btn tg-active" id="checkoutBtn" style="width:100%;">
                                 Checkout</button>
@@ -135,13 +155,55 @@
         </div>
     </div>
 </section>
+<input type="hidden" id="calShippingFeeLink" value="{{ route('shipping_fee') }}">
 @endsection
 
 @push('custom-scripts')
     <script>
+        $(document).ready(function(){
+            $('#checkoutBtn').hide();
+            if ($('#shippingState').val() != '') {
+                calculateShipping($('#shippingState').val());
+            } else{
+                calculateShipping($('#billingState').val());
+            }
+        });
+        $('#billingState').change(function () {
+            if ($('#shippingState').val() != '') {
+                calculateShipping($(this).val());
+            }
+        });
+        $('#shippingState').change(function () {
+            if ($(this).val() != '') {
+                calculateShipping($(this).val());
+            } else {
+                calculateShipping($('#billingState').val());
+            }
+        });
         $('#checkoutBtn').click(function() {
             //$('#checkoutForm').append('<input type="hidden" name="checkout" value="checkout">');
             $('#checkoutForm').submit();
         });
+        function calculateShipping(state_id) {
+            $.ajax({
+                type: 'GET',
+                url: $('#calShippingFeeLink').val() + '?state_id=' + state_id,
+                success: function(data) {
+                    if ($.isEmptyObject(data.error)) {
+                        const numberFormatter = new Intl.NumberFormat();
+                        var shipping_fee = parseFloat(data.amount).toFixed(2);
+                        $('#shippingCost').html('<strong>₦' + numberFormatter.format(shipping_fee) + '</strong>');
+                        $('input[name=shipping_fee]').val(data.amount)
+                        var subtotal = $('input[name=sub_total]').val()
+                        var totalCost = parseInt(data.amount) + parseInt(subtotal)
+                        $('#totalCost').html('<strong>₦' + numberFormatter.format(totalCost) + '</strong>');
+                        $('#checkoutBtn').show('slow');
+                    } else {
+                        $('#checkoutBtn').hide('slow');
+                        console(data.error);
+                    }
+                }
+            });
+        }
     </script>
 @endpush

@@ -164,6 +164,13 @@
                                 </ul>
                             </li>
 
+                            <li>
+                                <a href="{{ route('author.blog') }}" class="{{ ($activePage == 'blog') ? 'active' : '' }}">
+                                    <i class="fas fa-blog"></i> 
+                                    <span> Blog/Podcast </span>
+                                </a>
+                            </li>
+
                             {{--<li>
                                 <a href="{{ route('author.settings') }}" class="{{ ($activePage == 'settings') ? 'active' : '' }}">
                                     <i class="fas fa-cog"></i> 

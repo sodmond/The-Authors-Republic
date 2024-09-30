@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactForm;
 use App\Models\Article;
 use App\Models\Author;
+use App\Models\AuthorsBlog;
 use App\Models\Book;
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
@@ -30,11 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(10)->get(); #dd($books);
-        $books = Book::orderByDesc('created_at')->take(12)->get(); #dd($books);
-        $latestNews = Article::orderByDesc('created_at')->take(10)->get();
+        $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(10)->get();
+        $books = Book::orderByDesc('created_at')->take(12)->get();
+        $latestNews = Article::orderByDesc('published_at')->take(10)->get();
         $authors = Author::orderByDesc('created_at')->take(10)->get();
-        return view('home', compact('books', 'featuredBooks', 'latestNews', 'authors'));
+        $authorsBlog = AuthorsBlog::orderByDesc('published_at')->take(10)->get(); #dd($authorsBlog->count());
+        return view('home', compact('books', 'featuredBooks', 'latestNews', 'authorsBlog'));
     }
 
     public function about()

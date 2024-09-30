@@ -64,7 +64,7 @@
                                             <select class="form-control" id="category" name="category" required>
                                                 <option value="">- - - Select Category - - -</option>
                                                 @foreach($book_categories as $category)
-                                                    <option value="{{ $category->id }}" {{ ($book->category_id == $category->id) ? 'selected' : '' }}>{{ ucwords($category->title) }}</option>
+                                                    <option value="{{ $category->id }}" @selected($book->category_id == $category->id)>{{ ucwords($category->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

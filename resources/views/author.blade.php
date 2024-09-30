@@ -19,16 +19,19 @@
                                 <li class="tg-linkedin"><a href="{{ $author->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
-                        <div class="tg-description">
+                        <div class="tg-description mb-3">
                             <p>{{ $author->bio }}</p>
                         </div>
                         <div class="tg-booksfromauthor">
                             <div class="tg-sectionhead">
                                 <h2>Books of {{ ucwords($author->firstname) }}</h2>
+                                <div class="socialicons">
+                                    <a class="tg-btn tg-active" href="{{ route('authors.corner', ['author' => $author->id]) }}">Blogs/Podcast</a>
+                                </div>
                             </div>
                             <div class="row">
                                 @foreach($books as $book)
-                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-6">
                                     <div class="tg-postbook">
                                         <figure class="tg-featureimg">
                                             <div class="tg-bookimg">

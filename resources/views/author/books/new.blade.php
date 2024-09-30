@@ -64,7 +64,7 @@
                                             <select class="form-control" id="category" name="category" required>
                                                 <option value="">- - - Select Category - - -</option>
                                                 @foreach($book_categories as $category)
-                                                    <option value="{{ $category->id }}">{{ ucwords($category->title) }}</option>
+                                                    <option value="{{ $category->id }}" @selected(old('category') == $category->id)>{{ ucwords($category->title) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -86,8 +86,8 @@
                                             <label for="soft_copy">Soft Copy</label>
                                             <select class="form-control" id="soft_copy" name="soft_copy" required>
                                                 <option value="">- - - Select - - -</option>
-                                                <option value="1" @selected(old('soft_copy') == true)>Yes</option>
-                                                <option value="0" @selected(old('soft_copy') == false)>No</option>
+                                                <option value="1" @selected(old('soft_copy') == 1)>Yes</option>
+                                                <option value="0" @selected(old('soft_copy') == 0)>No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -96,8 +96,8 @@
                                             <label for="price">Hard Copy</label>
                                             <select class="form-control" id="hard_copy" name="hard_copy" required>
                                                 <option value="">- - - Select - - -</option>
-                                                <option value="1" @selected(old('hard_copy') == true)>Yes</option>
-                                                <option value="0" @selected(old('hard_copy') == false)>No</option>
+                                                <option value="1" @selected(old('hard_copy') == 1)>Yes</option>
+                                                <option value="0" @selected(old('hard_copy') == 0)>No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="book_file">Book File</label>
-                                            <input class="form-control" type="file" id="book_file" name="book_file" required>
+                                            <input class="form-control" type="file" id="book_file" name="book_file">
                                             <small class="text-info">(Allowed file type; .pdf | Max: 2MB)</small>
                                         </div>
                                     </div>
