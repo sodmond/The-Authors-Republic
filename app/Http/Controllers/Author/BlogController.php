@@ -33,7 +33,7 @@ class BlogController extends Controller
     public function addNew(Request $request)
     {
         $this->validate($request, [
-            'type' => ['required', 'max:7'],
+            'type' => ['required', 'max:10'],
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:10000'],
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
@@ -44,6 +44,7 @@ class BlogController extends Controller
         Storage::put('author/blog/contents/'.$contentFile, clean($request->description), 'public');
         $authorBlog = new AuthorsBlog();
         $authorBlog->author_id = auth('author')->id();
+        $authorBlog->type = $request->type;
         $authorBlog->title = $request->title;
         $authorBlog->content = $contentFile;
         $authorBlog->image = $imgPath;
@@ -70,7 +71,7 @@ class BlogController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'type' => ['required', 'max:7'],
+            'type' => ['required', 'max:10'],
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:10000'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
@@ -83,6 +84,7 @@ class BlogController extends Controller
         $contentFile = $authorBlog->content;
         Storage::put('author/blog/contents/'.$contentFile, clean($request->description, 'youtube'), 'public');
         $authorBlog->title = $request->title;
+        $authorBlog->type = $request->type;
         $authorBlog->content = $contentFile;
         $authorBlog->published_at = $request->published_at;
         if ($request->has('image')) {
