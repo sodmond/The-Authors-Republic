@@ -113,7 +113,6 @@
                                         </div>
                                     </li>
                                     @endforeach
-                                    <li class="tg-loadmore"><a class="tg-btn tg-active" href="javascript:void(0);">View All</a></li>
                                 </ul>
                             </div>
                         </div>
