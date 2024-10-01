@@ -173,10 +173,12 @@ class SettingsController extends Controller
     public function commRate(Request $request)
     {
         $this->validate($request, [
-            'payout_commission' => ['required', 'numeric', 'min:0']
+            'payout_commission' => ['required', 'numeric', 'min:0'],
+            'author_premium_fee' => ['required', 'numeric', 'min:0']
         ]);
         $basic_setting = BasicSetting::find(1);
         $basic_setting->payout_commission = $request->payout_commission;
+        $basic_setting->author_premium_fee = $request->author_premium_fee;
         $basic_setting->save();
         return back()->with('success', 'Commission rate has been updated');
     }
