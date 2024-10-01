@@ -36,6 +36,12 @@
                             <div class="col-md-auto">
                                 @php $profile_pix = empty(auth('author')->user()->image) ? asset('frontend/images/author/imag-25.jpg') : asset('storage/'.auth('author')->user()->image) @endphp
                                 <img class="img-fluid img-thumbnail rounded" src="{{ $profile_pix }}" alt="Profile picture" style="max-width:120px;">
+                                <div class="text-center mt-2">
+                                    <span class="bg-warning text-dark py-1 px-3 rounded">
+                                        Level: 
+                                        <strong>{{ (auth('author')->user()->level == 'basic') ? 'Starter' : ucwords(auth('author')->user()->level) }}</strong>
+                                    </span>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <form action="{{ route('author.profile.update.image') }}" method="post" enctype="multipart/form-data">

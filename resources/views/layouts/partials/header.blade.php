@@ -32,8 +32,16 @@
                             </fieldset>
                         </form>
                         <span>
-                            <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <a id="searchPopBtn" href="#"><i class="fa fa-search"></i></a>
                         </span>
+                        <div id="searchPopForm">
+                            <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
+                                <fieldset>
+                                    <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title...">
+                                    <button type="submit" class="tg-btn"><i class="fa fa-search"></i></button>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

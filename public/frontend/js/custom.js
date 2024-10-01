@@ -88,3 +88,12 @@ $('#tg-authorscornerslider').owlCarousel({
 		'owl-next tg-btnround tg-btnnext'
 	]
 });
+
+$('#searchPopBtn').click(function(e) {
+	e.preventDefault();
+	//alert();
+	//$('#searchPopForm')
+	var searchPopForm = $('#searchPopForm').html();
+	$('#searchModal div div.modal-content').html(searchPopForm);
+	$('#searchModal').modal('show');
+});

@@ -33,6 +33,8 @@ Route::group([], function(){
 Route::group(['middleware' => ['auth:author']], function () {
     Route::get('home', [AuthorBackend\HomeController::class, 'index'])->name('home');
     Route::post('request_approval', [AuthorBackend\HomeController::class, 'requestApproval'])->name('approval');
+    Route::get('premium/payment', [AuthorBackend\HomeController::class, 'premiumPayment'])->name('payment');
+    Route::post('premium/payment', [AuthorBackend\HomeController::class, 'premiumPayment']);
 
     Route::get('books', [AuthorBackend\BookController::class, 'index'])->name('books');
     Route::get('book/{id}', [AuthorBackend\BookController::class, 'get'])->name('book');

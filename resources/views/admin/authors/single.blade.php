@@ -107,6 +107,10 @@
                                                 <td>0{{ $author->phone }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Level</th>
+                                                <td>{{ ($author->level == 'basic') ? 'Starter' : ucwords($author->level) }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Date of Birth</th>
                                                 <td>{{ $author->dob }}</td>
                                             </tr>

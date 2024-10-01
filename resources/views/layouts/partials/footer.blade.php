@@ -162,3 +162,11 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" tabindex="-1" id="searchModal" style="z-index:9999;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+        </div>
+    </div>
+</div>

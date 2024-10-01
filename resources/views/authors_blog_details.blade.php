@@ -13,7 +13,7 @@
                             <div class="tg-authorinfo">
                                 <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $article->author->firstname.' '.$article->author->lastname }}</a></span>
                                 <ul class="tg-postmetadata">
-                                    <li><a href="#comments"><i class="fa fa-comment-o"></i><i>21,415 Comments</i></a></li>
+                                    <li><a href="#comments"><i class="fa fa-comment-o"></i><i>{{ number_format(count($article->comments)) }} Comments</i></a></li>
                                 </ul>
                             </div>
                         </figcaption>

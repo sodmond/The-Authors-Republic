@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Author\HomeController;
 use App\Http\Controllers\Controller;
 use App\Mail\SendOrderConfirmation;
 use App\Mail\SendPaymentConfirmation;
@@ -40,12 +41,15 @@ class PaymentController extends Controller
         $paymentData = $payment['data'];
         $paymentMeta = $payment['data']['metadata'];
         if ($payment['status'] == true) {
+            if (isset($paymentMeta['author_premium'])) {
+                return HomeController::setAuthorPro($paymentData);
+            }
             $transactions = DB::table('transactions')->where('reference', $paymentData['reference'])->get();
             $user = User::find($paymentMeta['user_id']);
             $order = Order::find($paymentMeta['order_id']);
             DB::beginTransaction();
             if ($transactions->count() < 1) {
-                $orderItems = $order->orderContent;
+                #$orderItems = $order->orderContent;
                 $transaction = DB::table('transactions')->insertGetId([
                     'type' => 'purchase',
                     'method' => 'Paystack',
@@ -83,7 +87,7 @@ class PaymentController extends Controller
         return redirect()->route('checkout')->withErrors(['payment_err', "Payment couldn't be completed, pls try again."]);
     }
 
-    public function status()
+    /*public function status()
     {
         $status = $_GET['status'];
         if ($status == 'success' || $status == 'error') {
@@ -95,5 +99,5 @@ class PaymentController extends Controller
             return view('payment_status', compact('status', 'package', 'form_link'));
         }
         return redirect()->route('home');
-    }
+    }*/
 }

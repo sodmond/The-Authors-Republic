@@ -10,6 +10,11 @@ use Illuminate\Validation\Rule;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('author.pro');
+    }
+
     public function index()
     {
         $blog = AuthorsBlog::where('author_id', auth('author')->id())->orderByDesc('created_at')->paginate(10);
