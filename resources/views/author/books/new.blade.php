@@ -34,7 +34,9 @@
                                 <div class="col-6">
                                     <a class="btn btn-custom" href="{{ route('author.books') }}"><i class="fa fa-arrow-circle-left"></i> Back</a>
                                 </div>
-                                <div class="col-6">&nbsp;</div>
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-info text-white" href="#">Need Help <i class="fas fa-question"></i></a>
+                                </div>
                             </div>
                             @if (count($errors))
                                 <div class="alert alert-danger">
