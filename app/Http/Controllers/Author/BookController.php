@@ -42,7 +42,7 @@ class BookController extends Controller
         $bookFile = '';
         if ($request->hasFile('book_file')) {
             $bookFile = Str::random(32) . '.' . $request->file('book_file')->extension();
-            Storage::putFileAs('books/', $request->file('book_file'), $bookFile);
+            Storage::putFileAs('public/books/files/', $request->file('book_file'), $bookFile);
         }
         $description = Str::random() . '.txt';
         Storage::put('books/contents/'.$description, $request->description);
@@ -96,11 +96,11 @@ class BookController extends Controller
             $book->image = $imgPath;
         }
         if ($request->hasFile('book_file')) {
-            if (Storage::exists('books/'.$book->book_file)) {
-                Storage::delete('books/'.$book->book_file);
+            if (Storage::exists('public/books/files/'.$book->book_file)) {
+                Storage::delete('public/books/files/'.$book->book_file);
             }
             $bookFile = Str::random(32) . '.' . $request->file('book_file')->extension();
-            Storage::putFileAs('books/', $request->file('book_file'), $bookFile);
+            Storage::putFileAs('public/books/files/', $request->file('book_file'), $bookFile);
             $book->book_file = $bookFile;
         }
         Storage::put('books/contents/'.$book->description, $request->description);

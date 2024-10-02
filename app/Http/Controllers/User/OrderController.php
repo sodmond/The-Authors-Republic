@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
@@ -36,18 +37,40 @@ class OrderController extends Controller
         $order = Order::where('id', $request->order_id)->where('status', 'completed')->first();
         if ($order) {
             if (in_array($book->id, json_decode($order->products))) {
-                $book_file_path = Storage::get('books/'.$book->book_file);
-                return redirect()->route('user.book.reader')->with('book_file_path', $book_file_path);
+                return redirect()->route('user.book.reader', ['book_id' => $book->id, 'order_id' => $order->code]);
             }
         }
         return redirect('/');
     }
 
-    public function readBook()
+    public function readBook($book_id, $order_id)
     {
-        if (session('book_file_path')) {
-            dd(session('book_file_path'));
+        $book = Book::find($book_id); #dd($book);
+        $order = Order::where('user_id', auth('web')->id())->where('code', $order_id)->where('status', 'completed')->first();
+        if ($order) {
+            $books = json_decode($order->products);
+            if (!in_array($book->id, $books)) {
+                return redirect()->back();
+            }
+            return view('user.book_reader', compact('book'));
         }
-        return view('user.book_reader');
+        return redirect()->back();
+        /*if (session('book_file_path')) {
+            $path = session('book_file_path');
+            #dd($path);
+            return response()->file($path);
+        }
+        return redirect()->route('user.orders');*/
+    }
+
+    public function getbookPDF($book_id)
+    {
+        $book = Book::find($book_id); #dd($book);
+        $book_file_path = Storage::path('books/'.$book->book_file);  #dd($book_file_path);
+        return response()->file($book_file_path, ['Content-Disposition' => 'inline']);
+        /*return Response::make($book_file_path, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="book.pdf"'
+        ]);*/
     }
 }

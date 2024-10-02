@@ -180,6 +180,6 @@ class SettingsController extends Controller
         $basic_setting->payout_commission = $request->payout_commission;
         $basic_setting->author_premium_fee = $request->author_premium_fee;
         $basic_setting->save();
-        return back()->with('success', 'Commission rate has been updated');
+        return back()->with('success', 'Rate and Fees has been updated');
     }
 }

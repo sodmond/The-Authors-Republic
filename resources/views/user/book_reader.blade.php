@@ -6,11 +6,16 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 {{--@if(session('book_file_path'))--}}
-                <object  class="pdf" data="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf#toolbar=0"
+                <object class="pdf" data="{{ asset('storage/books/files/'. $book->book_file) .'#toolbar=0' }}"
                     width="800" height="500"></object>
                 {{--@endif--}}
+                <div id="book_reader"></div>
             </div>
         </div>
     </div>
 </section>
 @endsection
+
+@push('custom-scripts')
+
+@endpush

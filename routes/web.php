@@ -66,7 +66,8 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'user', 'as'
     Route::get('orders', [FrontendController\OrderController::class, 'index'])->name('orders');
     Route::get('order/{id}/{code}', [FrontendController\OrderController::class, 'view'])->name('order');
     Route::post('order/book_download', [FrontendController\OrderController::class, 'downloadBook'])->name('book.download');
-    Route::get('order/book_reader', [FrontendController\OrderController::class, 'readBook'])->name('book.reader');
+    Route::get('order/book-reader/{book_id}/{order_id}', [FrontendController\OrderController::class, 'readBook'])->name('book.reader');
+    #Route::get('book-pdf/{book_id}', [FrontendController\OrderController::class, 'getbookPDF'])->name('book.pdf');
     
     Route::get('wishlist', [FrontendController\WishListController::class, 'index'])->name('wishlist');
     Route::post('wishlist/add-item', [FrontendController\WishListController::class, 'addItem'])->name('wishlist.add');
