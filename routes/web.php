@@ -45,7 +45,7 @@ Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkoutS
 Route::get('/get-shipping-fee', [App\Http\Controllers\CartController::class, 'calShipping'])->name('shipping_fee');
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment.verify');
 Route::get('forum', [FrontendController\ForumController::class, 'index'])->name('forum');
-Route::post('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
+Route::get('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
 
 // Services
 Route::group(['prefix' => 'services', 'as' => 'services.'], function() {

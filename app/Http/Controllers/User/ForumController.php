@@ -21,9 +21,9 @@ class ForumController extends Controller
         $posts = Post::orderByDesc('created_at')->paginate('15');
         if (isset($_GET['search'])) {
             $search = $_GET['search'];
-            $posts = Post::where('title', 'LIKE', "%$search%")->orderByDesc('created_at')->paginate('25');
+            $posts = Post::where('title', 'LIKE', "%$search%")->orderByDesc('created_at')->paginate('15');
         }
-        return view('user.forum.index', compact('posts'));
+        return view('user.forum.posts', compact('posts'));
     }
 
     public function newPost(Request $request)

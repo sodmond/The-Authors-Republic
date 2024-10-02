@@ -62,6 +62,9 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <div class="text-center" style="padding: 20px 0;">
+                                    <a class="tg-btn tg-active" href="{{ route('forum.posts') }}">View All Posts</a>
+                                </div>
                             @else
                                 <p class="text-center"><em>No Post Found</em></p>
                             @endif

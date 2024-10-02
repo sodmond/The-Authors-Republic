@@ -6,8 +6,11 @@
         <div class="row">
             <div id="tg-twocolumns" class="tg-twocolumns">
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
-                    <div class="tg-sectionhead" style="padding-bottom:10px !important; float:none;">
-                        <h3>{{ $post->title }}</h3>
+                    <div class="tg-sectionhead" style="padding-right:10px !important;">
+                        <h2 style="padding-top:10px;">{{ $post->title }}</h2>
+                        <div>
+                            <a class="tg-btn tg-active" href="{{ route('forum') }}">Back to Forum</a>
+                        </div>
                     </div>
                     @if (count($errors))
                         <div class="alert alert-danger">

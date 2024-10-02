@@ -52,7 +52,7 @@ class OrderController extends Controller
             if (!in_array($book->id, $books)) {
                 return redirect()->back();
             }
-            return view('user.book_reader', compact('book'));
+            return view('user.book_reader', compact('book', 'order'));
         }
         return redirect()->back();
         /*if (session('book_file_path')) {
