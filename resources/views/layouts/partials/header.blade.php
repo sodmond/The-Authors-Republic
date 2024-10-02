@@ -7,7 +7,7 @@
                         <li>
                             <a href="{{ route('author.home') }}" target="_blank">
                                 <i class="icon-user"></i>
-                                <em>Author Login</em>
+                                <em>Author Login/Sign Up</em>
                             </a>
                         </li>
                     </ul>

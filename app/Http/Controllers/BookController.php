@@ -20,7 +20,7 @@ class BookController extends Controller
                         ->orWhereIn('authors.firstname', $search)
                         ->orWhereIn('authors.lastname', $search)
                         ->select('books.*', 'authors.firstname')
-                        ->paginate(12); #dd($books);
+                        ->paginate(12);
             return view('books', compact('books'));
         }
         $books = Book::paginate(12);

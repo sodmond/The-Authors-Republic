@@ -26,7 +26,7 @@
                             <div class="tg-sectionhead">
                                 <h2>Books of {{ ucwords($author->firstname) }}</h2>
                                 <div class="socialicons">
-                                    <a class="tg-btn tg-active" href="{{ route('authors.corner', ['author' => $author->id]) }}">Blogs/Podcast</a>
+                                    <a class="tg-btn tg-active" href="{{ route('authors.corner', ['author' => $author->id]) }}">My Blogs/Podcast</a>
                                 </div>
                             </div>
                             <div class="row">
