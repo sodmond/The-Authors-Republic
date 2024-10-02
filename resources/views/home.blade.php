@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-sectionhead">
-                    <h2><span>People's Choice</span>Bestselling Books</h2>
+                    <h2><span>People's Choice</span>Featured Books</h2>
                     {{--<a class="tg-btn" href="javascript:void(0);">View All</a>--}}
                 </div>
             </div>

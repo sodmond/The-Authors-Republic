@@ -4,7 +4,7 @@
             <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
                 <div class="form-group">
                     <button type="submit"><i class="icon-magnifier"></i></button>
-                    <input type="search" name="search" class="form-group" placeholder="Search book by title...">
+                    <input type="search" name="search" class="form-group" placeholder="Search book by title or author's name...">
                 </div>
             </form>
         </div>
