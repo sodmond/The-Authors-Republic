@@ -1,7 +1,36 @@
 @extends('layouts.app', ['activePage' => 'about', 'title' => 'About Us'])
 
 @section('content')
-<section class="tg-sectionspace tg-haslayout">
+<!--************************************
+        Call to Action Start
+*************************************-->
+<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" {{--data-image-src="{{ asset('frontend/images/parallax/bgparallax-06.jpg') }}"--}}>
+    <div class="tg-sectionspace tg-haslayout">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                    <div class="tg-calltoaction" style="padding-right:50px !important;">
+                        <h2 style="color:#000;">Vision Statement</h2>
+                        <h4>To create a vibrant and inclusive community that empowers authors, Poets and book writers to showcase their literary craftsmanship, 
+                            collaborate, educate and inspire one another on their creative journey of shaping the society with words.</h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="tg-calltoaction" style="padding-right:50px !important;">
+                        <h2 style="color:#000;">Mission Statement</h2>
+                        <h4>The Authors' Republic aims to be the unique digital platform that fosters connections, networking, facilitates the exchange of ideas, 
+                            and provides opportunities for authors, Poets and book writers to grow, learn, and achieve their literary aspirations.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--************************************
+        Call to Action End
+*************************************-->
+
+<section class="tg-haslayout">
     <div class="container">
         <div class="row">
             <div class="tg-aboutus">
@@ -32,34 +61,6 @@
 </section>
 <!--************************************
         About Us End
-*************************************-->
-<!--************************************
-        Call to Action Start
-*************************************-->
-<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" {{--data-image-src="{{ asset('frontend/images/parallax/bgparallax-06.jpg') }}"--}}>
-    <div class="tg-sectionspace tg-haslayout">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="tg-calltoaction" style="padding-right:50px !important;">
-                        <h2 style="color:#000;">Vision Statement</h2>
-                        <h4>To create a vibrant and inclusive community that empowers authors, Poets and book writers to showcase their literary craftsmanship, 
-                            collaborate, educate and inspire one another on their creative journey of shaping the society with words.</h4>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="tg-calltoaction" style="padding-right:50px !important;">
-                        <h2 style="color:#000;">Mission Statement</h2>
-                        <h4>The Authors' Republic aims to be the unique digital platform that fosters connections, networking, facilitates the exchange of ideas, 
-                            and provides opportunities for authors, Poets and book writers to grow, learn, and achieve their literary aspirations.</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--************************************
-        Call to Action End
 *************************************-->
 <!--************************************
         Success Start

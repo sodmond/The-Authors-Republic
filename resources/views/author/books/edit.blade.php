@@ -35,7 +35,7 @@
                                     <a class="btn btn-custom" href="{{ route('author.book', ['id' => $book->id]) }}"><i class="fa fa-arrow-circle-left"></i> Back</a>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <a class="btn btn-info text-white" href="#">Need Help <i class="fas fa-question"></i></a>
+                                    <a class="btn btn-danger text-white" href="#">Need Help <i class="fas fa-question"></i></a>
                                 </div>
                             </div>
                             @if (count($errors))
@@ -124,7 +124,8 @@
                                         <div class="form-group">
                                             <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="image" name="image">
-                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
+                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px).</small>
+                                            <small class="text-info">Need help to convert or edit images/pdf, <a href="#"><u>click here</u></a></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -132,6 +133,7 @@
                                             <label for="book_file">Book File <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">
                                             <small class="text-info">(Allowed file type; .pdf | Max: 2MB)</small>
+                                            <small class="text-info">Need help to convert or edit images/pdf, <a href="#"><u>click here</u></a></small>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-custom my-3 col-12">Update</button>

@@ -79,7 +79,7 @@
                                     <li><a href="{{ route('about') }}">About Us</a></li>
                                     <li><a href="javascript:void(0);">Authors</a></li>
                                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                    <li><a href="javascript:void(0);">FAQ</a></li>
+                                    <li><a href="{{ route('faq') }}">FAQ</a></li>
                                     <li><a href="javascript:void(0);">Testimonials</a></li>
                                 </ul>
                             </div>

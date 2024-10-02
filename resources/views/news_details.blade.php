@@ -10,6 +10,12 @@
                         <div class="tg-productdetail">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="tg-sectionhead" style="padding-right:10px !important;">
+                                        <h2 style="padding-top:10px;">{{ $article->title }}</h2>
+                                        <div>
+                                            <a class="tg-btn tg-active" href="{{ route('news') }}">Back to News</a>
+                                        </div>
+                                    </div>
                                     <div class="tg-postbook">
                                         <img class="img-responsive" src="{{ asset('storage/'.$article->image) }}" alt="Article Image">
                                         <div class="tg-postbookcontent">

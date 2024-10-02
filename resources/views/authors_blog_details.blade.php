@@ -39,7 +39,12 @@
                                 <li>{{ ucwords($article->type) }}</li>
                             </ul>
                             <div class="tg-posttitle">
-                                <h3>{{ $article->title }}</h3>
+                                <div class="row">
+                                    <div class="col-md-9"><h3>{{ $article->title }}</h3></div>
+                                    <div class="col-md-3 text-right">
+                                        <a class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" href="{{ route('news') }}">Back to News</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tg-description">
                                 @php echo \Illuminate\Support\Facades\Storage::get('author/blog/contents/'.$article->content); @endphp

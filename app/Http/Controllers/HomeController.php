@@ -87,4 +87,9 @@ class HomeController extends Controller
             return back();
         }
     }
+
+    public function faq()
+    {
+        return view('faq');
+    }
 }

@@ -1,5 +1,5 @@
 .bg-custom, .tg-bglight, .tg-footerbar {
-    background-color: #616B2E;
+    background-color: #616B2E !important;
 }
   
 .bg-custom2 {
@@ -255,4 +255,14 @@ a.panel-link.text-white:hover {
     width: 100%;
     min-height: 800px;
     aspect-ratio: 4 / 3;
+}
+
+.panel a {
+    color: #FFF !important;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel a:hover {
+    color: #CCC !important;
 }

@@ -11,10 +11,10 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tg-userlogin">
+                    {{--<div class="tg-userlogin">
                         <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/users/img-01.jpg') }}" alt="image description"></a></figure>
                         <span>Hi, {{ (Auth::guard('web')->user()) ? ucwords(Auth::guard('web')->user()->firstname) : 'Guest' }}</span>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
