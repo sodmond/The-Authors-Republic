@@ -86,7 +86,11 @@
                             <select name="shipping_state" class="form-control" required id="shippingState">
                                 <option value="">- - - Select State - - -</option>
                                 @foreach ($shipping_location as $location)
-                                    <option value="{{ $location->id }}" @selected($address->state == $location->id)>{{ ucwords($location->state) }}</option>
+                                    @if(isset($address->state))
+                                        <option value="{{ $location->id }}" @selected($address->state == $location->id)>{{ ucwords($location->state) }}</option>
+                                    @else
+                                        <option value="{{ $location->id }}">{{ ucwords($location->state) }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
