@@ -14,8 +14,13 @@ class BookController extends Controller
     public function index()
     {
         if (isset($_GET['search'])) {
-            $search = $_GET['search'];
-            $books = Book::where('title', 'LIKE', "%$search%")->paginate(12);
+            $search = explode(' ', $_GET['search']);
+            $books = Book::join('authors', 'books.author_id', '=', 'authors.id')
+                        ->whereIn('books.title', $search)
+                        ->orWhereIn('authors.firstname', $search)
+                        ->orWhereIn('authors.lastname', $search)
+                        ->select('books.*', 'authors.firstname')
+                        ->paginate(12); #dd($books);
             return view('books', compact('books'));
         }
         $books = Book::paginate(12);

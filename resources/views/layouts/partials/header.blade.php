@@ -27,7 +27,7 @@
                     <div class="tg-searchbox">
                         <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
                             <fieldset>
-                                <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title...">
+                                <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title or author...">
                                 <button type="submit" class="tg-btn">Search</button>
                             </fieldset>
                         </form>
@@ -37,7 +37,7 @@
                         <div id="searchPopForm">
                             <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
                                 <fieldset>
-                                    <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title...">
+                                    <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title or author...">
                                     <button type="submit" class="tg-btn"><i class="fa fa-search"></i></button>
                                 </fieldset>
                             </form>
