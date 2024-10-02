@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Author;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -51,6 +52,8 @@ class BookController extends Controller
         $book->category_id = $request->category;
         $book->title = $request->title;
         $book->isbn = $request->isbn;
+        $book->soft_copy = $request->soft_copy;
+        $book->hard_copy = $request->hard_copy;
         $book->description = $description;
         $book->price = $request->price;
         $book->published_at = $request->published_at;
@@ -107,6 +110,8 @@ class BookController extends Controller
         $book->category_id = $request->category;
         $book->title = $request->title;
         $book->isbn = $request->isbn;
+        $book->soft_copy = $request->soft_copy;
+        $book->hard_copy = $request->hard_copy;
         $book->price = $request->price;
         $book->published_at = $request->published_at;
         $book->pages_number = $request->pages_number;
