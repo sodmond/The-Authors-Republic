@@ -12,9 +12,12 @@
                             Back to Order Details</a>
                     </div>
                 </div>
-                <object class="pdf" data="{{ asset('storage/books/files/'. $book->book_file) .'#toolbar=0' }}"
+                <object class="pdf mb-3" data="{{ asset('storage/books/files/'. $book->book_file) .'#toolbar=0' }}"
                     width="800" height="500"></object>
-                <div id="book_reader"></div>
+                <div id="book_reader" class="text-center">
+                    @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                    <a class="tg-btn tg-active" href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}" target="_blank">Write a Review</a>
+                </div>
             </div>
         </div>
     </div>

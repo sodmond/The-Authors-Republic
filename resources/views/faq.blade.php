@@ -6,7 +6,7 @@
         <div class="row">
             <div class="tg-contactus">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="tg-description">
+                    <div class="tg-faq">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="tg-sectionhead" style="padding-bottom:10px !important; float:none;">

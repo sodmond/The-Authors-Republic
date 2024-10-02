@@ -257,12 +257,12 @@ a.panel-link.text-white:hover {
     aspect-ratio: 4 / 3;
 }
 
-.panel a {
+.tg-faq .panel a {
     color: #FFF !important;
     display: inline-block;
     width: 100%;
 }
 
-.panel a:hover {
+.tg-faq .panel a:hover {
     color: #CCC !important;
 }
