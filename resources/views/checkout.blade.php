@@ -177,7 +177,7 @@
             }
         });
         $('#billingState').change(function () {
-            if ($('#shippingState').val() != '') {
+            if ($('#shippingState').val() == '') {
                 calculateShipping($(this).val());
             }
         });
