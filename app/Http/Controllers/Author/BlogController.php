@@ -7,6 +7,8 @@ use App\Models\AuthorsBlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
 
 class BlogController extends Controller
 {
@@ -32,6 +34,7 @@ class BlogController extends Controller
 
     public function new()
     {
+        #dd(storage_path('/app/public'));
         return view('author.blog.new');
     }
 
@@ -44,7 +47,10 @@ class BlogController extends Controller
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
             'video' => ['required_if:type,podcast', 'mimes:mp4', 'max:5120'],
         ]);
-        $imgPath = $request->file('image')->store('author/blog/image', 'public');
+        $imgFileName = Str::random(32) . '.' . $request->file('image')->extension();
+        $request->file('image')->storeAs('author/blog/image', $imgFileName, 'public');
+        $thumbnail = ImageManager::imagick()->read($request->file('image')->path());
+        $thumbnail->cover(400, 400, 'center')->save(storage_path('/app/public/author/blog/image/thumbnail/') . $imgFileName);
         $contentFile = time() . '.txt';
         Storage::put('author/blog/contents/'.$contentFile, clean($request->description), 'public');
         $authorBlog = new AuthorsBlog();
@@ -52,7 +58,7 @@ class BlogController extends Controller
         $authorBlog->type = $request->type;
         $authorBlog->title = $request->title;
         $authorBlog->content = $contentFile;
-        $authorBlog->image = $imgPath;
+        $authorBlog->image = $imgFileName;
         $authorBlog->published_at = $request->published_at;
         if ($request->has('video')) {
             $videoPath = $request->file('video')->store('author/blog/video', 'public');
@@ -93,11 +99,17 @@ class BlogController extends Controller
         $authorBlog->content = $contentFile;
         $authorBlog->published_at = $request->published_at;
         if ($request->has('image')) {
-            if (Storage::exists('public/'.$authorBlog->image)) {
-                Storage::delete('public/'.$authorBlog->image);
+            if (Storage::exists('public/author/blog/image/'.$authorBlog->image)) {
+                Storage::delete('public/author/blog/image'.$authorBlog->image);
             }
-            $imgPath = $request->file('image')->store('author/blog/image', 'public');
-            $authorBlog->image = $imgPath;
+            if (Storage::exists('public/author/blog/image/thumbnail/'.$authorBlog->image)) {
+                Storage::delete('public/author/blog/image/thumbnail'.$authorBlog->image);
+            }
+            $imgFileName = Str::random(32) . '.' . $request->file('image')->extension();
+            $request->file('image')->storeAs('author/blog/image', $imgFileName, 'public');
+            $thumbnail = ImageManager::imagick()->read($request->file('image')->path());
+            $thumbnail->cover(400, 400, 'center')->save(storage_path('/app/public/author/blog/image/thumbnail/') . $imgFileName);
+            $authorBlog->image = $imgFileName;
         }
         if ($request->has('video')) {
             if (Storage::exists('public/'.$authorBlog->video)) {
@@ -119,8 +131,11 @@ class BlogController extends Controller
         if ($authorBlog->author_id != auth('author')->id()) {
             return redirect()->back();
         }
-        if (Storage::exists('public/'.$authorBlog->image)) {
-            Storage::delete('public/'.$authorBlog->image);
+        if (Storage::exists('public/author/blog/image/'.$authorBlog->image)) {
+            Storage::delete('public/author/blog/image/'.$authorBlog->image);
+        }
+        if (Storage::exists('public/author/blog/image/thumbnail/'.$authorBlog->image)) {
+            Storage::delete('public/author/blog/image/thumbnail/'.$authorBlog->image);
         }
         if (Storage::exists('public/'.$authorBlog->video)) {
             Storage::delete('public/'.$authorBlog->video);

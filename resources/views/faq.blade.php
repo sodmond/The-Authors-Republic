@@ -17,13 +17,36 @@
                                         <div class="panel-heading bg-custom" role="tab" id="headingOne">
                                             <h4 class="panel-title">
                                                 <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#authorOne" aria-expanded="true" aria-controls="authorOne">
-                                                    Question #1
+                                                    How can i resize my image online?
                                                 </a>
                                             </h4>
                                         </div>
                                         <div id="authorOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                             <div class="panel-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                <p>To resize an image online, you can use free tools that allow you to adjust the dimensions without needing software installation. Here are a few popular options:</p>
+                                                <ul>
+                                                    <li>
+                                                        <strong>PicResize (<a href="www.picresize.com" target="_blank">www.picresize.com</a>)</strong>
+                                                        <p>Upload your image, choose the new dimensions, and download the resized version.</p>
+                                                    </li>
+                                                    <li>
+                                                        <strong>ResizeImage.net (<a href="www.resizeimage.net" target="_blank">www.resizeimage.net</a>)</strong>
+                                                        <p>Upload an image, manually enter the new width and height, and download the resized image.</p>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Canva (<a href="www.canva.com" target="_blank">www.canva.com</a>)</strong>
+                                                        <p>Canva offers a resizing tool where you can input specific dimensions for free.</p>
+                                                    </li>
+                                                    <li>
+                                                        <strong>ILoveIMG (<a href="www.iloveimg.com/resize-image" target="_blank">www.iloveimg.com/resize-image</a>)</strong>
+                                                        <p>Upload your image, set the new dimensions or percentage scale, and download the resized version.</p>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Adobe Express (<a href="www.adobe.com/express/feature/image/resize" target="_blank">www.adobe.com/express/feature/image/resize</a>)</strong>
+                                                        <p>Offers a straightforward way to resize images by entering the dimensions or selecting a preset.</p>
+                                                    </li>
+                                                </ul>
+                                                <p>These tools support various file formats, and most are easy to use.</p>
                                             </div>
                                         </div>
                                     </div>

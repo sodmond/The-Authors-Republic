@@ -7,7 +7,7 @@
             <div id="tg-twocolumns" class="tg-twocolumns">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <figure class="tg-newsdetailimg">
-                        <img src="{{ asset('storage/'.$article->image) }}" alt="image">
+                        <img src="{{ asset('storage/author/blog/image/'.$article->image) }}" alt="image">
                         <figcaption class="tg-author">
                             <img src="{{ asset('storage/'.$article->author->image) }}" alt="author image" style="max-width:50px;">
                             <div class="tg-authorinfo">
@@ -40,9 +40,9 @@
                             </ul>
                             <div class="tg-posttitle">
                                 <div class="row">
-                                    <div class="col-md-9"><h3>{{ $article->title }}</h3></div>
-                                    <div class="col-md-3 text-right">
-                                        <a class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" href="{{ route('news') }}">Back to News</a>
+                                    <div class="col-md-8"><h3>{{ $article->title }}</h3></div>
+                                    <div class="col-md-4 text-right">
+                                        <button class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" onclick="window.history.back()">Back to Authors Corner</button>
                                     </div>
                                 </div>
                             </div>

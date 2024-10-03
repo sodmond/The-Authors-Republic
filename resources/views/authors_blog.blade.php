@@ -8,8 +8,12 @@
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                     <div id="tg-content" class="tg-content">
                         <div class="tg-newsgrid">
-                            <div class="tg-sectionhead">
+                            <div class="tg-sectionhead" style="padding-right:10px;">
                                 <h2><span>Authors Corner</span>Blog & Podcasts by {{ isset($author) ? $author->firstname.' '.$author->lastname : 'Authors' }}</h2>
+                                @isset($_GET['author'])
+                                    <button class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" onclick="window.history.back()">
+                                        Back to Authors Profile</button>
+                                @endisset
                             </div>
                             <div class="row">
                                 @foreach ($authorsBlog as $article)
@@ -19,7 +23,7 @@
                                         $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug])
                                     @endphp
                                     <article class="tg-post">
-                                        <figure><a href="{{ $link }}"><img src="{{ asset('storage/'.$article->image) }}" alt="Articles Image"></a></figure>
+                                        <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->image) }}" alt="Articles Image"></a></figure>
                                         <div class="tg-postcontent">
                                             <ul class="tg-bookscategories">
                                                 <li>{{ ucwords($article->type) }}</li>

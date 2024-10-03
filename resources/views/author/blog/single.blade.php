@@ -42,7 +42,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img class="img-fluid" src="{{ asset('storage/'.$blogItem->image) }}" alt="blogItem Cover Image">
+                                    <img class="img-fluid" src="{{ asset('storage/author/blog/image/thumbnail/'.$blogItem->image) }}" alt="blogItem Cover Image">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="table-responsive">

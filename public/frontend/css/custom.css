@@ -233,6 +233,9 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-searchbox span a {
         color: #FFF !important;
     }
+    .tg-sectionspace {
+        padding: 50px 0;
+    }
 }
 
 .tg-homeslider .item div {
@@ -257,12 +260,16 @@ a.panel-link.text-white:hover {
     aspect-ratio: 4 / 3;
 }
 
-.tg-faq .panel a {
+#accordion > .panel > div > h4 > a {
     color: #FFF !important;
     display: inline-block;
     width: 100%;
 }
 
-.tg-faq .panel a:hover {
+#accordion > .panel > div > h4 > a:hover {
     color: #CCC !important;
+}
+
+.tg-userlogin span::before {
+    content: '' !important;
 }

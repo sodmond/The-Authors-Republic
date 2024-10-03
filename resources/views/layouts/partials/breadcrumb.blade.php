@@ -6,13 +6,14 @@
                 <div class="tg-innerbannercontent">
                     <h1 style="color:#FFF;">{{ $title }}</h1>
                     <ol class="tg-breadcrumb">
-                        @guest <li><a href="javascript:void(0);">home</a></li> @endguest
+                        @guest <li><a href="{{ url('/') }}">home</a></li> @endguest
                         @auth('web') <li><a href="{{ route('user.home') }}">dashboard</a></li> @endauth
                         @if($activePage == 'user.order') <li><a href="{{ route('user.orders') }}">Orders</a></li> @endif
                         @if($activePage == 'book') <li><a href="{{ route('books') }}">All Books</a></li> @endif
                         @if($activePage == 'news_detail') <li><a href="{{ route('news') }}">News</a></li> @endif
                         @if($activePage == 'user.addressBook') <li><a href="{{ route('user.addressBook') }}">Address Book</a></li> @endif
                         @if($activePage == 'authors.blog') <li><a href="{{ route('authors.corner') }}">Authors Corner</a></li> @endif
+                        @if($activePage == 'authors_profile') <li><a href="{{ route('authors') }}">Authors</a></li> @endif
                         <li class="tg-active">{{ $title }}</li>
                     </ol>
                 </div>

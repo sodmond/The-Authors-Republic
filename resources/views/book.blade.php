@@ -33,7 +33,11 @@
                                         <div class="tg-booktitle">
                                             <h3>{{ $book->title }}</h3>
                                         </div>
-                                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></span>
+                                        @php 
+                                            $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
+                                            $authorLink = route('author', ['id' => $author->id, 'slug' => $slug]);
+                                        @endphp
+                                        <span class="tg-bookwriter">By: <a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></span>
                                         {{--<span class="tg-stars"><span></span></span>
                                         <span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>--}}
                                         <div class="tg-share">
@@ -98,6 +102,19 @@
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="review">
                                                 <div class="">
+                                                    @if (count($errors))
+                                                        <div class="alert alert-danger">
+                                                            <strong>Whoops!</strong> Error validating data.<br>
+                                                            <ul>
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                    @if (session('success'))
+                                                        <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                                                    @endif
                                                     @if (auth('web')->check())
                                                         <form class="mb-2" action="{{ route('user.book.review', ['id' => $book->id]) }}" method="post" style="padding-bottom:20px;">
                                                             @csrf

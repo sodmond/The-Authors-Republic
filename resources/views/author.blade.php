@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'authors', 'title' => 'Author Profile'])
+@extends('layouts.app', ['activePage' => 'authors_profile', 'title' => 'Author Profile'])
 
 @section('content')
 <div class="tg-sectionspace tg-haslayout">

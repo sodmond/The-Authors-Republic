@@ -49,6 +49,8 @@ class BookController extends Controller
         $this->validate($request, [
             'comment' => ['required', 'string', 'max:1500'],
             'rating' => ['required', 'integer', 'max:5']
+        ],[
+            'rating.required' => 'You need to give a star rating'
         ]);
         try {
             BookReview::create([

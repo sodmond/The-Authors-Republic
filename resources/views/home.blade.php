@@ -130,7 +130,7 @@
                         $slug = \App\Models\Article::getSlug($article->title);
                         $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug]);
                     @endphp
-                    <figure><a href="{{ $link }}"><img src="{{ asset('storage/'.$article->image) }}" alt="article image"></a></figure>
+                    <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->image) }}" alt="article image"></a></figure>
                     <div class="tg-post">
                         <ul class="tg-bookscategories">
                             <li><a href="javascript:void(0);">{{ ucwords($article->type) }}</a></li>
