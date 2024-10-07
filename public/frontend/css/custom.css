@@ -260,13 +260,13 @@ a.panel-link.text-white:hover {
     aspect-ratio: 4 / 3;
 }
 
-#accordion > .panel > div > h4 > a {
+#accordion > .panel > div > h4 > a, #accordion2 > .panel > div > h4 > a {
     color: #FFF !important;
     display: inline-block;
     width: 100%;
 }
 
-#accordion > .panel > div > h4 > a:hover {
+#accordion > .panel > div > h4 > a:hover, #accordion2 > .panel > div > h4 > a:hover {
     color: #CCC !important;
 }
 

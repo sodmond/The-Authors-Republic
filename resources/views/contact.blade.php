@@ -58,8 +58,7 @@
                             <li>
                                 <i class="icon-phone-handset"></i>
                                 <span>
-                                    <em>0800 12345 - 678 - 89</em>
-                                    <em>+4 1234 - 4567 - 67</em>
+                                    <em>0903 488 2719</em>
                                 </span>
                             </li>
                             <li>
