@@ -236,6 +236,9 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-sectionspace {
         padding: 50px 0;
     }
+    .text-sm-center {
+        text-align: center;
+    }
 }
 
 .tg-homeslider .item div {
