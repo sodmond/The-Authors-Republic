@@ -141,6 +141,31 @@ a {
     color: #FFF !important;
 }
 
+.tg-searchbox .tg-navigationholder {
+    padding: 10px 0;
+}
+
+.tg-searchbox .tg-navigationholder nav #tg-navigation ul li a {
+    color: #616B2E !important;
+    font-size: 1.0em;
+}
+
+.tg-searchbox .tg-navigationholder div.tg-wishlistandcart div {
+    padding: 15px 10px !important;
+}
+
+.tg-searchbox .tg-navigationholder div.tg-wishlistandcart div a i {
+    color: #616B2E !important;
+}
+
+.tg-searchbox .tg-navigationholder div.tg-wishlistandcart div a span {
+    display: block !important;
+}
+
+.tg-searchbox .tg-navigationholder div.tg-wishlistandcart div a span::before {
+    color: #616B2E;
+}
+
 .tg-btn.tg-btnstyletwo {
     color: #666 !important;
 }
@@ -201,6 +226,11 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     display: none !important;
 }
 
+.collapse.in {
+    width: 100vw;
+    left: -80vw;
+}
+
 @media only screen and (max-width: 764px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
@@ -219,7 +249,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-searchbox {
         float: right !important;
         width: auto;
-        padding-top: 20px;
+        padding-top: 0px;
     }
     .tg-headervtwo .tg-searchbox form {
         display: none !important;
@@ -227,8 +257,8 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-searchbox span {
         display: block !important;
         font-size: 18px;
-        background: #616B2E;
-        padding: 7px 10px;
+        background: ;
+        /*padding: 7px 10px;*/
     }
     .tg-headervtwo .tg-searchbox span a {
         color: #FFF !important;
@@ -238,6 +268,9 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     }
     .text-sm-center {
         text-align: center;
+    }
+    .tg-navigationholder .tg-wishlistandcart {
+        display: none;
     }
 }
 
