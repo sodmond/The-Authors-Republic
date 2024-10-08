@@ -34,23 +34,27 @@
     <div class="container">
         <div class="row">
             <div class="tg-aboutus mb-3">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3">
                     <div class="tg-aboutusshortcode">
                         <div class="tg-sectionhead">
-                            <h2 style="width:100%;" class="text-sm-center"><span>Meet</span>Our Team</h2>
+                            <h2 style="width:100%;" class="text-center"><span>Meet</span>Our Team</h2>
                         </div>
-                        <div class="tg-description">
-                            <p class="mb-3">The Authors Republic was born out of the frustration experienced by literary professionals on the WhatsApp platform. The WhatsApp group, intended to foster collaboration and support, had become inundated with irrelevant posts and distractions, making it an ineffective tool for great and vibrant minds to connect and showcase their work
-                                Recognizing the need for a dedicated, distraction-free platform, The Authors Republic was birthed during a discussion between two authors on the whatsapp platform. The focus of the phone conversation on August 5, 2023 was how to provide a centralized hub where the literary community could thrive, hence the authors' republic.</p>
-                            <p>By offering a robust and user-friendly website, authors and creatives can now reach a wider audience, showcase their talents, and engage in meaningful discussions without the clutter of an overcrowded messaging app like whatsapp. The goal is to cultivate a vibrant, supportive, and streamlined environment for the literary arts to flourish.</p>
+                        <div class="">
+                            <p class="">Why “the authors’ Republic”? or The Driver for “the authors’ Republic”
+                                Until recently, the Nigerian creative community—especially authors—had limited options when it came to truly effective collaboration. Many relied on platforms like WhatsApp groups  to share their work, network, and seek support. However, these platforms were not specifically designed to accommodate the unique needs of authors and creatives. They lacked the structure and focus required for meaningful interaction, often becoming cluttered with irrelevant posts, distractions, and off-topic discussions that diluted their purpose. This left Nigerian authors and creatives without a dedicated, streamlined space where they could thrive creatively and professionally.
+                            </p>
+                            <p>This is where The Authors Republic comes in. Like most creatives, Dickson Ekhaguere and Yomi Akinfesoye were members of multiple WhatsApp groups for writers. However, they soon grew frustrated by the limitations of these informal spaces. They faced constant distractions, missed important messages amidst floods of irrelevant content, and found it increasingly difficult to have the deep, focused conversations needed for genuine collaboration and growth. These platforms, built without the needs of authors in mind, simply couldn't foster the vibrant, organized community that the Nigerian literary scene desperately needed.
+                            </p>
+                            <p>Recognizing this gap, Yomi and Dickson decided to act. Their solution came to life during a discussion on August 5, 2023. They envisioned a centralized platform dedicated solely to authors and creatives —a place free from the chaos of overpopulated messaging apps like WhatsApp, Facebook, etc. where creatives could engage in serious conversations, collaborate meaningfully, and grow their craft without distraction. This conversation marked the birth of The Authors Republic.
+                            </p>
+                            <p>With a robust, user-friendly website as its foundation, The Authors Republic provides Nigerian authors and creatives with a professional, well-curated space to share their work, showcase their talents, and reach a broader audience. Unlike WhatsApp groups that often collapse under the weight of irrelevant content, this platform is purpose-built to nurture the literary community. Here, authors can engage in meaningful discussions, collaborate on projects, and receive feedback from peers—all in an environment that prioritizes creativity and focus.
+                            </p>
+                            <p>The vision behind The Authors Republic extends beyond simple collaboration. It aims to cultivate a vibrant, supportive community where literary expression can flourish without barriers. Authors and creatives are empowered to push the boundaries of their work, connect with like-minded individuals, and explore new opportunities. Whether it’s publishing new content, selling works, collaborating on innovative projects, or simply engaging in enriching dialogue, podcasting, etc., the platform offers limitless possibilities for growth.
+                            </p>
+                            <p>With The Authors Republic, Nigerian authors and creatives finally have a home tailored to their needs—a centralized hub where creativity meets community, and where authors can explore the full potential of their craft without the clutter and distractions of traditional social media platforms. The goal is clear: to foster a dynamic, innovative space where creatives can flourish, push boundaries, and connect with others who share their passion for the literary arts.
+                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                    <figure>
-                        <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="image description">
-                        <iframe src="https://www.youtube.com/embed/acwr_Islo9A?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
-                    </figure>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

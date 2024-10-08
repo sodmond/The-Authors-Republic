@@ -4,16 +4,44 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="tg-addnav">
-                        <li>
+                        <li id="authorLogin">
                             <a href="{{ route('author.home') }}" target="_blank">
                                 <i class="icon-user"></i>
                                 <em>Author Login/Sign Up</em>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('user.wishlist') }}">
+                                <i class="icon-heart"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cart') }}">
+                                <i class="icon-cart"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="searchPopBtn">
+                                <i class="icon-search"></i>
+                            </a>
+                        </li>
                     </ul>
                     <div class="tg-userlogin">
                         <figure><a href="javascript:void(0);"><img src="{{ asset('img/user-icon.png') }}" alt="image description" style="max-width:30px;"></a></figure>
-                        <span>Hi, {{ (Auth::guard('web')->user()) ? ucwords(Auth::guard('web')->user()->firstname) : 'Guest' }}</span>
+                        <span id="userAuthText1">Hi, {{ (Auth::guard('web')->user()) ? ucwords(Auth::guard('web')->user()->firstname) : 'Guest' }}</span>
+                    </div>
+                    <div class="dropdown tg-themedropdown tg-currencydropdown" id="tg-userlogin">
+                        <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span style="line-height: 10px;"><i class="icon-user"></i></span>
+                        </a>
+                        <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
+                            <li>
+                                <a href="{{ route('login') }}"><span>Login</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}"><span>Register</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -229,6 +229,28 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 .collapse.in {
     width: 100vw;
     left: -80vw;
+    margin-top: 50px;
+}
+
+.tg-addnav {
+    display: block !important;
+}
+
+#tg-userlogin {
+    display: none;
+    float: right !important;
+}
+
+#tg-userlogin a span, #tg-userlogin a span i {
+    color: #616B2E !important;
+}
+
+.tg-addnav li {
+    display: none;
+}
+
+.tg-addnav li#authorLogin {
+    display: block;
 }
 
 @media only screen and (max-width: 764px) {
@@ -257,7 +279,6 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-searchbox span {
         display: block !important;
         font-size: 18px;
-        background: ;
         /*padding: 7px 10px;*/
     }
     .tg-headervtwo .tg-searchbox span a {
@@ -269,8 +290,11 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .text-sm-center {
         text-align: center;
     }
-    .tg-navigationholder .tg-wishlistandcart {
+    .tg-navigationholder .tg-wishlistandcart, .tg-userlogin, .tg-addnav li#authorLogin {
         display: none;
+    }
+    #tg-userlogin, .tg-addnav li {
+        display: block;
     }
 }
 
