@@ -21,7 +21,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="searchPopBtn">
+                            <a href="#" class="searchPopBtn">
                                 <i class="icon-search"></i>
                             </a>
                         </li>
@@ -108,7 +108,7 @@
                             
                             <div class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                    <a href="#" id="searchPopBtn" class="tg-btnthemedropdown">
+                                    <a href="#" class="tg-btnthemedropdown searchPopBtn">
                                         <i class="icon-search"></i>
                                     </a>
                                 </div>
@@ -213,7 +213,7 @@
                         </form>
                         <span>
                             <a id="searchPopBtn" href="#"><i class="fa fa-search"></i></a>
-                        </span>
+                        </span>--}}
                         <div id="searchPopForm">
                             <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
                                 <fieldset>
@@ -221,7 +221,7 @@
                                     <button type="submit" class="tg-btn"><i class="fa fa-search"></i></button>
                                 </fieldset>
                             </form>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -89,8 +89,8 @@ $('#tg-authorscornerslider').owlCarousel({
 	]
 });
 
-$('#searchPopBtn').click(function(e) {
-	e.preventDefault();
+$('.searchPopBtn').click(function(e) {
+	//e.preventDefault();
 	//alert();
 	//$('#searchPopForm')
 	var searchPopForm = $('#searchPopForm').html();

@@ -253,7 +253,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     display: block;
 }
 
-@media only screen and (max-width: 764px) {
+@media only screen and (max-width: 819px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
     }
