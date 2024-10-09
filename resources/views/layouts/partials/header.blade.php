@@ -51,7 +51,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <strong class="tg-logo"><a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}" alt="The Author Republic" style="max-height:85px;"></a></strong>
+                    <strong class="tg-logo"><a href="{{ url('/') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="The Author Republic" style="max-height:65px;"></a></strong>
                     <div class="tg-searchbox">
                         <div class="tg-navigationholder">
                             <nav id="tg-nav" class="tg-nav">
