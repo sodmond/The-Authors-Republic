@@ -6,6 +6,10 @@
     background-color: #B38B67;
 }
 
+.tg-middlecontainer {
+    padding: 5px 0 !important;
+}
+
 .tg-btn:hover, .tg-btn.tg-active, .tg-navigationarea, .owl-prev:hover, 
 .owl-next:hover, .tg-testimonial figure::before, 
 .tg-headervtwo .tg-formsearch fieldset button, 
@@ -253,7 +257,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     display: block;
 }
 
-@media only screen and (max-width: 819px) {
+@media only screen and (max-width: 891px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
     }
@@ -266,7 +270,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-headervtwo .tg-logo {
         width: auto !important;
         float: left !important;
-        padding: 0 0 10px !important;
+        padding: 0 !important;
     }
     .tg-headervtwo .tg-searchbox {
         float: right !important;
