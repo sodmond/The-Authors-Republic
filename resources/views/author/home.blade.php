@@ -26,6 +26,8 @@
                 <div class="col-auto">
                     <a class="btn btn-custom" href="{{ route('author.book.new') }}">
                         <i class="fa fa-plus-circle"></i> Publish Book</a>
+                    <a class="btn btn-custom" href="#">
+                        <i class="fa fa-donate"></i> Donate</a>
                 </div>
             </div>
             <div class="row">
