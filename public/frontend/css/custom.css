@@ -257,6 +257,10 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     display: block;
 }
 
+.tg-homeslider .item {
+    height: 450px !important;
+}
+
 @media only screen and (max-width: 891px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
