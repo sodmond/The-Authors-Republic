@@ -306,9 +306,9 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="tg-calltoaction" style="z-index:3;">
-                        <h2>Open Discount For All</h2>
-                        <h3>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore.</h3>
-                        <a class="tg-btn tg-active" href="javascript:void(0);">Read More</a>
+                        <h2>Donate to our course</h2>
+                        <h3>Support our course to helps improve the platform to a much better one</h3>
+                        <a class="tg-btn tg-active" href="#">Donate</a>
                     </div>
                 </div>
             </div>

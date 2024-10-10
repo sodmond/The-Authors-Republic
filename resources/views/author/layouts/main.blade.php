@@ -205,6 +205,13 @@
 
                             <li>
                                 <a href="{{ url('/') }}" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span> Donate </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('/') }}" target="_blank">
                                     <i class="dripicons-arrow-left"></i>
                                     <span> Visit website </span>
                                 </a>
