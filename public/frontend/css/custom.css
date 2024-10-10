@@ -258,7 +258,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 }
 
 .tg-homeslider .item {
-    height: 450px !important;
+    max-height: 450px !important;
 }
 
 @media only screen and (max-width: 891px) {
