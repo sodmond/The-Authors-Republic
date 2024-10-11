@@ -36,7 +36,8 @@ class LoginController extends DefaultLoginController
 
         $credentials = $request->only('email', 'password');
         if (Auth::guard('admin')->attempt($credentials, $request->get('remember'))) {
-            return redirect()->intended();
+            return redirect()->route('admin.home');
+            #return redirect()->intended();
         }
         return redirect()->route('admin.login')->withInput()->withErrors(['err_msg' => 'Opps! You have entered invalid credentials']);
     }
