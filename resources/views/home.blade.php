@@ -112,6 +112,67 @@
 		Featured Item End
 *************************************-->
 <!--************************************
+        Latest News Start
+*************************************-->
+<section class="tg-sectionspace tg-haslayout">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="tg-sectionhead">
+                    <h2><span>Latest News &amp; Articles</span>What's Hot in The News</h2>
+                    <a class="tg-btn" href="{{ route('news') }}">View All</a>
+                </div>
+            </div>
+            <div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
+                @foreach($latestNews as $news)
+                <article class="item tg-post">
+                    @php 
+                        $slug = \App\Models\Article::getSlug($news->title);
+                        $link = route('news.get', ['id' => $news->id, 'slug' => $slug]);
+                        $newsImage = ($news->image != '') ? asset('storage/'.$news->image) : asset('frontend/images/blog/img-01.jpg');
+                    @endphp
+                    <figure><a href="{{ $link }}"><img src="{{ $newsImage }}" alt="article image"></a></figure>
+                    <div class="tg-postcontent">
+                        <div class="tg-posttitle">
+                            <h3><a href="{{ $link }}">{{ $news->title }}</a></h3>
+                        </div>
+                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">Admin</a></span>
+                        <ul class="tg-postmetadata">
+                            <li><a href="javascript:void(0);"><i class="fa fa-calendar"></i><i>Published on: {{ date('M j, Y', strtotime($news->published_at)) }}</i></a></li>
+                        </ul>
+                    </div>
+                </article>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+<!--************************************
+		Latest News End
+*************************************-->
+<!--************************************
+        Call to Action Start
+*************************************-->
+<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/03.jpg') }}">
+    <div class="overlay" style=""></div>
+    <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-calltoaction" style="z-index:3;">
+                        <h2>Donate to our course</h2>
+                        <h3>Support our course to helps improve the platform to a much better one</h3>
+                        <a class="tg-btn tg-active" href="#">Donate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--************************************
+        Call to Action End
+*************************************-->
+<!--************************************
         Authors Corner Start
 *************************************-->
 <section class="tg-sectionspace tg-haslayout">
@@ -295,67 +356,6 @@
 </section>
 <!--************************************
         New Release End
-*************************************-->
-<!--************************************
-        Call to Action Start
-*************************************-->
-<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/03.jpg') }}">
-    <div class="overlay" style=""></div>
-    <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="tg-calltoaction" style="z-index:3;">
-                        <h2>Donate to our course</h2>
-                        <h3>Support our course to helps improve the platform to a much better one</h3>
-                        <a class="tg-btn tg-active" href="#">Donate</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--************************************
-        Call to Action End
-*************************************-->
-<!--************************************
-        Latest News Start
-*************************************-->
-<section class="tg-sectionspace tg-haslayout">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="tg-sectionhead">
-                    <h2><span>Latest News &amp; Articles</span>What's Hot in The News</h2>
-                    <a class="tg-btn" href="{{ route('news') }}">View All</a>
-                </div>
-            </div>
-            <div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
-                @foreach($latestNews as $news)
-                <article class="item tg-post">
-                    @php 
-                        $slug = \App\Models\Article::getSlug($news->title);
-                        $link = route('news.get', ['id' => $news->id, 'slug' => $slug]);
-                        $newsImage = ($news->image != '') ? asset('storage/'.$news->image) : asset('frontend/images/blog/img-01.jpg');
-                    @endphp
-                    <figure><a href="{{ $link }}"><img src="{{ $newsImage }}" alt="article image"></a></figure>
-                    <div class="tg-postcontent">
-                        <div class="tg-posttitle">
-                            <h3><a href="{{ $link }}">{{ $news->title }}</a></h3>
-                        </div>
-                        <span class="tg-bookwriter">By: <a href="javascript:void(0);">Admin</a></span>
-                        <ul class="tg-postmetadata">
-                            <li><a href="javascript:void(0);"><i class="fa fa-calendar"></i><i>Published on: {{ date('M j, Y', strtotime($news->published_at)) }}</i></a></li>
-                        </ul>
-                    </div>
-                </article>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-<!--************************************
-		Latest News End
 *************************************-->
 @endsection
 
