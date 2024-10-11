@@ -41,50 +41,50 @@
                                     <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
+                        
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email" class="col-form-label">{{ __('Email Address') }}</label>
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone" class="col-form-label">{{ __('Phone Number') }}</label>
-                                    <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
                                 </div>
                             </div>
-                        </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="password" class="col-form-label">{{ __('Password') }}</label>
+                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+                                </div>             
+                            </div>
 
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">               
-                        </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="password-confirm" class="col-form-label">{{ __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                </div>               
+                            </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-form-label">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>               
-                        </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="" type="checkbox" name="terms" id="terms" {{ old('terms') ? 'checked' : '' }} required>
+                                    <span class="" for="terms">
+                                        {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark" target="_blank">Terms & Conditions</a>
+                                    </span>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <input class="" type="checkbox" name="terms" id="terms" {{ old('terms') ? 'checked' : '' }} required>
-                            <span class="" for="terms">
-                                {{ __('I agree to the ') }}<a href="{{ route('tandc') }}" class="text-dark" target="_blank">Terms & Conditions</a>
-                            </span>
-                        </div>
-
-                        <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="tg-btn tg-active">
-                                    {{ __('Sign Up') }}
-                                </button>
+                                <div class="form-group">
+                                    <button type="submit" class="tg-btn tg-active">
+                                        {{ __('Sign Up') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
 

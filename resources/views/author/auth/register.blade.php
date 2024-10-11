@@ -15,8 +15,8 @@
 
                     <form action="{{ route('author.register') }}" method="POST" class="pt-2">
                         @csrf
-                        <div class="form-group row mb-3">
-                            <div class="col-md-6">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 mb-3">
                                 <label for="firstname">First Name</label>
                                 <input class="form-control @error('firstname') is-invalid @enderror" type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" 
                                     placeholder="Enter your firstname" required autocomplete="firstname" autofocus>
@@ -27,7 +27,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label for="lastname">Last Name</label>
                                 <input class="form-control @error('lastname') is-invalid @enderror" type="text" id="lastname" name="lastname" value="{{ old('lastname') }}" 
                                     placeholder="Enter your lastname" required autocomplete="lastname">
@@ -39,8 +39,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
-                            <div class="col-md-6">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 mb-3">
                                 <label for="email">Email Address</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}" required 
                                     placeholder="Enter your email" autocomplete="email">
@@ -50,7 +50,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label for="email">Phone Number</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="number" id="phone" name="phone" value="{{ old('phone') }}" required 
                                     placeholder="Enter your phone number" autocomplete="phone">

@@ -14,7 +14,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $authors = Author::paginate(18);
+        $authors = Author::where('approval', true)->paginate(18);
         return view('authors', compact('authors'));
     }
 

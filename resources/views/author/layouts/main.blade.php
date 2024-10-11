@@ -89,10 +89,10 @@
                     <li class="float-left">
                         <a href="{{ route('author.home') }}" class="logo">
                             <span class="logo-lg">
-                                <img src="{{ asset('img/logo.png') }}" alt="" height="52">
+                                <img src="{{ asset('img/logo-1.png') }}" alt="" height="52">
                             </span>
                             <span class="logo-sm">
-                                <img src="{{ asset('img/favicon.png') }}" alt="" height="24">
+                                <img src="{{ asset('img/logo.png') }}" alt="" height="24">
                             </span>
                         </a>
                     </li>
@@ -106,10 +106,10 @@
                         </a>
                     </li>
                     <li class="app-search d-none d-md-block">
-                        <form>
+                        {{--<form>
                             <input type="text" placeholder="Search..." class="form-control">
                             <button type="submit" class="sr-only"></button>
-                        </form>
+                        </form>--}}
                     </li>
                 </ul>
             </div>

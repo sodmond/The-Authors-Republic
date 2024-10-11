@@ -106,10 +106,10 @@
                         </a>
                     </li>
                     <li class="app-search d-none d-md-block">
-                        <form>
+                        {{--<form>
                             <input type="text" placeholder="Search..." class="form-control">
                             <button type="submit" class="sr-only"></button>
-                        </form>
+                        </form>--}}
                     </li>
                 </ul>
             </div>

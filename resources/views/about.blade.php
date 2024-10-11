@@ -37,10 +37,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3">
                     <div class="tg-aboutusshortcode">
                         <div class="tg-sectionhead">
-                            <h2 style="width:100%;" class=""><span>Meet</span>Our Team</h2>
+                            <h2 style="width:100%;" class="text-sm-center"><span>Meet</span>Our Team</h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-sm-center">
                                 <p class="">Why “the authors’ Republic”? or The Driver for “the authors’ Republic”
                                     Until recently, the Nigerian creative community—especially authors—had limited options when it came to truly effective collaboration. Many relied on platforms like WhatsApp groups  to share their work, network, and seek support. However, these platforms were not specifically designed to accommodate the unique needs of authors and creatives. They lacked the structure and focus required for meaningful interaction, often becoming cluttered with irrelevant posts, distractions, and off-topic discussions that diluted their purpose. This left Nigerian authors and creatives without a dedicated, streamlined space where they could thrive creatively and professionally.
                                 </p>
@@ -49,7 +49,7 @@
                                 <p>Recognizing this gap, Yomi and Dickson decided to act. Their solution came to life during a discussion on August 5, 2023. They envisioned a centralized platform dedicated solely to authors and creatives —a place free from the chaos of overpopulated messaging apps like WhatsApp, Facebook, etc. where creatives could engage in serious conversations, collaborate meaningfully, and grow their craft without distraction. This conversation marked the birth of The Authors Republic.
                                 </p>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-sm-center">
                                 <p>With a robust, user-friendly website as its foundation, The Authors Republic provides Nigerian authors and creatives with a professional, well-curated space to share their work, showcase their talents, and reach a broader audience. Unlike WhatsApp groups that often collapse under the weight of irrelevant content, this platform is purpose-built to nurture the literary community. Here, authors can engage in meaningful discussions, collaborate on projects, and receive feedback from peers—all in an environment that prioritizes creativity and focus.
                                 </p>
                                 <p>The vision behind The Authors Republic extends beyond simple collaboration. It aims to cultivate a vibrant, supportive community where literary expression can flourish without barriers. Authors and creatives are empowered to push the boundaries of their work, connect with like-minded individuals, and explore new opportunities. Whether it’s publishing new content, selling works, collaborating on innovative projects, or simply engaging in enriching dialogue, podcasting, etc., the platform offers limitless possibilities for growth.
@@ -66,7 +66,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="panel panel-default shadow">
                             <div class="panel-body p-4 text-center">
-                                <img src="{{ asset('frontend/images/author/imag-25.jpg') }}" alt="">
+                                <img src="{{ asset('img/yomi.jpg') }}" alt="">
                                 <div class="tg-sectionhead" style="padding: 0 10px 10px 0;">
                                     <h2 class="text-center" style="width:100%; line-height:50px;">Yomi Akinfesoye<span>Co-Founder, “The Authors Republic”</span></h2>
                                 </div>
@@ -78,7 +78,7 @@
                     <div class="col-md-6">
                         <div class="panel panel-default shadow">
                             <div class="panel-body p-4 text-center">
-                                <img src="{{ asset('frontend/images/author/imag-25.jpg') }}" alt="">
+                                <img src="{{ asset('img/dickson.jpg') }}" alt="">
                                 <div class="tg-sectionhead" style="padding: 0 10px 10px 0;">
                                     <h2 class="text-center" style="width:100%; line-height:50px;">Dickson Ekhaguere<span>Co-Founder, “The Authors Republic”</span></h2>
                                 </div>

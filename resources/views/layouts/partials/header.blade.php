@@ -36,10 +36,20 @@
                         </a>
                         <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
                             <li>
-                                <a href="{{ route('login') }}"><span>Login</span></a>
+                                <a href="{{ route('login') }}"><span>User Login</span></a>
                             </li>
                             <li>
-                                <a href="{{ route('register') }}"><span>Register</span></a>
+                                <a href="{{ route('register') }}"><span>User Register</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('author.home') }}" target="_blank">
+                                    <span>Author Login</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('author.register') }}" target="_blank">
+                                    <span>Author Signup</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -51,7 +61,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <strong class="tg-logo"><a href="{{ url('/') }}"><img src="{{ asset('img/logo2.jpg') }}" alt="The Author Republic" style="max-height:75px;"></a></strong>
+                    <strong class="tg-logo"><a href="{{ url('/') }}"><img src="{{ asset('img/logo-1.png') }}" alt="The Author Republic" style="max-width:195px;"></a></strong>
                     <div class="tg-searchbox">
                         <div class="tg-navigationholder">
                             <nav id="tg-nav" class="tg-nav">
@@ -174,15 +184,15 @@
                                         <span style="font-size: 20px; line-height: 20px;"><i class="icon-user"></i></span>
                                     </a>
                                     <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
-                                        @guest('web')
+                                        @guest
                                         <li>
                                             <a href="{{ route('login') }}">
-                                                <span>Login</span>
+                                                <span>User Login</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('register') }}">
-                                                <span>Register</span>
+                                                <span>User Register</span>
                                             </a>
                                         </li>
                                         @endguest
