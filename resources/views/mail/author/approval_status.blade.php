@@ -2,7 +2,7 @@
 # Account Approval Update
 
 @if ($status == 1)
-Your author profile has been approved, you can now upload books for sale.
+Congratulations, your author's profile has been aporoved, you can now enjoy the benefits. Upload books for sale, start a podcast, new book alert, advertise your book events, and other literary related activities beneficial to the republic.
 @else
 Your author profile is either incomplete or inaccurate and has been declined.
 

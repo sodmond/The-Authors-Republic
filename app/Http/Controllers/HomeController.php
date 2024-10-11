@@ -34,7 +34,7 @@ class HomeController extends Controller
         $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(10)->get();
         $books = Book::orderByDesc('created_at')->take(12)->get();
         $latestNews = Article::orderByDesc('published_at')->take(10)->get();
-        $authors = Author::orderByDesc('created_at')->take(10)->get();
+        $authors = Author::where('approval', true)->orderByDesc('created_at')->take(10)->get();
         $authorsBlog = AuthorsBlog::orderByDesc('published_at')->take(10)->get(); #dd($authorsBlog->count());
         return view('home', compact('books', 'featuredBooks', 'latestNews', 'authorsBlog'));
     }
