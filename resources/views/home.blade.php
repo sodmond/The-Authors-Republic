@@ -202,7 +202,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('forum') }}">Community Forum</a>
-                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="#">Authors Corner</a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('authors.corner') }}">Authors Corner</a>
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('books') }}">Shop</a>
                 </div>
             </div>
@@ -237,7 +237,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-sectionhead">
                     <h2><span>Authors Corner &amp; Articles</span>Blog & Podcasts by Authors</h2>
-                    <a class="tg-btn" href="{{ route('news') }}">View All</a>
+                    <a class="tg-btn" href="{{ route('authors.corner') }}">View All</a>
                 </div>
             </div>
             <div id="tg-authorscornerslider" class="tg-postslider tg-blogpost owl-carousel">

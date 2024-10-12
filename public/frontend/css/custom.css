@@ -324,6 +324,14 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     #tg-userlogin, .tg-addnav li {
         display: block;
     }
+    .tg-homeslider .owl-nav .tg-btnround {
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+    }
+    .tg-homeslider .owl-nav .tg-btnround i {
+        font-size: 15px;
+    }
 }
 
 .tg-homeslider .item div {
