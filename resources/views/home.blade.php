@@ -19,8 +19,8 @@
                         <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="">
                             <div class="panel panel-default shadow">
                                 <div class="panel-body">
-                                    <img class="mb-3" src="{{ asset('storage/'.$book->image) }}" alt="">
                                     @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                                    <a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}"><img class="mb-3" src="{{ asset('storage/'.$book->image) }}" alt=""></a>
                                     <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h5>
                                 </div>
                             </div>
@@ -198,12 +198,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('author.register') }}">Become an author </i></a>
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="#" target="_blank">Donate </a>
-                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('books') }}">Shop</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('forum') }}">Community Forum</a>
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('authors.corner') }}">Authors Corner</a>
-                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('books') }}">Shop</a>
                 </div>
             </div>
         </div>
