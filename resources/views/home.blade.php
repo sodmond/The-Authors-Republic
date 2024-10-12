@@ -197,7 +197,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('author.register') }}">Become an author </i></a>
-                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="#" target="_blank">Donate </a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="https://paystack.com/pay/hloqr2f4w2" target="_blank">Donate </a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('forum') }}">Community Forum</a>

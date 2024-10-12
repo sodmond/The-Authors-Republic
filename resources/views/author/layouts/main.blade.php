@@ -204,7 +204,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ url('/') }}" target="_blank">
+                                <a href="https://paystack.com/pay/hloqr2f4w2" target="_blank">
                                     <i class="fas fa-external-link-alt"></i>
                                     <span> Donate </span>
                                 </a>
