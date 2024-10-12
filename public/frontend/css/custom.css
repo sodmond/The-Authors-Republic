@@ -6,6 +6,18 @@
     background-color: #B38B67;
 }
 
+.btn-white2 {
+    background-color: #FFF !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 0px;
+    font-size: 18px;
+}
+
+.btn-white2:hover {
+    background-color: rgba(255,255,255,0.7) !important;
+}
+
 .tg-middlecontainer {
     padding: 5px 0 !important;
 }
@@ -259,6 +271,14 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
 
 .tg-homeslider .item {
     max-height: 450px !important;
+}
+
+.tg-sectionspace {
+    padding: 50px 0 !important;
+}
+
+.tg-footercol {
+    min-height: 300px !important;
 }
 
 @media only screen and (max-width: 951px) {

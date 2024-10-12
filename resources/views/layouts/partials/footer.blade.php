@@ -34,7 +34,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tg-threecolumns">
+                <div class="tg-threecolumns" style="padding-bottom:30px;">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="tg-footercol">
                             <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo.png') }}" alt="The Authors Republic" style="max-height:90px;"></a></strong>
@@ -70,16 +70,14 @@
                             <div class="tg-widgetcontent">
                                 <ul>
                                     <li><a href="{{ route('tandc') }}">Terms & Conditions</a></li>
-                                    <li><a href="javascript:void(0);">Terms of Sale</a></li>
                                     <li><a href="javascript:void(0);">Returns Policy</a></li>
                                     <li><a href="javascript:void(0);">Privacy Policy</a></li>
                                 </ul>
                                 <ul>
                                     <li><a href="{{ route('about') }}">About Us</a></li>
-                                    <li><a href="javascript:void(0);">Authors</a></li>
+                                    <li><a href="{{ route('authors') }}">Authors</a></li>
                                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
                                     <li><a href="{{ route('faq') }}">FAQ</a></li>
-                                    <li><a href="javascript:void(0);">Testimonials</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -87,16 +85,21 @@
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="tg-footercol tg-widget tg-widgettopsellingauthors">
                             <div class="tg-widgettitle">
-                                <h3>Top Selling Authors</h3>
+                                <h3>Latest Blog/Podcast</h3>
                             </div>
                             <div class="tg-widgetcontent">
                                 <ul>
-                                    @foreach($topAuthors as $author)
+                                    @foreach($topAuthorBlogs as $blog)
                                     <li>
-                                        <figure><a href="javascript:void(0);"><img src="{{ asset('frontend/images/author/imag-09.jpg') }}" alt="image description"></a></figure>
+                                        @php 
+                                            $slug = \App\Models\Article::getSlug($blog->title);
+                                            $link = route('authors.blog', ['id' => $blog->id, 'slug' => $slug]);
+                                        @endphp
+                                        <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$blog->image) }}" alt="image" style="max-width:70px;"></a></figure>
                                         <div class="tg-authornamebooks">
-                                            <h4><a href="javascript:void(0);">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h4>
-                                            <p>{{ count($author->books) }} Published Books</p>
+                                            <h4><a href="{{ $link }}">{{ ucwords($blog->title) }}</a></h4>
+                                            {{--<p>By {{ ucwords($blog->author->firstname.' '.$blog->author->lastname) }}</p>--}}
+                                            <p><i class="fa fa-calendar"></i><i>Published on: {{ date('M j, Y', strtotime($blog->published_at)) }}</i></p>
                                         </div>
                                     </li>
                                     @endforeach

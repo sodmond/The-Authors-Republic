@@ -7,7 +7,11 @@
             <div class="tg-authors">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="tg-sectionhead">
+                        @if(isset($_GET['search']))
+                    		<h3>Search results for "{{ $_GET['search'] }}"</h3>
+						@else
                         <h2><span>Strong Minds Behind Us</span>Our Authors</h2>
+                        @endif
                     </div>
                 </div>
                 @foreach($authors as $author)

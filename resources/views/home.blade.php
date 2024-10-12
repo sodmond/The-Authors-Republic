@@ -10,10 +10,25 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-sectionhead">
                     <h2><span>People's Choice</span>Featured Books</h2>
-                    {{--<a class="tg-btn" href="javascript:void(0);">View All</a>--}}
+                    <a class="tg-btn" href="{{ route('books') }}">View All</a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    @foreach ($featuredBooks as $book)
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="">
+                            <div class="panel panel-default shadow">
+                                <div class="panel-body">
+                                    <img class="mb-3" src="{{ asset('storage/'.$book->image) }}" alt="">
+                                    @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                                    <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            {{--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div id="tg-bestsellingbooksslider" class="tg-bestsellingbooksslider tg-bestsellingbooks owl-carousel">
                     @foreach($featuredBooks as $book)
                     <div class="item">
@@ -59,7 +74,7 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
+            </div>--}}
         </div>
     </div>
 </section>
@@ -70,7 +85,7 @@
 <!--************************************
 		Featured Item Start
 *************************************-->
-@if(count($featuredBooks) > 0)
+{{--@if(count($featuredBooks) > 0)
 <section class="tg-bglight tg-haslayout" style="background:url('{{ asset("frontend/images/bg/03.jpg") }}'); background-position:center; background-size:cover;">
     <div class="overlay"></div>
     <div class="container">
@@ -107,7 +122,7 @@
         </div>
     </div>
 </section>
-@endif
+@endif--}}
 <!--************************************
 		Featured Item End
 *************************************-->
@@ -122,8 +137,31 @@
                     <h2><span>Latest News &amp; Articles</span>What's Hot in The News</h2>
                     <a class="tg-btn" href="{{ route('news') }}">View All</a>
                 </div>
+                <div class="row">
+                    @foreach ($latestNews as $article)
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                        @php 
+                            $slug = \App\Models\Article::getSlug($article->title);
+                            $link = route('news.get', ['id' => $article->id, 'slug' => $slug])
+                        @endphp
+                        <article class="tg-post">
+                            <figure><a href="{{ $link }}"><img src="{{ asset('storage/'.$article->image) }}" alt="Articles Image"></a></figure>
+                            <div class="tg-postcontent">
+                                <ul class="tg-postmetadata">
+                                    <li><i class="fa fa-calendar"></i> Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</li>
+                                </ul>
+                                <ul class="tg-bookscategories"></ul>
+                                <div class="tg-posttitle">
+                                    <h3><a href="{{ $link }}">{{ strtoupper($article->title) }}</a></h3>
+                                </div>
+                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">Admin</a></span>
+                            </div>
+                        </article>
+                    </div>
+                    @endforeach
+                </div>
             </div>
-            <div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
+            {{--<div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
                 @foreach($latestNews as $news)
                 <article class="item tg-post">
                     @php 
@@ -143,7 +181,7 @@
                     </div>
                 </article>
                 @endforeach
-            </div>
+            </div>--}}
         </div>
     </div>
 </section>
@@ -153,7 +191,25 @@
 <!--************************************
         Call to Action Start
 *************************************-->
-<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/03.jpg') }}">
+<section class="tg-parallax tg-bgcalltoaction tg-haslayout bg-custom">
+    <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('author.register') }}">Become an author </i></a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="#" target="_blank">Donate </a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('books') }}">Shop</a>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('forum') }}">Community Forum</a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="#">Authors Corner</a>
+                    <a class="btn btn-white2 col-md-12 col-xs-12 col-sm-12 mb-3" href="{{ route('books') }}">Shop</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{--<section class="tg-parallax tg-bgcalltoaction tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/03.jpg') }}">
     <div class="overlay" style=""></div>
     <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
         <div class="container">
@@ -168,7 +224,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
 <!--************************************
         Call to Action End
 *************************************-->
@@ -210,48 +266,15 @@
         </div>
     </div>
 </section>
-{{--<section class="tg-sectionspace tg-haslayout">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="tg-sectionhead">
-                    <h2><span>Strong Minds Behind Us</span>Most Popular Authors</h2>
-                    <a class="tg-btn" href="{{ route('authors') }}">View All</a>
-                </div>
-            </div>
-            <div id="tg-authorsslider" class="tg-authors tg-authorsslider owl-carousel">
-                @foreach($authors as $author)
-                <div class="item tg-author">
-                    @php 
-                        $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
-                        $authorLink = route('author', ['id' => $author->id, 'slug' => $slug]);
-                        $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('frontend/images/author/imag-03.jpg');
-                    @endphp
-                    <figure><a href="{{ $authorLink }}"><img src="{{ $authorImage }}" alt="author image"></a></figure>
-                    <div class="tg-authorcontent">
-                        <h2><a href="{{ $authorLink }}">{{ ucwords($author->firstname.' '.$author->lastname) }}</a></h2>
-                        <span>{{ count($author->books) }} Published Books</span>
-                        <ul class="tg-socialicons">
-                            <li class="tg-facebook"><a href="{{ $author->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li class="tg-twitter"><a href="{{ $author->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li class="tg-linkedin"><a href="{{ $author->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>--}}
 <!--************************************
         Authors End
 *************************************-->
 <!--************************************
         Testimonials Start
 *************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/02.jpg') }}" id="homeTestimonal">
-    <div class="overlay" style=""></div>
-    <div class="tg-sectionspace tg-haslayout" style="z-index:3;">
+<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/02.png') }}" id="homeTestimonal">
+    {{--<div class="overlay" style=""></div>--}}
+    <div class="tg-sectionspace tg-haslayout" {{--style="z-index:3;"--}}>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">

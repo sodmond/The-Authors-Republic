@@ -14,6 +14,13 @@ class AuthorController extends Controller
 {
     public function index()
     {
+        if (isset($_GET['search'])) {
+            $search = explode(' ', $_GET['search']);
+            $authors = Author::whereIn('firstname', $search)
+                        ->orWhereIn('lastname', $search)
+                        ->paginate(12);
+            return view('authors', compact('authors'));
+        }
         $authors = Author::where('approval', true)->paginate(18);
         return view('authors', compact('authors'));
     }

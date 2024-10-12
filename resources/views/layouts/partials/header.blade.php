@@ -35,12 +35,25 @@
                             <span style="line-height: 10px;"><i class="icon-user"></i></span>
                         </a>
                         <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
+                            @if(auth('web')->check())
+                            <li>
+                                <a href="{{ route('user.home') }}">
+                                    <span>User Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <span>User Logout</span>
+                                </a>
+                            </li>
+                            @else
                             <li>
                                 <a href="{{ route('login') }}"><span>User Login</span></a>
                             </li>
                             <li>
                                 <a href="{{ route('register') }}"><span>User Register</span></a>
                             </li>
+                            @endif
                             <li>
                                 <a href="{{ route('author.home') }}" target="_blank">
                                     <span>Author Login</span>
@@ -225,9 +238,9 @@
                             <a id="searchPopBtn" href="#"><i class="fa fa-search"></i></a>
                         </span>--}}
                         <div id="searchPopForm">
-                            <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('books') }}">
+                            <form class="tg-formtheme tg-formsearch" method="GET" action="{{ route('authors') }}">
                                 <fieldset>
-                                    <input type="text" name="search" class="typeahead form-control" placeholder="Search books by title or author's name...">
+                                    <input type="text" name="search" class="typeahead form-control" placeholder="Search for author by name...">
                                     <button type="submit" class="tg-btn"><i class="fa fa-search"></i></button>
                                 </fieldset>
                             </form>

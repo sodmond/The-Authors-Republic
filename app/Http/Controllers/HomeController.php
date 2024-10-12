@@ -31,10 +31,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(10)->get();
+        $featuredBooks = Book::where('featured', true)->orderByDesc('created_at')->take(4)->get();
         $books = Book::orderByDesc('created_at')->take(12)->get();
-        $latestNews = Article::orderByDesc('published_at')->take(10)->get();
-        $authors = Author::where('approval', true)->orderByDesc('created_at')->take(10)->get();
+        $latestNews = Article::orderByDesc('published_at')->take(8)->get();
         $authorsBlog = AuthorsBlog::orderByDesc('published_at')->take(10)->get(); #dd($authorsBlog->count());
         return view('home', compact('books', 'featuredBooks', 'latestNews', 'authorsBlog'));
     }
@@ -46,7 +45,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        $authors = Author::where('approval', true)->orderByDesc('created_at')->take(10)->get();
+        return view('contact', compact('authors'));
     }
 
     public function contactForm(Request $request)
