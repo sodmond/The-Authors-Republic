@@ -369,3 +369,10 @@ a.panel-link.text-white:hover {
 .tg-userlogin span::before {
     content: '' !important;
 }
+
+.tg-posttitle a, #tg-homefeatured a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
