@@ -337,11 +337,18 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-homeslider .owl-nav .tg-btnround i {
         font-size: 15px;
     }
+    .collapse.in {
+        left: -83vw;
+    }
 }
 
 @media only screen and (max-width: 451px) {
     .tg-homeslider .item {
         height: 150px;
+    }
+    .collapse.in {
+        width: 100vw;
+        left: -81vw;
     }
 }
 
