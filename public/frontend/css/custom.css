@@ -313,7 +313,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
         color: #FFF !important;
     }
     .tg-sectionspace {
-        padding: 50px 0;
+        padding: 25px 0 !important;
     }
     .text-sm-center {
         text-align: center;
