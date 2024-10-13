@@ -281,12 +281,17 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     min-height: 300px !important;
 }
 
+.tg-homeslider .item div {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
 @media only screen and (max-width: 951px) {
     .tg-navigation > ul > li > a {
         color: #000 !important;
     }
     .tg-homeslider .item {
-        height: 150px;
+        height: 300px;
     }
     #homeTestimonal div.overlay{
         min-height: 495px;
@@ -334,8 +339,10 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     }
 }
 
-.tg-homeslider .item div {
-    background-size: cover !important;
+@media only screen and (max-width: 451px) {
+    .tg-homeslider .item {
+        height: 150px;
+    }
 }
 
 .text-white {
