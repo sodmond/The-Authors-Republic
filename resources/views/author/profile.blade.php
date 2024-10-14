@@ -153,7 +153,7 @@
                     </div> <!-- end card-box -->
                 </div> <!-- end col -->
 
-                @if($age->y <= 18)
+                @if(auth('author')->user()->dob != '' && $age->y < 18)
                 <div class="col-md-12">
                     <div class="accordion" id="accordionExample">
                         <div class="card">

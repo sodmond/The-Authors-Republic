@@ -126,16 +126,16 @@
                                         <div class="form-group">
                                             <label for="image">Cover Image</label>
                                             <input class="form-control" type="file" id="image" name="image" required>
-                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
-                                            <small class="text-info">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
+                                            <small class="text-dark">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
+                                            <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="book_file">Book File</label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">
-                                            <small class="text-info">(Allowed file type; .pdf | Max: 2MB)</small>
-                                            <small class="text-info">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
+                                            <small class="text-dark">(Allowed file type; .pdf | Max: 2MB)</small>
+                                            <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-custom my-3 col-12"><i class="fas fa-save"></i> Save</button>
@@ -149,13 +149,32 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+    <div class="modal" tabindex="-1" id="statusModal" style="z-index:9999;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p class="h5">Book data temporarily saved</p>
+                    <img src="{{ asset('img/verified.gif') }}" alt="" style="width:120px;">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('custom-scripts')
 <script>
     $(document).ready(function() {
         $('textarea').richText();
-        //alert(window.location.href);
     });
 </script>
+@if(count($errors) > 0)
+<script>
+    $(function() {
+        $('#statusModal').modal('show');
+        setTimeout(function() {
+            $("#statusModal").modal('hide');
+        }, 3000);
+    });
+</script>
+@endif
 @endpush

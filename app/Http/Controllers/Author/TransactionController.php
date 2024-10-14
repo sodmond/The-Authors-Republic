@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('author.approval');
+        #$this->middleware('author.approval');
     }
     
     public function index()

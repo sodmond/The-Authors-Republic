@@ -61,12 +61,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tg-aboutusteam">
                 <div class="row mb-3">
                     <div class="col-md-6 mb-3">
                         <div class="panel panel-default shadow">
                             <div class="panel-body p-4 text-center">
-                                <img src="{{ asset('img/yomi.jpg') }}" alt="">
+                                <img src="{{ asset('img/yomi.jpg') }}" alt="Yomi Akinfesoye's Picture" style="max-width:60%; border-radius:200px;">
                                 <div class="tg-sectionhead" style="padding: 0 10px 10px 0;">
                                     <h2 class="text-center" style="width:100%; line-height:50px;">Yomi Akinfesoye<span>Co-Founder, “The Authors Republic”</span></h2>
                                 </div>
@@ -78,7 +78,7 @@
                     <div class="col-md-6">
                         <div class="panel panel-default shadow">
                             <div class="panel-body p-4 text-center">
-                                <img src="{{ asset('img/dickson.jpg') }}" alt="">
+                                <img src="{{ asset('img/dickson.jpg') }}" alt="Dickson Ekhaguere's Picture" style="max-width:60%; border-radius:200px;">
                                 <div class="tg-sectionhead" style="padding: 0 10px 10px 0;">
                                     <h2 class="text-center" style="width:100%; line-height:50px;">Dickson Ekhaguere<span>Co-Founder, “The Authors Republic”</span></h2>
                                 </div>

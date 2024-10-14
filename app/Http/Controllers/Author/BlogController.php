@@ -14,7 +14,8 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('author.pro');
+        #$this->middleware('author.approval');
+        #$this->middleware('author.pro');
     }
 
     public function index()
