@@ -16,6 +16,16 @@
         <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
+        <style type="text/css">
+            #authorRegCard {
+                top: 150px !important;
+            }
+            @media only screen and (max-width: 451px) {
+                #authorRegCard {
+                    top: 290px !important;
+                }
+            }
+        </style>
     </head>
 
     <body class="authentication-bg authentication-bg-pattern d-flex align-items-center">

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-8 col-xl-8">
-            <div class="card mt-4" style="top:100px; bottom:50px;">
+            <div class="card mt-4" id="authorRegCard" style="top:250px;">
 
                 <div class="card-body p-4">
                     
@@ -13,55 +13,50 @@
                         <h3>Author Registration</h3>
                     </div>
 
+                    @if (count($errors))
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> Error validating data.<br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                    @endif
+
                     <form action="{{ route('author.register') }}" method="POST" class="pt-2">
                         @csrf
                         <div class="form-group row mb-0">
-                            <div class="col-md-2">
+                            <div class="col-md-2 mb-3">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                             </div>
+
                             <div class="col-md-5 mb-3">
                                 <label for="firstname">First Name</label>
                                 <input class="form-control @error('firstname') is-invalid @enderror" type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" 
                                     placeholder="Enter your firstname" required autocomplete="firstname" autofocus>
-                                @error('firstname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="col-md-5 mb-3">
                                 <label for="lastname">Last Name</label>
                                 <input class="form-control @error('lastname') is-invalid @enderror" type="text" id="lastname" name="lastname" value="{{ old('lastname') }}" 
                                     placeholder="Enter your lastname" required autocomplete="lastname">
-                                @error('lastname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                             
                             <div class="col-md-6 mb-3">
                                 <label for="email">Email Address</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}" required 
                                     placeholder="Enter your email" autocomplete="email">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="email">Phone Number</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="number" id="phone" name="phone" value="{{ old('phone') }}" required 
                                     placeholder="Enter your phone number" autocomplete="phone">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -93,11 +88,6 @@
                                 <label for="password">Password</label>
                                 <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="Enter your password" required
                                     autocomplete="new-password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
