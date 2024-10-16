@@ -36,6 +36,7 @@ class RegisterController extends Controller
         ]);
         $data = $request->all();
         $author = Author::create([
+            'title' => $data['title'],
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
@@ -43,6 +44,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'dob' => $data['dob'],
             'city' => $data['city'],
+            'state' => $data['state'],
             'zip' => $data['zip'],
             'approval' => true
         ]);
