@@ -24,7 +24,7 @@ class BookController extends Controller
                         ->paginate(12);
             return view('books', compact('books'));
         }
-        $books = Book::where('status', true)->paginate(12);
+        $books = Book::where('status', true)->orderByDesc('created_at')->paginate(12);
         return view('books', compact('books'));
     }
 
