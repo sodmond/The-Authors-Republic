@@ -20,7 +20,7 @@
                         @php 
                             $slug = \App\Models\Author::getSlug($author->firstname, $author->lastname);
                             $authorLink = route('author', ['id' => $author->id, 'slug' => $slug]);
-                            $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('frontend/images/author/imag-03.jpg');
+                            $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('img/user-icon.png');
                         @endphp
                         <figure><a href="{{ $authorLink }}"><img src="{{ $authorImage }}" alt="author image"></a></figure>
                         <div class="tg-authorcontent">

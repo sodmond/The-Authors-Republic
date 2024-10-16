@@ -7,7 +7,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-authordetail">
                     <figure class="tg-authorimg">
-                        @php $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('frontend/images/author/imag-25.jpg'); @endphp
+                        @php $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('img/user-icon.png'); @endphp
                         <img src="{{ $authorImage }}" alt="author image" style="max-width: 320px;">
                     </figure>
                     <div class="tg-authorcontentdetail">
