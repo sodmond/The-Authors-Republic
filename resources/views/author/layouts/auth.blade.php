@@ -34,6 +34,7 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/js/app.min.js') }}"></script>
+        @stack('custom-scripts')
         
     </body>
 </html>

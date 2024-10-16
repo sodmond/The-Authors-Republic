@@ -34,6 +34,19 @@
                                     <a class="btn btn-custom" href="{{ route('author.book.new') }}"><i class="fa fa-plus-circle"></i> Add New</a>
                                 </div>
                             </div>
+                            @if (count($errors))
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> Error validating data.<br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert"><strong>Success!</strong> {{ session('success') }}</div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>

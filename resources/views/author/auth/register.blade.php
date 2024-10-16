@@ -16,7 +16,11 @@
                     <form action="{{ route('author.register') }}" method="POST" class="pt-2">
                         @csrf
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-2">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                            </div>
+                            <div class="col-md-5 mb-3">
                                 <label for="firstname">First Name</label>
                                 <input class="form-control @error('firstname') is-invalid @enderror" type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" 
                                     placeholder="Enter your firstname" required autocomplete="firstname" autofocus>
@@ -27,7 +31,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <label for="lastname">Last Name</label>
                                 <input class="form-control @error('lastname') is-invalid @enderror" type="text" id="lastname" name="lastname" value="{{ old('lastname') }}" 
                                     placeholder="Enter your lastname" required autocomplete="lastname">
@@ -37,9 +41,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
+                            
                             <div class="col-md-6 mb-3">
                                 <label for="email">Email Address</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}" required 
@@ -50,6 +52,7 @@
                                     </span>
                                 @enderror
                             </div>
+
                             <div class="col-md-6 mb-3">
                                 <label for="email">Phone Number</label>
                                 <input class="form-control @error('phone') is-invalid @enderror" type="number" id="phone" name="phone" value="{{ old('phone') }}" required 
@@ -60,21 +63,47 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="password">Password</label>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="Enter your password" required
-                                autocomplete="new-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group mb-3">
-                            <label for="password-confirm">Confirm Password</label>
-                            <input class="form-control" type="password" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+                            <div class="col-md-6 mb-3">
+                                <label for="dob" class="col-form-label">Date of Birth</label>
+                                <input type="date" class="form-control" id="dob" name="dob" value="{{ old('dob') }}" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="col-form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="state" class="col-form-label">State</label>
+                                <select class="form-control" name="state" id="state" required>
+                                    <option value="">- - - - Select State - - -</option>
+                                    @foreach ($locations as $item)
+                                        <option value="{{ $item->state }}" @selected($item->state == old('state'))>{{ $item->state }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="zip" class="col-form-label">Zip/Postal Code</label>
+                                <input type="number" class="form-control" id="zip" name="zip" value="{{ old('zip') }}" required>
+                            </div>
+                        
+                            <div class="col-md-6 mb-3">
+                                <label for="password">Password</label>
+                                <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="Enter your password" required
+                                    autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="password-confirm">Confirm Password</label>
+                                <input class="form-control" type="password" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+                            </div>
                         </div>
                         
                         <div class="custom-control custom-checkbox mb-3">
@@ -105,3 +134,14 @@
 </div>
 <!-- end container -->
 @endsection
+
+@push('custom-scripts')
+<script>
+    $(document).ready(function(){ 
+        var input_group = $('input[required]').parent();
+        input_group.find('label').addClass('required');
+        var select_group = $('select[required]').parent();
+        select_group.find('label').addClass('required');
+    });
+</script>
+@endpush

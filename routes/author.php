@@ -19,6 +19,9 @@ Route::get('/', [AuthorBackend\HomeController::class, 'home']);
 Route::group([], function(){
     Route::get('register', [AuthorBackend\Auth\RegisterController::class, 'showRegisterForm'])->name('register');
     Route::post('register', [AuthorBackend\Auth\RegisterController::class, 'register']);
+    Route::get('email/verify', [AuthorBackend\Auth\VerificationController::class, 'show'])->name('verification.notice');
+    Route::post('email/verify', [AuthorBackend\Auth\VerificationController::class, 'resend'])->name('verification.resend');
+    Route::get('email/verify/{id}/{hash}', [AuthorBackend\Auth\VerificationController::class, 'verify'])->name('verification.verify');
     Route::get('login', [AuthorBackend\Auth\LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AuthorBackend\Auth\LoginController::class, 'login']);
     Route::post('logout', [AuthorBackend\Auth\LoginController::class, 'logout'])->name('logout');
@@ -30,7 +33,7 @@ Route::group([], function(){
     Route::post('password/reset', [AuthorBackend\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
-Route::group(['middleware' => ['auth:author']], function () {
+Route::group(['middleware' => ['auth:author', 'verified']], function () {
     Route::get('home', [AuthorBackend\HomeController::class, 'index'])->name('home');
     Route::post('request_approval', [AuthorBackend\HomeController::class, 'requestApproval'])->name('approval');
     Route::get('premium/payment', [AuthorBackend\HomeController::class, 'premiumPayment'])->name('payment');
@@ -42,7 +45,8 @@ Route::group(['middleware' => ['auth:author']], function () {
     Route::post('book_new', [AuthorBackend\BookController::class, 'addNew']);
     Route::get('book/{id}/edit', [AuthorBackend\BookController::class, 'edit'])->name('book.edit');
     Route::post('book/{id}/update', [AuthorBackend\BookController::class, 'update'])->name('book.update');
-    Route::post('book/{id}/delete', [AuthorBackend\BookController::class, 'delete'])->name('book.delete');
+    Route::post('book/{id}/update-image', [AuthorBackend\BookController::class, 'updateImage'])->name('book.update.image');
+    Route::get('book/{id}/trash', [AuthorBackend\BookController::class, 'trash'])->name('book.trash');
     Route::get('book_download/{book_file}', [AuthorBackend\BookController::class, 'download'])->name('book.download');
 
     Route::get('orders', [AuthorBackend\OrdersController::class, 'index'])->name('orders');

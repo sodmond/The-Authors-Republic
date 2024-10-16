@@ -46,7 +46,7 @@ return [
             'provider' => 'admins',
         ],
         'author' => [
-            'redirectTo' => 'admin.home',
+            'redirectTo' => 'author.home',
             'driver' => 'session',
             'provider' => 'authors',
         ],
@@ -76,11 +76,11 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Admin::class),
+            'model' => App\Models\Admin::class,
         ],
         'authors' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Author::class),
+            'model' => App\Models\Author::class,
         ],
 
         // 'users' => [

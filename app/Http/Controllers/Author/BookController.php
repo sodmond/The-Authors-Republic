@@ -39,7 +39,7 @@ class BookController extends Controller
 
     public function addNew(BookRequest $request)
     {
-        $imgPath = $request->file('image')->store('books', 'public');
+        #$imgPath = $request->file('image')->store('books', 'public');
         $bookFile = '';
         if ($request->hasFile('book_file')) {
             $bookFile = Str::random(32) . '.' . $request->file('book_file')->extension();
@@ -58,10 +58,10 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->published_at = $request->published_at;
         $book->pages_number = $request->pages_number;
-        $book->image = $imgPath;
+        #$book->image = $imgPath;
         $book->book_file = $bookFile;
         if ($book->save()) {
-            return back()->with('success', 'New book has been added');
+            return redirect()->route('author.book.edit', ['id' => $book->id])->with('success', 'Your book has been saved, please upload book image to publish it.');
         }
         return back()->withErrors(['err_msg' => 'Error adding new book, pls try again']);
     }
@@ -91,13 +91,13 @@ class BookController extends Controller
             'hard_copy.accepted_if' => 'Hard copy must be YES, if you are not providing a soft copy',
         ]);
         $book = Book::find($id);
-        if ($request->hasFile('image')) {
+        /*if ($request->hasFile('image')) {
             if (Storage::exists('public/'.$book->image)) {
                 Storage::delete('public/'.$book->image);
             }
             $imgPath = $request->file('image')->store("books", 'public');
             $book->image = $imgPath;
-        }
+        }*/
         if ($request->hasFile('book_file')) {
             if (Storage::exists('public/books/files/'.$book->book_file)) {
                 Storage::delete('public/books/files/'.$book->book_file);
@@ -121,9 +121,34 @@ class BookController extends Controller
         return back()->withErrors(['err_msg' => 'Error updating book, pls try again']);
     }
 
+    public function updateImage($id, Request $request)
+    {
+        $this->validate($request, [
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)],
+        ]);
+        $book = Book::find($id);
+        $suc_msg = empty($book->image) ? 'Book has been published' : 'Book cover image has been updated';
+        if (Storage::exists('public/'.$book->image)) {
+            Storage::delete('public/'.$book->image);
+        }
+        $imgPath = $request->file('image')->store("books", 'public');
+        $book->image = $imgPath;
+        $book->status = true;
+        $book->save();
+        return back()->with('success', $suc_msg);
+    }
+    
+    
     public function download($book_file)
     {
         $book_file_path = 'books/'.$book_file;
         return Storage::download($book_file_path);
+    }
+
+    public function trash($id)
+    {
+        $book = Book::find($id);
+        $book->delete();
+        return redirect()->route('author.books')->with('success', 'Book has been deleted');
     }
 }

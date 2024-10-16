@@ -8,6 +8,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Mail\SendPasswordChange;
 use App\Models\Author;
 use App\Models\AuthorParent;
+use App\Models\Shipping;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,8 @@ class ProfileController extends Controller
         if (!$author_parent) {
             $author_parent = AuthorParent::create(['author_id' => auth('author')->id()]);
         }
-        return view('author.profile', compact('author_parent', 'age'));
+        $locations = Shipping::all();
+        return view('author.profile', compact('author_parent', 'age', 'locations'));
     }
 
     public function update(ProfileRequest $request)

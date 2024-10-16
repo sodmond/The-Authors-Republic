@@ -122,15 +122,15 @@
                                             <div id="testDesc"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{--<div class="col-md-6">
                                         <div class="form-group">
                                             <label for="image">Cover Image</label>
                                             <input class="form-control" type="file" id="image" name="image" required>
                                             <small class="text-dark">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
                                             <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div>--}}
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="book_file">Book File</label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">

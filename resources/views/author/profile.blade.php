@@ -113,7 +113,12 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="state" class="col-form-label">State</label>
-                                        <input type="text" class="form-control" id="state" name="state" value="{{ auth('author')->user()->state }}" required>
+                                        <select class="form-control" name="state" id="state" required>
+                                            <option value="">- - - - Select State - - -</option>
+                                            @foreach ($locations as $item)
+                                                <option value="{{ $item->state }}" @selected($item->state == auth('author')->user()->state)>{{ $item->state }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -230,7 +235,12 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="state" class="col-form-label">State</label>
-                                                <input type="text" class="form-control" id="state" name="state" value="{{ $author_parent->state }}" required>
+                                                <select class="form-control" name="state" id="state" required>
+                                                    <option value="">- - - - Select State - - -</option>
+                                                    @foreach ($locations as $item)
+                                                        <option value="{{ $item->state }}" @selected($item->state == $author_parent->state)>{{ $item->state }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">

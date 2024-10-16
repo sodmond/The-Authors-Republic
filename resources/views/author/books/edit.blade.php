@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">Edit Book Details</h4>
+                            <h4 class="h5 text-white">{{ empty($book->image) ? 'Publish Book' : 'Update Book Image' }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row mb-3">
@@ -49,8 +49,39 @@
                                 </div>
                             @endif
                             @if (session('success'))
-                                <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                                <div class="alert alert-success" role="alert"><strong>Success!</strong> {{ session('success') }}</div>
                             @endif
+                            <form action="{{ route('author.book.update.image', ['id' => $book->id]) }}" method="POST" class="pt-2" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
+                                            <input class="form-control" type="file" id="image" name="image">
+                                            <small class="text-dark">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px).</small>
+                                            <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-custom my-3">{{ empty($book->image) ? 'Publish' : 'Update Image' }}</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/author/imag-25.jpg') }}" alt="book cover image" style="max-width: 200px;">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-header bg-custom">
+                            <h4 class="h5 text-white">Edit Book Details</h4>
+                        </div>
+                        <div class="card-body">
                             <form action="{{ route('author.book.update', ['id' => $book->id]) }}" method="POST" class="pt-2" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
@@ -120,15 +151,7 @@
                                             <div id="testDesc"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
-                                            <input class="form-control" type="file" id="image" name="image">
-                                            <small class="text-dark">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px).</small>
-                                            <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="book_file">Book File <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">

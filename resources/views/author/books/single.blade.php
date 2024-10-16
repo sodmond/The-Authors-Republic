@@ -36,7 +36,8 @@
                                 </div>
                                 <div class="col-6 text-right">
                                     <a class="btn btn-info" href="{{ route('author.book.edit', ['id' => $book->id]) }}"><i class="fa fa-edit"></i> Edit</a>
-                                    <a class="btn btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>
+                                    <a class="btn btn-danger" href="#" id="deleteBookBtn"><i class="fa fa-trash"></i> Delete</a>
+                                    <input type="hidden" id="deleteBookUrl" value="{{ route('author.book.trash', ['id' => $book->id]) }}">
                                 </div>
                             </div>
                             <div class="row">
@@ -114,3 +115,15 @@
 
     </div> <!-- content -->
 @endsection
+
+@push('custom-scripts')
+    <script>
+        $('#deleteBookBtn').click(function() {
+            var x = confirm('Do you want to delete this book?');
+            if (x == true) {
+                var url = $('#deleteBookUrl').val();
+                window.location.href = url;
+            }
+        });
+    </script>
+@endpush

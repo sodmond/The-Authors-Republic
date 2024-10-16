@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content">
-        @if(auth('author')->user()->approval == true)
+        {{--@if(auth('author')->user()->approval == true)--}}
         <!-- Start Content-->
         <div class="container-fluid">
             
@@ -121,7 +121,7 @@
             </div>
             
         </div> <!-- container -->
-        @else
+        {{--@else
 
         <div class="container-fluid">
             
@@ -147,7 +147,7 @@
             </div>
 
         </div>
-        @endif
+        @endif--}}
 
     </div> <!-- content -->
 

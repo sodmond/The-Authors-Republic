@@ -11,7 +11,7 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <a href="{{url('/')}}"><img src="{{ asset('img/lg.png') }}" style="width:120px;"></a>
+                                    <a href="{{url('/')}}"><img src="{{ asset('img/logo.png') }}" height="78"></a>
                                     <p>&nbsp;</p>
                                     <h1 class="h5 text-gray-900 mb-4">{{ __('Verify Your Email Address') }}</h1>
                                 </div>
@@ -24,7 +24,7 @@
                                 <div class="text-center">
                                     {{ __('Before proceeding, please check your email for a verification link.') }}
                                     {{ __('If you did not receive the email') }},
-                                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                                    <form class="d-inline" method="POST" action="{{ route('author.verification.resend') }}">
                                         @csrf
                                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                                     </form>
