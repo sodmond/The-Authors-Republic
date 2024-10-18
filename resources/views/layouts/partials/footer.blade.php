@@ -54,11 +54,10 @@
                                 </li>
                             </ul>
                             <ul class="tg-socialicons">
-                                <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
+                                <li class="tg-facebook"><a href="https://facebook.com/Theauthorsrepublic" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li class="tg-googleplus"><a href="https://instagram.com/Theauthorsrepublic" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li class="tg-twitter"><a href="https://x.com/Theauthorsrepublic" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li class="tg-googleplus"><a href="https://tiktok.com/Theauthorsrepublic" target="_blank"><i class="fab fa-tiktok"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -136,7 +135,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <span class="tg-paymenttype">Website by <a href="https://wmatechjunkies.com">WMA Tech Junkies</a></span>
-                    <span class="tg-copyright">&copy; {{date('Y')}} All Rights Reserved By {{ config('app.name') }}</span>
+                    <span class="tg-copyright">&copy; {{date('Y')}} All Rights Reserved By {{ config('app.name') }} | Powered by Just Curious Enterprises</span>
                 </div>
             </div>
         </div>

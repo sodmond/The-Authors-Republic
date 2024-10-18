@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Playfair+Display:400,700|Work+Sans:300,400,500,600,700);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .bg-custom, .tg-bglight, .tg-footerbar {
     background-color: #616B2E !important;
 }
@@ -242,7 +246,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     display: none !important;
 }
 
-.navbar-header .collapse.in {
+#tg-nav .tg-navigation.collapse.in {
     width: 100vw;
     left: -80vw;
     margin-top: 6px;
@@ -337,7 +341,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-homeslider .owl-nav .tg-btnround i {
         font-size: 15px;
     }
-    .navbar-header .collapse.in {
+    #tg-nav .tg-navigation.collapse.in {
         left: -83vw;
     }
 }
@@ -346,7 +350,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     .tg-homeslider .item {
         height: 150px;
     }
-    .navbar-header .collapse.in {
+    #tg-nav .tg-navigation.collapse.in {
         width: 100vw;
         left: -81vw;
     }
@@ -396,6 +400,14 @@ a.panel-link.text-white:hover {
     font-weight: 400;
     line-height: 1.5;
     font-style: normal;
-    font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-size: 15px;
+}
+
+.aboutus-section h5 {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.tg-aboutusteam .tg-sectionhead h2 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

@@ -28,8 +28,19 @@
 	<link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/css/color-purple.css') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/brands.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/fontawesome.min.css">
 	<script src="{{ asset('frontend/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+	<style>
+		@font-face {
+		    font-family: "Script MT";
+		    src: url({{ asset('frontend/fonts/ScriptMTBold.woff') }});
+		}
+		.tg-aboutusshortcode .tg-sectionhead h2, .tg-aboutusteam #teamHeader h2, .aboutus-section h2 {
+    		font-family: 'Script MT' !important;
+		}
+	</style>
 </head>
 <body class="tg-home tg-homevtwo">
 	<!--[if lt IE 8]>
@@ -95,6 +106,8 @@
 	<script src="{{ asset('frontend/js/main.js') }}"></script>
 	<script src="{{ asset('frontend/js/custom.js') }}"></script>
 	<script src="{{ asset('frontend/js/bootstrap-rating-input.min.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/brands.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/fontawesome.min.js"></script>
 	@stack('custom-scripts')
 	@if(session('cart_suc'))
     <script>
