@@ -21,7 +21,7 @@ class AuthorController extends Controller
                         ->paginate(12);
             return view('authors', compact('authors'));
         }
-        $authors = Author::where('approval', true)->paginate(18);
+        $authors = Author::where('email_verified_at', '<>', NULL)->paginate(18);
         return view('authors', compact('authors'));
     }
 
