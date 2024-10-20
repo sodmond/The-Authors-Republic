@@ -14,7 +14,7 @@
                     that prioritizes creativity and focus. It’s a republic for fostering a vibrant and supportive literary 
                     community.
                 </p>
-                <a class="tg-btn tg-active" href="">Learn more</a>
+                <a class="tg-btn tg-active" href="{{ route('about') }}">Learn more</a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-pull-0">
                 <img src="{{ asset('img/about-banner.jpg') }}" alt="">
