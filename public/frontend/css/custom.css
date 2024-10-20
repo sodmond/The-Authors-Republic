@@ -402,12 +402,20 @@ a.panel-link.text-white:hover {
     font-style: normal;
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-size: 15px;
+    text-align: justify;
 }
 
 .aboutus-section h5 {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    text-align: justify;
 }
 
 .tg-aboutusteam .tg-sectionhead h2 {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }

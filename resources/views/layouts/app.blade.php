@@ -39,6 +39,8 @@
 		}
 		.tg-aboutusshortcode .tg-sectionhead h2, .tg-aboutusteam #teamHeader h2, .aboutus-section h2 {
     		font-family: 'Script MT' !important;
+			font-size: 32px !important;
+			line-height: 35px;
 		}
 	</style>
 </head>
