@@ -1,6 +1,27 @@
 @extends('layouts.app', ['activePage' => 'about', 'title' => 'About Us'])
 
 @section('content')
+<section class="tg-sectionspace tg-haslayout tg-aboutusshortcode" id="home-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-push-0 mb-3 vcenter">
+                <div class="tg-sectionhead" style="padding: 0 0px 15px 0;">
+                    <h2 style="line-height:35px;">What is “the authors republic” about?</h2>
+                </div>
+                <p>The Authors Republic provides authors and creatives with a professional, well-curated space to share their 
+                    works, showcase their talents, and reach a broader audience. Here, authors and creatives can engage in 
+                    meaningful discussions, collaborate on projects, and receive feedback from peers—all in an environment 
+                    that prioritizes creativity and focus. It’s a republic for fostering a vibrant and supportive literary 
+                    community.
+                </p>
+                <a class="tg-btn tg-active" href="{{ route('about') }}">Learn more</a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-pull-0">
+                <img src="{{ asset('img/about-banner.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
 <!--************************************
         Call to Action Start
 *************************************-->
