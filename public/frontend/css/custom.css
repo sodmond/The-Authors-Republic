@@ -419,3 +419,7 @@ a.panel-link.text-white:hover {
     vertical-align: middle;
     float: none;
 }
+
+.bg-secondary {
+    background-color: #f39d128f;
+}

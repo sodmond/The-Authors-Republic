@@ -67,13 +67,26 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="panel panel-default shadow">
-                    <div class="panel-body bg-danger p-4">
+                    <div class="panel-body bg-secondary p-4">
                         <a class="panel-link" href="{{ route('user.settings') }}">
                             <div class="panel-top">
                                 <span class="panel-icon"><i class="fa fa-cog"></i></span>
                                 <span class="panel-text">Settings</span>
                             </div>
-                            <div class="panel-digit">1</div>
+                            <div class="panel-digit">&nbsp;</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default shadow">
+                    <div class="panel-body bg-danger p-4">
+                        <a class="panel-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <div class="panel-top">
+                                <span class="panel-icon"><i class="fa fa-sign-out"></i></span>
+                                <span class="panel-text">Logout</span>
+                            </div>
+                            <div class="panel-digit">&nbsp;</div>
                         </a>
                     </div>
                 </div>

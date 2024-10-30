@@ -6,33 +6,33 @@
                     <ul class="tg-addnav">
                         <li id="authorLogin">
                             <a href="{{ route('author.home') }}" target="_blank">
-                                <i class="icon-user"></i>
+                                <i class="fa fa-user"></i>
                                 <em>Author Login/Sign Up</em>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('user.wishlist') }}">
-                                <i class="icon-heart"></i>
+                                <i class="fa fa-heart-o"></i>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('cart') }}">
-                                <i class="icon-cart"></i>
+                                <i class="fa fa-shopping-cart"></i>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="searchPopBtn">
-                                <i class="icon-search"></i>
+                                <i class="fa fa-search"></i>
                             </a>
                         </li>
                     </ul>
                     <div class="tg-userlogin">
                         <figure><a href="javascript:void(0);"><img src="{{ asset('img/user-icon.png') }}" alt="image description" style="max-width:30px;"></a></figure>
-                        <span id="userAuthText1">Hi, {{ (Auth::guard('web')->user()) ? ucwords(Auth::guard('web')->user()->firstname) : 'Guest' }}</span>
+                        <span id="userAuthText1"><a href="{{ route('user.home') }}">Hi, {{ (Auth::guard('web')->user()) ? ucwords(Auth::guard('web')->user()->firstname) : 'Guest' }}</a></span>
                     </div>
                     <div class="dropdown tg-themedropdown tg-currencydropdown" id="tg-userlogin">
                         <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span style="line-height: 10px;"><i class="icon-user"></i></span>
+                            <span style="line-height: 10px;"><i class="fa fa-user-o"></i></span>
                         </a>
                         <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
                             @if(auth('web')->check())
@@ -132,7 +132,7 @@
                             <div class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                     <a href="#" class="tg-btnthemedropdown searchPopBtn">
-                                        <i class="icon-search"></i>
+                                        <i class="fa fa-search"></i>
                                     </a>
                                 </div>
                                 <div class="dropdown tg-themedropdown tg-wishlistdropdown">
@@ -145,7 +145,7 @@
                                     @endphp
                                     <a href="{{ route('user.wishlist') }}" id="tg-wishlisst" class="tg-btnthemedropdown">
                                         <span class="tg-themebadge">{{ $savedItems }}</span>
-                                        <i class="icon-heart"></i>
+                                        <i class="fa fa-heart-o"></i>
                                     </a>
                                 </div>
                                 
@@ -156,7 +156,7 @@
                                     @endphp
                                     <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="tg-themebadge">{{ $shoppingCart->count() }}</span>
-                                        <i class="icon-cart"></i> 
+                                        <i class="fa fa-shopping-cart"></i> 
                                     </a>
                                     <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart" style="z-index:999;">
                                         @if ($shoppingCart->count() > 0)
@@ -194,7 +194,7 @@
     
                                 <div class="dropdown tg-themedropdown tg-currencydropdown">
                                     <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span style="font-size: 20px; line-height: 20px;"><i class="icon-user"></i></span>
+                                        <span style="font-size: 20px; line-height: 20px;"><i class="fa fa-user-o"></i></span>
                                     </a>
                                     <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty" style="z-index:999;">
                                         @guest

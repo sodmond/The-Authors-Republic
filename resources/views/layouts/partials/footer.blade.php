@@ -5,28 +5,28 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="tg-clientservices">
                         <li class="tg-devlivery">
-                            <span class="tg-clientserviceicon"><i class="icon-rocket"></i></span>
+                            <span class="tg-clientserviceicon"><i class="fa fa-rocket"></i></span>
                             <div class="tg-titlesubtitle">
                                 <h3>Fast Delivery</h3>
                                 <p>Shipping Worldwide</p>
                             </div>
                         </li>
                         <li class="tg-discount">
-                            <span class="tg-clientserviceicon"><i class="icon-tag"></i></span>
+                            <span class="tg-clientserviceicon"><i class="fa fa-tag"></i></span>
                             <div class="tg-titlesubtitle">
                                 <h3>Open Discount</h3>
                                 <p>Offering Open Discount</p>
                             </div>
                         </li>
                         <li class="tg-quality">
-                            <span class="tg-clientserviceicon"><i class="icon-leaf"></i></span>
+                            <span class="tg-clientserviceicon"><i class="fa fa-leaf"></i></span>
                             <div class="tg-titlesubtitle">
                                 <h3>Eyes On Quality</h3>
                                 <p>Publishing Quality Work</p>
                             </div>
                         </li>
                         <li class="tg-support">
-                            <span class="tg-clientserviceicon"><i class="icon-heart"></i></span>
+                            <span class="tg-clientserviceicon"><i class="fa fa-heart-o"></i></span>
                             <div class="tg-titlesubtitle">
                                 <h3>24/7 Support</h3>
                                 <p>Serving Every Moments</p>
@@ -40,13 +40,13 @@
                             <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo.png') }}" alt="The Authors Republic" style="max-height:90px;"></a></strong>
                             <ul class="tg-contactinfo">
                                 <li>
-                                    <i class="icon-phone-handset"></i>
+                                    <i class="fa fa-phone"></i>
                                     <span>
                                         <em>0903 488 2719</em>
                                     </span>
                                 </li>
                                 <li>
-                                    <i class="icon-envelope"></i>
+                                    <i class="fa fa-envelope-o"></i>
                                     <span>
                                         <em><a href="mailto:orders@theauthorsrepublic.com">orders@theauthorsrepublic.com</a></em>
                                         <em><a href="mailto:info@theauthorsrepublic.com">info@theauthorsrepublic.com</a></em>
@@ -122,7 +122,7 @@
                         @csrf
                         <fieldset>
                             <input type="email" name="email" class="form-control" placeholder="Enter Your Email Address">
-                            <button type="button"><i class="icon-envelope"></i></button>
+                            <button type="button"><i class="fa fa-envelope-o"></i></button>
                         </fieldset>
                     </form>
                 </div>
@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="tg-footerbar">
-        <a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
+        <a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="fa fa-chevron-up"></i></a>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
