@@ -14,7 +14,7 @@
                     that prioritizes creativity and focus. It’s a republic for fostering a vibrant and supportive literary 
                     community.
                 </p>
-                <a class="tg-btn tg-active" href="{{ route('about') }}">Learn more</a>
+                <a class="tg-btn tg-active" href="#why-section">Learn more</a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-pull-0">
                 <img src="{{ asset('img/about-banner.jpg') }}" alt="">
@@ -49,7 +49,7 @@
         Call to Action End
 *************************************-->
 
-<section class="tg-sectionspace tg-haslayout" style="padding-top: 0;">
+<section class="tg-sectionspace tg-haslayout" style="padding-top: 0;" id="why-section">
     <div class="container">
         <div class="row">
             <div class="tg-aboutus">

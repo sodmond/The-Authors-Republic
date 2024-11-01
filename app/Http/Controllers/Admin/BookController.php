@@ -80,7 +80,7 @@ class BookController extends Controller
             'hard_copy' => ['required', 'integer', 'max:1', 'accepted_if:soft_copy,0'],
             'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
-            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
             'book_file' => ['nullable', 'mimes:pdf', 'max:2048'],
             'pages_number' => ['required', 'integer'],
             'published_at' => ['required', 'date'],

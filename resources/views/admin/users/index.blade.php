@@ -29,10 +29,6 @@
                             <h4 class="h5 text-white">List of All Users</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row justify-content-end mb-3">
-                                <div class="col-auto">
-                                </div>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
@@ -42,7 +38,6 @@
                                             <th>Lastname</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Status</th>
                                             <th>Date Created</th>
                                             <th>...</th>
                                         </tr>
@@ -56,7 +51,6 @@
                                                 <td>{{ $user->lastname }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>0{{ $user->phone }}</td>
-                                                <td>{{ $user->id }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td><a class="btn btn-sm btn-custom" href="{{ route('admin.user', ['id' => $user->id]) }}">
                                                     <i class="fa fa-eye"></i>
@@ -65,6 +59,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-auto">
+                                    {{ $users->appends($_GET)->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>

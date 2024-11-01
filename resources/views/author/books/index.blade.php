@@ -68,7 +68,7 @@
                                                 <td><img src="{{ asset('storage/'.$book->image) }}" class="img-thumbnail" style="max-width:65px;"></td>
                                                 <td>{{ $book->title }}</td>
                                                 <td>{{ ucwords(\App\Models\Book::getCategoryName($book->category_id)) }}</td>
-                                                <td>{{ $book->price }}</td>
+                                                <td>{{ number_format($book->price, 2) }}</td>
                                                 <td>{{ $book->created_at }}</td>
                                                 <td><a class="btn btn-sm btn-custom" href="{{ route('author.book', ['id' => $book->id]) }}">
                                                     <i class="fa fa-eye"></i>

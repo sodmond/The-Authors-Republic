@@ -37,7 +37,7 @@
                 <div class="tg-threecolumns" style="padding-bottom:30px;">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="tg-footercol">
-                            <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo.png') }}" alt="The Authors Republic" style="max-height:90px;"></a></strong>
+                            <strong class="tg-logo"><a href="javascript:void(0);"><img src="{{ asset('img/logo-footer.jpg') }}" alt="The Authors Republic" style="max-width:190px;"></a></strong>
                             <ul class="tg-contactinfo">
                                 <li>
                                     <i class="fa fa-phone"></i>

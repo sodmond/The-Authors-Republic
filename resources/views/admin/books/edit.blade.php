@@ -14,10 +14,10 @@
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('admin.books') }}">Books</a></li>
-                                <li class="breadcrumb-item active">New book</li>
+                                <li class="breadcrumb-item active">New Book</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Edit book</h4>
+                        <h4 class="page-title">Edit Book</h4>
                     </div>
                 </div>
             </div>     
@@ -131,7 +131,7 @@
                                         <div class="form-group">
                                             <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="image" name="image">
-                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Ratio: 1/1 | Min-Width: 370px)</small>
+                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Dimension: 370x500px)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

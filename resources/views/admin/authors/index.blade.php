@@ -74,6 +74,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-auto">
+                                    {{ $authors->appends($_GET)->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

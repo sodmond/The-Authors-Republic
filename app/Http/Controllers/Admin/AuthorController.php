@@ -12,7 +12,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $authors = Author::paginate(10);
+        $authors = Author::orderByDesc('created_at')->paginate(10);
         $authors_pending = Author::where('approval', false);
         return view('admin.authors.index', compact('authors', 'authors_pending'));
     }

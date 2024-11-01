@@ -124,7 +124,7 @@ class BookController extends Controller
     public function updateImage($id, Request $request)
     {
         $this->validate($request, [
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
         ]);
         $book = Book::find($id);
         $suc_msg = empty($book->image) ? 'Book has been published' : 'Book cover image has been updated';
