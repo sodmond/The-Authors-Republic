@@ -47,14 +47,14 @@ class UsersController extends Controller
     public function posts($id) 
     {
         $user = User::find($id);
-        $posts = Post::where('user_id', $user->id)->orderByDesc('created_at')->paginate(10);
+        $posts = Post::where('user_type', 'user')->where('user_id', $user->id)->orderByDesc('created_at')->paginate(10);
         return view('admin.users.posts', compact('user', 'posts'));
     }
 
     public function comments($id) 
     {
         $user = User::find($id);
-        $comments = Comment::where('user_id', $user->id)->orderByDesc('created_at')->paginate(10);
+        $comments = Comment::where('user_type', 'user')->where('user_id', $user->id)->orderByDesc('created_at')->paginate(10);
         return view('admin.users.comments', compact('user', 'comments'));
     }
 
