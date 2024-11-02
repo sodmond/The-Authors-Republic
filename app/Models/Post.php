@@ -12,13 +12,13 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'title', 'body'
+        'user_id', 'user_type', 'title', 'body'
     ];
 
-    public function user() : BelongsTo 
+    /*public function user() : BelongsTo 
     {
         return $this->belongsTo(User::class);
-    }
+    }*/
 
     public function comments() : HasMany
     {

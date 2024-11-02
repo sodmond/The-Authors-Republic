@@ -284,27 +284,45 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
                     <div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel" style="z-index: 3">
                         <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>Being an author can sometimes feel isolating, but this platform has changed everything for me.</q></blockquote>
                             <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
+                                <h3>Emmanuel</h3>
                             </div>
                         </div>
                         <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>I never knew how much I needed a space like this until I joined. The supportive environment and the opportunity to showcase my stories have reignited my passion for writing. I’m thankful for the brains behind “the authors republic</q></blockquote>
                             <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
+                                <h3>Okechukwu</h3>
                             </div>
                         </div>
                         <div class="item tg-testimonial">
-                            <figure><img src="{{ asset('frontend/images/author/imag-02.jpg') }}" alt="image description"></figure>
-                            <blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>This platform is a dream come true for me with the ability to share my work and getting insights from fellow literary enthusiasts.</q></blockquote>
                             <div class="tg-testimonialauthor">
-                                <h3>Holli Fenstermacher</h3>
-                                <span>Manager @ CIFP</span>
+                                <h3>Sophia</h3>
+                            </div>
+                        </div>
+                        <div class="item tg-testimonial">
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>As an aspiring author, “the authors republic” is the right place for me and coming at the right time.</q></blockquote>
+                            <div class="tg-testimonialauthor">
+                                <h3>Michael</h3>
+                            </div>
+                        </div>
+                        <div class="item tg-testimonial">
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>This site has turned my solitary writing sessions into a collaborative adventure.</q></blockquote>
+                            <div class="tg-testimonialauthor">
+                                <h3>Lucas</h3>
+                            </div>
+                        </div>
+                        <div class="item tg-testimonial">
+                            <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
+                            <blockquote><q>As a reader who loves engaging with the authors directly, this platform has made that possible! I’ve discovered countless talented writers and enjoyed discussions with them about their works. It's an enriching experience that deepens my love for literature!</q></blockquote>
+                            <div class="tg-testimonialauthor">
+                                <h3>Oluwaseyi (Literary Enthusiast)</h3>
                             </div>
                         </div>
                     </div>

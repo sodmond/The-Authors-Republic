@@ -12,29 +12,33 @@
                             <a class="tg-btn tg-active" href="{{ route('forum') }}">Back to Forum</a>
                         </div>
                     </div>
-                    @if (count($errors))
-                        <div class="alert alert-danger">
-                            <strong class="text-danger">Whoops!</strong> Error validating data.<br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    @if(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            <strong class="text-success">Success!</strong> {{ session('success') }}
-                        </div>
-                    @endif
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            @if (count($errors))
+                                <div class="alert alert-danger">
+                                    <strong class="text-danger">Whoops!</strong> Error validating data.<br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if(session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    <strong class="text-success">Success!</strong> {{ session('success') }}
+                                </div>
+                            @endif
                             <div class="row mb-3">
                                 <div class="col-md-12 mb-2">
                                     @php echo $post->body @endphp
                                 </div>
                                 <div class="col-md-12 text-right" style="font-weight:bold;">
-                                    @php $user = \App\Models\User::find($post->user_id); @endphp
+                                    @if($post->user_type == 'author')
+                                        @php $user = \App\Models\Author::find($post->user_id); @endphp
+                                    @else
+                                        @php $user = \App\Models\User::find($post->user_id); @endphp
+                                    @endif
                                     <small>Posted by {{ $user->firstname.' '.$user->lastname }} at {{ $post->created_at }}</small>
                                 </div>
                             </div>
@@ -44,18 +48,17 @@
                             <div class="tg-sectionhead" style="padding-bottom:10px !important; float:none;">
                                 <h4>Comments ({{$comments->count()}})</h4>
                             </div>
-                            <form action="{{ route('user.forum.post.comment', ['id' => $post->id]) }}" method="post">
+                            <form action="{{ route('forum.post.comment', ['id' => $post->id]) }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <textarea id="body" class="form-control" rows="5" name="body" required placeholder="Write your comment here...">{{ old('body') }}</textarea>
                                 </div>
                                 <div class="form-group text-right">
-                                    @auth('web')
+                                    @if(auth('web')->check() || auth('author')->check())
                                         <button type="submit" class="tg-btn tg-active">Reply</button>
-                                    @endauth
-                                    @guest('web')
+                                    @else
                                         <button type="submit" class="tg-btn" disabled>Login to Comment</button>
-                                    @endguest
+                                    @endif
                                 </div>
                             </form>
                             <div class="tg-description">
@@ -67,7 +70,11 @@
                                                 <span>{{ $comment->body }}</span>
                                             </div>
                                             <div class="col-md-12 text-right">
-                                                @php $user = \App\Models\User::find($comment->user_id); @endphp
+                                                @if($comment->user_type == 'author')
+                                                    @php $user = \App\Models\Author::find($comment->user_id); @endphp
+                                                @else
+                                                    @php $user = \App\Models\User::find($comment->user_id); @endphp
+                                                @endif
                                                 <small>Comment by {{ $user->firstname.' '.$user->lastname }} at {{ $comment->created_at }}</small>
                                             </div>
                                         </div>

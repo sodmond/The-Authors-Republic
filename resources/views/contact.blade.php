@@ -45,6 +45,9 @@
                             <div class="form-group tg-hastextarea">
                                 <input type="checkbox" name="consent" class="form-contro" required> I agree to be contacted with the above submitted information.
                             </div>
+                            <div class="form-group tg-hastextarea">
+                                {!! htmlFormSnippet() !!}
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="tg-btn tg-active">Submit</button>
                             </div>

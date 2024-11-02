@@ -45,8 +45,6 @@ Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout']
 Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkoutSubmit']);
 Route::get('/get-shipping-fee', [App\Http\Controllers\CartController::class, 'calShipping'])->name('shipping_fee');
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback'])->name('payment.verify');
-Route::get('forum', [FrontendController\ForumController::class, 'index'])->name('forum');
-Route::get('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
 
 // Services
 Route::group(['prefix' => 'services', 'as' => 'services.'], function() {
@@ -77,16 +75,18 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'user', 'as'
     Route::get('settings', [FrontendController\SettingsController::class, 'index'])->name('settings');
     Route::put('settings/change_password', [FrontendController\SettingsController::class, 'passwordUpdate'])->name('settings.password.update');
 
-    Route::post('forum/post', [FrontendController\ForumController::class, 'newPost'])->name('forum.post.new');
-    Route::get('forum/post/{id}/{slug}', [FrontendController\ForumController::class, 'thread'])->name('forum.post');
-    Route::post('forum/post/{id}/comment', [FrontendController\ForumController::class, 'comment'])->name('forum.post.comment');
-
     Route::get('address_book', [FrontendController\AddressBookController::class, 'index'])->name('addressBook');
     Route::get('address_book_new', [FrontendController\AddressBookController::class, 'new'])->name('addressBook.new');
     Route::post('address_book_new', [FrontendController\AddressBookController::class, 'saveNew'])->name('addressBook.new.save');
     Route::get('address_book/{id}', [FrontendController\AddressBookController::class, 'edit'])->name('addressBook.edit');
     Route::post('address_book/{id}', [FrontendController\AddressBookController::class, 'update'])->name('addressBook.update');
 });
+
+Route::get('forum', [FrontendController\ForumController::class, 'index'])->name('forum');
+Route::get('forum/post/all', [FrontendController\ForumController::class, 'posts'])->name('forum.posts');
+Route::post('forum/post', [FrontendController\ForumController::class, 'newPost'])->name('forum.post.new');
+Route::get('forum/post/{id}/{slug}', [FrontendController\ForumController::class, 'thread'])->name('forum.post');
+Route::post('forum/post/{id}/comment', [FrontendController\ForumController::class, 'comment'])->name('forum.post.comment');
 
 Route::get('/mailable', function() {
     return new ContactForm(['firstname' => 'Joe', 'lastname' => 'Biden']);

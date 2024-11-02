@@ -100,6 +100,10 @@
                             <input type="checkbox" class="custom-control-input" id="checkbox-signup" required>
                             <label class="custom-control-label" for="checkbox-signup">I accept the <a href="{{ route('tandc') }}" class="text-dark" target="_blank">Terms and Conditions</a></label>
                         </div>
+
+                        <div class="form-group">
+                            {!! htmlFormSnippet() !!}
+                        </div>
                         
                         <div class="form-group mb-0 text-center">
                             <button class="btn btn-custom btn-block" type="submit"> Sign Up </button>

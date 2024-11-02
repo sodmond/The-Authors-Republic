@@ -57,6 +57,7 @@ class HomeController extends Controller
             'email' => ['required', 'email:rfc,dns', 'max:255'],
             'subject' => ['nullable', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:1500'],
+            'g-recaptcha-response' => ['recaptcha'],
         ]);
         try {
             Mail::to('info@theauthorsrepublic.com')->send(new ContactForm($request->all()));

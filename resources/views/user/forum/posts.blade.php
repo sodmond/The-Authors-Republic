@@ -28,12 +28,20 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             @if ($posts->count() > 0)
                                 @foreach ($posts as $post)
+                                    @php
+                                        $slug = \App\Models\Post::getSlug($post->title);
+                                        $link = route('forum.post', ['id' => $post->id, 'slug' => $slug])
+                                    @endphp
                                     <div class="row forum_post">
-                                        <div class="col-md-6">
-                                            <a href="" style="font-weight:bold;">{{ $post->title }}</a>
+                                        <div class="col-md-12">
+                                            <a href="{{ $link }}" style="font-weight:bold;">{{ $post->title }}</a>
                                         </div>
-                                        <div class="col-md-6 text-right">
-                                            @php $user = \App\Models\User::find($post->user_id); @endphp
+                                        <div class="col-md-12 text-right">
+                                            @if($post->user_type == 'author')
+                                                @php $user = \App\Models\Author::find($post->user_id); @endphp
+                                            @else
+                                                @php $user = \App\Models\User::find($post->user_id); @endphp
+                                            @endif
                                             <small>Posted by {{ $user->firstname.' '.$user->lastname }} at {{ $post->created_at }}</small>
                                         </div>
                                     </div>

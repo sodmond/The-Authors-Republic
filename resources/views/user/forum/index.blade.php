@@ -24,7 +24,7 @@
                             <strong class="text-success">Success!</strong> {{ session('success') }}
                         </div>
                     @endif
-                    <form action="{{ route('user.forum.post.new') }}" method="post">
+                    <form action="{{ route('forum.post.new') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <input type="text" id="title" class="form-control" name="title" required placeholder="Post title" value="{{ old('title') }}">
@@ -33,12 +33,11 @@
                             <textarea id="body" class="form-control" name="body" required placeholder="Write here...">{{ old('body') }}</textarea>
                         </div>
                         <div class="form-group text-right">
-                            @auth('web')
+                            @if(auth('web')->check() || auth('author')->check())
                                 <button type="submit" class="tg-btn tg-active">Post</button>
-                            @endauth
-                            @guest('web')
+                            @else
                                 <button type="submit" class="tg-btn" disabled>Login to Post</button>
-                            @endguest
+                            @endif
                         </div>
                     </form>
                     <div class="row">
@@ -50,14 +49,18 @@
                                 @foreach ($posts as $post)
                                     @php
                                         $slug = \App\Models\Post::getSlug($post->title);
-                                        $link = route('user.forum.post', ['id' => $post->id, 'slug' => $slug])
+                                        $link = route('forum.post', ['id' => $post->id, 'slug' => $slug])
                                     @endphp
                                     <div class="row forum_post">
                                         <div class="col-md-12">
                                             <a href="{{ $link }}" style="font-weight:bold;">{{ $post->title }}</a>
                                         </div>
                                         <div class="col-md-12 text-right">
-                                            @php $user = \App\Models\User::find($post->user_id); @endphp
+                                            @if($post->user_type == 'author')
+                                                @php $user = \App\Models\Author::find($post->user_id); @endphp
+                                            @else
+                                                @php $user = \App\Models\User::find($post->user_id); @endphp
+                                            @endif
                                             <small>Posted by {{ $user->firstname.' '.$user->lastname }} at {{ $post->created_at }}</small>
                                         </div>
                                     </div>

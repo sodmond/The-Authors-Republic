@@ -52,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class);
     }
 
-    public function posts() : HasMany
+    /*public function posts() : HasMany
     {
         return $this->hasMany(Post::class);
     }
@@ -60,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments() : HasMany
     {
         return $this->hasMany(Comment::class);
-    }
+    }*/
 
     public function addressBook() : HasMany
     {

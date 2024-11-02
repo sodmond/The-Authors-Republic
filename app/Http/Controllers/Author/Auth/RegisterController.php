@@ -32,7 +32,7 @@ class RegisterController extends Controller
             'city' => ['required', 'max:20'],
             'state' => ['required', 'max:20'],
             'zip' => ['required', 'max:10'],
-
+            'g-recaptcha-response' => 'recaptcha',
         ]);
         $data = $request->all();
         $author = Author::create([

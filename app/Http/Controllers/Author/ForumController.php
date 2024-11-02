@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Author;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
@@ -28,9 +28,6 @@ class ForumController extends Controller
 
     public function newPost(Request $request)
     {
-        if (!(auth('web')->check() || auth('author')->check())) {
-            return back()->withErrors(['err_msg' => 'You need to login as an author or user to post.']);
-        }
         $this->validate($request, [
             'title' => ['required', 'max:255'],
             'body'  => ['required']
@@ -58,16 +55,12 @@ class ForumController extends Controller
 
     public function comment($post_id, Request $request)
     {
-        if (!(auth('web')->check() || auth('author')->check())) {
-            return back()->withErrors(['err_msg' => 'You need to login as an author or user to post.']);
-        }
         $this->validate($request, [
             'body'  => ['required']
         ]);
         try {
             Comment::create([
-                'user_id'   => (auth('author')->check()) ? auth('author')->id() : auth('web')->id(),
-                'user_type' => (auth('author')->check()) ? 'author' : 'user',
+                'user_id'   => auth('web')->id(),
                 'post_id'   => $post_id,
                 'body'      => $request->body
             ]);

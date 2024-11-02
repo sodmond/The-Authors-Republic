@@ -79,6 +79,12 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="form-group mb-4">
+                                    {!! htmlFormSnippet() !!}
+                                </div>
+                            </div>
+
                             <div class="col-md-8 offset-md-4">
                                 <div class="form-group">
                                     <button type="submit" class="tg-btn tg-active">

@@ -111,6 +111,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/fontawesome.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/brands.min.js"></script>
 	@stack('custom-scripts')
+	{!! htmlScriptTagJsApi() !!}
 	@if(session('cart_suc'))
     <script>
         $(function() {
