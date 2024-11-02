@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\NewsletterExport;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Book;
@@ -10,8 +11,10 @@ use App\Models\Newsletter;
 use App\Models\Order;
 use App\Models\Payout;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -39,5 +42,18 @@ class HomeController extends Controller
     {
         $newsletter = Newsletter::orderByDesc('created_at')->paginate(10);
         return view('admin.newsletter', compact('newsletter'));
+    }
+
+    public function newsletterExport()
+    {
+        if (isset($_GET['month']) && isset($_GET['year'])) {
+            $month = $_GET['month'];
+            $year = $_GET['year'];
+            $dateObj = DateTime::createFromFormat('!m', $month);
+            $monthName = $dateObj->format('F');
+            $fileName = 'newsletter-'.$monthName.$year.'.xlsx';
+            return Excel::download(new NewsletterExport($month, $year), $fileName);
+        }
+        return redirect()->back();
     }
 }

@@ -29,8 +29,34 @@
                             <h4 class="h5 text-white">List of All Authors</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row justify-content-end mb-3">
-                                <div class="col-auto">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <form class="form-inline" action="{{ route('admin.authors.export') }}" method="get">
+                                        <select class="form-control mr-2" name="month" id="month" required>
+                                            <option value="">- - - Select Month - - -</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                        <select class="form-control mr-2" name="year" id="year" required>
+                                            <option value="">- - - Select Year - - -</option>
+                                            @for ($i = 0; $i <= 10; $i++)
+                                                <option value="{{ 2024 + $i }}">{{ 2024 + $i }}</option>
+                                            @endfor
+                                        </select>
+                                        <button class="btn btn-custom" type="submit">Export</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
                                     <a class="btn btn-warning" href="{{ route('admin.authors.pending') }}">
                                         <i class="fa fa-spinner"></i> Pending Approval ({{ $authors_pending->count() }})</a>
                                 </div>

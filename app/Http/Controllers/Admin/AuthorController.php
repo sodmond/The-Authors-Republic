@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\AuthorsExport;
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovalStatus;
 use App\Models\Author;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AuthorController extends Controller
 {
@@ -44,5 +47,18 @@ class AuthorController extends Controller
             Mail::to($author->email)->send(new ApprovalStatus(0));
             return back()->with('success', 'Author has been notified of profile decline.');
         }
+    }
+
+    public function export()
+    {
+        if (isset($_GET['month']) && isset($_GET['year'])) {
+            $month = $_GET['month'];
+            $year = $_GET['year'];
+            $dateObj = DateTime::createFromFormat('!m', $month);
+            $monthName = $dateObj->format('F');
+            $fileName = 'authors-'.$monthName.$year.'.xlsx';
+            return Excel::download(new AuthorsExport($month, $year), $fileName);
+        }
+        return redirect()->back();
     }
 }

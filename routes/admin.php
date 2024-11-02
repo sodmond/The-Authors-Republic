@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('home', [AdminBackend\HomeController::class, 'index'])->name('home');
 
     Route::get('users', [AdminBackend\UsersController::class, 'index'])->name('users');
+    Route::get('users/export', [AdminBackend\UsersController::class, 'export'])->name('users.export');
     Route::get('user/{id}', [AdminBackend\UsersController::class, 'get'])->name('user');
     Route::get('user/{id}/orders', [AdminBackend\UsersController::class, 'orders'])->name('user.orders');
     Route::get('user/{id}/posts', [AdminBackend\UsersController::class, 'posts'])->name('user.posts');
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::get('authors', [AdminBackend\AuthorController::class, 'index'])->name('authors');
     Route::get('authors/pending_approval', [AdminBackend\AuthorController::class, 'pending'])->name('authors.pending');
+    Route::get('authors/export', [AdminBackend\AuthorController::class, 'export'])->name('authors.export');
     Route::get('author/{id}', [AdminBackend\AuthorController::class, 'get'])->name('author');
     Route::post('author/{id}/approval', [AdminBackend\AuthorController::class, 'approval'])->name('author.approval');
     Route::get('author/{id}/books', [AdminBackend\AuthorController::class, 'books'])->name('author.books');
@@ -95,4 +97,5 @@ Route::group(['middleware' => ['auth:admin']], function () {
     });
 
     Route::get('newsletter', [AdminBackend\HomeController::class, 'newsletter'])->name('newsletter');
+    Route::get('newsletter/export', [AdminBackend\HomeController::class, 'newsletterExport'])->name('newsletter.export');
 });

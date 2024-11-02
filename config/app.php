@@ -188,6 +188,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -216,6 +217,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];
