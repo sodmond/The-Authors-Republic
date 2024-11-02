@@ -7,7 +7,11 @@
             <div id="tg-twocolumns" class="tg-twocolumns">
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                     <div class="tg-sectionhead" style="padding-bottom:10px !important; float:none;">
-                        <h3>All Posts</h3>
+                        @if(isset($_GET['search']))
+                            <h3>{{ 'Search results for "' . $_GET['search'] . '"'  }}</h3>
+                        @else
+                            <h3>{{ 'All Posts' }}</h3>
+                        @endif
                     </div>
                     @if (count($errors))
                         <div class="alert alert-danger">
@@ -24,6 +28,14 @@
                             <strong class="text-success">Success!</strong> {{ session('success') }}
                         </div>
                     @endif
+                    <form action="{{ route('forum.posts') }}" method="get">
+                        <div class="form-group">
+                            <input type="text" id="search" class="form-control" name="search" required placeholder="Search Posts by title" value="{{ old('title') }}">
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="tg-btn tg-active">Search</button>
+                        </div>
+                    </form>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             @if ($posts->count() > 0)
