@@ -193,6 +193,13 @@
                             </li>
 
                             <li>
+                                <a href="{{ route('admin.newsletter') }}" class="{{ ($activePage == 'newsletter') ? 'active' : '' }}">
+                                    <i class="fas fa-envelope-open-text"></i> 
+                                    <span> Newsletter </span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="javascript: void(0);" class="{{ ($activePage == 'account') ? 'active' : '' }}">
                                     <i class="dripicons-user"></i>
                                     <span> Account </span>

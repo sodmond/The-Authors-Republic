@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Earning;
+use App\Models\Newsletter;
 use App\Models\Order;
 use App\Models\Payout;
 use App\Models\User;
@@ -32,5 +33,11 @@ class HomeController extends Controller
         $earnings = DB::table('transactions')->get();
         $payouts = Payout::all();
         return view('admin.home', compact('authors', 'users', 'books', 'allOrders', 'orders', 'ordersCount', 'earnings', 'payouts'));
+    }
+
+    public function newsletter()
+    {
+        $newsletter = Newsletter::orderByDesc('created_at')->paginate(10);
+        return view('admin.newsletter', compact('newsletter'));
     }
 }

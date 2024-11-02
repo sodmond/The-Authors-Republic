@@ -93,4 +93,6 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('shipping-location/{id}', [AdminBackend\ShippingController::class, 'edit'])->name('shipping.edit');
         Route::post('shipping-location/{id}', [AdminBackend\ShippingController::class, 'update'])->name('shipping.update');
     });
+
+    Route::get('newsletter', [AdminBackend\HomeController::class, 'newsletter'])->name('newsletter');
 });

@@ -74,8 +74,4 @@ Route::group(['middleware' => ['auth:author', 'verified']], function () {
     Route::get('account/password', [AuthorBackend\ProfileController::class, 'password'])->name('profile.password');
     Route::put('account/password', [AuthorBackend\ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
     Route::get('settings', [AuthorBackend\SettingsController::class, 'index'])->name('settings');
-
-    Route::post('forum/post', [FrontendController\ForumController::class, 'newPost'])->name('forum.post.new');
-    Route::get('forum/post/{id}/{slug}', [FrontendController\ForumController::class, 'thread'])->name('forum.post');
-    Route::post('forum/post/{id}/comment', [FrontendController\ForumController::class, 'comment'])->name('forum.post.comment');
 });
