@@ -41,7 +41,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img class="img-fluid" src="{{ asset('storage/'.$book->image) }}" alt="Book Cover Image">
+                                    <img class="img-fluid" src="{{ ($book->image != '') ? asset('storage/'.$book->image) : asset('img/image-370x500.jpg') }}" alt="Book Cover Image">
                                     <div>
                                         @if($book->featured == 0)
                                             <span class="bg-danger px-2 py-1 text-white rounded mr-3">Not Featured</span>

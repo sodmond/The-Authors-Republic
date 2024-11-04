@@ -234,12 +234,24 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
     color: #FFF !important;
 }
 
+#homeTestimonal {
+    background-color: #616B2E;
+}
+
 #homeTestimonal div.overlay{
     min-height: 518px;
 }
 
 #homeTestimonal .owl-nav .tg-btnround i {
     color: #FFF !important;
+}
+
+.tg-testimonial figure img {
+    border-color: #FFF !important;
+}
+
+.tg-testimonial blockquote {
+    font-size: 19px !important;
 }
 
 .tg-headervtwo .tg-searchbox span, #searchPopForm {

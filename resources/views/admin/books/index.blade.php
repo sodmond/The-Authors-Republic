@@ -52,7 +52,7 @@
                                         @foreach ($books as $book)
                                             <tr>
                                                 <td>{{ $row++ }}</td>
-                                                <td><img src="{{ asset('storage/'.$book->image) }}" class="img-thumbnail" style="max-width:65px;"></td>
+                                                <td><img src="{{ ($book->image != '') ? asset('storage/'.$book->image) : asset('img/image-370x500.jpg') }}" class="img-thumbnail" style="max-width:65px;"></td>
                                                 <td>{{ $book->title }}</td>
                                                 <td>{{ ucwords(\App\Models\Book::getCategoryName($book->category_id)) }}</td>
                                                 <td>{{ number_format($book->price, 2) }}</td>

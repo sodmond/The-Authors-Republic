@@ -276,7 +276,7 @@
 <!--************************************
         Testimonials Start
 *************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/bg/02.png') }}" id="homeTestimonal">
+<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" id="homeTestimonal">
     {{--<div class="overlay" style=""></div>--}}
     <div class="tg-sectionspace tg-haslayout" {{--style="z-index:3;"--}}>
         <div class="container">

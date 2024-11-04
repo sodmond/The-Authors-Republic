@@ -65,8 +65,8 @@
                                             <button type="submit" class="btn btn-custom my-3">{{ empty($book->image) ? 'Publish' : 'Update Image' }}</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <img src="{{ ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/author/imag-25.jpg') }}" alt="book cover image" style="max-width: 200px;">
+                                    <div class="col-md-6 text-center">
+                                        <img src="{{ ($book->image != '') ? asset('storage/'.$book->image) : asset('img/image-370x500.jpg') }}" alt="book cover image" style="max-width: 200px;">
                                     </div>
                                 </div>
                             </form>
