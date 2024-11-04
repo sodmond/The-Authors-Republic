@@ -13,10 +13,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">My Books</li>
+                                <li class="breadcrumb-item active">All Books</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">My Books</h4>
+                        <h4 class="page-title">All Books</h4>
                     </div>
                 </div>
             </div>     
