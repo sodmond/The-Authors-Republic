@@ -27,9 +27,16 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">My Earnings</h4>
+                            <h4 class="h5 text-white">{{ isset($author) ? "$author->firstname's Earning List" : 'All Earnings' }}</h4>
                         </div>
                         <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    @isset($author)
+                                        <a class="btn btn-custom" href="{{ route('admin.author', ['id' => $author->id]) }}"><i class="fa fa-arrow-circle-left"></i> Back to Author's Profile</a>
+                                    @endisset
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
@@ -51,7 +58,7 @@
                                                 <td>{{ $row++ }}</td>
                                                 <td>{{ ucwords($earning->author->firstname.' '.$earning->author->lastname) }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.order', ['id' => $earning->order_id]) }}">
+                                                    <a href="{{ route('admin.order', ['id' => $earning->order_id]) }}" target="_blank">
                                                         {{ ($orders[$earning->order_id]->code) }}</a>
                                                 </td>
                                                 <td>{{ number_format($earning->pre_balance, 2) }}</td>

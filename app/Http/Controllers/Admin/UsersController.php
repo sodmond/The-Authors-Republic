@@ -16,6 +16,12 @@ class UsersController extends Controller
 {
     public function index() 
     {
+        if (isset($_GET['search'])) {
+            $searchVal = $_GET['search'];
+            $searchArr = explode(' ', $searchVal);
+            $users = User::whereIn('firstname', $searchArr)->orWhereIn('lastname', $searchArr)->orderByDesc('created_at')->paginate(10);
+            return view('admin.users.index', compact('users'));
+        }
         $users = User::orderByDesc('created_at')->paginate(10);
         return view('admin.users.index', compact('users'));
     }
@@ -27,7 +33,7 @@ class UsersController extends Controller
         return view('admin.users.single', compact('user', 'orders'));
     }
 
-    public function search() 
+    /*public function search() 
     {
         if (! isset($_GET['search'])) {
             redirect()->route('admin.users');
@@ -35,7 +41,7 @@ class UsersController extends Controller
         $val = $_GET['search'];
         $users = User::where('email', 'LIKE', "%$val%")->take(10)->paginate(10);
         return view('backend.users', compact('users'));
-    }
+    }*/
 
     public function orders($id) 
     {

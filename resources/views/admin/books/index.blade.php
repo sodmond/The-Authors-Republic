@@ -13,10 +13,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">My books</li>
+                                <li class="breadcrumb-item active">My Books</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">My books</h4>
+                        <h4 class="page-title">My Books</h4>
                     </div>
                 </div>
             </div>     
@@ -26,11 +26,24 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">List of Books</h4>
+                            <h4 class="h5 text-white">
+                                @if(isset($author))
+                                    {{ $author->firstname."'s Book List" }}
+                                @elseif(isset($_GET['search']))
+                                    Search result for "{{ $_GET['search'] }}"
+                                @else
+                                    List of Books
+                                @endif
+                            </h4>
                         </div>
                         <div class="card-body">
-                            <div class="row justify-content-end mb-3">
-                                <div class="col-auto">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    @isset($author)
+                                        <a class="btn btn-custom" href="{{ route('admin.author', ['id' => $author->id]) }}"><i class="fa fa-arrow-circle-left"></i> Back to Author's Profile</a>
+                                    @endisset
+                                </div>
+                                <div class="col-md-6 text-right">
                                     <a class="btn btn-custom" href="{{ route('admin.book.new') }}"><i class="fa fa-plus-circle"></i> Add New</a>
                                 </div>
                             </div>

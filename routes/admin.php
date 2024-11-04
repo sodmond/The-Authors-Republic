@@ -30,6 +30,7 @@ Route::group([], function(){
 
 Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('home', [AdminBackend\HomeController::class, 'index'])->name('home');
+    Route::post('search', [AdminBackend\HomeController::class, 'search'])->name('search');
 
     Route::get('users', [AdminBackend\UsersController::class, 'index'])->name('users');
     Route::get('users/export', [AdminBackend\UsersController::class, 'export'])->name('users.export');

@@ -27,9 +27,16 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">List of Payout Requests</h4>
+                            <h4 class="h5 text-white">{{ isset($author) ? "$author->firstname's Payout Requests" : 'Payout Request List' }}</h4>
                         </div>
                         <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    @isset($author)
+                                        <a class="btn btn-custom" href="{{ route('admin.author', ['id' => $author->id]) }}"><i class="fa fa-arrow-circle-left"></i> Back to Author's Profile</a>
+                                    @endisset
+                                </div>
+                            </div>
                             @if (count($errors))
                                 <div class="alert alert-danger">
                                     <strong>Whoops!</strong> Error validating data.<br>

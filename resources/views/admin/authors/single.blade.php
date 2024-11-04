@@ -36,8 +36,9 @@
                                 </div>
                                 <div class="col-6 text-right">
                                     @if($author->approval == true)
-                                        <a class="btn btn-primary mb-1" href="{{ route('admin.book.edit', ['id' => $author->id]) }}"><i class="fas fa-book"></i> Books</a>
-                                        <a class="btn btn-success mb-1" href="{{ route('admin.book.edit', ['id' => $author->id]) }}"><i class="fas fa-cart-plus"></i> Sales Order</a>
+                                        <a class="btn btn-primary mb-1" href="{{ route('admin.author.books', ['id' => $author->id]) }}"><i class="fas fa-book"></i> Books</a>
+                                        <a class="btn btn-success mb-1" href="{{ route('admin.author.sales', ['id' => $author->id]) }}"><i class="fas fa-cart-plus"></i> Earnings</a>
+                                        <a class="btn btn-info mb-1" href="{{ route('admin.author.payouts', ['id' => $author->id]) }}"><i class="fas fa-money-check"></i> Payouts</a>
                                     @else
                                         <button type="button" class="btn btn-success mb-1 mr-2" onclick="document.getElementById('approveProfile').submit()"><i class="fas fa-check-circle"></i> Approve</a>
                                         <button type="button" class="btn btn-danger mb-1" onclick="document.getElementById('declineProfile').submit()"><i class="fas fa-times-circle"></i> Decline</a>

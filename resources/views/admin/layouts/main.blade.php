@@ -106,10 +106,17 @@
                         </a>
                     </li>
                     <li class="app-search d-none d-md-block">
-                        {{--<form>
-                            <input type="text" placeholder="Search..." class="form-control">
+                        <form class="form-inline" action="{{ route('admin.search') }}" method="POST">
+                            @csrf
+                            <select class="form-control" name="type" style="color:#666;" required>
+                                <option value="">- - - Search Type  - - -</option>
+                                <option value="author">Author</option>
+                                <option value="book">Book</option>
+                                <option value="user">User</option>
+                            </select>
+                            <input type="text" name="value" placeholder="Enter search text here..." class="form-control" required>
                             <button type="submit" class="sr-only"></button>
-                        </form>--}}
+                        </form>
                     </li>
                 </ul>
             </div>

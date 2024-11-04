@@ -26,7 +26,13 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">List of All Authors</h4>
+                            <h4 class="h5 text-white">
+                                @if(isset($_GET['search']))
+                                    Search result for "{{$_GET['search']}}"
+                                @else
+                                    List of All Authors
+                                @endif
+                            </h4>
                         </div>
                         <div class="card-body">
                             <div class="row mb-3">
@@ -57,8 +63,8 @@
                                     </form>
                                 </div>
                                 <div class="col-md-6">
-                                    <a class="btn btn-warning" href="{{ route('admin.authors.pending') }}">
-                                        <i class="fa fa-spinner"></i> Pending Approval ({{ $authors_pending->count() }})</a>
+                                    {{--<a class="btn btn-warning" href="{{ route('admin.authors.pending') }}">
+                                        <i class="fa fa-spinner"></i> Pending Approval ({{ $authors_pending->count() }})</a>--}}
                                 </div>
                             </div>
                             <div class="table-responsive">

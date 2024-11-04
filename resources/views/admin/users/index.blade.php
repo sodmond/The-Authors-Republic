@@ -26,7 +26,13 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-custom">
-                            <h4 class="h5 text-white">List of All Users</h4>
+                            <h4 class="h5 text-white">
+                                @if(isset($_GET['search']))
+                                    Search result for "{{$_GET['search']}}"
+                                @else
+                                    List of All Users
+                                @endif
+                            </h4>
                         </div>
                         <div class="card-body">
                             <div class="row mb-3">

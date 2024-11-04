@@ -6,6 +6,10 @@ use App\Exports\AuthorsExport;
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovalStatus;
 use App\Models\Author;
+use App\Models\Book;
+use App\Models\Earning;
+use App\Models\Order;
+use App\Models\Payout;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -15,6 +19,12 @@ class AuthorController extends Controller
 {
     public function index()
     {
+        if (isset($_GET['search'])) {
+            $searchVal = $_GET['search'];
+            $searchArr = explode(' ', $searchVal);
+            $authors = Author::whereIn('firstname', $searchArr)->orWhereIn('lastname', $searchArr)->orderByDesc('created_at')->paginate(10);
+            return view('admin.authors.index', compact('authors'));
+        }
         $authors = Author::orderByDesc('created_at')->paginate(10);
         $authors_pending = Author::where('approval', false);
         return view('admin.authors.index', compact('authors', 'authors_pending'));
@@ -60,5 +70,27 @@ class AuthorController extends Controller
             return Excel::download(new AuthorsExport($month, $year), $fileName);
         }
         return redirect()->back();
+    }
+
+    public function books($id)
+    {
+        $author = Author::find($id);
+        $books = Book::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
+        return view('admin.books.index', compact('books', 'author'));
+    }
+
+    public function sales($id)
+    {
+        $author = Author::find($id);
+        $earnings = Earning::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
+        $orders = Order::all()->keyBy('id');
+        return view('admin.revenue.earnings', compact('earnings', 'orders', 'author'));
+    }
+
+    public function payouts($id)
+    {
+        $author = Author::find($id);
+        $payouts = Payout::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
+        return view('admin.revenue.payout_list', compact('payouts', 'author'));
     }
 }

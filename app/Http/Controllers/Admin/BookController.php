@@ -16,6 +16,11 @@ class BookController extends Controller
 {
     public function index()
     {
+        if (isset($_GET['search'])) {
+            $searchVal = $_GET['search'];
+            $books = Book::where('title', 'LIKE', "%$searchVal%")->orderByDesc('created_at')->paginate(10);
+            return view('admin.books.index', compact('books'));
+        }
         $books = Book::orderByDesc('created_at')->paginate(10);
         return view('admin.books.index', compact('books'));
     }

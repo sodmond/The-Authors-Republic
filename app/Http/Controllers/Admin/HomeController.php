@@ -38,6 +38,25 @@ class HomeController extends Controller
         return view('admin.home', compact('authors', 'users', 'books', 'allOrders', 'orders', 'ordersCount', 'earnings', 'payouts'));
     }
 
+    public function search(Request $request)
+    {
+        $this->validate($request, [
+            'type' => ['required', 'string', 'max:6'],
+            'value' => ['required', 'string', 'max:255']
+        ]);
+        #dd('search worked');
+        if ($request->type == 'author') {
+            return redirect()->route('admin.authors', ['search' => $request->value]);
+        }
+        if ($request->type == 'book') {
+            return redirect()->route('admin.books', ['search' => $request->value]);
+        }
+        if ($request->type == 'user') {
+            return redirect()->route('admin.users', ['search' => $request->value]);
+        }
+        return redirect()->route('admin.home');
+    }
+
     public function newsletter()
     {
         $newsletter = Newsletter::orderByDesc('created_at')->paginate(10);
