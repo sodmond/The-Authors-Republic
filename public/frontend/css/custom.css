@@ -435,3 +435,7 @@ a.panel-link.text-white:hover {
 .bg-secondary {
     background-color: #f39d128f;
 }
+
+li.tg-tiktok a {
+    background: #222;
+}

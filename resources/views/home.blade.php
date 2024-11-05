@@ -276,13 +276,61 @@
 <!--************************************
         Testimonials Start
 *************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" id="homeTestimonal">
+<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" id="homeTestimonal" style="background: url({{ asset('img/uuuuuu.jpg') }});">
     {{--<div class="overlay" style=""></div>--}}
     <div class="tg-sectionspace tg-haslayout" {{--style="z-index:3;"--}}>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
-                    <div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel" style="z-index: 3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="text-center text-white mb-3">Testimonials</h2>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
+                            <div class="panel panel-default shadow">
+                                <div class="panel-body bg-white p-4">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                            <img src="{{ asset('img/user-icon.png') }}" alt="image" style="max-width:50px; border-radius:50px; margin-right:10px;">
+                                            <span class="h3">Emmanuel</span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <p>Being an author can sometimes feel isolating, but this platform has changed everything for me.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
+                            <div class="panel panel-default shadow">
+                                <div class="panel-body bg-white p-4">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                            <img src="{{ asset('img/user-icon.png') }}" alt="image" style="max-width:50px; border-radius:50px; margin-right:10px;">
+                                            <span class="h3">Okechukwu</span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <p>I never knew how much I needed a space like this until I joined. The supportive environment and the opportunity to showcase my stories have reignited my passion for writing. I'm thankful for the brains behind "the authors republic".</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
+                            <div class="panel panel-default shadow">
+                                <div class="panel-body bg-white p-4">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                            <img src="{{ asset('img/user-icon.png') }}" alt="image" style="max-width:50px; border-radius:50px; margin-right:10px;">
+                                            <span class="h3">Sophia</span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <p>This platform is a dream come true for me with the ability to share my work and getting insights from fellow literary enthusiasts.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--<div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel" style="z-index: 3">
                         <div class="item tg-testimonial">
                             <figure><img src="{{ asset('img/user-icon.png') }}" alt="image description"></figure>
                             <blockquote><q>Being an author can sometimes feel isolating, but this platform has changed everything for me.</q></blockquote>
@@ -325,7 +373,7 @@
                                 <h3>Oluwaseyi (Literary Enthusiast)</h3>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
