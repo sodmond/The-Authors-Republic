@@ -38,19 +38,25 @@ class Order extends Model
         $books = Book::whereIn('id', $book_ids)->get()->keyBy('id');
         $orderContentData = [];
         for($i=0; $i < count($book_ids); $i++) {
-            $amount = $books[$book_ids[$i]]->price;
-            $subtotal += round($amount * $quantities[$i], 2);
-            $orderContentData[] = [
-                'order_id' => $order_id,
-                'book_id' => $book_ids[$i],
-                'amount' => $amount,
-                'quantity' => $quantities[$i],
-                'created_at' => now()
-            ];
+            $book = Book::find($book_ids[$i]);
+            if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1)) {
+                $amount = $books[$book_ids[$i]]->price;
+                $subtotal += round($amount * $quantities[$i], 2);
+                $orderContentData[] = [
+                    'order_id' => $order_id,
+                    'book_id' => $book_ids[$i],
+                    'amount' => $amount,
+                    'quantity' => $quantities[$i],
+                    'created_at' => now()
+                ];
+            } else {
+                unset($book_ids[$i]);
+                unset($quantities[$i]);
+            }
         }
         OrderContent::insert($orderContentData);
         $total_cost = ($subtotal + $shipping_fee);
-        return ['subtotal' => $subtotal, 'total_cost' => $total_cost];
+        return ['subtotal' => $subtotal, 'total_cost' => $total_cost, 'book_ids' => $book_ids, 'quantities' => $quantities];
     }
 
     public static function getStatusBG($status)

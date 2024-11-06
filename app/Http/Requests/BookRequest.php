@@ -28,6 +28,7 @@ class BookRequest extends FormRequest
             'isbn' => ['nullable', 'max:255'],
             'soft_copy' => ['required', 'integer', 'max:1'],
             'hard_copy' => ['required', 'integer', 'max:1', 'accepted_if:soft_copy,0'],
+            'stock' => ['nullable', 'integer', 'required_if:hard_copy,1'],
             'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
             #'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
@@ -47,6 +48,7 @@ class BookRequest extends FormRequest
         return [
             'hard_copy.accepted_if' => 'Hard copy must be YES, if you are not providing a soft copy',
             'book_file.required_if_accepted' => 'A book file should be uploaded if you are providing a soft copy',
+            'stock.required_if' => 'Stock is required if you are selling hard copy'
         ];
     }
 }

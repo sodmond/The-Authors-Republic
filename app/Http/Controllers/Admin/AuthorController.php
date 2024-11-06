@@ -93,4 +93,19 @@ class AuthorController extends Controller
         $payouts = Payout::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
         return view('admin.revenue.payout_list', compact('payouts', 'author'));
     }
+
+    public function ban($id)
+    {
+        $author = Author::find($id);
+        if ($author) {
+            if ($author->ban_status == false) {
+                $author->ban_status = true;
+                $author->save();
+                return back()->with('success', 'Author has been banned');
+            }
+            $author->ban_status = false;
+            $author->save();
+            return back()->with('success', 'Author ban has been lifted');
+        }
+    }
 }

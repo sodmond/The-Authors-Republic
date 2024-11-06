@@ -42,6 +42,9 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $author = Author::find($book->author_id);
+        if ($author->ban_status == true) {
+            return back();
+        }
         return view('book', compact('book', 'author'));
     }
 

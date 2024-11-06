@@ -51,6 +51,11 @@
                                             <input type="hidden" name="status" value="0">
                                         </form>
                                     @endif
+                                    @if($author->ban_status == true)
+                                        <a class="btn btn-danger" href="{{ route('admin.author.ban', ['id' => $author->id]) }}"><i class="fa fa-times-circle"></i> Lift Ban</a>
+                                    @else
+                                        <a class="btn btn-danger" href="{{ route('admin.author.ban', ['id' => $author->id]) }}"><i class="fa fa-times-circle"></i> Ban</a>
+                                    @endif
                                 </div>
                             </div>
                             @if (count($errors))
@@ -134,6 +139,16 @@
                                             <tr>
                                                 <th>Last Updated</th>
                                                 <td>{{ $author->updated_at }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ban Status</th>
+                                                <td>
+                                                    @if($author->ban_status == true)
+                                                        <span class="bg-danger py-1 px-2 rounded text-white">Banned</span>
+                                                    @else
+                                                        <span class="bg-success py-1 px-2 rounded text-white">Unbanned</span>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>

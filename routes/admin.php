@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('user/{id}/orders', [AdminBackend\UsersController::class, 'orders'])->name('user.orders');
     Route::get('user/{id}/posts', [AdminBackend\UsersController::class, 'posts'])->name('user.posts');
     Route::get('user/{id}/comments', [AdminBackend\UsersController::class, 'comments'])->name('user.comments');
+    Route::get('user/{id}/ban', [AdminBackend\UsersController::class, 'ban'])->name('user.ban');
 
     Route::get('authors', [AdminBackend\AuthorController::class, 'index'])->name('authors');
     Route::get('authors/pending_approval', [AdminBackend\AuthorController::class, 'pending'])->name('authors.pending');
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('author/{id}/books', [AdminBackend\AuthorController::class, 'books'])->name('author.books');
     Route::get('author/{id}/sales', [AdminBackend\AuthorController::class, 'sales'])->name('author.sales');
     Route::get('author/{id}/payouts', [AdminBackend\AuthorController::class, 'payouts'])->name('author.payouts');
+    Route::get('author/{id}/ban', [AdminBackend\AuthorController::class, 'ban'])->name('author.ban');
 
     Route::get('books', [AdminBackend\BookController::class, 'index'])->name('books');
     Route::get('book/{id}', [AdminBackend\BookController::class, 'get'])->name('book');

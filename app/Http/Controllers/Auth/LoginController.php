@@ -50,6 +50,10 @@ class LoginController extends Controller
         $cookieId = Cart::getCookie();
         $credentials = $request->only('email', 'password');
         if (Auth::guard('web')->attempt($credentials, $request->get('remember'))) {
+            if (auth('web')->user()->ban_status == true) {
+                Auth::guard('web')->logout();
+                return redirect()->route('login');
+            }
             Cart::where('cookie_id', $cookieId)->update(['user_id' => auth('web')->id()]);
             return redirect()->intended();
         }

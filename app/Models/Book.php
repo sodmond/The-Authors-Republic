@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 class Book extends Model
 {
     use HasFactory, SoftDeletes;
+    
+    protected $fillable = ['stock'];
 
     public static function getCategoryName($id)
     {

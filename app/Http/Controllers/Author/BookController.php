@@ -54,6 +54,7 @@ class BookController extends Controller
         $book->isbn = $request->isbn;
         $book->soft_copy = $request->soft_copy;
         $book->hard_copy = $request->hard_copy;
+        $book->stock = $request->stock;
         $book->description = $description;
         $book->price = $request->price;
         $book->published_at = $request->published_at;
@@ -81,6 +82,7 @@ class BookController extends Controller
             'isbn' => ['nullable', 'max:255'],
             'soft_copy' => ['required', 'integer', 'max:1'],
             'hard_copy' => ['required', 'integer', 'max:1', 'accepted_if:soft_copy,0'],
+            'stock' => ['nullable', 'integer', 'required_if:hard_copy,1'],
             'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->minWidth(370)->ratio(1 / 1)],
@@ -89,6 +91,8 @@ class BookController extends Controller
             'published_at' => ['required', 'date'],
         ],[
             'hard_copy.accepted_if' => 'Hard copy must be YES, if you are not providing a soft copy',
+            'book_file.required_if_accepted' => 'A book file should be uploaded if you are providing a soft copy',
+            'stock.required_if' => 'Stock is required if you are selling hard copy'
         ]);
         $book = Book::find($id);
         /*if ($request->hasFile('image')) {
@@ -112,6 +116,7 @@ class BookController extends Controller
         $book->isbn = $request->isbn;
         $book->soft_copy = $request->soft_copy;
         $book->hard_copy = $request->hard_copy;
+        $book->stock = $request->stock;
         $book->price = $request->price;
         $book->published_at = $request->published_at;
         $book->pages_number = $request->pages_number;

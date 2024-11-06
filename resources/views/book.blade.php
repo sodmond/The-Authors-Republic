@@ -58,19 +58,21 @@
                                                     <ins>₦{{ number_format($book->price, 2) }}</ins>
                                                 </span>
                                                 <ul class="tg-delevrystock">
-                                                    <li><i class="icon-store"></i><span>Status: <em>In Stock</em></span></li>
+                                                    <li><i class="icon-store"></i><span>Status: <em>{{ ($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1) ? 'In Stock' : 'Out of Stock' }}</em></span></li>
                                                 </ul>
                                                 <div class="tg-quantityholder">
-                                                    <em class="minus">-</em>
-                                                    <input type="text" class="result" value="1" id="quantity1" name="quantity">
-                                                    <em class="plus">+</em>
+                                                    @if($book->hard_copy == 1)<em class="minus">-</em>@endif
+                                                    <input type="text" class="result" value="1" id="quantity1" name="quantity" {{ ($book->hard_copy == 0) ? 'readonly' : '' }}>
+                                                    @if($book->hard_copy == 1)<em class="plus">+</em>@endif
                                                 </div>
                                             </div>
                                             <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                            @if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1))
                                             <button class="tg-btn tg-active" type="submit">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 <span>Add To Cart</span>
                                             </button>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>

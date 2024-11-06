@@ -103,13 +103,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="stock">Stock <small>(required only if you have a hard copy)</small></label>
+                                            <input class="form-control" type="number" id="stock" name="stock" value="{{ old('stock') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="pages_number">Number of Pages</label>
                                             <input class="form-control" type="number" id="pages_number" name="pages_number" value="{{ old('pages_number') }}" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="published_at">Published Date</label>
                                             <input class="form-control" type="date" id="published_at" name="published_at" value="{{ old('published_at') }}" required>
@@ -169,12 +175,12 @@
 </script>
 @if(count($errors) > 0)
 <script>
-    $(function() {
+    /*$(function() {
         $('#statusModal').modal('show');
         setTimeout(function() {
             $("#statusModal").modal('hide');
         }, 3000);
-    });
+    });*/
 </script>
 @endif
 @endpush

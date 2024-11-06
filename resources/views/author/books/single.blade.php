@@ -75,6 +75,10 @@
                                                 <td>{{ ($book->hard_copy == 1) ? 'Yes' : 'No' }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Stock Availability</th>
+                                                <td>{{ number_format($book->stock) }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Pages Number</th>
                                                 <td>{{ number_format($book->pages_number) }}</td>
                                             </tr>

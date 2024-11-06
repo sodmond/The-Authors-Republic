@@ -37,6 +37,10 @@ class LoginController extends DefaultLoginController
 
         $credentials = $request->only('email', 'password');
         if (Auth::guard('author')->attempt($credentials, $request->get('remember'))) {
+            if (auth('author')->user()->ban_status == true) {
+                Auth::guard('author')->logout();
+                return redirect()->route('author.login');
+            }
             return redirect()->route('author.home');
             #return redirect()->intended();
         }

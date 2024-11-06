@@ -38,6 +38,10 @@ class CartController extends Controller
             'quantity' => ['required', 'numeric', 'min:1'],
         ]);
         $quantity = $request->quantity;
+        $book = Book::find($request->book_id); #dd($book);
+        if ($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < $quantity) {
+            return back();
+        }
         $cookie = Cart::getCookie();
         $cartItem = DB::table('carts')->where($cookie[0], $cookie[1])->where('book_id', $request->book_id);
         $user_id = auth('web')->id() ?? '';
@@ -63,9 +67,14 @@ class CartController extends Controller
             'quantities.*' => ['required', 'numeric', 'min:1'],
         ]);
         $cookie = Cart::getCookie();
-        Cart::where($cookie[0], $cookie[1])->whereIn('book_id', $request->book_ids)->lazyById()->each(function ($task) use ($request) {
+        $books = Book::whereIn('id', $request->book_ids)->get()->keyBy('id');
+        Cart::where($cookie[0], $cookie[1])->whereIn('book_id', $request->book_ids)->lazyById()->each(function ($task) use ($request, $books) {
             $bookIndex = array_search($task->book_id, $request->book_ids);
-            if ($task->quantity != $request->quantities[$bookIndex]) {
+            $book = $books[$task->book_id];
+            if (($book->hard_copy == 1 && $book->soft_copy == 0 && $task->quantity > $book->stock) || ($book->hard_copy == 1 && $book->soft_copy == 0 && $request->quantities[$bookIndex] > $book->stock)) {
+                $cart = Cart::find($task->id);
+                $cart->delete();
+            } elseif ($task->quantity != $request->quantities[$bookIndex]) {
                 $cart = Cart::find($task->id);
                 $cart->quantity = $request->quantities[$bookIndex];
                 $cart->save();
@@ -79,12 +88,16 @@ class CartController extends Controller
 
     public function removeItem(Request $request)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'book_id' => ['required', 'integer']
-        ]); dd($request->all());
-        $cookie = Cart::getCookie();
-        $cart = Cart::where($cookie[0], $cookie[1])->where('book_id', $request->book_id)->first();
-        $cart->delete();
+        ]);*/
+        if(isset($_GET['book_id'])) {
+            $book_id = $_GET['book_id'];
+            $cookie = Cart::getCookie();
+            $cart = Cart::where($cookie[0], $cookie[1])->where('book_id', $book_id)->first();
+            $cart->delete();
+            return back();
+        }
         return back();
     }
 
@@ -142,6 +155,8 @@ class CartController extends Controller
                 'total_cost' => 0,
             ]);
             $cost = Order::getTotal($order->id, $cartItems, $cartItemsQty, 0);
+            $order->products = $cost['book_ids'];
+            $order->quantities = $cost['quantities'];
             $order->subtotal = $cost['subtotal'];
             $order->total_cost = ($cost['total_cost'] + $request->shipping_fee);
             $order->save();

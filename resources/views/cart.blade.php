@@ -28,19 +28,18 @@
                                     <input type="hidden" name="book_ids[]" id="bookId{{ $book->id }}" value="{{ $book->id }}">
                                     <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
                                     <h6>₦ {{ number_format($book->price, 2) }}</h6>
+                                    @if($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < 1)
+                                        <div class="small text-danger">Out of Stock</div>
+                                    @endif
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                                     <label for="qty">QTY</label>
                                     <input type="number" class="form-control" name="quantities[]" min="1" value="{{ $item->quantity }}">
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-lg-offset-1">
-                                    <a href="submit" class="btn btn-sm btn-danger text-white">
+                                    <a href="#" class="btn btn-sm btn-danger text-white" onclick="window.location.href='{{ route('cart.remove', ['book_id'=>$book->id]) }}'">
                                         <i class="fa fa-trash-o"></i> REMOVE
                                     </a>
-                                    {{--<form action="{{ route('cart.remove') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                    </form>--}}
                                 </div>
                                 @php $subtotal += ($book->price * $item->quantity); @endphp
                             </div>

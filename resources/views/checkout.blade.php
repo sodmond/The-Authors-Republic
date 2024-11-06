@@ -118,19 +118,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $hardCopyStatus = 0; @endphp
                                 @foreach ($cart as $item)
                                     @php 
                                         $book = $allBooks[$item->book_id];
                                         $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg');
+                                        if ($book->hard_copy == 1 && $book->stock >= $item->quantity) {
+                                            $hardCopyStatus += 1;
+                                        }
                                     @endphp
                                     <tr>
-                                        <td><img src="{{ $bookImage }}" alt="image description" style="max-width:70px;"></td>
-                                        <td><h5>{{ $book->title }}</h5></td>
+                                        <td><img src="{{ $bookImage }}" alt="image description" style="max-width:50px;"></td>
+                                        <td>
+                                            <h5>{{ $book->title }}</h5>
+                                            @if($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < 1)
+                                                <div class="small text-danger">Out of Stock</div>
+                                            @endif
+                                        </td>
                                         <td><strong>₦ {{ number_format($book->price, 2) }}</strong></td>
                                         <td>{{ $item->quantity }}</td>
                                     </tr>
-                                    @php $subtotal += ($book->price * $item->quantity); @endphp
+                                    @php 
+                                        if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1)) {
+                                            $subtotal += ($book->price * $item->quantity);
+                                        }
+                                    @endphp
                                 @endforeach
+                                <input type="hidden" id="hardCopyStatus" value="{{ $hardCopyStatus }}">
                             </tbody>
                         </table>
                     </div>
@@ -142,7 +156,7 @@
                     <div class="tg-minicartfoot">
                         <div class="mb-2" style="float:left; width:100%;">
                             <span class="tg-btnemptycart" style="font-size:16px;">Subtotal:</span>
-                            <span class="tg-subtotal"><strong>₦{{ ($subtotal)}}</strong></span>
+                            <span class="tg-subtotal"><strong>₦{{ number_format($subtotal) }}</strong></span>
                             <input type="hidden" name="sub_total" value="{{ $subtotal }}">
                         </div>
                         <div class="mb-2" style="float:left; width:100%;">
@@ -200,15 +214,19 @@
                     if ($.isEmptyObject(data.error)) {
                         const numberFormatter = new Intl.NumberFormat();
                         var shipping_fee = parseFloat(data.amount).toFixed(2);
+                        var hardCopyStatus = $('#hardCopyStatus').val();
+                        if (hardCopyStatus < 1) {
+                            shipping_fee = 0;
+                        }
                         $('#shippingCost').html('<strong>₦' + numberFormatter.format(shipping_fee) + '</strong>');
-                        $('input[name=shipping_fee]').val(data.amount)
+                        $('input[name=shipping_fee]').val(shipping_fee)
                         var subtotal = $('input[name=sub_total]').val()
-                        var totalCost = parseInt(data.amount) + parseInt(subtotal)
+                        var totalCost = parseInt(shipping_fee) + parseInt(subtotal)
                         $('#totalCost').html('<strong>₦' + numberFormatter.format(totalCost) + '</strong>');
                         $('#checkoutBtn').show('slow');
                     } else {
                         $('#checkoutBtn').hide('slow');
-                        console(data.error);
+                        //console(data.error);
                     }
                 }
             });

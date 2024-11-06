@@ -17,30 +17,32 @@
                             </div>
                             <div class="row">
                                 @foreach ($authorsBlog as $article)
-                                <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
-                                    @php 
-                                        $slug = \App\Models\Article::getSlug($article->title);
-                                        $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug])
-                                    @endphp
-                                    <article class="tg-post">
-                                        <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->image) }}" alt="Articles Image"></a></figure>
-                                        <div class="tg-postcontent">
-                                            <ul class="tg-bookscategories">
-                                                <li>{{ ucwords($article->type) }}</li>
-                                            </ul>
-                                            <div class="tg-posttitle">
-                                                <h3><a href="{{ $link }}">{{ strtoupper($article->title) }}</a></h3>
+                                    @if($article->author->ban_status == false)
+                                    <div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
+                                        @php 
+                                            $slug = \App\Models\Article::getSlug($article->title);
+                                            $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug])
+                                        @endphp
+                                        <article class="tg-post">
+                                            <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->image) }}" alt="Articles Image"></a></figure>
+                                            <div class="tg-postcontent">
+                                                <ul class="tg-bookscategories">
+                                                    <li>{{ ucwords($article->type) }}</li>
+                                                </ul>
+                                                <div class="tg-posttitle">
+                                                    <h3><a href="{{ $link }}">{{ strtoupper($article->title) }}</a></h3>
+                                                </div>
+                                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $article->author->firstname.' '.$article->author->lastname }}</a></span>
+                                                <ul class="tg-postmetadata">
+                                                    <li><a href="javascript:void(0);">
+                                                        <i class="fa fa-calendar"></i>
+                                                        <i>Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</i></a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $article->author->firstname.' '.$article->author->lastname }}</a></span>
-                                            <ul class="tg-postmetadata">
-                                                <li><a href="javascript:void(0);">
-                                                    <i class="fa fa-calendar"></i>
-                                                    <i>Published on: {{ date('M j, Y', strtotime($article->published_at)) }}</i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </article>
-                                </div>
+                                        </article>
+                                    </div>
+                                    @endif
                                 @endforeach
                             </div>
                             <div class="row justify-content-center">

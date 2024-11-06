@@ -21,13 +21,16 @@ class AuthorController extends Controller
                         ->paginate(12);
             return view('authors', compact('authors'));
         }
-        $authors = Author::where('email_verified_at', '<>', NULL)->paginate(18);
+        $authors = Author::where('email_verified_at', '<>', NULL)->where('ban_status', false)->paginate(18);
         return view('authors', compact('authors'));
     }
 
     public function get($id)
     {
         $author = Author::find($id);
+        if ($author->ban_status == true) {
+            return back();
+        }
         $books = Book::where('author_id', $author->id)->paginate(8);
         return view('author', compact('author', 'books'));
     }
@@ -36,6 +39,9 @@ class AuthorController extends Controller
     {
         if (isset($_GET['author'])) {
             $author = Author::find($_GET['author']);
+            if ($author->ban_status == true) {
+                return back();
+            }
             $authorsBlog = AuthorsBlog::where('author_id', $author->id)->orderByDesc('published_at')->paginate(18);
             return view('authors_blog', compact('authorsBlog', 'author'));
         }
@@ -46,6 +52,9 @@ class AuthorController extends Controller
     public function singleBlog($id, $slug)
     {
         $article = AuthorsBlog::find($id);
+        if ($article->author->ban_status == true) {
+            return back();
+        }
         return view('authors_blog_details', compact('article'));
     }
 

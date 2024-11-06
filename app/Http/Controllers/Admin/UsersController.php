@@ -76,4 +76,19 @@ class UsersController extends Controller
         }
         return redirect()->back();
     }
+
+    public function ban($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            if ($user->ban_status == false) {
+                $user->ban_status = true;
+                $user->save();
+                return back()->with('success', 'User has been banned');
+            }
+            $user->ban_status = false;
+            $user->save();
+            return back()->with('success', 'User ban has been lifted');
+        }
+    }
 }

@@ -60,23 +60,12 @@ class PaymentController extends Controller
                     'created_at' => now()
                 ]); #dd($transaction);
                 $order->update(['status' => 'completed', 'transaction_id' => $transaction]);
-                /*$earningsData = [];
-                for ($i=0; $i < count($orderItems); $i++) {
-                    $book = Book::find($orderItems[$i]->book_id);
-                    $author = Author::find($book->author_id);
-                    $amountEach = ($orderItems[$i]->amount * $orderItems[$i]->quantity);
-                    $after_balance = ($author->balance + $amountEach);
-                    $earningsData[] = [
-                        'author_id'     => $author->id,
-                        'order_id'      => $paymentMeta['order_id'],
-                        'pre_balance'   => $author->balance,
-                        'amount'        => $amountEach,
-                        'after_balance' => $after_balance,
-                        'created_at'    => now()
-                    ];
-                    $author->update(['balance' => $after_balance]);
+                foreach (json_decode($order->products) as $key => $value) {
+                    $book = Book::find($value);
+                    if(($book->hard_copy == 1 && $book->stock > 0)) {
+                        $book->decrement('stock', json_decode($order->quantities)[$key]);
+                    }
                 }
-                Earning::insert($earningsData);*/
                 DB::commit();
                 Mail::to($user->email)->queue(new SendOrderConfirmation($order->id, $order->code));
             }

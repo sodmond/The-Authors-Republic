@@ -169,7 +169,7 @@
                                                             $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg');
                                                         @endphp
                                                         <figure>
-                                                            <img src="{{ $bookImage }}" alt="book image" style="max-width:70px;">
+                                                            <img src="{{ $bookImage }}" alt="book image" style="max-width:50px;">
                                                         </figure>
                                                         <div class="tg-minicarproductdata">
                                                             @php $slug = \App\Models\Book::getSlug($book->title); @endphp

@@ -141,47 +141,51 @@
                         <div class="tg-productgrid">
                             <div class="row">
                                 @foreach($books as $book)
-                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 col-6">
-                                    <div class="tg-postbook">
-                                        <figure class="tg-featureimg">
-                                            <div class="tg-bookimg">
-                                                @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
-                                                <div class="tg-frontcover"><img src="{{ $bookImage }}" alt="image description"></div>
-                                                <div class="tg-backcover"><img src="{{ $bookImage }}" alt="image description"></div>
+                                    @if($book->author->ban_status == false)
+                                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 col-6">
+                                        <div class="tg-postbook">
+                                            <figure class="tg-featureimg">
+                                                <div class="tg-bookimg">
+                                                    @php $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/books/img-01.jpg') @endphp
+                                                    <div class="tg-frontcover"><img src="{{ $bookImage }}" alt="image description"></div>
+                                                    <div class="tg-backcover"><img src="{{ $bookImage }}" alt="image description"></div>
+                                                </div>
+                                                <form action="{{ route('user.wishlist.add') }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                    <button type="submit" class="tg-btnaddtowishlist">
+                                                        <i class="icon-heart"></i>
+                                                        <span>add to wishlist</span>
+                                                    </button>
+                                                </form>
+                                            </figure>
+                                            <div class="tg-postbookcontent">
+                                                <ul class="tg-bookscategories">
+                                                    <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
+                                                </ul>
+                                                <div class="tg-booktitle">
+                                                    @php $slug = \App\Models\Book::getSlug($book->title); @endphp
+                                                    <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
+                                                </div>
+                                                <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $book->author->firstname.' '.$book->author->lastname }}</a></span>
+                                                <span class="tg-bookprice">
+                                                    <ins>₦{{ number_format($book->price, 2) }}</ins>
+                                                </span>
+                                                @if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 1) || ($book->soft_copy == 1))
+                                                <form method="POST" action="{{ route('cart.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        <em>Add To Cart</em>
+                                                    </button>
+                                                </form>
+                                                @endif
                                             </div>
-                                            <form action="{{ route('user.wishlist.add') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                                <button type="submit" class="tg-btnaddtowishlist">
-                                                    <i class="icon-heart"></i>
-                                                    <span>add to wishlist</span>
-                                                </button>
-                                            </form>
-                                        </figure>
-                                        <div class="tg-postbookcontent">
-                                            <ul class="tg-bookscategories">
-                                                <li><a href="javascript:void(0);">{{ \App\Models\Book::getCategoryName($book->category_id) }}</a></li>
-                                            </ul>
-                                            <div class="tg-booktitle">
-                                                @php $slug = \App\Models\Book::getSlug($book->title); @endphp
-                                                <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
-                                            </div>
-                                            <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $book->author->firstname.' '.$book->author->lastname }}</a></span>
-                                            <span class="tg-bookprice">
-                                                <ins>₦{{ number_format($book->price, 2) }}</ins>
-                                            </span>
-                                            <form method="POST" action="{{ route('cart.add') }}">
-                                                @csrf
-                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                                <input type="hidden" name="quantity" value="1">
-                                                <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <em>Add To Cart</em>
-                                                </button>
-                                            </form>
                                         </div>
                                     </div>
-                                </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

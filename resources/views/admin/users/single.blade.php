@@ -38,10 +38,28 @@
                                     <a class="btn btn-info" href="{{ route('admin.user.orders', ['id' => $user->id]) }}"><i class="fa fa-shopping-bag"></i> Orders</a>
                                     <a class="btn btn-primary" href="{{ route('admin.user.posts', ['id' => $user->id]) }}"><i class="fa fa-newspaper"></i> Posts</a>
                                     <a class="btn btn-warning" href="{{ route('admin.user.comments', ['id' => $user->id]) }}"><i class="fa fa-comment"></i> Comments</a>
+                                    @if($user->ban_status == true)
+                                        <a class="btn btn-danger" href="{{ route('admin.user.ban', ['id' => $user->id]) }}"><i class="fa fa-times-circle"></i> Lift Ban</a>
+                                    @else
+                                        <a class="btn btn-danger" href="{{ route('admin.user.ban', ['id' => $user->id]) }}"><i class="fa fa-times-circle"></i> Ban</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
+                                    @if (count($errors))
+                                        <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> Error validating data.<br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if (session('success'))
+                                        <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                                    @endif
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <tr>
@@ -67,6 +85,16 @@
                                             <tr>
                                                 <th>Last Updated</th>
                                                 <td>{{ $user->updated_at }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ban Status</th>
+                                                <td>
+                                                    @if($user->ban_status == true)
+                                                        <span class="bg-danger py-1 px-2 rounded text-white">Banned</span>
+                                                    @else
+                                                        <span class="bg-success py-1 px-2 rounded text-white">Unbanned</span>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
