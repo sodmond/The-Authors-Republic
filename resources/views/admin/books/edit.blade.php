@@ -81,7 +81,7 @@
                                             <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="soft_copy">Soft Copy</label>
                                             <select class="form-control" id="soft_copy" name="soft_copy" required>
@@ -90,13 +90,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="price">Hard Copy</label>
                                             <select class="form-control" id="hard_copy" name="hard_copy" required>
                                                 <option value="1" @selected($book->hard_copy == true)>Yes</option>
                                                 <option value="0" @selected($book->hard_copy == false)>No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="stock">Stock <small>(required only if you have a hard copy)</small></label>
+                                            <input class="form-control" type="number" id="stock" name="stock" value="{{ $book->stock }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
