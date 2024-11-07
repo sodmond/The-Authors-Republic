@@ -123,7 +123,7 @@
                         @csrf
                         <fieldset>
                             <input type="email" name="email" class="form-control" placeholder="Enter Your Email Address">
-                            <button type="button"><i class="fa fa-envelope-o"></i></button>
+                            <button type="submit"><i class="fa fa-envelope-o"></i></button>
                         </fieldset>
                     </form>
                 </div>
