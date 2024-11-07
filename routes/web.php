@@ -24,6 +24,7 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])-
 Route::post('/contact', [App\Http\Controllers\HomeController::class, 'contactForm']);
 Route::post('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('newsletter');
 Route::get('/terms-conditions', [App\Http\Controllers\HomeController::class, 'tandc'])->name('tandc');
+Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacyPolicy'])->name('privacy_policy');
 Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('books');
 Route::get('/books-category/{id}/{slug}', [App\Http\Controllers\BookController::class, 'category'])->name('books.category');

@@ -71,7 +71,7 @@
                                 <ul>
                                     <li><a href="{{ route('tandc') }}">Terms & Conditions</a></li>
                                     <li><a href="javascript:void(0);">Returns Policy</a></li>
-                                    <li><a href="javascript:void(0);">Privacy Policy</a></li>
+                                    <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
                                 </ul>
                                 <ul>
                                     <li><a href="{{ route('about') }}">About Us</a></li>
