@@ -26,23 +26,23 @@
                                                 <p>To resize an image online, you can use free tools that allow you to adjust the dimensions without needing software installation. Here are a few popular options:</p>
                                                 <ul>
                                                     <li>
-                                                        <strong>PicResize (<a href="www.picresize.com" target="_blank">www.picresize.com</a>)</strong>
+                                                        <strong>PicResize (<a href="https://www.picresize.com" target="_blank">www.picresize.com</a>)</strong>
                                                         <p>Upload your image, choose the new dimensions, and download the resized version.</p>
                                                     </li>
                                                     <li>
-                                                        <strong>ResizeImage.net (<a href="www.resizeimage.net" target="_blank">www.resizeimage.net</a>)</strong>
+                                                        <strong>ResizeImage.net (<a href="https://www.resizeimage.net" target="_blank">www.resizeimage.net</a>)</strong>
                                                         <p>Upload an image, manually enter the new width and height, and download the resized image.</p>
                                                     </li>
                                                     <li>
-                                                        <strong>Canva (<a href="www.canva.com" target="_blank">www.canva.com</a>)</strong>
+                                                        <strong>Canva (<a href="https://www.canva.com" target="_blank">www.canva.com</a>)</strong>
                                                         <p>Canva offers a resizing tool where you can input specific dimensions for free.</p>
                                                     </li>
                                                     <li>
-                                                        <strong>ILoveIMG (<a href="www.iloveimg.com/resize-image" target="_blank">www.iloveimg.com/resize-image</a>)</strong>
+                                                        <strong>ILoveIMG (<a href="https://www.iloveimg.com/resize-image" target="_blank">www.iloveimg.com/resize-image</a>)</strong>
                                                         <p>Upload your image, set the new dimensions or percentage scale, and download the resized version.</p>
                                                     </li>
                                                     <li>
-                                                        <strong>Adobe Express (<a href="www.adobe.com/express/feature/image/resize" target="_blank">www.adobe.com/express/feature/image/resize</a>)</strong>
+                                                        <strong>Adobe Express (<a href="https://www.adobe.com/express/feature/image/resize" target="_blank">www.adobe.com/express/feature/image/resize</a>)</strong>
                                                         <p>Offers a straightforward way to resize images by entering the dimensions or selecting a preset.</p>
                                                     </li>
                                                 </ul>

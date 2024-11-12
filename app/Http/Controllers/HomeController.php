@@ -76,7 +76,8 @@ class HomeController extends Controller
     public function newsletter(Request $request)
     {
         $this->validate($request, [
-            'email' => ['required', 'email:rfc,dns', 'unique:newsletters']
+            'email' => ['required', 'email:rfc,dns', 'unique:newsletters'],
+            'g-recaptcha-response' => ['recaptcha']
         ]);
         try {
             Newsletter::create([

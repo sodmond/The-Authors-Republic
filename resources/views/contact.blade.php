@@ -75,7 +75,7 @@
                         <ul class="tg-socialicons">
                             <li class="tg-facebook"><a href="https://web.facebook.com/profile.php?id=61567154038913" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li class="tg-googleplus"><a href="https://instagram.com/Theauthorsrepublic" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                            <li class="tg-twitter"><a href="https://x.com/Theauthorsrepublic" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="tg-twitter"><a href="https://x.com/theauthorsrepub" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             <li class="tg-googleplus"><a href="https://youtube.com/@theauthorsrepublic-v7o?si=4pVyroL0oSLINDE4" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             <li class="tg-tiktok"><a href="https://tiktok.com/@Theauthorsrepublic" target="_blank" style="line-height:25px;"><img src="{{ asset('img/tiktok.png') }}" alt="tiktok" style="width:16px;"></a></li>
                         </ul>

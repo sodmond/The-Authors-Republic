@@ -56,7 +56,7 @@
                             <ul class="tg-socialicons">
                                 <li class="tg-facebook"><a href="https://web.facebook.com/profile.php?id=61567154038913" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li class="tg-googleplus"><a href="https://instagram.com/Theauthorsrepublic" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                <li class="tg-twitter"><a href="https://x.com/Theauthorsrepublic" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li class="tg-twitter"><a href="https://x.com/theauthorsrepub" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li class="tg-googleplus"><a href="https://youtube.com/@theauthorsrepublic-v7o?si=4pVyroL0oSLINDE4" target="_blank"><i class="fa fa-youtube"></i></a></li>
                                 <li class="tg-tiktok"><a href="https://tiktok.com/@Theauthorsrepublic" target="_blank" style="line-height:25px;"><img src="{{ asset('img/tiktok.png') }}" alt="tiktok" style="width:16px;"></a></li>
                             </ul>
@@ -119,10 +119,10 @@
                     <h5>Sign up to receive great offers and exciting updates from us</h5>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <form class="tg-formtheme tg-formnewsletter" method="POST" action="{{ route('newsletter') }}">
+                    <form class="tg-formtheme tg-formnewsletter" method="POST" action="" id="newsletterForm">
                         @csrf
                         <fieldset>
-                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email Address">
+                            <input type="email" name="email" id="newsletter_email1" class="form-control" placeholder="Enter Your Email Address" required>
                             <button type="submit"><i class="fa fa-envelope-o"></i></button>
                         </fieldset>
                     </form>
@@ -142,6 +142,21 @@
         </div>
     </div>
 </footer>
+
+<div class="modal" tabindex="-1" id="newsletterPrompt" style="z-index:9999;">
+    <div class="modal-dialog modal-dialog-centered modal-sm" style="width:330px;">
+        <div class="modal-content">
+            <div class="modal-body justify-content-center">
+                <form action="{{ route('newsletter') }}" method="POST" id="newsletterForm2">
+                    @csrf
+                    <input type="hidden" id="newsletter_email2" name="email" value="">
+                    {!! htmlFormSnippet() !!}
+                    <input type="submit" class="tg-btn tg-active" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal" tabindex="-1" id="statusModal" style="z-index:9999;">
     <div class="modal-dialog modal-dialog-centered">

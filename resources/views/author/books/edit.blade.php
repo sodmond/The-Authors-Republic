@@ -102,19 +102,13 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="isbn">ISBN</label>
                                             <input class="form-control" type="text" id="isbn" name="isbn" value="{{ $book->isbn }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="price">Price</label>
-                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="soft_copy">Soft Copy</label>
                                             <select class="form-control" id="soft_copy" name="soft_copy" required>
@@ -123,13 +117,28 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="price">Hard Copy</label>
                                             <select class="form-control" id="hard_copy" name="hard_copy" required>
                                                 <option value="1" @selected($book->hard_copy == true)>Yes</option>
                                                 <option value="0" @selected($book->hard_copy == false)>No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="alert alert-info"><i class="fas fa-info-circle"></i> A certain percentage will be deducted from sales during withdrawal.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="price">Price (Soft Copy)</label>
+                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="price">Price (Hard Copy)</label>
+                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -158,10 +167,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <div class="alert alert-info"><i class="fas fa-info-circle"></i> Only formatted book manuscript will be allowed, otherwise the book will be removed within 7 days.</div>
                                         <div class="form-group">
                                             <label for="book_file">Book File <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">
-                                            <small class="text-dark">(Allowed file type; .pdf | Max: 2MB)</small>
+                                            <small class="text-dark">(Allowed file type; .pdf | Max: 10MB)</small>
                                             <small class="text-dark">Need help to convert or edit images/pdf, <a href="{{ route('faq') }}" target="_blank"><u>click here</u></a></small>
                                         </div>
                                     </div>

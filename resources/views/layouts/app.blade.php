@@ -133,7 +133,18 @@
     </script>
     @endif
 	<script>
-		
+		$('#newsletterForm').submit(function(e) {
+			e.preventDefault();
+			var email = $('#newsletter_email1').val();
+			$('#newsletter_email2').val(email);
+			$('#newsletterPrompt').modal('show');
+		});
+		$('#newsletterForm2').submit(function(e) {
+			if(grecaptcha.getResponse() == "") {
+    			e.preventDefault();
+			    alert("Please verify you're not a bot.");
+			}
+		});
 	</script>
 </body>
 </html>

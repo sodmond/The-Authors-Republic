@@ -32,7 +32,7 @@ class BookRequest extends FormRequest
             'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
             #'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
-            'book_file' => ['required_if_accepted:soft_copy', 'mimes:pdf', 'max:2048'],
+            'book_file' => ['required_if_accepted:soft_copy', 'mimes:pdf', 'max:10240'],
             'pages_number' => ['required', 'integer'],
             'published_at' => ['required', 'date'],
         ];

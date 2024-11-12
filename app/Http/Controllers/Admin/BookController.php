@@ -88,7 +88,7 @@ class BookController extends Controller
             'description' => ['nullable', 'max:5000'],
             'price' => ['required', 'numeric'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
-            'book_file' => ['nullable', 'mimes:pdf', 'max:2048'],
+            'book_file' => ['nullable', 'mimes:pdf', 'max:10240'],
             'pages_number' => ['required', 'integer'],
             'published_at' => ['required', 'date'],
             'featured' => ['nullable', 'integer', 'max:1']

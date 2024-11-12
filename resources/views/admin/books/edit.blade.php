@@ -144,7 +144,7 @@
                                         <div class="form-group">
                                             <label for="book_file">Book File <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="book_file" name="book_file">
-                                            <small class="text-info">(Allowed file type; .pdf | Max: 2MB)</small>
+                                            <small class="text-info">(Allowed file type; .pdf | Max: 10MB)</small>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-custom my-3 col-12">Update</button>
