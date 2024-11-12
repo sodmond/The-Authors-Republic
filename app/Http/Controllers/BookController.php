@@ -6,6 +6,8 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\BookReview;
+use App\Models\Order;
+use App\Models\OrderContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -50,6 +52,11 @@ class BookController extends Controller
 
     public function review($id, Request $request)
     {
+        $userOrders = Order::where('user_id', auth()->id())->pluck('id');
+        $userOrdersContent = OrderContent::whereIn('order_id', $userOrders)->pluck('book_id');
+        if (!in_array($id, $userOrdersContent->toArray())) {
+            return back()->withErrors(['err_msg' => 'You can only write a review if you have purchased this book.']);
+        }
         $this->validate($request, [
             'comment' => ['required', 'string', 'max:1500'],
             'rating' => ['required', 'integer', 'max:5']
