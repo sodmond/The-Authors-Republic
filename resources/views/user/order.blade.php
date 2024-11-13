@@ -55,6 +55,7 @@
                                         <th>Book Title</th>
                                         <th>Quantity</th>
                                         <th>Cost Per Each</th>
+                                        <th>Book Copy</th>
                                         <th>Total Amount</th>
                                         <th>...</th>
                                     </tr>
@@ -71,9 +72,10 @@
                                             <td>{{ $books[$item->book_id]->title }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>{{ number_format($item->amount, 2) }}</td>
+                                            <td>{{ ucwords($item->copy) }}</td>
                                             <td>{{ number_format(($item->amount*$item->quantity), 2) }}</td>
                                             <td>
-                                                @if($order->status == 'completed' && $books[$item->book_id]->soft_copy == true)
+                                                @if($order->status == 'completed' && $item->copy == 'soft')
                                                 <form method="POST" action="{{ route('user.book.download') }}">
                                                     @csrf
                                                     <input type="hidden" name="book_id" value="{{ $item->book_id }}">
