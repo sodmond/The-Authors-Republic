@@ -55,7 +55,11 @@
                                             @csrf
                                             <div class="tg-postbookcontent" style="margin-bottom:10px;">
                                                 <span class="tg-bookprice">
+                                                    @if($book->soft_copy == 1 && $book->hard_copy == 1)
+                                                    <ins>₦{{ number_format($book->price, 2) .'-'. number_format($book->price2, 2) }}</ins>
+                                                    @else
                                                     <ins>₦{{ ($book->soft_copy == 1) ? number_format($book->price, 2) : number_format($book->price2, 2) }}</ins>
+                                                    @endif
                                                 </span>
                                                 <ul class="tg-delevrystock">
                                                     <li><i class="icon-store"></i><span>Status: <em>{{ ($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1) ? 'In Stock' : 'Out of Stock' }}</em></span></li>
