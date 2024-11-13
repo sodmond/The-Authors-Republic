@@ -194,7 +194,10 @@
                                         </div>
                                         <div class="tg-authorbox">
                                             <figure class="tg-authorimg">
-                                                <img src="{{ asset('storage/'.$author->image) }}" alt="image description" style="max-width:70px;">
+                                                @php
+                                                    $authorImage = ($author->image != '') ? asset('storage/'.$author->image) : asset('img/user-icon.png');
+                                                @endphp
+                                                <img src="{{ $authorImage }}" alt="author image" style="max-width:70px;">
                                             </figure>
                                             <div class="tg-authorinfo">
                                                 <div class="tg-authorhead">
