@@ -10,6 +10,24 @@
     background-color: #B38B67;
 }
 
+.btn-custom {
+    background-color: #616B2E;
+    border-color: #616B2E;
+    color: #FFF;
+}
+  
+.btn-custom:hover {
+    background-color: #617C2E;
+    border-color: #617C2E;
+    color: #FFF;
+}
+
+.btn-custom.active {
+    background-color: #617C2E;
+    border-color: #617C2E;
+    color: #000;
+}
+
 .btn-white2 {
     background-color: #FFF !important;
     padding-top: 10px;

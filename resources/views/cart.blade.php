@@ -27,7 +27,8 @@
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                     <input type="hidden" name="book_ids[]" id="bookId{{ $book->id }}" value="{{ $book->id }}">
                                     <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
-                                    <h6>₦ {{ number_format($book->price, 2) }}</h6>
+                                    <h6>₦ {{ ($item->copy == 'soft') ? number_format($book->price, 2) : number_format($book->price2, 2) }}</h6>
+                                    <button type="button" class="btn btn-custom btn-sm">{{ ucwords($item->copy) }} Copy</button>
                                     @if($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < 1)
                                         <div class="small text-danger">Out of Stock</div>
                                     @endif
@@ -35,6 +36,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                                     <label for="qty">QTY</label>
                                     <input type="number" class="form-control" name="quantities[]" min="1" value="{{ $item->quantity }}">
+                                    <input type="hidden" name="copies[]" id="copy{{ $book->id }}" value="{{ $item->copy }}">
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-lg-offset-1">
                                     <a href="#" class="btn btn-sm btn-danger text-white" onclick="window.location.href='{{ route('cart.remove', ['book_id'=>$book->id]) }}'">

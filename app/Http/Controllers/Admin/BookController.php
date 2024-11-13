@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -58,6 +59,7 @@ class BookController extends Controller
         $book->stock = $request->stock;
         $book->description = $description;
         $book->price = $request->price;
+        $book->price2 = $request->price2;
         $book->image = $imgPath;
         $book->book_file = $bookFile;
         $book->published_at = $request->published_at;
@@ -86,7 +88,16 @@ class BookController extends Controller
             'hard_copy' => ['required', 'integer', 'max:1', 'accepted_if:soft_copy,0'],
             'stock' => ['nullable', 'integer', 'required_if:hard_copy,1'],
             'description' => ['nullable', 'max:5000'],
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', function (string $attribute, mixed $value, Closure $fail) use($request) {
+                if ($value == 0 && $request->soft_copy == 1) {
+                    $fail("The price for soft copy should be greater than 0.");
+                }
+            }],
+            'price2' => ['required', 'numeric', function (string $attribute, mixed $value, Closure $fail) use($request) {
+                if ($value == 0 && $request->hard_copy == 1) {
+                    $fail("The price for hard copy should be greater than 0.");
+                }
+            }],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(370)->height(500)],
             'book_file' => ['nullable', 'mimes:pdf', 'max:10240'],
             'pages_number' => ['required', 'integer'],
@@ -119,6 +130,7 @@ class BookController extends Controller
         $book->hard_copy = $request->hard_copy;
         $book->stock = $request->stock;
         $book->price = $request->price;
+        $book->price2 = $request->price2;
         $book->published_at = $request->published_at;
         $book->pages_number = $request->pages_number;
         $book->featured = $request->featured;

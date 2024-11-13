@@ -123,7 +123,7 @@
                                     @php 
                                         $book = $allBooks[$item->book_id];
                                         $bookImage = ($book->image != '') ? asset('storage/'.$book->image) : asset('frontend/images/products/img-01.jpg');
-                                        if ($book->hard_copy == 1 && $book->stock >= $item->quantity) {
+                                        if ($item->copy == 'hard' && $book->stock >= $item->quantity) {
                                             $hardCopyStatus += 1;
                                         }
                                     @endphp
@@ -131,16 +131,18 @@
                                         <td><img src="{{ $bookImage }}" alt="image description" style="max-width:50px;"></td>
                                         <td>
                                             <h5>{{ $book->title }}</h5>
-                                            @if($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < 1)
+                                            <button type="button" class="btn btn-custom btn-sm">{{ ucwords($item->copy) }} Copy</button>
+                                            @if($item->copy == 'hard' && $book->stock < 1)
                                                 <div class="small text-danger">Out of Stock</div>
                                             @endif
                                         </td>
-                                        <td><strong>₦ {{ number_format($book->price, 2) }}</strong></td>
+                                        <td><strong>₦ {{ ($item->copy == 'soft') ? number_format($book->price, 2) : number_format($book->price2, 2) }}</strong></td>
                                         <td>{{ $item->quantity }}</td>
                                     </tr>
                                     @php 
-                                        if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1)) {
-                                            $subtotal += ($book->price * $item->quantity);
+                                        if(($item->copy == 'hard' && $book->stock > 0) || ($item->copy == 'soft')) {
+                                            $copy_price = ($item->copy == 'soft') ? $book->price : $book->price2;
+                                            $subtotal += ($copy_price * $item->quantity);
                                         }
                                     @endphp
                                 @endforeach

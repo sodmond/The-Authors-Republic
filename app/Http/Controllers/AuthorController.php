@@ -31,7 +31,7 @@ class AuthorController extends Controller
         if ($author->ban_status == true) {
             return back();
         }
-        $books = Book::where('author_id', $author->id)->paginate(8);
+        $books = Book::where('author_id', $author->id)->where('status', true)->orderByDesc('created_at')->paginate(8);
         return view('author', compact('author', 'books'));
     }
 

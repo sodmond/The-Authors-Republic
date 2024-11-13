@@ -69,16 +69,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="isbn">ISBN</label>
                                             <input class="form-control" type="text" id="isbn" name="isbn" value="{{ $book->isbn }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="price">Price</label>
-                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -97,6 +91,18 @@
                                                 <option value="1" @selected($book->hard_copy == true)>Yes</option>
                                                 <option value="0" @selected($book->hard_copy == false)>No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="price">Price (Soft Copy)</label>
+                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="price">Price (Hard Copy)</label>
+                                            <input class="form-control" type="number" id="price2" name="price2" value="{{ $book->price2 }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

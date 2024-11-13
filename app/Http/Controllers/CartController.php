@@ -36,17 +36,18 @@ class CartController extends Controller
         $this->validate($request, [
             'book_id' => ['required', 'numeric'],
             'quantity' => ['required', 'numeric', 'min:1'],
+            'copy' => ['required', 'string', 'in:soft,hard'],
         ]);
         $quantity = $request->quantity;
         $book = Book::find($request->book_id); #dd($book);
-        if ($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < $quantity) {
+        if ($request->copy == 'hard' && $book->stock < $quantity) {
             return back();
         }
         $cookie = Cart::getCookie();
-        $cartItem = DB::table('carts')->where($cookie[0], $cookie[1])->where('book_id', $request->book_id);
+        $cartItem = DB::table('carts')->where($cookie[0], $cookie[1])->where('book_id', $request->book_id)->where('copy', $request->copy);
         $user_id = auth('web')->id() ?? '';
         if ($cartItem->first()) {
-            $cartItem->increment('quantity', $quantity, ['user_id' => $user_id]);
+            $cartItem->increment('quantity', $quantity, ['user_id' => $user_id, 'copy' => $request->copy]);
             return back()->with('cart_suc', 'Book has been added to cart');
         }
         $cart = new Cart();
@@ -54,6 +55,7 @@ class CartController extends Controller
         $cart->book_id = $request->book_id;
         $cart->quantity = $quantity;
         $cart->user_id = $user_id;
+        $cart->copy = $request->copy;
         $cart->save();
         return back()->with('cart_suc', 'Book has been added to cart');
     }
@@ -65,16 +67,18 @@ class CartController extends Controller
             'book_ids.*' => ['required', 'numeric'],
             'quantities' => ['required', 'array'],
             'quantities.*' => ['required', 'numeric', 'min:1'],
+            'copies' => ['required', 'array'],
+            'copies.*' => ['required', 'string', 'in:soft,hard'],
         ]);
         $cookie = Cart::getCookie();
         $books = Book::whereIn('id', $request->book_ids)->get()->keyBy('id');
         Cart::where($cookie[0], $cookie[1])->whereIn('book_id', $request->book_ids)->lazyById()->each(function ($task) use ($request, $books) {
             $bookIndex = array_search($task->book_id, $request->book_ids);
             $book = $books[$task->book_id];
-            if (($book->hard_copy == 1 && $book->soft_copy == 0 && $task->quantity > $book->stock) || ($book->hard_copy == 1 && $book->soft_copy == 0 && $request->quantities[$bookIndex] > $book->stock)) {
+            if (($task->copy == 'hard' && $task->quantity > $book->stock) || ($task->copy == 'hard' && $request->quantities[$bookIndex] > $book->stock)) {
                 $cart = Cart::find($task->id);
                 $cart->delete();
-            } elseif ($task->quantity != $request->quantities[$bookIndex]) {
+            } elseif ($task->quantity != $request->quantities[$bookIndex] && $task->copy == $request->copies[$bookIndex]) {
                 $cart = Cart::find($task->id);
                 $cart->quantity = $request->quantities[$bookIndex];
                 $cart->save();
@@ -140,23 +144,23 @@ class CartController extends Controller
             'shipping_lname.max' => 'The shipping lastname max charaters is 255.',
         ]);
         $cookie = Cart::getCookie();
-        $cartItems = Cart::where($cookie[0], $cookie[1])->pluck('book_id');
-        $cartItemsQty = Cart::where($cookie[0], $cookie[1])->pluck('quantity');
+        $cart = Cart::where($cookie[0], $cookie[1]);
+        #dd($cart->pluck('book_id'), $cart->pluck('quantity'), $cart->pluck('copy'));
         DB::beginTransaction();
         try {
             $order = Order::create([
                 'user_id' => auth('web')->id(),
-                'products' => json_encode($cartItems),
-                'quantities' => json_encode($cartItemsQty),
+                'products' => json_encode($cart->pluck('book_id')),
+                'quantities' => json_encode($cart->pluck('quantity')),
                 'code' => Order::createOrderCode(), 
                 'note' => $request->note,
                 'subtotal' => 0,
                 'shipping_fee' => $request->shipping_fee,
                 'total_cost' => 0,
             ]);
-            $cost = Order::getTotal($order->id, $cartItems, $cartItemsQty, 0);
-            $order->products = $cost['book_ids'];
-            $order->quantities = $cost['quantities'];
+            $cost = Order::getTotal($order->id, $cart->pluck('book_id'), $cart->pluck('quantity'), $cart->pluck('copy'), 0);
+            $order->products = json_encode($cost['book_ids']);
+            $order->quantities = json_encode($cost['quantities']);
             $order->subtotal = $cost['subtotal'];
             $order->total_cost = ($cost['total_cost'] + $request->shipping_fee);
             $order->save();

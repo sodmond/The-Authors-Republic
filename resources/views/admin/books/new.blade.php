@@ -88,12 +88,6 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="price">Price</label>
-                                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
                                             <label for="soft_copy">Soft Copy</label>
                                             <select class="form-control" id="soft_copy" name="soft_copy" required>
                                                 <option value="">- - - Select - - -</option>
@@ -110,6 +104,18 @@
                                                 <option value="1" @selected(old('hard_copy') == true)>Yes</option>
                                                 <option value="0" @selected(old('hard_copy') == false)>No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="price">Price (Soft Copy)</label>
+                                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="price">Price (Hard Copy)</label>
+                                            <input class="form-control" type="number" id="price2" name="price2" value="{{ old('price2') }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

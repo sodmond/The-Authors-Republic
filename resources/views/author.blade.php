@@ -57,25 +57,29 @@
                                                 @php $slug = \App\Models\Book::getSlug($book->title); @endphp
                                                 <h3><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ ucwords($book->title) }}</a></h3>
                                             </div>
-                                            @php 
-                                                $slug = \App\Models\Author::getSlug($book->author->firstname, $book->author->lastname);
-                                                $authorLink = route('author', ['id' => $book->author->id, 'slug' => $slug])
-                                            @endphp
-                                            <span class="tg-bookwriter">By: <a href="{{ $authorLink }}">{{ ucwords($book->author->firstname.' '.$book->author->lastname) }}</a></span>
-                                            {{--<span class="tg-stars"><span></span></span>--}}
+                                            <span class="tg-bookwriter">By: <a href="javascript:void(0)">{{ ucwords($book->author->firstname.' '.$book->author->lastname) }}</a></span>
                                             <span class="tg-bookprice">
-                                                <ins>₦{{ number_format($book->price, 2) }}</ins>
-                                                {{--<del>₦27.20</del>--}}
+                                                <ins>₦{{ ($book->price != 0) ? number_format($book->price, 2) : number_format($book->price2, 2) }}</ins>
                                             </span>
+                                            @if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 1) || ($book->soft_copy == 1))
                                             <form method="POST" action="{{ route('cart.add') }}">
                                                 @csrf
                                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                                                 <input type="hidden" name="quantity" value="1">
-                                                <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <em>Add To Cart</em>
-                                                </button>
+                                                @if($book->soft_copy == 1 && $book->hard_copy == 1)
+                                                    <a class="tg-btn tg-btnstyletwo" href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">
+                                                        <i class="fa fa-eye"></i>
+                                                        <em>View Options</em>
+                                                    </a>
+                                                @else
+                                                    <input type="hidden" name="copy" value="{{ $book->soft_copy == 1 ? 'soft' : 'hard' }}">
+                                                    <button class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        <em>Add To Cart</em>
+                                                    </button>
+                                                @endif
                                             </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

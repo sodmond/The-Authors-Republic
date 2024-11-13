@@ -10,7 +10,7 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cookie_id', 'book_id', 'quantity', 'user_id'
+        'cookie_id', 'book_id', 'quantity', 'user_id', 'copy'
     ];
 
     public static function getCookie()

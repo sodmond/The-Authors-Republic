@@ -55,11 +55,26 @@
                                             @csrf
                                             <div class="tg-postbookcontent" style="margin-bottom:10px;">
                                                 <span class="tg-bookprice">
-                                                    <ins>₦{{ number_format($book->price, 2) }}</ins>
+                                                    <ins>₦{{ ($book->soft_copy == 1) ? number_format($book->price, 2) : number_format($book->price2, 2) }}</ins>
                                                 </span>
                                                 <ul class="tg-delevrystock">
                                                     <li><i class="icon-store"></i><span>Status: <em>{{ ($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1) ? 'In Stock' : 'Out of Stock' }}</em></span></li>
                                                 </ul>
+                                                @if($book->soft_copy == 1 && $book->hard_copy == 1)
+                                                    <div class="btn-grou" data-toggle="buttons">
+                                                        <label class="btn">Select Book Copy</label>
+                                                        <label class="btn btn-custom">
+                                                            <input type="radio" name="copy" id="option2" value="soft" required> Soft Copy
+                                                        </label> &nbsp;
+                                                        @if($book->stock > 0)
+                                                        <label class="btn btn-custom">
+                                                            <input type="radio" name="copy" id="option3" value="hard" required> Hard Copy
+                                                        </label>
+                                                        @endif
+                                                    </div>
+                                                @else
+                                                    <input type="hidden" name="copy" value="{{ $book->soft_copy == 1 ? 'soft' : 'hard' }}">
+                                                @endif
                                                 <div class="tg-quantityholder">
                                                     @if($book->hard_copy == 1)<em class="minus">-</em>@endif
                                                     <input type="text" class="result" value="1" id="quantity1" name="quantity" {{ ($book->hard_copy == 0) ? 'readonly' : '' }}>

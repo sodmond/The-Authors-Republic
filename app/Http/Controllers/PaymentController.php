@@ -68,9 +68,9 @@ class PaymentController extends Controller
                 }
                 DB::commit();
                 Mail::to($user->email)->queue(new SendOrderConfirmation($order->id, $order->code));
+                return redirect()->route('user.order', ['id' => $order->id, 'code' => $order->code])->with('success', 'Your order is being processed');
             }
             DB::rollBack();
-            #return redirect()->route('user.home')->with('success', 'Your order is being processed');
             return redirect()->route('user.order', ['id' => $order->id, 'code' => $order->code])->with('success', 'Your order is being processed');
         }
         return redirect()->route('checkout')->withErrors(['payment_err', "Payment couldn't be completed, pls try again."]);

@@ -63,16 +63,20 @@
                                                 <td>{{ ucwords(\App\Models\Book::getCategoryName($book->category_id)) }}</td>
                                             </tr>
                                             <tr>
-                                                <th>Price</th>
-                                                <td>{{ number_format($book->price) }}</td>
-                                            </tr>
-                                            <tr>
                                                 <th>Soft Copy</th>
                                                 <td>{{ ($book->soft_copy == 1) ? 'Yes' : 'No' }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Hard Copy</th>
                                                 <td>{{ ($book->hard_copy == 1) ? 'Yes' : 'No' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Price (Soft Copy)</th>
+                                                <td>{{ number_format($book->price) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Price (Hard Copy)</th>
+                                                <td>{{ number_format($book->price2) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Stock Availability</th>

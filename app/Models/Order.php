@@ -32,26 +32,28 @@ class Order extends Model
         return 'ORD' . time();
     }
 
-    public static function getTotal($order_id, $book_ids, $quantities, $shipping_fee)
+    public static function getTotal($order_id, $book_ids, $quantities, $copies, $shipping_fee)
     {
         $subtotal = 0;
         $books = Book::whereIn('id', $book_ids)->get()->keyBy('id');
         $orderContentData = [];
         for($i=0; $i < count($book_ids); $i++) {
             $book = Book::find($book_ids[$i]);
-            if(($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock > 0) || ($book->soft_copy == 1)) {
-                $amount = $books[$book_ids[$i]]->price;
+            if(($copies[$i] == 'hard' && $book->stock > 0) || ($copies[$i] == 'soft')) {
+                $amount = ($copies[$i] == 'soft') ? $books[$book_ids[$i]]->price : $books[$book_ids[$i]]->price2;
                 $subtotal += round($amount * $quantities[$i], 2);
                 $orderContentData[] = [
                     'order_id' => $order_id,
                     'book_id' => $book_ids[$i],
                     'amount' => $amount,
                     'quantity' => $quantities[$i],
+                    'copy' => $copies[$i],
                     'created_at' => now()
                 ];
             } else {
                 unset($book_ids[$i]);
                 unset($quantities[$i]);
+                unset($copies[$i]);
             }
         }
         OrderContent::insert($orderContentData);

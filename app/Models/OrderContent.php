@@ -11,7 +11,7 @@ class OrderContent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_id', 'book_id', 'amount', 'quantity'
+        'order_id', 'book_id', 'amount', 'quantity', 'copy'
     ];
 
     public function order() : BelongsTo

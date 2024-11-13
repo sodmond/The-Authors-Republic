@@ -138,7 +138,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Price (Hard Copy)</label>
-                                            <input class="form-control" type="number" id="price" name="price" value="{{ $book->price }}" required>
+                                            <input class="form-control" type="number" id="price2" name="price2" value="{{ $book->price2 }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

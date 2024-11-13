@@ -174,7 +174,7 @@
                                                         <div class="tg-minicarproductdata">
                                                             @php $slug = \App\Models\Book::getSlug($book->title); @endphp
                                                             <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
-                                                            <h6><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">₦ {{ number_format($book->price, 2) }}</a></h6>
+                                                            <h6><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">₦ {{ ($shoppingCart[$i]->copy == 'soft') ? number_format($book->price, 2) : number_format($book->price2, 2) }}</a></h6>
                                                         </div>
                                                     </div>
                                                 @endfor
