@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         try {
             #$cart = Cart::getCookie();
             $allBooks = Book::all()->keyBy('id');
-            $book_categories = BookCategory::all(); #dd($book_categories[0]->books);
+            $book_categories = BookCategory::where('status', 1)->get(); #dd($book_categories[0]->books);
             $recentNews = Article::orderByDesc('created_at')->take(5)->get();
             $topAuthorBlogs = AuthorsBlog::orderByDesc('created_at')->take(2)->get();
             View::share(compact('allBooks', 'book_categories', 'recentNews', 'topAuthorBlogs'));
