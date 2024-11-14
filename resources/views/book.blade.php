@@ -56,9 +56,9 @@
                                             <div class="tg-postbookcontent" style="margin-bottom:10px;">
                                                 <span class="tg-bookprice">
                                                     @if($book->soft_copy == 1 && $book->hard_copy == 1)
-                                                    <ins>₦{{ number_format($book->price, 2) .'-'. number_format($book->price2, 2) }}</ins>
+                                                    <ins>₦ {{ number_format($book->price, 2) .'-'. number_format($book->price2, 2) }}</ins>
                                                     @else
-                                                    <ins>₦{{ ($book->soft_copy == 1) ? number_format($book->price, 2) : number_format($book->price2, 2) }}</ins>
+                                                    <ins id="multiPrice">₦ {{ ($book->soft_copy == 1) ? number_format($book->price, 2) : number_format($book->price2, 2) }}</ins>
                                                     @endif
                                                 </span>
                                                 <ul class="tg-delevrystock">
@@ -68,11 +68,11 @@
                                                     <div class="btn-grou" data-toggle="buttons">
                                                         <label class="btn">Select Book Copy</label>
                                                         <label class="btn btn-custom">
-                                                            <input type="radio" name="copy" id="option2" value="soft" required> Soft Copy
+                                                            <input type="radio" name="copy" id="option2" value="soft" required> Ebook
                                                         </label> &nbsp;
                                                         @if($book->stock > 0)
                                                         <label class="btn btn-custom">
-                                                            <input type="radio" name="copy" id="option3" value="hard" required> Hard Copy
+                                                            <input type="radio" name="copy" id="option3" value="hard" required> Paperback
                                                         </label>
                                                         @endif
                                                     </div>
@@ -108,8 +108,8 @@
                                         <div class="tg-tab-content tab-content">
                                             <div role="tabpanel" class="tg-tab-pane tab-pane active" id="details">
                                                 <ul class="tg-productinfo">
-                                                    <li><span>Soft Copy:</span><span>{{ ($book->soft_copy == true) ? 'YES' : 'NO' }}</span></li>
-                                                    <li><span>Hard Copy:</span><span>{{ ($book->hard_copy == true) ? 'YES' : 'NO' }}</span></li>
+                                                    <li><span>Ebook:</span><span>{{ ($book->soft_copy == true) ? 'YES' : 'NO' }}</span></li>
+                                                    <li><span>Paperback:</span><span>{{ ($book->hard_copy == true) ? 'YES' : 'NO' }}</span></li>
                                                     <li><span>Published Date:</span><span>{{ date('M j, Y', strtotime($book->published_at)) }}</span></li>
                                                     <li><span>Publisher:</span><span>{{ ucwords($author->firstname.' '.$author->lastname) }}</span></li>
                                                     <li><span>ISBN:</span><span>{{ $book->isbn }}</span></li>
@@ -238,4 +238,20 @@
         </div>
     </div>
 </div>
+<input type="hidden" id="ebookPrice" value="{{ number_format($book->price, 2) }}">
+<input type="hidden" id="paperbackPrice" value="{{ number_format($book->price2, 2) }}">
 @endsection
+
+@push('custom-scripts')
+    <script>
+        $('label').click(function(){
+            let copy = $(this).children(":first").val();
+            if (copy == 'soft') {
+                $('.tg-bookprice ins').text('₦ ' + $('#ebookPrice').val());
+            } 
+            if (copy == 'hard') {
+                $('.tg-bookprice ins').text('₦ ' + $('#paperbackPrice').val());
+            }
+        });
+    </script>
+@endpush

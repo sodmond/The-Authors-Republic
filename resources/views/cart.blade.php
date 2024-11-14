@@ -28,7 +28,7 @@
                                     <input type="hidden" name="book_ids[]" id="bookId{{ $book->id }}" value="{{ $book->id }}">
                                     <h5><a href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">{{ $book->title }}</a></h5>
                                     <h6>₦ {{ ($item->copy == 'soft') ? number_format($book->price, 2) : number_format($book->price2, 2) }}</h6>
-                                    <button type="button" class="btn btn-custom btn-sm">{{ ucwords($item->copy) }} Copy</button>
+                                    <button type="button" class="btn btn-custom btn-sm">{{ ($item->copy == 'soft') ? 'Ebook' : 'Paperback' }}</button>
                                     @if($book->hard_copy == 1 && $book->soft_copy == 0 && $book->stock < 1)
                                         <div class="small text-danger">Out of Stock</div>
                                     @endif

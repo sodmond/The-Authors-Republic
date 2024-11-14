@@ -295,7 +295,7 @@
 <!--************************************
         Testimonials Start
 *************************************-->
-<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" id="homeTestimonal" style="background: url({{ asset('img/uuuuuu.jpg') }});">
+<section class="tg-parallax tg-bgtestimonials tg-haslayout" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" id="homeTestimonal" style="background: url({{ asset('img/uuuuuu.jpg') }}); background-size:cover; background-repeat:no-repeat;">
     {{--<div class="overlay" style=""></div>--}}
     <div class="tg-sectionspace tg-haslayout" {{--style="z-index:3;"--}}>
         <div class="container">
@@ -304,7 +304,7 @@
                     <h2 class="text-center text-white mb-3">Testimonials</h2>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
-                            <div class="panel panel-default shadow">
+                            <div class="panel panel-default shadow" style="min-height:270px;">
                                 <div class="panel-body bg-white p-4">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
@@ -319,7 +319,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
-                            <div class="panel panel-default shadow">
+                            <div class="panel panel-default shadow" style="min-height:270px;">
                                 <div class="panel-body bg-white p-4">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
@@ -334,7 +334,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="color:#222;">
-                            <div class="panel panel-default shadow">
+                            <div class="panel panel-default shadow" style="min-height:270px;">
                                 <div class="panel-body bg-white p-4">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">

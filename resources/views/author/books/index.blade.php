@@ -70,7 +70,7 @@
                                                 <td>{{ ucwords(\App\Models\Book::getCategoryName($book->category_id)) }}</td>
                                                 <td>{{ number_format($book->price, 2) }}</td>
                                                 <td>{{ $book->created_at }}</td>
-                                                <td><a class="btn btn-sm btn-custom" href="{{ route('author.book', ['id' => $book->id]) }}">
+                                                <td><a class="btn btn-sm btn-custom" href="{{ route('author.book', ['id' => $book->id]) }}" title="Edit/Delete">
                                                     <i class="fa fa-eye"></i>
                                                 </a></td>
                                             </tr>

@@ -418,7 +418,7 @@ a.panel-link.text-white:hover {
     content: '' !important;
 }
 
-.tg-posttitle a, #tg-homefeatured a {
+.tg-posttitle a, #tg-homefeatured a, .tg-booktitle a {
     display: block;
     white-space: nowrap;
     overflow: hidden;

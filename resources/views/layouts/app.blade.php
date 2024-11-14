@@ -96,7 +96,6 @@
 	*************************************-->
 	<script src="{{ asset('frontend/js/vendor/jquery-library.js') }}"></script>
 	<script src="{{ asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
-	<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&language=en"></script>
 	<script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/jquery.vide.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/countdown.js') }}"></script>

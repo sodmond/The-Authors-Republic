@@ -72,7 +72,7 @@
                                             <td>{{ $books[$item->book_id]->title }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>{{ number_format($item->amount, 2) }}</td>
-                                            <td>{{ ucwords($item->copy) }}</td>
+                                            <td>{{ ($item->copy == 'soft') ? 'Ebook' : 'Paperback' }}</td>
                                             <td>{{ number_format(($item->amount*$item->quantity), 2) }}</td>
                                             <td>
                                                 @if($order->status == 'completed' && $item->copy == 'soft')

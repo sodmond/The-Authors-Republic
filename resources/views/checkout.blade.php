@@ -131,7 +131,7 @@
                                         <td><img src="{{ $bookImage }}" alt="image description" style="max-width:50px;"></td>
                                         <td>
                                             <h5>{{ $book->title }}</h5>
-                                            <button type="button" class="btn btn-custom btn-sm">{{ ucwords($item->copy) }} Copy</button>
+                                            <button type="button" class="btn btn-custom btn-sm">{{ ($item->copy == 'soft') ? 'Ebook' : 'Paperback' }}</button>
                                             @if($item->copy == 'hard' && $book->stock < 1)
                                                 <div class="small text-danger">Out of Stock</div>
                                             @endif

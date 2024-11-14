@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $books = Book::where('author_id', auth('author')->id())->pluck('id');
-        $orders = Order::with('orderContent')->whereHas('orderContent', function($q) use($books) {
+        $orders = Order::with('orderContent')->where('transaction_id', '<>', null)->whereHas('orderContent', function($q) use($books) {
             $q->whereIn('book_id', $books);
         })->orderByDesc('created_at')->get();
         $ordersCount = $orders->count();
