@@ -31,13 +31,13 @@ class BookRequest extends FormRequest
             'hard_copy' => ['required', 'integer', 'max:1', 'accepted_if:soft_copy,0'],
             'stock' => ['nullable', 'integer', 'required_if:hard_copy,1'],
             'description' => ['nullable', 'max:5000'],
-            'price' => ['required', 'numeric', function (string $attribute, mixed $value, Closure $fail) {
-                if ($value == 0 && $this->input('soft_copy') == 1) {
+            'price' => ['nullable', 'required_if:soft_copy,1', 'numeric', function (string $attribute, mixed $value, Closure $fail) {
+                if ($value < 1 && $this->input('soft_copy') == 1) {
                     $fail("The price for soft copy should be greater than 0.");
                 }
             }],
-            'price2' => ['required', 'numeric', function (string $attribute, mixed $value, Closure $fail) {
-                if ($value == 0 && $this->input('hard_copy') == 1) {
+            'price2' => ['nullable', 'required_if:hard_copy,1', 'numeric', function (string $attribute, mixed $value, Closure $fail) {
+                if ($value < 1 && $this->input('hard_copy') == 1) {
                     $fail("The price for hard copy should be greater than 0.");
                 }
             }],
@@ -57,8 +57,8 @@ class BookRequest extends FormRequest
     {
         return [
             'hard_copy.accepted_if' => 'Hard copy must be YES, if you are not providing a soft copy',
-            'price.required' => 'Price for soft copy is required',
-            'price2.required' => 'Price for hard copy is required',
+            'price.required_if' => 'Price for soft copy is required',
+            'price2.required_if' => 'Price for hard copy is required',
             'book_file.required_if_accepted' => 'A book file should be uploaded if you are providing a soft copy',
             'stock.required_if' => 'Stock is required if you are selling hard copy'
         ];

@@ -109,13 +109,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="price">Price (Soft Copy)</label>
-                                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
+                                            <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="price">Price (Hard Copy)</label>
-                                            <input class="form-control" type="number" id="price2" name="price2" value="{{ old('price2') }}" required>
+                                            <input class="form-control" type="number" id="price2" name="price2" value="{{ old('price2') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
