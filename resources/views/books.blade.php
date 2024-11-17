@@ -50,7 +50,7 @@
                                                         @endphp
                                                         <h3><a href="{{ $bookLink }}">{{ ucwords($book->title) }}</a></h3>
                                                     </div>
-                                                    @php 
+                                                    @php
                                                         $slug = \App\Models\Author::getSlug($book->author->firstname, $book->author->lastname);
                                                         $authorLink = route('author', ['id' => $book->author->id, 'slug' => $slug])
                                                     @endphp
@@ -68,7 +68,7 @@
                                                         @if($book->soft_copy == 1 && $book->hard_copy == 1)
                                                             <a class="tg-btn tg-btnstyletwo" href="{{ $bookLink }}">
                                                                 <i class="fa fa-eye"></i>
-                                                                <em>View Options</em>
+                                                                <em>View Formats</em>
                                                             </a>
                                                         @else
                                                             <input type="hidden" name="copy" value="{{ $book->soft_copy == 1 ? 'soft' : 'hard' }}">

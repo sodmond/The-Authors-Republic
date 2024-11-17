@@ -66,7 +66,7 @@
                                                 </ul>
                                                 @if($book->soft_copy == 1 && $book->hard_copy == 1)
                                                     <div class="btn-grou" data-toggle="buttons">
-                                                        <label class="btn">Select Book Copy</label>
+                                                        <label class="btn">Select Book Format</label>
                                                         <label class="btn btn-custom">
                                                             <input type="radio" name="copy" id="option2" value="soft" required> Ebook
                                                         </label> &nbsp;

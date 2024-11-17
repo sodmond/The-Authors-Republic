@@ -69,7 +69,7 @@
                                                 @if($book->soft_copy == 1 && $book->hard_copy == 1)
                                                     <a class="tg-btn tg-btnstyletwo" href="{{ route('book', ['id' => $book->id, 'slug' => $slug]) }}">
                                                         <i class="fa fa-eye"></i>
-                                                        <em>View Options</em>
+                                                        <em>View Formats</em>
                                                     </a>
                                                 @else
                                                     <input type="hidden" name="copy" value="{{ $book->soft_copy == 1 ? 'soft' : 'hard' }}">
