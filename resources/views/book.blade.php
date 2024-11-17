@@ -101,12 +101,17 @@
                                             <h2>Book Details</h2>
                                         </div>
                                         <ul class="tg-themetabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#details" data-toggle="tab">Details</a></li>
-                                            <li role="presentation"><a href="#description" data-toggle="tab">Description</a></li>
+                                            <li role="presentation" class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                                            <li role="presentation"><a href="#details" data-toggle="tab">Details</a></li>
                                             <li role="presentation"><a href="#review" data-toggle="tab">Reviews ({{ count($book->bookReviews) }})</a></li>
                                         </ul>
                                         <div class="tg-tab-content tab-content">
-                                            <div role="tabpanel" class="tg-tab-pane tab-pane active" id="details">
+                                            <div role="tabpanel" class="tg-tab-pane tab-pane active" id="description">
+                                                <div class="tg-description">
+                                                    @php echo Illuminate\Support\Facades\Storage::get('books/contents/'.$book->description); @endphp
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tg-tab-pane tab-pane" id="details">
                                                 <ul class="tg-productinfo">
                                                     <li><span>Ebook:</span><span>{{ ($book->soft_copy == true) ? 'YES' : 'NO' }}</span></li>
                                                     <li><span>Paperback:</span><span>{{ ($book->hard_copy == true) ? 'YES' : 'NO' }}</span></li>
@@ -115,11 +120,6 @@
                                                     <li><span>ISBN:</span><span>{{ $book->isbn }}</span></li>
                                                     <li><span>Pages Number:</span><span>{{ $book->pages_number }}</span></li>
                                                 </ul>
-                                            </div>
-                                            <div role="tabpanel" class="tg-tab-pane tab-pane" id="description">
-                                                <div class="tg-description">
-                                                    @php echo Illuminate\Support\Facades\Storage::get('books/contents/'.$book->description); @endphp
-                                                </div>
                                             </div>
                                             <div role="tabpanel" class="tg-tab-pane tab-pane" id="review">
                                                 <div class="">
