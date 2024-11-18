@@ -457,3 +457,8 @@ a.panel-link.text-white:hover {
 li.tg-tiktok a {
     background: #222;
 }
+
+.videoEmbed iframe {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+}
