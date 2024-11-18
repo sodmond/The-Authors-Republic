@@ -24,7 +24,7 @@
                                             $link = route('authors.blog', ['id' => $article->id, 'slug' => $slug])
                                         @endphp
                                         <article class="tg-post">
-                                            <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->image) }}" alt="Articles Image"></a></figure>
+                                            <figure><a href="{{ $link }}"><img src="{{ asset('storage/author/blog/image/thumbnail/'.$article->thumbnail) }}" alt="Articles Image"></a></figure>
                                             <div class="tg-postcontent">
                                                 <ul class="tg-bookscategories">
                                                     <li>{{ ucwords($article->type) }}</li>

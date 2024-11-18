@@ -64,7 +64,7 @@
                                         @foreach ($blog as $item)
                                             <tr>
                                                 <td>{{ $row++ }}</td>
-                                                <td><img src="{{ asset('storage/author/blog/image/thumbnail/'.$item->image) }}" class="img-thumbnail" style="max-width:65px;"></td>
+                                                <td><img src="{{ asset('storage/author/blog/image/thumbnail/'.$item->thumbnail) }}" class="img-thumbnail" style="max-width:65px;"></td>
                                                 <td>{{ ucwords($item->type) }}</td>
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->created_at }}</td>

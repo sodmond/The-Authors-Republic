@@ -9,7 +9,8 @@
                     <figure class="tg-newsdetailimg">
                         <img src="{{ asset('storage/author/blog/image/'.$article->image) }}" alt="image">
                         <figcaption class="tg-author">
-                            <img src="{{ asset('storage/'.$article->author->image) }}" alt="author image" style="max-width:50px;">
+                            @php $authorImage = ($article->author->image != '') ? asset('storage/'.$article->author->image) : asset('img/user-icon.png'); @endphp
+                            <img src="{{ $authorImage }}" alt="author image" style="max-width:50px;">
                             <div class="tg-authorinfo">
                                 <span class="tg-bookwriter">By: <a href="javascript:void(0);">{{ $article->author->firstname.' '.$article->author->lastname }}</a></span>
                                 <ul class="tg-postmetadata">
@@ -41,7 +42,7 @@
                             <div class="tg-posttitle">
                                 <div class="row">
                                     <div class="col-md-8"><h3>{{ $article->title }}</h3></div>
-                                    <div class="col-md-4 text-right">
+                                    <div class="col-md-4 text-right text-sm-left pt-sm-2">
                                         <button class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" onclick="window.history.back()">Back to Authors Corner</button>
                                     </div>
                                 </div>

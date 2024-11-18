@@ -68,21 +68,28 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="image">Cover Image <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="image" name="image">
                                             <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Dimension: 1170x400px)</small>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="banner_image">Banner Image <small>(Leave empty if you do not wish to change)</small></label>
+                                            <input class="form-control" type="file" id="banner_image" name="banner_image" required>
+                                            <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Dimension: 1170x400px)</small>
+                                        </div>
+                                    </div>
+                                    {{--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="video">Video <small>(Leave empty if you do not wish to change)</small></label>
                                             <input class="form-control" type="file" id="video" name="video">
                                             <small class="text-info">(Allowed video; .mp4 | Max: 5MB)</small>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div>--}}
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="published_at">Published Date</label>
                                             <input class="form-control" type="datetime-local" id="published_at" name="published_at" value="{{ $blogItem->published_at }}" required>
