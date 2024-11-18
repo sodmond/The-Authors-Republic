@@ -17,7 +17,7 @@
                                     {{ __('Please confirm your password before continuing.') }}
                                 </div>
 
-                                <form method="POST" action="{{ route('password.confirm') }}">
+                                <form method="POST" action="{{ route('author.password.confirm') }}">
                                     @csrf
 
                                     <div class="form-group row">

@@ -18,7 +18,7 @@
                     
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ 'We have emailed your password reset link, pls check your inbox or spam folder for it.' }}
                         </div>
                     @endif
 

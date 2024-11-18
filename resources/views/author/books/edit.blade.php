@@ -110,6 +110,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label for="pages_number">Number of Pages</label>
+                                            <input class="form-control" type="number" id="pages_number" name="pages_number" value="{{ $book->pages_number }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="published_at">Published Date</label>
+                                            <input class="form-control" type="date" id="published_at" name="published_at" value="{{ $book->published_at }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label for="soft_copy">Soft Copy</label>
                                             <select class="form-control" id="soft_copy" name="soft_copy" required>
                                                 <option value="1" @selected($book->soft_copy == true)>Yes</option>
@@ -117,7 +129,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Hard Copy</label>
                                             <select class="form-control" id="hard_copy" name="hard_copy" required>
@@ -141,24 +153,12 @@
                                             <input class="form-control" type="number" id="price2" name="price2" value="{{ $book->price2 }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    {{--<div class="col-md-4">
                                         <div class="form-group">
                                             <label for="stock">Stock <small>(required only if you have a hard copy)</small></label>
                                             <input class="form-control" type="number" id="stock" name="stock" value="{{ $book->stock }}">
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="pages_number">Number of Pages</label>
-                                            <input class="form-control" type="number" id="pages_number" name="pages_number" value="{{ $book->pages_number }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="published_at">Published Date</label>
-                                            <input class="form-control" type="date" id="published_at" name="published_at" value="{{ $book->published_at }}" required>
-                                        </div>
-                                    </div>
+                                    </div>--}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>

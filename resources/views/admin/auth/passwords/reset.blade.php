@@ -15,7 +15,7 @@
                                     <p>&nbsp;</p>
                                     <h1 class="h5 text-gray-900 mb-4">{{ __('Reset Password') }}</h1>
                                 </div>
-                                <form method="POST" action="{{ route('password.update') }}" class="user">
+                                <form method="POST" action="{{ route('admin.password.update') }}" class="user">
                                     @csrf
 
                                     <input type="hidden" name="token" value="{{ $token }}">

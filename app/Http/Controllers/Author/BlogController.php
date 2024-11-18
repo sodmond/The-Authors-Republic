@@ -46,7 +46,7 @@ class BlogController extends Controller
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:10000'],
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
-            'video' => ['required_if:type,podcast', 'mimes:mp4', 'max:5120'],
+            'video' => ['required_if:type,podcast', 'mimes:mp4', 'max:20480'],
         ]);
         $imgFileName = Str::random(32) . '.' . $request->file('image')->extension();
         $request->file('image')->storeAs('author/blog/image', $imgFileName, 'public');
@@ -87,7 +87,7 @@ class BlogController extends Controller
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:10000'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:512', Rule::dimensions()->width(1170)->height(400)],
-            'video' => ['nullable', 'mimes:mp4', 'max:5120'],
+            'video' => ['nullable', 'mimes:mp4', 'max:20480'],
         ]);
         $authorBlog = AuthorsBlog::find($id);
         if ($authorBlog->author_id != auth('author')->id()) {

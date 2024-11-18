@@ -79,7 +79,7 @@
                                         <div class="form-group">
                                             <label for="video">Video</label>
                                             <input class="form-control" type="file" id="video" name="video">
-                                            <small class="text-info">(Allowed video; .mp4 | Max: 5MB)</small>
+                                            <small class="text-info">(Allowed video; .mp4 | Max: 20MB)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
