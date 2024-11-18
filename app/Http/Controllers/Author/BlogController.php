@@ -57,7 +57,7 @@ class BlogController extends Controller
         #$thumbnail = ImageManager::imagick()->read($request->file('image')->path());
         #$thumbnail->cover(400, 400, 'center')->save(storage_path('/app/public/author/blog/image/thumbnail/') . $imgFileName);
         $contentFile = time() . '.txt';
-        Storage::put('author/blog/contents/'.$contentFile, clean($request->description), 'public');
+        Storage::put('author/blog/contents/'.$contentFile, clean($request->description, 'youtube'), 'public');
         $authorBlog = new AuthorsBlog();
         $authorBlog->author_id = auth('author')->id();
         $authorBlog->type = $request->type;
