@@ -79,7 +79,7 @@
                                         <div class="form-group">
                                             <label for="video">Video</label>
                                             <input class="form-control" type="file" id="video" name="video">
-                                            <small class="text-info">(Allowed video; .mp4 | Max: 20MB)</small>
+                                            <small class="text-info">(Allowed video; .mp4 | Max: 5MB)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -89,6 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <div class="alert alert-info"><i class="fa fa-info-circle"></i> Please use video icon in editor below to upload youtube link.</div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
