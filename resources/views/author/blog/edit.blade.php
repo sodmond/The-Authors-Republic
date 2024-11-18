@@ -78,7 +78,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="banner_image">Banner Image <small>(Leave empty if you do not wish to change)</small></label>
-                                            <input class="form-control" type="file" id="banner_image" name="banner_image" required>
+                                            <input class="form-control" type="file" id="banner_image" name="banner_image">
                                             <small class="text-info">(Allowed images; .jpg, .png, .jpeg | Max: 512kb | Dimension: 1170x400px)</small>
                                         </div>
                                     </div>
