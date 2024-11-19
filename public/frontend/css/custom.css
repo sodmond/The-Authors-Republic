@@ -385,7 +385,7 @@ a:hover, .tg-newsletter h4, .tg-404errorcontent span,
         left: -81vw;
     }
     .tg-author{
-        display: none !important;
+        /*display: none !important;*/
     }
     .text-sm-left {
         text-align: left !important;
