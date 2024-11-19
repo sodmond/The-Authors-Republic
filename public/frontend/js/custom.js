@@ -78,7 +78,7 @@ $('#tg-authorscornerslider').owlCarousel({
 		480: { items:2 },
 		600: { items:3 },
 		1000: { items:5 },
-		1200: { items:6 },
+		1200: { items:5 },
     },
     navText: [
 		'<i class="icon-chevron-left"></i>',
