@@ -1,4 +1,4 @@
-<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('frontend/images/159711.jpg') }}">
+<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('img/breadcrumb-bg.jpg') }}">
     <div id="overlay"></div>
     <div class="container" style="z-index: 3;">
         <div class="row">
