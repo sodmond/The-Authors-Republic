@@ -113,6 +113,7 @@
                                 <option value="author">Author</option>
                                 <option value="book">Book</option>
                                 <option value="user">User</option>
+                                <option value="blog">Blog/Podcast</option>
                             </select>
                             <input type="text" name="value" placeholder="Enter search text here..." class="form-control" required>
                             <button type="submit" class="sr-only"></button>
@@ -189,6 +190,13 @@
                                             <a href="{{ route('admin.payouts') }}">Payouts</a>
                                         </li>
                                     </ul>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.blog') }}" class="{{ ($activePage == 'blog') ? 'active' : '' }}">
+                                    <i class="fas fa-blog"></i> 
+                                    <span> Blog/Podcast </span>
                                 </a>
                             </li>
 

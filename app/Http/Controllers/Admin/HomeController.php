@@ -54,6 +54,9 @@ class HomeController extends Controller
         if ($request->type == 'user') {
             return redirect()->route('admin.users', ['search' => $request->value]);
         }
+        if ($request->type == 'blog') {
+            return redirect()->route('admin.blog', ['search' => $request->value]);
+        }
         return redirect()->route('admin.home');
     }
 

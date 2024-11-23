@@ -6,6 +6,7 @@ use App\Exports\AuthorsExport;
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovalStatus;
 use App\Models\Author;
+use App\Models\AuthorsBlog;
 use App\Models\Book;
 use App\Models\Earning;
 use App\Models\Order;
@@ -77,6 +78,13 @@ class AuthorController extends Controller
         $author = Author::find($id);
         $books = Book::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
         return view('admin.books.index', compact('books', 'author'));
+    }
+
+    public function blog($id)
+    {
+        $author = Author::find($id);
+        $blog = AuthorsBlog::where('author_id', $id)->orderByDesc('created_at')->paginate(10);
+        return view('admin.blog.index', compact('blog', 'author'));
     }
 
     public function sales($id)

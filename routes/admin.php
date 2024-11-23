@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('author/{id}', [AdminBackend\AuthorController::class, 'get'])->name('author');
     Route::post('author/{id}/approval', [AdminBackend\AuthorController::class, 'approval'])->name('author.approval');
     Route::get('author/{id}/books', [AdminBackend\AuthorController::class, 'books'])->name('author.books');
+    Route::get('author/{id}/blog', [AdminBackend\AuthorController::class, 'blog'])->name('author.blog');
     Route::get('author/{id}/sales', [AdminBackend\AuthorController::class, 'sales'])->name('author.sales');
     Route::get('author/{id}/payouts', [AdminBackend\AuthorController::class, 'payouts'])->name('author.payouts');
     Route::get('author/{id}/ban', [AdminBackend\AuthorController::class, 'ban'])->name('author.ban');
@@ -69,6 +70,14 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('article/{id}/edit', [AdminBackend\ArticlesController::class, 'edit'])->name('article.edit');
     Route::post('article/{id}/update', [AdminBackend\ArticlesController::class, 'update'])->name('article.update');
     Route::get('article/{id}/delete', [AdminBackend\ArticlesController::class, 'delete'])->name('article.delete');
+
+    Route::get('blog', [AdminBackend\BlogController::class, 'index'])->name('blog');
+    Route::get('blog/{id}', [AdminBackend\BlogController::class, 'get'])->name('blog.get');
+    Route::get('blog_new', [AdminBackend\BlogController::class, 'new'])->name('blog.new');
+    Route::post('blog_new', [AdminBackend\BlogController::class, 'addNew']);
+    Route::get('blog/{id}/edit', [AdminBackend\BlogController::class, 'edit'])->name('blog.edit');
+    Route::post('blog/{id}/update', [AdminBackend\BlogController::class, 'update'])->name('blog.update');
+    Route::get('blog/{id}/trash', [AdminBackend\BlogController::class, 'trash'])->name('blog.trash');
 
     Route::get('revenue/earnings', [AdminBackend\RevenueController::class, 'earnings'])->name('earnings');
     Route::get('revenue/earning/{id}', [AdminBackend\RevenueController::class, 'earnings'])->name('earning');
