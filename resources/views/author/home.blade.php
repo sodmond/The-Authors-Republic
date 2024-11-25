@@ -26,7 +26,7 @@
                 <div class="col-auto">
                     <a class="btn btn-custom" href="{{ route('author.book.new') }}">
                         <i class="fa fa-plus-circle"></i> Publish Book</a>
-                    <a class="btn btn-custom" href="#">
+                    <a class="btn btn-custom" href="https://paystack.com/pay/hloqr2f4w2" target="_blank">
                         <i class="fa fa-donate"></i> Donate</a>
                 </div>
             </div>

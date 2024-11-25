@@ -1,11 +1,11 @@
-@extends('layouts.app', ['activePage' => 'authors.blog', 'title' => ucwords($article->title)])
+@extends('layouts.app', ['activePage' => 'authors.blog', 'title' => ucwords($article->type).' Details', 'blogPodcastBG' => asset('storage/author/blog/image/'.$article->image)])
 
 @section('content')
 <div class="tg-sectionspace tg-haslayout">
     <div class="container">
         <div class="row">
             <div id="tg-twocolumns" class="tg-twocolumns">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {{--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <figure class="tg-newsdetailimg">
                         <img src="{{ asset('storage/author/blog/image/'.$article->image) }}" alt="image">
                         <figcaption class="tg-author">
@@ -19,7 +19,7 @@
                             </div>
                         </figcaption>
                     </figure>
-                </div>
+                </div>--}}
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                     @if (count($errors))
                         <div class="alert alert-danger">
@@ -57,6 +57,43 @@
                                         </video>
                                     </p>
                                 @endif
+                            </div>
+                            <div class="tg-aboutauthor"  style="padding-top:30px;">
+                                <div class="tg-sectionhead">
+                                    <h2>About Author</h2>
+                                    <button class="tg-btn tg-active" style="border-radius:20px; padding:0 25px;" onclick="window.history.back()">Back to Authors Corner</button>
+                                </div>
+                                <div class="tg-authorbox">
+                                    <figure class="tg-authorimg">
+                                        @php
+                                            $authorImage = ($article->author->image != '') ? asset('storage/'.$article->author->image) : asset('img/user-icon.png');
+                                        @endphp
+                                        <img src="{{ $authorImage }}" alt="author image" style="max-width:70px;">
+                                    </figure>
+                                    <div class="tg-authorinfo">
+                                        <div class="tg-authorhead">
+                                            <div class="tg-leftarea">
+                                                <div class="tg-authorname">
+                                                    <h2>{{ ucwords($article->author->firstname.' '.$article->author->lastname) }}</h2>
+                                                    @php $regDate = date('M jS, Y', strtotime($article->author->created_at)) @endphp
+                                                    <span>Registered Since: {{ $regDate }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="tg-rightarea">
+                                                <ul class="tg-socialicons">
+                                                    <li class="tg-facebook"><a href="{{ $article->author->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                    <li class="tg-twitter"><a href="{{ $article->author->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                    <li class="tg-linkedin"><a href="{{ $article->author->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        @php 
+                                            $slug = \App\Models\Author::getSlug($article->author->firstname, $article->author->lastname);
+                                            $authorLink = route('author', ['id' => $article->author->id, 'slug' => $slug])
+                                        @endphp
+                                        <a class="tg-btn tg-active" href="{{ $authorLink }}">View All Books</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tg-leaveyourcomment" id="comments">
                                 <div class="tg-sectionhead">

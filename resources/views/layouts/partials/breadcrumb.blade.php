@@ -1,4 +1,9 @@
-<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ asset('img/breadcrumb-bg.jpg') }}">
+@if ($activePage == 'authors.blog')
+    @php $breadcrumbBG = asset('frontend/images/bg/01.jpg') @endphp
+@else
+    @php $breadcrumbBG = asset('img/breadcrumb-bg.jpg') @endphp
+@endif
+<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ $breadcrumbBG }}">
     <div id="overlay"></div>
     <div class="container" style="z-index: 3;">
         <div class="row">
