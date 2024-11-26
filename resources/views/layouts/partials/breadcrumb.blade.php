@@ -1,7 +1,9 @@
 @if ($activePage == 'authors.blog')
-    @php $breadcrumbBG = asset('frontend/images/bg/01.jpg') @endphp
+    @php $breadcrumbBG = asset('img/breadcumb-1.jpg'); @endphp
+@elseif ($activePage == 'authors.podcast')
+    @php $breadcrumbBG = asset('img/breadcrumb-bg.jpg'); @endphp
 @else
-    @php $breadcrumbBG = asset('img/breadcrumb-bg.jpg') @endphp
+    @php $breadcrumbBG = asset('frontend/images/bg/01.jpg'); @endphp
 @endif
 <div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{ $breadcrumbBG }}">
     <div id="overlay"></div>
