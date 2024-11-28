@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'authors.'.$article->type, 'title' => ucwords($article->type).' Details', 'blogPodcastBG' => asset('storage/author/blog/image/'.$article->image)])
+@extends('layouts.app', ['activePage' => 'authors.'.$article->type, 'title' => ucwords($article->author->firstname."'s ".$article->type), 'blogPodcastBG' => asset('storage/author/blog/image/'.$article->image)])
 
 @section('content')
 <div class="tg-sectionspace tg-haslayout">
